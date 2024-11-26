@@ -9,7 +9,7 @@ var player: Player = null
 		update_configuration_warnings()
 
 func _ready() -> void:
-	player = GameManager.player
+	player = GameManager.get_player()
 
 func _physics_process(delta: float) -> void:
 	# Don't update if the script is running in the editor (required since
