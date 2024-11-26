@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://m0yu4nmvb5mw"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_8f13i"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
 [ext_resource type="Shader" path="res://assets/ground.gdshader" id="2_k5ka0"]
 
@@ -28,6 +28,7 @@ radius = 14.0
 script = ExtResource("1_8f13i")
 
 [node name="BGSprite" type="Sprite2D" parent="."]
+z_index = -50
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_upf5s")
@@ -35,6 +36,7 @@ scale = Vector2(0.348633, 0.232422)
 texture = SubResource("NoiseTexture2D_hhvw1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
 texture = ExtResource("1_hjk42")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
