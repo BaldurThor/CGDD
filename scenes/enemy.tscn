@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xplhrfv20ktq"]
+
+[ext_resource type="Texture2D" uid="uid://rtyla47usjny" path="res://assets/enemy_placeholder.png" id="1_cckql"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfmcv"]
+radius = 14.0
+
+[node name="Enemy" type="RigidBody2D"]
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pfmcv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cckql")
