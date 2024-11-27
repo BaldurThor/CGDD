@@ -1,12 +1,11 @@
-@tool
-extends RigidBody2D
+extends CharacterBody2D
 
 var player: Player = null
 
-@export var enemy_type: EnemyType:
-	set(value):
-		enemy_type = value
-		update_configuration_warnings()
+var enemy_type: EnemyType = null
+		
+func initialize(start_position):
+	self.position = start_position
 
 func _ready() -> void:
 	player = GameManager.get_player()
@@ -23,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Move towards the player
 	var dir = (player.global_position - global_position).normalized()
-	move_and_collide(dir * enemy_type.speed)
+	move_and_collide(dir * 1.0)
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
