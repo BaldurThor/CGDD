@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 var player: Player = null
 
@@ -22,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Move towards the player
 	var dir = (player.global_position - global_position).normalized()
-	move_and_collide(dir * 1.0)
+	move_and_collide(dir * 1.0) # TODO: add delta to the calculation!
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []

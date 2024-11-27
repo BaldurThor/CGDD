@@ -19,6 +19,6 @@ func _physics_process(_delta: float) -> void:
 	var y_direction := Input.get_axis("move_up", "move_down")
 	var direction := Vector2(x_direction, y_direction).normalized()
 	
-	velocity = direction * SPEED
+	velocity = direction * SPEED # TODO: add delta to the calculation!
 	
 	move_and_slide()
