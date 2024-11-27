@@ -1,7 +1,23 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 300.0
+# how many seconds you are invincible after being hit
+const INVINCIBLE_TIME : float = 0.25
+var is_invincible : bool = false
+var invincible_timer : float = 0.0
+
+@export_category("Stats")
+@export var speed : float = 300.0 # logarithmic scale
+@export var health : int = 10 # linear
+@export var damage : int = 10 # linear
+@export_range(.25,5,0.01,"or_greater") var range : float = 1.0 # logarithmic scale
+@export var armor : int = 1 # logarithmic scale
+@export_range(0,0.75,0.01) var dodge_chance : float = 0.0 # linear
+@export_range(0,3,0.01) var crit_chance : float = 0.0 # linear
+@export_range(0,2,1,"or_greater") var extra_projectiles = 0 # linear addative 
+@export var attack_speed : int = 1
+
+
 
 func _init() -> void:
 	# Make sure GameManager knows about this player instance.
@@ -19,6 +35,21 @@ func _physics_process(_delta: float) -> void:
 	var y_direction := Input.get_axis("move_up", "move_down")
 	var direction := Vector2(x_direction, y_direction).normalized()
 	
-	velocity = direction * SPEED
+	velocity = direction * speed
 	
 	move_and_slide()
+	
+	if is_invincible:
+		if invincible_timer <= 0:
+			is_invincible = false
+		else:
+			invincible_timer -= _delta
+	
+func take_damage(damage : int) -> void:
+	if is_invincible:
+		return
+		
+	is_invincible = true
+	invincible_timer = INVINCIBLE_TIME
+	health = health - damage
+	print("health", health)

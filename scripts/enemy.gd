@@ -22,8 +22,13 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	# Move towards the player
-	var dir = (player.global_position - global_position).normalized()
-	move_and_collide(dir * enemy_type.speed)
+	var dir : Vector2 = (player.global_position - global_position).normalized()
+	var coll : KinematicCollision2D = move_and_collide(dir * enemy_type.speed)
+
+	if coll:
+		if coll.get_collider_id() == player.get_instance_id():
+			player.take_damage(enemy_type.dagame)
+			
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
@@ -33,3 +38,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append("Missing enemy type")
 	
 	return warnings
+	
+
+	print("Collison")
