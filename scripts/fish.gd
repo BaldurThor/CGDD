@@ -1,4 +1,5 @@
-extends Sprite2D
+extends Node2D
+class_name Fish
 
 var origin : Vector2
 @export var speed : float = .025
@@ -21,7 +22,7 @@ func _process(delta: float) -> void:
 	angle += speed
 	set_rotation(angle+((90*PI)/180))
 	if position.y >= origin.y:
-		flip_v = true
+		$Fish_sprite.flip_v = true
 	else:
-		flip_v = false
+		$Fish_sprite.flip_v = false
 		

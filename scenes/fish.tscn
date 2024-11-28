@@ -4,10 +4,9 @@
 [ext_resource type="Script" path="res://scripts/fish.gd" id="2_w8iju"]
 
 [node name="Fish" type="Node2D"]
+script = ExtResource("2_w8iju")
 
-[node name="Fish" type="Sprite2D" parent="."]
-position = Vector2(100, 100)
+[node name="Fish_sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_wtkh2")
 flip_h = true
-script = ExtResource("2_w8iju")
