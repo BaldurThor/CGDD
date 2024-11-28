@@ -1,5 +1,5 @@
-@tool
-extends RigidBody2D
+extends CharacterBody2D
+class_name Enemy
 
 var player: Player = null
 
@@ -7,6 +7,9 @@ var player: Player = null
 	set(value):
 		enemy_type = value
 		update_configuration_warnings()
+		
+func initialize(start_position):
+	self.position = start_position
 
 func _ready() -> void:
 	player = GameManager.get_player()
@@ -28,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	if coll:
 		if coll.get_collider_id() == player.get_instance_id():
 			player.take_damage(enemy_type.dagame)
-			
+
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
@@ -39,5 +42,3 @@ func _get_configuration_warnings() -> PackedStringArray:
 	
 	return warnings
 	
-
-	print("Collison")

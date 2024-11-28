@@ -2,6 +2,8 @@ extends Node
 
 var _player: Player = null
 
+
+
 # Used by the player.gd script to tell the game manager where the player is.
 # Allows other scripts to access the player from wherever they are.
 func assign_player(player: Player):

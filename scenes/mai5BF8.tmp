@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnpb8ppgeyr1g"]
+[gd_scene load_steps=9 format=3 uid="uid://dnpb8ppgeyr1g"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_t5bvj"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_v7f6l"]
-[ext_resource type="PackedScene" uid="uid://d3d4w1ecw37wm" path="res://scenes/enemy.tscn" id="2_wwxhn"]
+[ext_resource type="PackedScene" uid="uid://m0yu4nmvb5mw" path="res://scenes/player.tscn" id="1_v7f6l"]
+[ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://scenes/enemy.tscn" id="2_wwxhn"]
 [ext_resource type="Script" path="res://scripts/enemy_type.gd" id="3_uj6jn"]
-[ext_resource type="Script" path="res://scenes/node_2d.gd" id="5_5oc2f"]
 [ext_resource type="Script" path="res://scripts/gun_rotation.gd" id="5_b72s8"]
-[ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="6_d8vb6"]
 [ext_resource type="Texture2D" uid="uid://2kw1cwck5jkk" path="res://assets/gun_placeholder.png" id="6_yrbko"]
 [ext_resource type="Script" path="res://scripts/enemies.gd" id="7_xjop3"]
 
@@ -36,16 +34,6 @@ position = Vector2(26, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/GunSwivel/Gun"]
 texture = ExtResource("6_yrbko")
-
-[node name="RodSwivel" type="Node2D" parent="Player"]
-script = ExtResource("5_5oc2f")
-
-[node name="Rod" type="Node2D" parent="Player/RodSwivel"]
-position = Vector2(30, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/RodSwivel/Rod"]
-rotation = 0.785398
-texture = ExtResource("6_d8vb6")
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.5
