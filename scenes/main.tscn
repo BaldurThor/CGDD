@@ -3,45 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://4772b5hdnvou" path="res://scenes/player.tscn" id="1_v7f6l"]
 [ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://scenes/enemy.tscn" id="2_wwxhn"]
 [ext_resource type="Script" path="res://scripts/enemy_type.gd" id="3_uj6jn"]
-[ext_resource type="Script" path="res://scenes/gun.gd" id="4_bymit"]
-[ext_resource type="Script" path="res://scenes/node_2d.gd" id="5_5oc2f"]
-[ext_resource type="Script" path="res://scripts/gun_rotation.gd" id="5_b72s8"]
-[ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="6_d8vb6"]
-[ext_resource type="Texture2D" uid="uid://2kw1cwck5jkk" path="res://assets/gun_placeholder.png" id="6_yrbko"]
 [ext_resource type="Script" path="res://scripts/enemies.gd" id="7_xjop3"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_v7f6l")]
-
-[node name="SpawnPath" type="Path2D" parent="Player"]
-curve = SubResource("Curve2D_hs0sl")
-
-[node name="SpawnLocation" type="PathFollow2D" parent="Player/SpawnPath"]
-position = Vector2(-286, -200)
-rotation = -0.00343052
-
-[node name="GunSwivel" type="Node2D" parent="Player"]
-script = ExtResource("5_b72s8")
-
-[node name="Gun" type="Node2D" parent="Player/GunSwivel"]
-position = Vector2(26, 0)
-script = ExtResource("4_bymit")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/GunSwivel/Gun"]
-texture = ExtResource("6_yrbko")
-
-[node name="AttackTimer" type="Timer" parent="Player/GunSwivel/Gun"]
-
-[node name="RodSwivel" type="Node2D" parent="Player"]
-script = ExtResource("5_5oc2f")
-
-[node name="Rod" type="Node2D" parent="Player/RodSwivel"]
-position = Vector2(30, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/RodSwivel/Rod"]
-rotation = 0.785398
-texture = ExtResource("6_d8vb6")
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.5
