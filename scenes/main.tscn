@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://dnpb8ppgeyr1g"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_t5bvj"]
-[ext_resource type="PackedScene" uid="uid://m0yu4nmvb5mw" path="res://scenes/player.tscn" id="1_v7f6l"]
-[ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://scenes/enemy.tscn" id="2_wwxhn"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_v7f6l"]
+[ext_resource type="PackedScene" uid="uid://d3d4w1ecw37wm" path="res://scenes/enemy.tscn" id="2_wwxhn"]
 [ext_resource type="Script" path="res://scripts/enemy_type.gd" id="3_uj6jn"]
 [ext_resource type="Script" path="res://scenes/node_2d.gd" id="5_5oc2f"]
 [ext_resource type="Script" path="res://scripts/gun_rotation.gd" id="5_b72s8"]
