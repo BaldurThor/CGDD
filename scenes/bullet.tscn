@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjic0x74o4im1"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_y564o"]
+[ext_resource type="Texture2D" uid="uid://dwrp7cq6ff34o" path="res://assets/bullet.png" id="2_u74nm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5n58v"]
+
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 2
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_y564o")
+despawn_delay = 1.0
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5n58v")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = -2
+texture = ExtResource("2_u74nm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

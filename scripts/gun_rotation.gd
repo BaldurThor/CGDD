@@ -1,4 +1,5 @@
 extends Node2D
+class_name GunSwivel
 
 
 func find_closest_enemy():
