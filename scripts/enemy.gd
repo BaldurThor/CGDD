@@ -22,4 +22,4 @@ func _physics_process(_delta: float) -> void:
 
 	if coll:
 		if coll.get_collider_id() == player.get_instance_id():
-			player.take_damage(enemy_type.dagame)
+			player.take_damage(enemy_type.damage)
