@@ -5,8 +5,9 @@ const BULLET = preload("res://scenes/bullet.tscn")
 @onready var player: Player = $"../.."
 @onready var attack_timer: Timer = $AttackTimer
 @onready var gun_swivel: GunSwivel = $".."
-var fire_rate: float = 0.05
-var damage: int = 3
+
+@export var fire_rate: float = 1.0
+@export var damage: int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _ready() -> void:
 	attack_timer.start()
 
 func _attack() -> void:
+	# Create a bullet and face it in the same direction of the gun swivel
 	var bullet = BULLET.instantiate()
 	bullet.init(damage, 500, gun_swivel.global_transform.x)
 	get_tree().root.add_child(bullet)

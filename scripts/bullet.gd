@@ -1,6 +1,7 @@
 extends RigidBody2D
 class_name Bullet
 
+## The time before the bullet automatically despawns
 @export var despawn_delay: float
 
 @onready var despawn_timer: Timer = $DespawnTimer
@@ -13,19 +14,18 @@ func init(damage: int, speed: float, direction: Vector2) -> void:
 	self.damage = damage
 	self.speed = speed
 	self.direction = direction
-	
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	despawn_timer.wait_time = despawn_delay
 
 func _physics_process(delta: float) -> void:
 	linear_velocity = direction.normalized() * speed
-	#move_and_collide((destination - global_position).normalized() * speed)
 
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
 		body.queue_free()
+		# Delete the bullet on impact. TODO: Add piercing or something to allow a bullet to hit multiple times?
 		queue_free()
 
 func _on_despawn_timer_timeout() -> void:
-	queue_free() # Replace with function body.
+	queue_free()
