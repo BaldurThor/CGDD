@@ -3,6 +3,8 @@ class_name Enemies
 
 @export var enemy_scene: PackedScene
 
+@export var enabled : bool = true
+
 @export var enemy_type: EnemyType:
 	set(value):
 		enemy_type = value
@@ -10,6 +12,9 @@ class_name Enemies
 
 func _on_enemy_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
+	if not enabled:
+		return
+
 	var enemy = enemy_scene.instantiate()
 
 	# Choose a random location on the SpawnPath.

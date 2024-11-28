@@ -19,6 +19,7 @@ script = ExtResource("7_xjop3")
 [node name="Enemies" type="Node" parent="."]
 script = ExtResource("7_xjop3")
 enemy_scene = ExtResource("2_wwxhn")
+enabled = false
 enemy_type = ExtResource("3_uj6jn")
 
 [node name="Fish_spawer" type="Node" parent="."]
