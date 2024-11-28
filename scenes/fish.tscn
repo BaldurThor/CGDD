@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ll7n6rjlxkp"]
+
+[ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://assets/fish.png" id="1_wtkh2"]
+[ext_resource type="Script" path="res://scripts/fish.gd" id="2_w8iju"]
+
+[node name="Fish" type="Node2D"]
+
+[node name="Fish" type="Sprite2D" parent="."]
+position = Vector2(100, 100)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_wtkh2")
+flip_h = true
+script = ExtResource("2_w8iju")
