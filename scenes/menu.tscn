@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0yryqcvaf5g6"]
+
+[ext_resource type="Texture2D" uid="uid://bhl4qu3nxd1ci" path="res://assets/menu/label_continue.png" id="1_4oeo8"]
+[ext_resource type="Texture2D" uid="uid://eb55mdcve1m0" path="res://assets/menu/image0.jpg" id="1_m1u38"]
+[ext_resource type="Texture2D" uid="uid://yyjed220n4mc" path="res://assets/menu/label_new_game.png" id="2_466tk"]
+[ext_resource type="Texture2D" uid="uid://dh7a5k34ujicr" path="res://assets/menu/label_options.png" id="3_ywr01"]
+
+[node name="Menu" type="MarginContainer"]
+clip_contents = true
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MenuOptions" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_4oeo8")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_466tk")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_ywr01")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="MenuImage" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(190, 270)
+layout_mode = 2
+texture = ExtResource("1_m1u38")
+expand_mode = 4
