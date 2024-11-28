@@ -12,4 +12,3 @@ void vertex() {
 void fragment() {
 	COLOR = texture(TEXTURE, world_position.xy * 0.001 * scale);
 }
-
