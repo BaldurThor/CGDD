@@ -2,20 +2,18 @@ extends CharacterBody2D
 class_name Player
 
 # how many seconds you are invincible after being hit
-const INVINCIBLE_TIME : float = 0.25
-var is_invincible : bool = false
+const INVINCIBLE_TIME: float = 0.25
+var is_invincible: bool = false
 
 @export_category("Stats")
-@export var speed : float = 300.0 # logarithmic scale
-@export var health : int = 10 # linear
-@export var damage : int = 10 # linear
-@export_range(.25,5,0.01,"or_greater") var range : float = 1.0 # logarithmic scale
-@export var armor : int = 1 # logarithmic scale
-@export_range(0,0.75,0.01) var dodge_chance : float = 0.0 # linear
-@export_range(0,3,0.01) var crit_chance : float = 0.0 # linear
-@export_range(0,2,1,"or_greater") var extra_projectiles = 0 # linear addative 
-@export var attack_speed : int = 1
-
+@export var speed: float = 300.0 # logarithmic scale
+@export var health: int = 10 # linear
+@export var damage: int = 10 # linear
+@export var armor: int = 1 # logarithmic scale
+@export_range(0, 0.75, 0.01) var dodge_chance: float = 0.0 # linear
+@export_range(0, 3, 0.01) var crit_chance: float = 0.0 # linear
+@export_range(0, 2, 1, "or_greater") var extra_projectiles = 0 # linear addative
+@export var attack_speed: int = 1
 
 
 func _init() -> void:
@@ -38,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	
-func take_damage(damage : int) -> void:
+func take_damage(_damage: int) -> void:
 	if is_invincible:
 		return
 		

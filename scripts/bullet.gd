@@ -10,15 +10,15 @@ var damage: int
 var speed: float
 var direction: Vector2
 
-func init(damage: int, speed: float, direction: Vector2) -> void:
-	self.damage = damage
-	self.speed = speed
-	self.direction = direction
+func init(bullet_damage: int, bullet_speed: float, bullet_direction: Vector2) -> void:
+	damage = bullet_damage
+	speed = bullet_speed
+	direction = bullet_direction
 
 func _ready() -> void:
 	despawn_timer.wait_time = despawn_delay
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	linear_velocity = direction.normalized() * speed
 
 func _on_body_entered(body: Node) -> void:
