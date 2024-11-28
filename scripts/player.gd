@@ -39,17 +39,12 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	
-	if is_invincible:
-		if invincible_timer <= 0:
-			is_invincible = false
-		else:
-			invincible_timer -= _delta
-	
 func take_damage(damage : int) -> void:
 	if is_invincible:
 		return
 		
 	is_invincible = true
-	invincible_timer = INVINCIBLE_TIME
 	health = health - damage
 	print("health", health)
+	await get_tree().create_timer(INVINCIBLE_TIME).timeout
+	is_invincible = false
