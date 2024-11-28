@@ -4,7 +4,6 @@ class_name Player
 # how many seconds you are invincible after being hit
 const INVINCIBLE_TIME : float = 0.25
 var is_invincible : bool = false
-var invincible_timer : float = 0.0
 
 @export_category("Stats")
 @export var speed : float = 300.0 # logarithmic scale
