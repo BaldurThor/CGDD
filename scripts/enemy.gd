@@ -11,7 +11,7 @@ func initialize(start_position):
 func _ready() -> void:
 	player = GameManager.get_player()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Make sure a player is present
 	if !player:
 		return
