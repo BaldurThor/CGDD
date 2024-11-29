@@ -1,6 +1,4 @@
-extends Node2D
-class_name GunSwivel
-
+class_name GunSwivel extends Node2D
 
 func find_closest_enemy():
 	var enemies = get_node("/root/Main/Enemies").get_children()

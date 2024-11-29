@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
 [ext_resource type="Shader" path="res://assets/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://scripts/gun_rotation.gd" id="4_chwgw"]
-[ext_resource type="Texture2D" uid="uid://2kw1cwck5jkk" path="res://assets/gun_placeholder.png" id="5_fle56"]
-[ext_resource type="Script" path="res://scripts/gun.gd" id="5_o3226"]
+[ext_resource type="PackedScene" uid="uid://dlu02g3t5bc3x" path="res://scenes/gun.tscn" id="5_toqby"]
+[ext_resource type="Resource" uid="uid://47poamxlvrlg" path="res://assets/weapons/shotgun.tres" id="6_0jfqt"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
 
@@ -64,17 +64,16 @@ curve = SubResource("Curve2D_d34cf")
 position = Vector2(-286, -200)
 rotation = -0.00343052
 
-[node name="GunSwivel" type="Node2D" parent="."]
+[node name="PistolSwivel" type="Node2D" parent="."]
 script = ExtResource("4_chwgw")
 
-[node name="Gun" type="Node2D" parent="GunSwivel"]
-position = Vector2(26, 0)
-script = ExtResource("5_o3226")
+[node name="Pistol" parent="PistolSwivel" instance=ExtResource("5_toqby")]
 
-[node name="AttackTimer" type="Timer" parent="GunSwivel/Gun"]
+[node name="ShotgunSwivel" type="Node2D" parent="."]
+script = ExtResource("4_chwgw")
 
-[node name="Sprite2D" type="Sprite2D" parent="GunSwivel/Gun"]
-texture = ExtResource("5_fle56")
+[node name="Shotgun" parent="ShotgunSwivel" instance=ExtResource("5_toqby")]
+weapon_type = ExtResource("6_0jfqt")
 
 [node name="RodSwivel" type="Node2D" parent="."]
 script = ExtResource("6_swhb5")

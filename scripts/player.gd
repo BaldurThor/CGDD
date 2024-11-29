@@ -1,5 +1,4 @@
-extends CharacterBody2D
-class_name Player
+class_name Player extends CharacterBody2D
 
 # how many seconds you are invincible after being hit
 const INVINCIBLE_TIME: float = 0.25

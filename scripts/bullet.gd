@@ -1,5 +1,4 @@
-extends RigidBody2D
-class_name Bullet
+class_name Bullet extends RigidBody2D
 
 ## The time before the bullet automatically despawns
 @export var despawn_delay: float
