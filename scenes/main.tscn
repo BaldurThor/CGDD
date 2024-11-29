@@ -1,7 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnpb8ppgeyr1g"]
+[gd_scene load_steps=5 format=3 uid="uid://dnpb8ppgeyr1g"]
 
-[ext_resource type="PackedScene" uid="uid://bpbhgmy75g0gs" path="res://scenes/menu.tscn" id="1_10fbo"]
+[ext_resource type="PackedScene" uid="uid://4772b5hdnvou" path="res://scenes/player.tscn" id="1_v7f6l"]
+[ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://scenes/enemy.tscn" id="2_wwxhn"]
+[ext_resource type="Script" path="res://scripts/enemy_type.gd" id="3_uj6jn"]
+[ext_resource type="Script" path="res://scripts/enemies.gd" id="7_xjop3"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_10fbo")]
+[node name="Player" parent="." instance=ExtResource("1_v7f6l")]
+unique_name_in_owner = true
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+script = ExtResource("7_xjop3")
+
+[node name="Enemies" type="Node" parent="."]
+script = ExtResource("7_xjop3")
+enemy_scene = ExtResource("2_wwxhn")
+enemy_type = ExtResource("3_uj6jn")
+
+[connection signal="timeout" from="EnemyTimer" to="Enemies" method="_on_enemy_timer_timeout"]
