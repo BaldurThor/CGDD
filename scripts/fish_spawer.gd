@@ -1,5 +1,5 @@
 extends Node
-class_name fishSpawner
+class_name FishSpawner
 
 var player : Player
 

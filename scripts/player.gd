@@ -13,7 +13,7 @@ var is_invincible : bool = false
 @export var armor : int = 1 # logarithmic scale
 @export_range(0,0.75,0.01) var dodge_chance : float = 0.0 # linear
 @export_range(0,3,0.01) var crit_chance : float = 0.0 # linear
-@export_range(0,2,1,"or_greater") var extra_projectiles = 0 # linear addative 
+@export_range(0,2,1,"or_greater") var extra_projectiles : int = 0 # linear addative 
 @export var attack_speed : int = 1
 
 
