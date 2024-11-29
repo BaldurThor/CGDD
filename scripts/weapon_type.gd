@@ -5,8 +5,10 @@ enum TargetPriority { CLOSEST, FARTHEST, RANDOM, STRONGEST }
 @export_category("Primary Stats")
 ## Base damage dealt by each projectile fired by the weapon
 @export_range(1.0, 1.0, 1.0, "or_greater") var damage: float
+## How effective flat damage multipliers are for the weapon (useful for weapons that inherently fire more projectiles).
+@export_range(0.1, 2.0, 0.1, "or_greater") var damage_effectiveness: float
 ## Base interval of which the weapon attacks
-@export_range(0.1, 1.0, 0.1, "or_greater") var attack_speed: float
+@export_range(0.1, 5.0, 0.01, "or_greater") var attack_speed: float
 ## Chance of an attack from the weapon dealing bonus damage
 @export_range(0.0, 100.0, 0.1, "or_greater") var crit_chance: float
 ## Multiplier to attacks that are critical strikes
@@ -33,7 +35,5 @@ enum TargetPriority { CLOSEST, FARTHEST, RANDOM, STRONGEST }
 @export_category("Resources")
 ## The sprite used by the weapon
 @export var sprite: Texture2D
-## The scene for the bullet fired by the weapon
-@export var bullet_type: PackedScene
 ## The sound-effect played on attack
 @export var attack_sfx: AudioStream

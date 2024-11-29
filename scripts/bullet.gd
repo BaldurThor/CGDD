@@ -5,26 +5,28 @@ class_name Bullet extends RigidBody2D
 
 @onready var despawn_timer: Timer = $DespawnTimer
 
-var damage: int
-var speed: float
 var direction: Vector2
+var _weapon_type: WeaponType
+var hit_count: int = 0
 
-func init(bullet_damage: int, bullet_speed: float, bullet_direction: Vector2) -> void:
-	damage = bullet_damage
-	speed = bullet_speed
+func init(weapon_type: WeaponType, bullet_direction: Vector2) -> void:
+	_weapon_type = weapon_type
 	direction = bullet_direction
 
 func _ready() -> void:
 	despawn_timer.wait_time = despawn_delay
 
 func _physics_process(_delta: float) -> void:
-	linear_velocity = direction.normalized() * speed
+	linear_velocity = direction.normalized() * _weapon_type.projectile_speed
 
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
 		body.queue_free()
-		# Delete the bullet on impact. TODO: Add piercing or something to allow a bullet to hit multiple times?
-		queue_free()
+		# If the bullet has pierced a certain number of times, delete it.
+		if _weapon_type.pierce_count > hit_count:
+			hit_count += 1
+		else:
+			queue_free()
 
 func _on_despawn_timer_timeout() -> void:
 	queue_free()

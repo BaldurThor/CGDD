@@ -11,7 +11,7 @@
 unique_name_in_owner = true
 
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 autostart = true
 script = ExtResource("7_xjop3")
 
