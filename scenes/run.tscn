@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnr2g0oyac5j2"]
+
+[ext_resource type="PackedScene" uid="uid://4772b5hdnvou" path="res://scenes/player.tscn" id="1_qrow8"]
+[ext_resource type="Script" path="res://scripts/enemies.gd" id="2_p838f"]
+[ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://scenes/enemy.tscn" id="3_nav3q"]
+[ext_resource type="Script" path="res://scripts/enemy_type.gd" id="4_6m7q0"]
+
+[node name="Run" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_qrow8")]
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+script = ExtResource("2_p838f")
+
+[node name="Enemies" type="Node" parent="."]
+script = ExtResource("2_p838f")
+enemy_scene = ExtResource("3_nav3q")
+enemy_type = ExtResource("4_6m7q0")
+
+[connection signal="timeout" from="EnemyTimer" to="Enemies" method="_on_enemy_timer_timeout"]

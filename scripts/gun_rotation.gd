@@ -1,7 +1,7 @@
 class_name GunSwivel extends Node2D
 
 func find_closest_enemy():
-	var enemies = get_node("/root/Main/Enemies").get_children()
+	var enemies = get_node("/root/Main/Run/Enemies").get_children()
 	var closest = null
 	var player = GameManager.get_player()
 	for enemy in enemies:

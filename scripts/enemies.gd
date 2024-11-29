@@ -14,7 +14,7 @@ func _on_enemy_timer_timeout() -> void:
 
 	# Choose a random location on the SpawnPath.
 	# We store the reference to the SpawnLocation node.
-	var enemy_spawn_location = get_node("/root/Main/Player/SpawnPath/SpawnLocation")
+	var enemy_spawn_location = get_node("/root/Main/Run/Player/SpawnPath/SpawnLocation")
 	
 	# And give it a random offset.
 	enemy_spawn_location.progress_ratio = randf()
