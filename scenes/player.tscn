@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=16 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
@@ -34,6 +34,10 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -286, -200, 0, 0, 0, 0, 297, -202, 0, 0, 0, 0, 298, 186, 0, 0, 0, 0, -280, 190, 0, 0, 0, 0, -286, -200)
 }
 point_count = 5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idbnd"]
+radius = 8.0
+height = 28.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8f13i")
@@ -83,9 +87,11 @@ position = Vector2(30, 0)
 rotation = 0.785398
 texture = ExtResource("7_l7pv7")
 
-[node name="hook" type="Node2D" parent="RodSwivel"]
+[node name="hook" type="StaticBody2D" parent="RodSwivel"]
 
 [node name="hookSprite2D" type="Sprite2D" parent="RodSwivel/hook"]
-visible = false
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("8_a574o")
+
+[node name="hookCollisionShape2D" type="CollisionShape2D" parent="RodSwivel/hook"]
+shape = SubResource("CapsuleShape2D_idbnd")

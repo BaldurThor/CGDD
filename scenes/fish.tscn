@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7ll7n6rjlxkp"]
+[gd_scene load_steps=4 format=3 uid="uid://dwi380d7vf1i6"]
 
 [ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://assets/fish.png" id="1_wtkh2"]
 [ext_resource type="Script" path="res://scripts/fish.gd" id="2_w8iju"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_txrt0"]
+radius = 6.0
+height = 28.0
 
 [node name="Fish" type="Node2D"]
 script = ExtResource("2_w8iju")
@@ -10,3 +14,7 @@ script = ExtResource("2_w8iju")
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_wtkh2")
 flip_h = true
+
+[node name="Fish_Collider" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_txrt0")
