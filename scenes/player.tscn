@@ -85,7 +85,7 @@ texture = ExtResource("7_l7pv7")
 
 [node name="hook" type="Node2D" parent="RodSwivel"]
 
-[node name="Sprite2D" type="Sprite2D" parent="RodSwivel/hook"]
+[node name="hookSprite2D" type="Sprite2D" parent="RodSwivel/hook"]
 visible = false
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("8_a574o")
