@@ -1,5 +1,4 @@
-extends Node
-class_name Enemies
+class_name Enemies extends Node
 
 @onready var player: Player = %Player
 

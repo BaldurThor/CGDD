@@ -13,6 +13,7 @@ var is_invincible: bool = false
 @export_range(0, 3, 0.01) var crit_chance: float = 0.0 # linear
 @export_range(0, 2, 1, "or_greater") var extra_projectiles = 0 # linear addative
 @export var attack_speed: int = 1
+@onready var pick_up_sound_effect: AudioStreamPlayer2D = $PickUpSoundEffect
 
 
 func _init() -> void:
@@ -47,3 +48,9 @@ func take_damage(_damage: int) -> void:
 	print("health", health)
 	await get_tree().create_timer(INVINCIBLE_TIME).timeout
 	is_invincible = false
+
+func gain_experience(amount: int) -> void:
+	# TODO: Make the pitch based on % progress to the next level on a scale of 0.5 - 2.0
+	var pitch: float = randf_range(0.5, 2.0)
+	pick_up_sound_effect.pitch_scale = pitch
+	pick_up_sound_effect.play()

@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
-		body.queue_free()
+		body.take_damage(_weapon_type.damage * _weapon_type.damage_effectiveness)
 		# If the bullet has pierced a certain number of times, delete it.
 		if _weapon_type.pierce_count > hit_count:
 			hit_count += 1

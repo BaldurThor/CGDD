@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://4772b5hdnvou"]
+[gd_scene load_steps=20 format=3 uid="uid://4772b5hdnvou"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cjic0x74o4im1" path="res://scenes/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
+[ext_resource type="Script" path="res://scenes/experience_radius.gd" id="11_fmot2"]
+[ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://assets/sounds/xp.wav" id="12_ax3nw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -36,6 +38,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -286, -200, 0, 0, 0, 0, 297, -202, 0, 0, 0, 0, 298, 186, 0, 0, 0, 0, -280, 190, 0, 0, 0, 0, -286, -200)
 }
 point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35cqd"]
+radius = 50.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8f13i")
@@ -95,3 +100,16 @@ position = Vector2(30, 0)
 [node name="Sprite2D" type="Sprite2D" parent="RodSwivel/Rod"]
 rotation = 0.785398
 texture = ExtResource("7_l7pv7")
+
+[node name="ExperienceRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("11_fmot2")
+
+[node name="ExperienceRadius" type="CollisionShape2D" parent="ExperienceRange"]
+shape = SubResource("CircleShape2D_35cqd")
+
+[node name="PickUpSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ax3nw")
+
+[connection signal="body_entered" from="ExperienceRange" to="ExperienceRange" method="_on_body_entered"]
