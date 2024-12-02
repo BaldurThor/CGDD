@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=17 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
 [ext_resource type="Texture2D" uid="uid://c83n6xs666osf" path="res://assets/hook.png" id="8_a574o"]
+[ext_resource type="Script" path="res://scripts/hook.gd" id="8_qymma"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -40,6 +41,7 @@ radius = 8.0
 height = 28.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_8f13i")
 
 [node name="BGSprite" type="Sprite2D" parent="."]
@@ -88,6 +90,9 @@ rotation = 0.785398
 texture = ExtResource("7_l7pv7")
 
 [node name="hook" type="StaticBody2D" parent="RodSwivel"]
+collision_layer = 16
+collision_mask = 10
+script = ExtResource("8_qymma")
 
 [node name="hookSprite2D" type="Sprite2D" parent="RodSwivel/hook"]
 scale = Vector2(0.05, 0.05)
