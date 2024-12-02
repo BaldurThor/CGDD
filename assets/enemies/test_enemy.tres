@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_sykeb")
 speed = 2.0
-dagame = 1
+damage = 1
 health = 10

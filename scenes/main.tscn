@@ -1,30 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnpb8ppgeyr1g"]
+[gd_scene load_steps=2 format=3 uid="uid://brlmokmgg6xai"]
 
-[ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://scenes/player.tscn" id="1_v7f6l"]
-[ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://scenes/enemy.tscn" id="2_wwxhn"]
-[ext_resource type="Script" path="res://scripts/enemy_type.gd" id="3_uj6jn"]
-[ext_resource type="Script" path="res://scripts/fish_spawer.gd" id="5_2pyn2"]
-[ext_resource type="PackedScene" uid="uid://dalqgss5m03me" path="res://scenes/fish.tscn" id="6_1kd7h"]
-[ext_resource type="Script" path="res://scripts/enemies.gd" id="7_xjop3"]
+[ext_resource type="PackedScene" uid="uid://m0yu4nmvb5mw" path="res://scenes/player.tscn" id="1_v7f6l"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_v7f6l")]
-
-[node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-script = ExtResource("7_xjop3")
-
-[node name="Enemies" type="Node" parent="."]
-script = ExtResource("7_xjop3")
-enemy_scene = ExtResource("2_wwxhn")
-enemy_type = ExtResource("3_uj6jn")
-
-[node name="Fish_spawer" type="Node" parent="."]
-script = ExtResource("5_2pyn2")
-fish_scene = ExtResource("6_1kd7h")
-radius_max = 500
-radius_min = 50
-
-[connection signal="timeout" from="EnemyTimer" to="Enemies" method="_on_enemy_timer_timeout"]
