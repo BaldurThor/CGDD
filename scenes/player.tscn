@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" path="res://scenes/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
-[ext_resource type="Texture2D" uid="uid://c83n6xs666osf" path="res://assets/hook.png" id="8_a574o"]
 [ext_resource type="Script" path="res://scripts/hook.gd" id="8_qymma"]
 [ext_resource type="Script" path="res://scenes/experience_radius.gd" id="11_fmot2"]
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://assets/sounds/xp.wav" id="12_ax3nw"]
+[ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://assets/Hook.png" id="12_tp034"]
 [ext_resource type="Theme" uid="uid://b0fvfusrp37pd" path="res://themes/health_bar.tres" id="13_soul0"]
 [ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="13_vcw5i"]
 [ext_resource type="Script" path="res://scripts/hud/health_bar.gd" id="14_543rk"]
@@ -106,8 +106,8 @@ collision_mask = 34
 script = ExtResource("8_qymma")
 
 [node name="hookSprite2D" type="Sprite2D" parent="RodSwivel/hook"]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("8_a574o")
+position = Vector2(4, 0)
+texture = ExtResource("12_tp034")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RodSwivel/hook"]
 shape = SubResource("CapsuleShape2D_dv57t")
