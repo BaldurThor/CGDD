@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=35 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dtbj53hjoq25a" path="res://scenes/gun.tscn" id="5_toqby"]
 [ext_resource type="Resource" uid="uid://b5gw2j56cc2f6" path="res://assets/weapons/shotgun.tres" id="6_0jfqt"]
 [ext_resource type="Resource" uid="uid://crp6kr4pegrt8" path="res://assets/weapons/rifle.tres" id="6_hxhvb"]
-[ext_resource type="PackedScene" path="res://scenes/bullet.tscn" id="6_rvydb"]
+[ext_resource type="PackedScene" uid="uid://bssayd55xxlaq" path="res://scenes/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://assets/abilities/loot_table.tres" id="7_75cg3"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
+[ext_resource type="Script" path="res://scripts/ability_system/ability_picker.gd" id="7_v6y57"]
 [ext_resource type="Script" path="res://scripts/hook.gd" id="8_qymma"]
 [ext_resource type="Script" path="res://scenes/experience_bar.gd" id="10_pxkv6"]
 [ext_resource type="Script" path="res://scenes/experience_radius.gd" id="11_fmot2"]
@@ -84,6 +85,30 @@ health_node_path = NodePath("../../../PlayerHealth")
 layout_mode = 2
 script = ExtResource("10_pxkv6")
 
+[node name="AbilityPicker" type="VBoxContainer" parent="HUD"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -51.0
+offset_right = 125.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_v6y57")
+
+[node name="Label" type="Label" parent="HUD/AbilityPicker"]
+layout_mode = 2
+text = "Pick Ability"
+horizontal_alignment = 1
+
+[node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilityPicker"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="AbilitySystem" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("18_wo8qc")
@@ -117,9 +142,6 @@ position_smoothing_enabled = true
 
 [node name="PickUpSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_ax3nw")
-
-[node name="HUD2" type="CanvasLayer" parent="."]
-script = ExtResource("15_60owl")
 
 [node name="Experience" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -185,5 +207,6 @@ texture = ExtResource("12_tp034")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/RodSwivel/hook"]
 shape = SubResource("CapsuleShape2D_dv57t")
 
+[connection signal="level_up" from="Experience" to="AbilitySystem" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

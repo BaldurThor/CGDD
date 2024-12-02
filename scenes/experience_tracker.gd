@@ -4,8 +4,10 @@ class_name Experience extends Node
 
 var current_experience: int = 0
 var required_for_level_up: int = 10
+
 signal gain_experience(amount: int)
 signal update_experience_bar(experience: int)
+signal level_up
 
 func _ready() -> void:
 	gain_experience.connect(_gain_experience)
@@ -13,3 +15,7 @@ func _ready() -> void:
 func _gain_experience(amount: int) -> void:
 	current_experience += amount
 	update_experience_bar.emit(current_experience)
+	
+	if current_experience >= required_for_level_up:
+		required_for_level_up *= 2.5
+		level_up.emit()
