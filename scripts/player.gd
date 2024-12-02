@@ -20,9 +20,6 @@ func _init() -> void:
 	# Called in _init() instead of _ready() to make sure it's
 	# properly assigned for other scripts to access.
 	GameManager.assign_player(self)
-	
-func get_spawn_area() -> PathFollow2D:
-	return $SpawnPath/SpawnLocation
 
 func _input(event: InputEvent) -> void:
 	# DEBUG: Allows you to press escape to quickly close the game

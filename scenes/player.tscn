@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://m0yu4nmvb5mw"]
+[gd_scene load_steps=24 format=3 uid="uid://m0yu4nmvb5mw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
@@ -15,7 +15,7 @@
 [ext_resource type="Theme" uid="uid://hn44xjwjebxk" path="res://themes/health_bar.tres" id="13_soul0"]
 [ext_resource type="PackedScene" uid="uid://b27piue7iem4c" path="res://scenes/health_bar.tscn" id="13_vcw5i"]
 [ext_resource type="Script" path="res://scripts/hud/health_bar.gd" id="14_543rk"]
-[ext_resource type="Script" path="res://scenes/hud.gd" id="15_60owl"]
+[ext_resource type="Script" path="res://scripts/hud/hud.gd" id="15_60owl"]
 [ext_resource type="Script" path="res://scripts/entity_health.gd" id="15_t31hb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
@@ -37,12 +37,6 @@ noise = SubResource("FastNoiseLite_eejjh")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa55p"]
 radius = 16.0
-
-[sub_resource type="Curve2D" id="Curve2D_d34cf"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -286, -200, 0, 0, 0, 0, 297, -202, 0, 0, 0, 0, 298, 186, 0, 0, 0, 0, -280, 190, 0, 0, 0, 0, -286, -200)
-}
-point_count = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35cqd"]
 radius = 50.0
@@ -68,13 +62,6 @@ debug_color = Color(0.456537, 0.00266336, 0.919708, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
-
-[node name="SpawnPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_d34cf")
-
-[node name="SpawnLocation" type="PathFollow2D" parent="SpawnPath"]
-position = Vector2(-286, -200)
-rotation = -0.00343052
 
 [node name="PistolSwivel" type="Node2D" parent="."]
 script = ExtResource("4_chwgw")
