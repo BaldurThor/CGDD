@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=27 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" path="res://scenes/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
+[ext_resource type="Texture2D" uid="uid://c83n6xs666osf" path="res://assets/hook.png" id="8_a574o"]
+[ext_resource type="Script" path="res://scripts/hook.gd" id="8_qymma"]
 [ext_resource type="Script" path="res://scenes/experience_radius.gd" id="11_fmot2"]
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://assets/sounds/xp.wav" id="12_ax3nw"]
 [ext_resource type="Theme" uid="uid://b0fvfusrp37pd" path="res://themes/health_bar.tres" id="13_soul0"]
@@ -37,6 +39,10 @@ noise = SubResource("FastNoiseLite_eejjh")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa55p"]
 radius = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dv57t"]
+radius = 7.0
+height = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35cqd"]
 radius = 50.0
@@ -93,6 +99,18 @@ position = Vector2(30, 0)
 [node name="Sprite2D" type="Sprite2D" parent="RodSwivel/Rod"]
 rotation = 0.785398
 texture = ExtResource("7_l7pv7")
+
+[node name="hook" type="StaticBody2D" parent="RodSwivel"]
+collision_layer = 16
+collision_mask = 34
+script = ExtResource("8_qymma")
+
+[node name="hookSprite2D" type="Sprite2D" parent="RodSwivel/hook"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_a574o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RodSwivel/hook"]
+shape = SubResource("CapsuleShape2D_dv57t")
 
 [node name="ExperienceRange" type="Area2D" parent="."]
 collision_layer = 0
