@@ -23,8 +23,7 @@ func _init() -> void:
 
 func _input(event: InputEvent) -> void:
 	# DEBUG: Allows you to press escape to quickly close the game
-	if event is InputEventKey and event.keycode == KEY_ESCAPE:
-		get_tree().quit()
+	pass
 
 func _physics_process(_delta: float) -> void:
 	var x_direction := Input.get_axis("move_left", "move_right")

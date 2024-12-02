@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://brlmokmgg6xai"]
+[gd_scene load_steps=3 format=3 uid="uid://brlmokmgg6xai"]
 
 [ext_resource type="PackedScene" uid="uid://m0yu4nmvb5mw" path="res://scenes/player.tscn" id="1_v7f6l"]
+[ext_resource type="PackedScene" uid="uid://b8h32mkkaisy6" path="res://scenes/pause.tscn" id="2_iqiqa"]
 
 [node name="Main" type="Node2D"]
 process_mode = 3
@@ -9,3 +10,5 @@ process_mode = 3
 process_mode = 1
 
 [node name="Player" parent="Run" instance=ExtResource("1_v7f6l")]
+
+[node name="Pause" parent="." instance=ExtResource("2_iqiqa")]

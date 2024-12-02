@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dtbj53hjoq25a" path="res://scenes/gun.tscn" id="5_toqby"]
 [ext_resource type="Resource" uid="uid://47poamxlvrlg" path="res://assets/weapons/shotgun.tres" id="6_0jfqt"]
 [ext_resource type="Resource" uid="uid://dfrpeoaucgrw1" path="res://assets/weapons/rifle.tres" id="6_hxhvb"]
-[ext_resource type="PackedScene" path="res://scenes/bullet.tscn" id="6_rvydb"]
+[ext_resource type="PackedScene" uid="uid://cjic0x74o4im1" path="res://scenes/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
 [ext_resource type="Script" path="res://scenes/experience_radius.gd" id="11_fmot2"]
