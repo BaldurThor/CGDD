@@ -132,14 +132,12 @@ stream = ExtResource("12_ax3nw")
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="PistolSwivel" type="Node2D" parent="Weapons"]
-process_mode = 4
 script = ExtResource("4_chwgw")
 
 [node name="Pistol" parent="Weapons/PistolSwivel" instance=ExtResource("5_toqby")]
 bullet_type = ExtResource("6_rvydb")
 
 [node name="RifleSwivel" type="Node2D" parent="Weapons"]
-process_mode = 4
 script = ExtResource("4_chwgw")
 
 [node name="Rifle" parent="Weapons/RifleSwivel" instance=ExtResource("5_toqby")]
@@ -147,7 +145,6 @@ weapon_type = ExtResource("6_hxhvb")
 bullet_type = ExtResource("6_rvydb")
 
 [node name="ShotgunSwivel" type="Node2D" parent="Weapons"]
-process_mode = 4
 script = ExtResource("4_chwgw")
 
 [node name="Shotgun" parent="Weapons/ShotgunSwivel" instance=ExtResource("5_toqby")]

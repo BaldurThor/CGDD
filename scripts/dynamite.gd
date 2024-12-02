@@ -6,6 +6,7 @@ class_name Dynamite extends RigidBody2D
 @onready var despawn_timer: Timer = $DespawnTimer
 @onready var area_2d: Area2D = $Area2D
 @onready var explosion_animation: AnimationPlayer = $ExplosionAnimation
+@onready var explosion_sound_effect: AudioStreamPlayer2D = $ExplosionSoundEffect
 
 var direction: Vector2
 var _weapon_type: WeaponType
@@ -31,6 +32,8 @@ func _on_despawn_timer_timeout() -> void:
 
 func _explode() -> void:
 	var nearby_enemies = area_2d.get_overlapping_bodies()
+	# Randomly pitch the sound effect up/down to add variety.
+	explosion_sound_effect.pitch_scale = randf_range(0.8, 1.2)
 	explosion_animation.play("explode")
 	for enemy in nearby_enemies:
 		if enemy is Enemy:
