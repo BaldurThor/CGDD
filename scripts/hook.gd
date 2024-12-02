@@ -1,5 +1,4 @@
-extends StaticBody2D
-class_name hook
+class_name hook extends StaticBody2D
 
 var player: Player = null
 var hook_sprite : Sprite2D = null
@@ -47,9 +46,12 @@ func _input(event: InputEvent) -> void:
 				hook_sprite.visible = is_cast
 				var col : KinematicCollision2D = move_and_collide(direction * hook_force)
 				pos = get_global_position()
-				print(pos)
+
 				if col:
-					print(col.get_collider().get_class())
+					var col_obj = col.get_collider()
+					
+					if col_obj.is_in_group("Fish"):
+						print("We have a fish :D")
 					
 				
 				

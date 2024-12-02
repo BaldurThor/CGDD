@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwi380d7vf1i6"]
+[gd_scene load_steps=4 format=3 uid="uid://dalqgss5m03me"]
 
 [ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://assets/fish.png" id="1_wtkh2"]
 [ext_resource type="Script" path="res://scripts/fish.gd" id="2_w8iju"]
@@ -15,7 +15,7 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_wtkh2")
 flip_h = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Fish"]]
 collision_layer = 8
 collision_mask = 16
 

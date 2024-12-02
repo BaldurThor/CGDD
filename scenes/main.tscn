@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://scenes/enemy.tscn" id="2_wwxhn"]
 [ext_resource type="Script" path="res://scripts/enemy_type.gd" id="3_uj6jn"]
 [ext_resource type="Script" path="res://scripts/fish_spawer.gd" id="5_2pyn2"]
-[ext_resource type="PackedScene" uid="uid://dwi380d7vf1i6" path="res://scenes/fish.tscn" id="6_1kd7h"]
+[ext_resource type="PackedScene" uid="uid://dalqgss5m03me" path="res://scenes/fish.tscn" id="6_1kd7h"]
 [ext_resource type="Script" path="res://scripts/enemies.gd" id="7_xjop3"]
 
 [node name="Main" type="Node2D"]
@@ -19,7 +19,6 @@ script = ExtResource("7_xjop3")
 [node name="Enemies" type="Node" parent="."]
 script = ExtResource("7_xjop3")
 enemy_scene = ExtResource("2_wwxhn")
-enabled = false
 enemy_type = ExtResource("3_uj6jn")
 
 [node name="Fish_spawer" type="Node" parent="."]
