@@ -36,9 +36,3 @@ func _physics_process(_delta: float) -> void:
 
 func take_damage(amount: int) -> void:
 	entity_health.deal_damage(amount)
-
-func gain_experience(amount: int) -> void:
-	# TODO: Make the pitch based on % progress to the next level on a scale of 0.5 - 2.0
-	var pitch: float = randf_range(0.5, 2.0)
-	pick_up_sound_effect.pitch_scale = pitch
-	pick_up_sound_effect.play()

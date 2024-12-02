@@ -1,6 +1,6 @@
 class_name Gun extends Node2D
 
-@onready var player: Player = $"../.."
+@onready var player: Player = $"../../.."
 @onready var attack_timer: Timer = $AttackTimer
 @onready var burst_timer: Timer = $BurstTimer
 @onready var sprite_2d: Sprite2D = $Sprite2D
