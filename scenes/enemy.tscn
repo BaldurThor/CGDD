@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_v1m1f"]
 [ext_resource type="Script" path="res://scripts/enemy_type.gd" id="2_w1lwh"]
 [ext_resource type="Script" path="res://scripts/entity_health.gd" id="4_rjwqi"]
-[ext_resource type="PackedScene" uid="uid://b27piue7iem4c" path="res://scenes/health_bar.tscn" id="5_a2m2u"]
+[ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="5_a2m2u"]
 
 [sub_resource type="Resource" id="Resource_wyp1h"]
 script = ExtResource("2_w1lwh")
@@ -21,7 +21,7 @@ collision_mask = 3
 script = ExtResource("1_v1m1f")
 enemy_type = SubResource("Resource_wyp1h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
