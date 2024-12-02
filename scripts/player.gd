@@ -37,7 +37,3 @@ func _physics_process(_delta: float) -> void:
 
 func take_damage(amount: int) -> void:
 	entity_health.deal_damage(amount)
-
-
-func _on_pickup_radius_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.

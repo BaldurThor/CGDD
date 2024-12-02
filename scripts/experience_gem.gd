@@ -4,8 +4,6 @@ class_name ExperienceGem extends RigidBody2D
 var experience_value: int
 var tracking_speed: int = 100
 var should_track: bool = false
-var _player: Player
-
 
 func _physics_process(delta: float) -> void:
 	if should_track:

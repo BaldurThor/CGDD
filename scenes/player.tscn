@@ -1,18 +1,20 @@
-[gd_scene load_steps=28 format=3 uid="uid://4772b5hdnvou"]
+[gd_scene load_steps=31 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
 [ext_resource type="Shader" path="res://assets/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://scripts/gun_rotation.gd" id="4_chwgw"]
 [ext_resource type="PackedScene" uid="uid://dlu02g3t5bc3x" path="res://scenes/gun.tscn" id="5_toqby"]
-[ext_resource type="Resource" uid="uid://47poamxlvrlg" path="res://assets/weapons/shotgun.tres" id="6_0jfqt"]
-[ext_resource type="Resource" uid="uid://dfrpeoaucgrw1" path="res://assets/weapons/rifle.tres" id="6_hxhvb"]
+[ext_resource type="Resource" uid="uid://b5gw2j56cc2f6" path="res://assets/weapons/shotgun.tres" id="6_0jfqt"]
+[ext_resource type="Resource" uid="uid://crp6kr4pegrt8" path="res://assets/weapons/rifle.tres" id="6_hxhvb"]
 [ext_resource type="PackedScene" uid="uid://cjic0x74o4im1" path="res://scenes/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
+[ext_resource type="Script" path="res://scripts/hook.gd" id="8_qymma"]
 [ext_resource type="Script" path="res://scenes/experience_bar.gd" id="10_pxkv6"]
 [ext_resource type="Script" path="res://scenes/experience_radius.gd" id="11_fmot2"]
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://assets/sounds/xp.wav" id="12_ax3nw"]
+[ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://assets/hook.png" id="12_tp034"]
 [ext_resource type="Script" path="res://scenes/pickup_radius.gd" id="12_yq8ij"]
 [ext_resource type="Theme" uid="uid://hn44xjwjebxk" path="res://themes/health_bar.tres" id="13_soul0"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://scenes/health_bar.tscn" id="13_vcw5i"]
@@ -47,7 +49,12 @@ radius = 35.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cqtx"]
 radius = 25.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dv57t"]
+radius = 7.0
+height = 26.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_8f13i")
 
 [node name="BGSprite" type="Sprite2D" parent="."]
@@ -147,6 +154,18 @@ position = Vector2(30, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Weapons/RodSwivel/Rod"]
 rotation = 0.785398
 texture = ExtResource("7_l7pv7")
+
+[node name="hook" type="StaticBody2D" parent="Weapons/RodSwivel"]
+collision_layer = 16
+collision_mask = 34
+script = ExtResource("8_qymma")
+
+[node name="hookSprite2D" type="Sprite2D" parent="Weapons/RodSwivel/hook"]
+position = Vector2(4, 0)
+texture = ExtResource("12_tp034")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/RodSwivel/hook"]
+shape = SubResource("CapsuleShape2D_dv57t")
 
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

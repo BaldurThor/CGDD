@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponType" load_steps=5 format=3 uid="uid://47poamxlvrlg"]
+[gd_resource type="Resource" script_class="WeaponType" load_steps=5 format=3 uid="uid://b5gw2j56cc2f6"]
 
 [ext_resource type="Script" path="res://scripts/weapon_type.gd" id="1_12jdb"]
 [ext_resource type="AudioStream" uid="uid://bnxrdba47kgob" path="res://assets/sounds/shotgun.wav" id="1_v4dlo"]
