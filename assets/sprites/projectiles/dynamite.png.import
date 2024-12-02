@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwrp7cq6ff34o"
-path="res://.godot/imported/bullet.png-c68d06721d4ad8b0013707b0a51654af.ctex"
+uid="uid://fb1msiylgjtc"
+path="res://.godot/imported/dynamite.png-ce36493413e7c61e87b33d04fcbbef29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-c68d06721d4ad8b0013707b0a51654af.ctex"]
+source_file="res://assets/sprites/projectiles/dynamite.png"
+dest_files=["res://.godot/imported/dynamite.png-ce36493413e7c61e87b33d04fcbbef29.ctex"]
 
 [params]
 
