@@ -1,6 +1,6 @@
 class_name ExperienceBar extends ProgressBar
 
-@onready var experience: Experience = $"../../../Experience"
+@onready var experience: Experience = %Experience
 
 func _ready() -> void:
 	experience.update_experience_bar.connect(_update_experience_bar)

@@ -105,6 +105,7 @@ layout_mode = 2
 script = ExtResource("10_pxkv6")
 
 [node name="Experience" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("17_8q3by")
 
 [node name="AbsorbRadius" type="Area2D" parent="Experience"]
