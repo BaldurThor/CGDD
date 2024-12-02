@@ -31,8 +31,6 @@ func _on_despawn_timer_timeout() -> void:
 
 func _explode() -> void:
 	var nearby_enemies = area_2d.get_overlapping_bodies()
-	# Randomly pitch the sound effect up/down to add variety.
-	#explosion_sound_effect.pitch_scale = randf_range(0.5, 2)
 	explosion_animation.play("explode")
 	for enemy in nearby_enemies:
 		if enemy is Enemy:

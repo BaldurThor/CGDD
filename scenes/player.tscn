@@ -4,11 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
 [ext_resource type="Shader" path="res://assets/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://scripts/gun_rotation.gd" id="4_chwgw"]
-
 [ext_resource type="PackedScene" uid="uid://dlu02g3t5bc3x" path="res://scenes/gun.tscn" id="5_toqby"]
 [ext_resource type="Resource" uid="uid://b5gw2j56cc2f6" path="res://assets/weapons/shotgun.tres" id="6_0jfqt"]
 [ext_resource type="Resource" uid="uid://crp6kr4pegrt8" path="res://assets/weapons/rifle.tres" id="6_hxhvb"]
-
 [ext_resource type="PackedScene" uid="uid://cjic0x74o4im1" path="res://scenes/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
