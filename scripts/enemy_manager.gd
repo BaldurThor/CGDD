@@ -1,4 +1,4 @@
-class_name Enemies extends Node
+extends Node
 
 var player: Player
 
