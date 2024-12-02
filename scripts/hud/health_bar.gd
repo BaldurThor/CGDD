@@ -7,7 +7,6 @@ var health_node: EntityHealth
 func _ready() -> void:
 	health_node = get_node(health_node_path)
 	health_node.health_changed.connect(_update_health_visuals)
-	min_value = 0
 	max_value = health_node.max_health
 	step = 1
 	value = health_node.health

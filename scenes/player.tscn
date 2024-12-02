@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://m0yu4nmvb5mw"]
+[gd_scene load_steps=25 format=3 uid="uid://m0yu4nmvb5mw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
@@ -12,7 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
 [ext_resource type="Script" path="res://scenes/experience_radius.gd" id="11_fmot2"]
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://assets/sounds/xp.wav" id="12_ax3nw"]
+[ext_resource type="Theme" uid="uid://hn44xjwjebxk" path="res://themes/health_bar.tres" id="13_soul0"]
 [ext_resource type="PackedScene" uid="uid://b27piue7iem4c" path="res://scenes/health_bar.tscn" id="13_vcw5i"]
+[ext_resource type="Script" path="res://scripts/hud/health_bar.gd" id="14_543rk"]
+[ext_resource type="Script" path="res://scenes/hud.gd" id="15_60owl"]
 [ext_resource type="Script" path="res://scripts/entity_health.gd" id="15_t31hb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
@@ -118,5 +121,21 @@ stream = ExtResource("12_ax3nw")
 
 [node name="EntityHealth" type="Node" parent="."]
 script = ExtResource("15_t31hb")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("15_60owl")
+
+[node name="TopLeft" type="VBoxContainer" parent="HUD"]
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 138.0
+offset_bottom = 22.0
+
+[node name="HealthBar" type="ProgressBar" parent="HUD/TopLeft"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("13_soul0")
+script = ExtResource("14_543rk")
+health_node_path = NodePath("../../../EntityHealth")
 
 [connection signal="body_entered" from="ExperienceRange" to="ExperienceRange" method="_on_body_entered"]

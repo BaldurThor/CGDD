@@ -7,5 +7,6 @@ bg_color = Color(0, 0, 0, 0.196078)
 bg_color = Color(1, 0.327069, 0.389693, 1)
 
 [resource]
+ProgressBar/font_sizes/font_size = 10
 ProgressBar/styles/background = SubResource("StyleBoxFlat_oowo8")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_4gboq")
