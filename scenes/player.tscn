@@ -1,13 +1,12 @@
-[gd_scene load_steps=33 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=37 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
-[ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
 [ext_resource type="Shader" path="res://assets/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://scripts/gun_rotation.gd" id="4_chwgw"]
 [ext_resource type="PackedScene" uid="uid://dlu02g3t5bc3x" path="res://scenes/gun.tscn" id="5_toqby"]
 [ext_resource type="Resource" uid="uid://b5gw2j56cc2f6" path="res://assets/weapons/shotgun.tres" id="6_0jfqt"]
 [ext_resource type="Resource" uid="uid://crp6kr4pegrt8" path="res://assets/weapons/rifle.tres" id="6_hxhvb"]
-[ext_resource type="PackedScene" uid="uid://cjic0x74o4im1" path="res://scenes/bullet.tscn" id="6_rvydb"]
+[ext_resource type="PackedScene" uid="uid://bssayd55xxlaq" path="res://scenes/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://assets/abilities/loot_table.tres" id="7_75cg3"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
@@ -18,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://assets/sounds/xp.wav" id="12_ax3nw"]
 [ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://assets/hook.png" id="12_tp034"]
 [ext_resource type="Script" path="res://scenes/pickup_radius.gd" id="12_yq8ij"]
+[ext_resource type="Texture2D" uid="uid://cs040aleyeibp" path="res://assets/billy_bob.png" id="13_2cvpx"]
 [ext_resource type="Theme" uid="uid://hn44xjwjebxk" path="res://themes/health_bar.tres" id="13_soul0"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://scenes/health_bar.tscn" id="13_vcw5i"]
 [ext_resource type="Script" path="res://scripts/hud/health_bar.gd" id="14_543rk"]
@@ -26,8 +26,8 @@
 [ext_resource type="Script" path="res://scenes/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" path="res://scripts/ability_system/ability_system.gd" id="18_wo8qc"]
 [ext_resource type="Script" path="res://scripts/player_stats.gd" id="19_qdydl"]
-[ext_resource type="PackedScene" uid="uid://bpgndgt1oy8r3" path="res://scenes/dynamite.tscn" id="23_1qrdh"]
-[ext_resource type="Resource" uid="uid://cakee6bqefud0" path="res://assets/weapons/dynamite_thrower.tres" id="23_nnlt7"]
+[ext_resource type="PackedScene" path="res://scenes/dynamite.tscn" id="23_1qrdh"]
+[ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://assets/weapons/dynamite_thrower.tres" id="23_nnlt7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -128,18 +128,19 @@ z_index = -50
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_upf5s")
-scale = Vector2(0.348633, 0.232422)
+scale = Vector2(0.547852, 0.365234)
 texture = SubResource("NoiseTexture2D_hhvw1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
-texture = ExtResource("1_hjk42")
+texture = ExtResource("13_2cvpx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sa55p")
 debug_color = Color(0.456537, 0.00266336, 0.919708, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
 
 [node name="PickUpSoundEffect" type="AudioStreamPlayer2D" parent="."]
@@ -212,7 +213,6 @@ texture = ExtResource("12_tp034")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/RodSwivel/hook"]
 shape = SubResource("CapsuleShape2D_dv57t")
 
-[connection signal="level_up" from="Experience" to="AbilitySystem" method="_on_experience_level_up"]
 [node name="DynamiteSwivel" type="Node2D" parent="Weapons"]
 script = ExtResource("4_chwgw")
 
@@ -220,5 +220,6 @@ script = ExtResource("4_chwgw")
 weapon_type = ExtResource("23_nnlt7")
 bullet_type = ExtResource("23_1qrdh")
 
+[connection signal="level_up" from="Experience" to="AbilitySystem" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]
