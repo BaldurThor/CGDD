@@ -1,14 +1,16 @@
 class_name Enemy extends CharacterBody2D
 
 var player: Player = null
+var type: EnemyType = null
 
 @export var enemy_type: EnemyType = null
 const EXPERIENCE_GEM = preload("res://scenes/experience_gem.tscn")
 
 @onready var entity_health: EntityHealth = $EntityHealth
 
-func initialize(start_position):
-	self.position = start_position
+func initialize(start_position: Vector2, enemy_type: EnemyType):
+	position = start_position
+	type = enemy_type
 
 func _ready() -> void:
 	player = GameManager.get_player()
