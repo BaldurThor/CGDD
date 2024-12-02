@@ -4,7 +4,9 @@ class_name EntityHealth extends Node
 
 @export var max_health: int = 10:
 	set(value):
+		var delta = max_health - value
 		max_health = max(1, value)
+		health_changed.emit(value, delta)
 		health = min(value, health)
 
 @export var health: int = 10:
@@ -22,6 +24,7 @@ class_name EntityHealth extends Node
 var is_invincible: bool = false
 
 signal health_changed(new_health: int, change: int)
+signal max_health_changed(new_max_health: int, change: int)
 signal death
 
 func deal_damage(amount: int) -> void:

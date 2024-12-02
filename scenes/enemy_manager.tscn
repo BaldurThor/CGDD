@@ -9,9 +9,10 @@
 script = ExtResource("1_vlxsp")
 enemy_scene = ExtResource("2_sitqn")
 enemy_types = Array[ExtResource("3_d277p")]([ExtResource("4_crmm0")])
+spawn_radius = 500.0
 
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.6
 autostart = true
 
 [node name="Enemies" type="Node" parent="."]

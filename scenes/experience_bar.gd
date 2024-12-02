@@ -9,4 +9,5 @@ func _ready() -> void:
 	step = 1
 
 func _update_experience_bar(experience_amount: int) -> void:
-	value = experience_amount
+	value = experience.current_experience
+	max_value = experience.required_for_level_up

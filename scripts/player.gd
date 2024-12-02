@@ -2,18 +2,10 @@ class_name Player extends CharacterBody2D
 
 # how many seconds you are invincible after being hit
 
-
-@export_category("Stats")
-@export var speed: float = 300.0 # logarithmic scale
-@export var damage: int = 10 # linear
-@export var health: int = 10 # linear
-@export_range(0, 0.75, 0.01) var dodge_chance: float = 0.0 # linear
-@export_range(0, 3, 0.01) var crit_chance: float = 0.0 # linear
-@export_range(0, 2, 1, "or_greater") var extra_projectiles = 0 # linear addative
-@export var attack_speed: int = 1
-
 @onready var pick_up_sound_effect: AudioStreamPlayer2D = $PickUpSoundEffect
-@onready var entity_health: EntityHealth = $EntityHealth
+@onready var player_health: EntityHealth = $PlayerHealth
+@onready var player_stats: Node = $PlayerStats
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 func _init() -> void:
 	# Make sure GameManager knows about this player instance.
@@ -30,9 +22,12 @@ func _physics_process(_delta: float) -> void:
 	var y_direction := Input.get_axis("move_up", "move_down")
 	var direction := Vector2(x_direction, y_direction).normalized()
 	
-	velocity = direction * speed
+	if x_direction != 0:
+		sprite_2d.flip_h = x_direction < 0
+	
+	velocity = direction * player_stats.speed
 	
 	move_and_slide()
 
 func take_damage(amount: int) -> void:
-	entity_health.deal_damage(amount)
+	player_health.deal_damage(amount)
