@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpbhgmy75g0gs"]
+[gd_scene load_steps=7 format=3 uid="uid://db5yyodexjuf1"]
 
 [ext_resource type="Texture2D" uid="uid://eb55mdcve1m0" path="res://assets/menu/image0.jpg" id="1_m1u38"]
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://assets/menu/backgroundcolor.png" id="2_34m6s"]
 [ext_resource type="Script" path="res://scripts/menu/quit.gd" id="2_ni7lo"]
 [ext_resource type="Script" path="res://scripts/menu/new_game.gd" id="3_f6fg1"]
-[ext_resource type="PackedScene" uid="uid://bnr2g0oyac5j2" path="res://scenes/run.tscn" id="3_kh7bf"]
+[ext_resource type="PackedScene" path="res://scenes/run.tscn" id="3_kh7bf"]
 [ext_resource type="Script" path="res://scripts/menu/options.gd" id="4_vktvh"]
 
 [node name="Menu" type="MarginContainer"]

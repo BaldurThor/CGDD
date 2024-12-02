@@ -1,20 +1,19 @@
 class_name Player extends CharacterBody2D
 
 # how many seconds you are invincible after being hit
-const INVINCIBLE_TIME: float = 0.25
-var is_invincible: bool = false
+
 
 @export_category("Stats")
 @export var speed: float = 300.0 # logarithmic scale
-@export var health: int = 10 # linear
 @export var damage: int = 10 # linear
-@export var armor: int = 1 # logarithmic scale
+@export var health: int = 10 # linear
 @export_range(0, 0.75, 0.01) var dodge_chance: float = 0.0 # linear
 @export_range(0, 3, 0.01) var crit_chance: float = 0.0 # linear
 @export_range(0, 2, 1, "or_greater") var extra_projectiles = 0 # linear addative
 @export var attack_speed: int = 1
-@onready var pick_up_sound_effect: AudioStreamPlayer2D = $PickUpSoundEffect
 
+@onready var pick_up_sound_effect: AudioStreamPlayer2D = $PickUpSoundEffect
+@onready var entity_health: EntityHealth = $EntityHealth
 
 func _init() -> void:
 	# Make sure GameManager knows about this player instance.
@@ -38,16 +37,9 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * speed
 	
 	move_and_slide()
-	
-func take_damage(_damage: int) -> void:
-	if is_invincible:
-		return
-		
-	is_invincible = true
-	health = health - damage
-	print("health", health)
-	await get_tree().create_timer(INVINCIBLE_TIME).timeout
-	is_invincible = false
+
+func take_damage(amount: int) -> void:
+	entity_health.deal_damage(amount)
 
 func gain_experience(amount: int) -> void:
 	# TODO: Make the pitch based on % progress to the next level on a scale of 0.5 - 2.0

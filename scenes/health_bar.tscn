@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b27piue7iem4c"]
+
+[ext_resource type="Theme" uid="uid://hn44xjwjebxk" path="res://themes/health_bar.tres" id="1_7v70e"]
+[ext_resource type="Script" path="res://scripts/hud/health_bar.gd" id="2_occ4x"]
+
+[node name="HealthBar" type="ProgressBar"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.5
+offset_top = 22.0
+offset_right = 19.5
+offset_bottom = 26.0
+grow_horizontal = 2
+theme = ExtResource("1_7v70e")
+value = 53.7
+show_percentage = false
+script = ExtResource("2_occ4x")
+health_node_path = NodePath("../EntityHealth")

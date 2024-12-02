@@ -5,11 +5,14 @@ var player: Player = null
 @export var enemy_type: EnemyType = null
 const EXPERIENCE_GEM = preload("res://scenes/experience_gem.tscn")
 
+@onready var entity_health: EntityHealth = $EntityHealth
+
 func initialize(start_position):
 	self.position = start_position
 
 func _ready() -> void:
 	player = GameManager.get_player()
+	entity_health.death.connect(_on_death)
 
 func _physics_process(_delta: float) -> void:
 	# Make sure a player is present
@@ -25,8 +28,7 @@ func _physics_process(_delta: float) -> void:
 			player.take_damage(enemy_type.damage)
 			
 func take_damage(damage: int) -> void:
-	# TODO: Make it actually take damage instead of dying instantly
-	_on_death()
+	entity_health.deal_damage(damage)
 
 func _on_death() -> void:
 	var gem = EXPERIENCE_GEM.instantiate()

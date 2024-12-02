@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlu02g3t5bc3x"]
+[gd_scene load_steps=4 format=3 uid="uid://dtbj53hjoq25a"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_gdwfs"]
 [ext_resource type="Resource" uid="uid://c4cige4aoryoh" path="res://assets/weapons/pistol.tres" id="2_r50kv"]
