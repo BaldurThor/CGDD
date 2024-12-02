@@ -1,6 +1,5 @@
 class_name HealthBar extends ProgressBar
 @export var health_node_path: NodePath
-@onready var health_bar: ProgressBar = $HealthProgressBar
 
 var health_node: EntityHealth
 

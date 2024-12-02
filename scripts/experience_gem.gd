@@ -4,8 +4,6 @@ class_name ExperienceGem extends RigidBody2D
 var experience_value: int
 var tracking_speed: int = 100
 var should_track: bool = false
-var _player: Player
-
 
 func _physics_process(delta: float) -> void:
 	if should_track:
@@ -17,8 +15,3 @@ func start_tracking_player() -> void:
 
 func _on_acceleration_timer_timeout() -> void:
 	tracking_speed += 1
-
-func _on_experience_pickup_radius_body_entered(body: Node2D) -> void:
-	if body is Player:
-		GameManager.get_player().gain_experience(experience_value)
-		queue_free()
