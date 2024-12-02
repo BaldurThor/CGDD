@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityPool" load_steps=4 format=3 uid="uid://ci2k3ke86qm0e"]
+
+[ext_resource type="Script" path="res://scripts/ability_system/ability_info.gd" id="1_7pjxk"]
+[ext_resource type="Resource" uid="uid://bbt18co7pmomp" path="res://assets/abilities/gater_hide.tres" id="2_u5r05"]
+[ext_resource type="Script" path="res://scripts/ability_system/ability_pool.gd" id="3_bjtgc"]
+
+[resource]
+script = ExtResource("3_bjtgc")
+abilities = Array[ExtResource("1_7pjxk")]([ExtResource("2_u5r05")])
