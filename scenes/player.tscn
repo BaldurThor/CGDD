@@ -1,14 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=33 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f13i"]
 [ext_resource type="Texture2D" uid="uid://dvihjb0iw3fs7" path="res://assets/player_placeholder.png" id="1_hjk42"]
 [ext_resource type="Shader" path="res://assets/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://scripts/gun_rotation.gd" id="4_chwgw"]
-
 [ext_resource type="PackedScene" uid="uid://dlu02g3t5bc3x" path="res://scenes/gun.tscn" id="5_toqby"]
 [ext_resource type="Resource" uid="uid://b5gw2j56cc2f6" path="res://assets/weapons/shotgun.tres" id="6_0jfqt"]
 [ext_resource type="Resource" uid="uid://crp6kr4pegrt8" path="res://assets/weapons/rifle.tres" id="6_hxhvb"]
-
 [ext_resource type="PackedScene" uid="uid://cjic0x74o4im1" path="res://scenes/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://scripts/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://assets/rod_placeholder.png" id="7_l7pv7"]
@@ -24,6 +22,8 @@
 [ext_resource type="Script" path="res://scripts/hud/hud.gd" id="15_60owl"]
 [ext_resource type="Script" path="res://scripts/entity_health.gd" id="15_t31hb"]
 [ext_resource type="Script" path="res://scenes/experience_tracker.gd" id="17_8q3by"]
+[ext_resource type="PackedScene" uid="uid://bpgndgt1oy8r3" path="res://scenes/dynamite.tscn" id="23_1qrdh"]
+[ext_resource type="Resource" uid="uid://cakee6bqefud0" path="res://assets/weapons/dynamite_thrower.tres" id="23_nnlt7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -126,6 +126,9 @@ script = ExtResource("12_yq8ij")
 [node name="PickupRadiusShape" type="CollisionShape2D" parent="Experience/PickupRadius"]
 shape = SubResource("CircleShape2D_5cqtx")
 
+[node name="PickupSoundEffect" type="AudioStreamPlayer2D" parent="Experience"]
+stream = ExtResource("12_ax3nw")
+
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="PistolSwivel" type="Node2D" parent="Weapons"]
@@ -169,6 +172,13 @@ texture = ExtResource("12_tp034")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/RodSwivel/hook"]
 shape = SubResource("CapsuleShape2D_dv57t")
+
+[node name="DynamiteSwivel" type="Node2D" parent="Weapons"]
+script = ExtResource("4_chwgw")
+
+[node name="DynamiteThrower" parent="Weapons/DynamiteSwivel" instance=ExtResource("5_toqby")]
+weapon_type = ExtResource("23_nnlt7")
+bullet_type = ExtResource("23_1qrdh")
 
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]
