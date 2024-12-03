@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rtyla47usjny"
-path="res://.godot/imported/enemy_placeholder.png-643ef51ee88d2c8459f58e8115b8d71c.ctex"
+uid="uid://bcpe4a44c7d2t"
+path="res://.godot/imported/cultist.png-fbfbfb13787024f7085ed3ccad79fd04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/enemy/enemy_placeholder.png"
-dest_files=["res://.godot/imported/enemy_placeholder.png-643ef51ee88d2c8459f58e8115b8d71c.ctex"]
+source_file="res://entity/enemy/enemy_types/test_enemy/cultist.png"
+dest_files=["res://.godot/imported/cultist.png-fbfbfb13787024f7085ed3ccad79fd04.ctex"]
 
 [params]
 

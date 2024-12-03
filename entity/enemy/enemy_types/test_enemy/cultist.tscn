@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://xw5n4dxry31f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
-[ext_resource type="Texture2D" uid="uid://rtyla47usjny" path="res://entity/enemy/enemy_placeholder.png" id="3_ws2by"]
+[ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/test_enemy/cultist.png" id="2_cmsmt"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="5_5p7yr"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_vl4gl"]
 
@@ -17,7 +17,7 @@ script = ExtResource("1_mi8tq")
 shape = SubResource("CircleShape2D_h238a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_ws2by")
+texture = ExtResource("2_cmsmt")
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("stats_node") instance=ExtResource("5_5p7yr")]
 stats_node = NodePath("../EntityStats")
