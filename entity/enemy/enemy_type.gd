@@ -1,6 +1,6 @@
 class_name EnemyType extends Resource
 
-@export var speed: float = 1.0
-@export var damage: int = 1
-@export var health: int = 10
-@export var xp_drop_amount : int = 1 
+
+## TODO: Find use for this object instead of removing it
+@export var name: String
+@export var enemy_scene: PackedScene

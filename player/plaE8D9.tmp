@@ -1,8 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=39 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
 [ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
-[ext_resource type="Script" path="res://player/player_stats.gd" id="2_s8nph"]
 [ext_resource type="Script" path="res://player/gun/gun_rotation.gd" id="4_chwgw"]
 [ext_resource type="PackedScene" uid="uid://dlu02g3t5bc3x" path="res://player/gun/gun.tscn" id="5_toqby"]
 [ext_resource type="Resource" uid="uid://b5gw2j56cc2f6" path="res://player/gun/gun_types/shotgun/shotgun.tres" id="6_0jfqt"]
@@ -23,10 +22,14 @@
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="13_vcw5i"]
 [ext_resource type="Script" path="res://player/hud/health_bar/health_bar.gd" id="14_543rk"]
 [ext_resource type="Script" path="res://player/hud/hud.gd" id="15_60owl"]
+[ext_resource type="Script" path="res://entity/entity_health.gd" id="15_t31hb"]
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
+[ext_resource type="Script" path="res://player/player_stats.gd" id="19_qdydl"]
 [ext_resource type="PackedScene" uid="uid://bpgndgt1oy8r3" path="res://player/gun/bullets/dynamite/dynamite.tscn" id="23_1qrdh"]
 [ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="23_nnlt7"]
+[ext_resource type="Script" path="res://player/stat_manager.gd" id="28_idtd8"]
+[ext_resource type="Resource" uid="uid://cinjuna2igq02" path="res://player/stats/billy_bob_stats.tres" id="29_dcgpc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -62,16 +65,9 @@ height = 26.0
 collision_mask = 2
 script = ExtResource("1_8f13i")
 
-[node name="PlayerStats" type="Node2D" parent="."]
+[node name="PlayerHealth" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("2_s8nph")
-armor = 1
-max_health = 20
-health = 20
-movement_speed = 300.0
-
-[node name="InvincibilityTimer" type="Timer" parent="PlayerStats"]
-one_shot = true
+script = ExtResource("15_t31hb")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("15_60owl")
@@ -82,12 +78,12 @@ offset_top = 7.0
 offset_right = 138.0
 offset_bottom = 22.0
 
-[node name="HealthBar" type="ProgressBar" parent="HUD/TopLeft" node_paths=PackedStringArray("stats_node")]
+[node name="HealthBar" type="ProgressBar" parent="HUD/TopLeft"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_soul0")
 script = ExtResource("14_543rk")
-stats_node = NodePath("../../../PlayerStats")
+health_node_path = NodePath("../../../PlayerHealth")
 
 [node name="ExperienceBar" type="ProgressBar" parent="HUD/TopLeft"]
 layout_mode = 2
@@ -122,8 +118,8 @@ unique_name_in_owner = true
 script = ExtResource("18_wo8qc")
 loot_table = ExtResource("7_75cg3")
 
-[node name="HealthBar" parent="." node_paths=PackedStringArray("stats_node") instance=ExtResource("13_vcw5i")]
-stats_node = NodePath("../PlayerStats")
+[node name="HealthBar" parent="." instance=ExtResource("13_vcw5i")]
+health_node_path = NodePath("../PlayerHealth")
 
 [node name="BGSprite" type="Sprite2D" parent="."]
 z_index = -50
@@ -222,7 +218,13 @@ script = ExtResource("4_chwgw")
 weapon_type = ExtResource("23_nnlt7")
 bullet_type = ExtResource("23_1qrdh")
 
-[connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
+[node name="StatManager" type="Node" parent="."]
+script = ExtResource("28_idtd8")
+stats = ExtResource("29_dcgpc")
+
+[node name="PlayerStats" type="Node" parent="StatManager"]
+script = ExtResource("19_qdydl")
+
 [connection signal="level_up" from="Experience" to="AbilitySystem" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

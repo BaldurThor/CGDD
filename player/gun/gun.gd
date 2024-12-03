@@ -17,7 +17,7 @@ signal _normal_attack_signal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	attack_timer.timeout.connect(_attack)
-	attack_timer.wait_time = weapon_type.attack_speed / player_stats.attack_speed
+	attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod)
 	attack_timer.start()
 	sprite_2d.texture = weapon_type.sprite
 	_burst_attack_signal.connect(_burst_attack)
@@ -25,13 +25,14 @@ func _ready() -> void:
 	attack_sound_effect.stream = weapon_type.attack_sfx
 
 func _attack() -> void:
-	attack_timer.wait_time = weapon_type.attack_speed / player_stats.attack_speed
+	attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod)
+	
 	if weapon_type.burst == true:
 		_burst_attack_signal.emit()
 	else:
 		_normal_attack_signal.emit()
 	_play_attack_sfx()
-	
+
 func _calculate_spread_vector() -> Vector2:
 	var degrees = weapon_type.projectile_spread.sample(randf()) / 2
 	# Give the projectile a 50% chance of having the angle inverted
@@ -40,7 +41,7 @@ func _calculate_spread_vector() -> Vector2:
 	# Rotate the angle by rad or -rad
 	var angle = global_transform.x.rotated(rad * sign_multiplier)
 	return angle
-	
+
 
 func _normal_attack() -> void:
 	# Create a bullet and face it in the same direction of the gun swivel

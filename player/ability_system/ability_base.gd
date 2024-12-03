@@ -6,5 +6,5 @@ func init(player: Player) -> void:
 	self.player = player
 
 # Overridable method for modifying player
-func apply_effects(player_stats: PlayerStats, player_health: EntityHealth) -> void:
+func apply_effects(player_stats: PlayerStats) -> void:
 	pass
