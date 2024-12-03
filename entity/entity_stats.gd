@@ -14,7 +14,14 @@ signal take_damage(raw_amount: int)
 
 var is_invincible: bool = false
 
-@export_category("Flat stats")
+@export_category("Stats")
+
+@export_group("Offense")
+
+## The entity's armor (damage reduction)
+@export var armor: int
+
+@export_group("Defense")
 
 ## The amount of damage this entity can take before dying.
 @export var max_health: int:
@@ -39,18 +46,20 @@ var is_invincible: bool = false
 
 ## The entity's movement speed.
 @export var movement_speed: float
-## The entity's armor (damage reduction)
-@export var armor: int
 ## The damage dealt to opposing entities on contact
 @export var contact_damage: int = 0
 
-@export_category("Decimal Stats")
 ## The number of seconds where the player is granted damage immunity on taking damage
 @export_range(0, 2, 0.1, "or_greater") var invincibility_time: float = 0.25
 
 @export_category("Multipliers")
+
+@export_group("Offense")
+
 ## The entity's attack speed modifier.
 @export var attack_speed_mod: float = 1.0
+
+@export_group("Defense")
 
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 
