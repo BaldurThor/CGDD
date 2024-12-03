@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpgndgt1oy8r3"]
+[gd_scene load_steps=10 format=3 uid="uid://dg7ce24it667e"]
 
-[ext_resource type="Script" path="res://player/gun/bullets/dynamite/dynamite.gd" id="1_pa4lh"]
-[ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/gun/bullets/dynamite/dynamite.png" id="2_pefc3"]
-[ext_resource type="AudioStream" uid="uid://b1ooitkb0veuk" path="res://player/gun/bullets/sfx/explosion.wav" id="3_32qub"]
+[ext_resource type="Script" path="res://player/gun/bullets/frag_grenade/frag_grenade.gd" id="1_qdm42"]
+[ext_resource type="PackedScene" uid="uid://bssayd55xxlaq" path="res://player/gun/bullets/basic/bullet.tscn" id="2_5uvxp"]
+[ext_resource type="Texture2D" uid="uid://dpr0wk3mbt7ew" path="res://player/gun/bullets/frag_grenade/frag_grenade.png" id="3_l1vho"]
+[ext_resource type="AudioStream" uid="uid://b1ooitkb0veuk" path="res://player/gun/bullets/sfx/explosion.wav" id="3_pifym"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5n58v"]
 
@@ -74,13 +75,14 @@ _data = {
 "explode": SubResource("Animation_6m0wd")
 }
 
-[node name="Dynamite" type="RigidBody2D"]
+[node name="FragGrenade" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 2
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_pa4lh")
+script = ExtResource("1_qdm42")
 despawn_delay = 1.0
+shrapnel_type = ExtResource("2_5uvxp")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5n58v")
@@ -91,7 +93,7 @@ autostart = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = -2
-texture = ExtResource("2_pefc3")
+texture = ExtResource("3_l1vho")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -101,7 +103,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_sxexo")
 
 [node name="ExplosionSoundEffect" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_32qub")
+stream = ExtResource("3_pifym")
 
 [node name="ExplosionAnimation" type="AnimationPlayer" parent="."]
 libraries = {

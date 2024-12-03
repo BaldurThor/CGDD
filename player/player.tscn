@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=38 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
 [ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
@@ -26,7 +26,9 @@
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
 [ext_resource type="PackedScene" uid="uid://bpgndgt1oy8r3" path="res://player/gun/bullets/dynamite/dynamite.tscn" id="23_1qrdh"]
-[ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="23_nnlt7"]
+[ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/frag_grenade/frag_grenade_thrower.tres" id="23_nnlt7"]
+[ext_resource type="Resource" uid="uid://bqs45ilkxalc2" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="26_xb17a"]
+[ext_resource type="PackedScene" uid="uid://dg7ce24it667e" path="res://player/gun/bullets/frag_grenade/frag_grenade.tscn" id="29_e1fb4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -219,8 +221,15 @@ shape = SubResource("CapsuleShape2D_dv57t")
 script = ExtResource("4_chwgw")
 
 [node name="DynamiteThrower" parent="Weapons/DynamiteSwivel" instance=ExtResource("5_toqby")]
-weapon_type = ExtResource("23_nnlt7")
+weapon_type = ExtResource("26_xb17a")
 bullet_type = ExtResource("23_1qrdh")
+
+[node name="FragGrenadeSwivel" type="Node2D" parent="Weapons"]
+script = ExtResource("4_chwgw")
+
+[node name="FragGrenadeThrower" parent="Weapons/FragGrenadeSwivel" instance=ExtResource("5_toqby")]
+weapon_type = ExtResource("23_nnlt7")
+bullet_type = ExtResource("29_e1fb4")
 
 [connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
 [connection signal="level_up" from="Experience" to="AbilitySystem" method="_on_experience_level_up"]
