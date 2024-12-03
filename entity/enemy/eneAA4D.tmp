@@ -1,13 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://xw5n4dxry31f"]
+[gd_scene load_steps=9 format=3 uid="uid://xw5n4dxry31f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="2_gpk6t"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="3_tufi6"]
 [ext_resource type="Texture2D" uid="uid://rtyla47usjny" path="res://entity/enemy/enemy_placeholder.png" id="3_ws2by"]
-[ext_resource type="Script" path="res://entity/entity_health.gd" id="4_o3ef1"]
-[ext_resource type="Script" path="res://entity/entity_sprite.gd" id="5_0twtr"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="5_5p7yr"]
-[ext_resource type="AudioStream" uid="uid://sgcck507y0c8" path="res://entity/hit.wav" id="8_j2rd3"]
+[ext_resource type="Script" path="res://player/stat_manager.gd" id="6_vl4gl"]
+[ext_resource type="Resource" uid="uid://b8pdpfemv1gtc" path="res://entity/enemy/test_enemy_stats.tres" id="7_q08v6"]
 
 [sub_resource type="Resource" id="Resource_wyp1h"]
 script = ExtResource("2_gpk6t")
@@ -210,33 +209,11 @@ enemy_type = SubResource("Resource_wyp1h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
 
-[node name="EntityHealth" type="Node" parent="."]
-script = ExtResource("4_o3ef1")
-max_health = 5
-health = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_p77yp")
-}
-
-[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_j2rd3")
-volume_db = 10.065
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_n0vyp")
-one_shot = true
-explosiveness = 1.0
-
-[node name="Visuals" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-material = SubResource("ShaderMaterial_75b30")
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_ws2by")
-script = ExtResource("5_0twtr")
 
-[node name="HealthBar" parent="Visuals" instance=ExtResource("5_5p7yr")]
-health_node_path = NodePath("../../EntityHealth")
+[node name="HealthBar" parent="." instance=ExtResource("5_5p7yr")]
+
+[node name="StatManager" type="Node" parent="."]
+script = ExtResource("6_vl4gl")
+stats = ExtResource("7_q08v6")

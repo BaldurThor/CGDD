@@ -2,7 +2,6 @@ class_name EnemyManager extends Node
 
 var player: Player
 
-@export var enemy_scene: PackedScene
 @export var enemy_types: Array[EnemyType] = []
 @export var spawn_radius: float = 300
 
@@ -18,13 +17,13 @@ func _on_enemy_timer_timeout() -> void:
 	var enemy_type = enemy_types.pick_random()
 	
 	# Create a new instance of the Mob scene.
-	var enemy = enemy_scene.instantiate()
+	var enemy = enemy_type.enemy_scene.instantiate()
 
 	# Choose a random spawn location around the player in a circle
 	var spawn_theta = randf_range(0, 2 * PI)
 	var spawn_location = Vector2(cos(spawn_theta), sin(spawn_theta)) * spawn_radius + player.global_position
 	
-	enemy.initialize(spawn_location, enemy_type)
+	enemy.initialize(spawn_location)
 	
 	# Spawn the mob by adding it to the Main scene.
 	enemies.add_child(enemy)

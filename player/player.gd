@@ -1,10 +1,7 @@
 class_name Player extends CharacterBody2D
 
-# how many seconds you are invincible after being hit
-
+@onready var player_stats: PlayerStats = %PlayerStats
 @onready var pick_up_sound_effect: AudioStreamPlayer2D = $PickUpSoundEffect
-@onready var player_health: EntityHealth = $PlayerHealth
-@onready var player_stats: Node = $PlayerStats
 @onready var sprite: EntitySprite = $PlayerSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -14,10 +11,6 @@ func _init() -> void:
 	# properly assigned for other scripts to access.
 	GameManager.assign_player(self)
 
-func _input(event: InputEvent) -> void:
-	# DEBUG: Allows you to press escape to quickly close the game
-	pass
-
 func _physics_process(_delta: float) -> void:
 	var x_direction := Input.get_axis("move_left", "move_right")
 	var y_direction := Input.get_axis("move_up", "move_down")
@@ -26,10 +19,12 @@ func _physics_process(_delta: float) -> void:
 	if x_direction != 0:
 		sprite.flip_h = x_direction < 0
 	
-	velocity = direction * player_stats.speed
+	velocity = direction * player_stats.movement_speed
 	
 	move_and_slide()
 
 func take_damage(amount: int) -> void:
 	animation_player.play("take_damage")
-	player_health.deal_damage(amount)
+	if player_stats.is_invincible:
+		return
+	player_stats.deal_damage(amount)
