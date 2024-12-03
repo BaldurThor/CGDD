@@ -1,20 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://hmr43jfky1b3"]
+[gd_scene load_steps=2 format=3 uid="uid://brlmokmgg6xai"]
 
-[ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://player/player.tscn" id="1_4xl3g"]
-[ext_resource type="Script" path="res://player/fishing/fish_spawer.gd" id="2_xx8nc"]
-[ext_resource type="PackedScene" uid="uid://dalqgss5m03me" path="res://player/fishing/fish.tscn" id="3_i6grl"]
-[ext_resource type="PackedScene" uid="uid://b8h32mkkaisy6" path="res://menu/pause/pause.tscn" id="4_4u8hw"]
+[ext_resource type="PackedScene" uid="uid://db5yyodexjuf1" path="res://menu/main/menu.tscn" id="1_v46fx"]
 
 [node name="Main" type="Node2D"]
 process_mode = 3
 
-[node name="Run" type="Node2D" parent="."]
-process_mode = 1
-
-[node name="Player" parent="Run" instance=ExtResource("1_4xl3g")]
-
-[node name="Fish_spawner" type="Node2D" parent="Run"]
-script = ExtResource("2_xx8nc")
-fish_scene = ExtResource("3_i6grl")
-
-[node name="Pause" parent="." instance=ExtResource("4_4u8hw")]
+[node name="Menu" parent="." instance=ExtResource("1_v46fx")]
