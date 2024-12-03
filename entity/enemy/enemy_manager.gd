@@ -1,4 +1,4 @@
-extends Node
+class_name EnemyManager extends Node
 
 var player: Player
 
@@ -7,6 +7,9 @@ var player: Player
 @export var spawn_radius: float = 300
 
 @onready var enemies: Node = $Enemies
+
+func _init() -> void:
+	GameManager.assign_enemy_manager(self)
 
 func _on_enemy_timer_timeout() -> void:
 	if player == null:
