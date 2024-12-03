@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0q6vx2i5hoaw"]
+[gd_scene load_steps=6 format=3 uid="uid://c0q6vx2i5hoaw"]
 
 [ext_resource type="Texture2D" uid="uid://cwl6e5mcoxjx5" path="res://entity/experience/experience_gem.png" id="1_brv8q"]
 [ext_resource type="Script" path="res://entity/experience/experience_gem.gd" id="1_fxl5l"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mj7ql"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8w37"]
+radius = 46.0
+
 [node name="ExperienceGem" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 0
@@ -14,6 +17,10 @@ script = ExtResource("1_fxl5l")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_brv8q")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
 
 [node name="AccelerationTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -27,5 +34,21 @@ collision_layer = 0
 [node name="ExperiencePickupShape" type="CollisionShape2D" parent="ExperiencePickupRadius"]
 shape = SubResource("CircleShape2D_mj7ql")
 
+[node name="ClumpRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClumpRange"]
+shape = SubResource("CircleShape2D_a8w37")
+
+[node name="debug_stuff" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = -8.0
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
 [connection signal="timeout" from="AccelerationTimer" to="." method="_on_acceleration_timer_timeout"]
 [connection signal="body_entered" from="ExperiencePickupRadius" to="." method="_on_experience_pickup_radius_body_entered"]
+[connection signal="body_entered" from="ClumpRange" to="." method="_on_clump_range_body_entered"]
