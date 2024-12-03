@@ -35,5 +35,4 @@ func _gain_experience(amount: int) -> void:
 		current_experience -= required_for_level_up
 		update_experience_bar.emit(current_experience)
 		required_for_level_up = xp_needed_form(current_level)
-		print(required_for_level_up)
 		level_up.emit()
