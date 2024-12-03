@@ -1,19 +1,204 @@
-[gd_scene load_steps=8 format=3 uid="uid://xw5n4dxry31f"]
+[gd_scene load_steps=21 format=3 uid="uid://xw5n4dxry31f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="2_gpk6t"]
+[ext_resource type="Shader" path="res://entity/entity.gdshader" id="3_tufi6"]
 [ext_resource type="Texture2D" uid="uid://rtyla47usjny" path="res://entity/enemy/enemy_placeholder.png" id="3_ws2by"]
 [ext_resource type="Script" path="res://entity/entity_health.gd" id="4_o3ef1"]
+[ext_resource type="Script" path="res://entity/entity_sprite.gd" id="5_0twtr"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="5_5p7yr"]
+[ext_resource type="AudioStream" uid="uid://sgcck507y0c8" path="res://entity/hit.wav" id="8_j2rd3"]
 
 [sub_resource type="Resource" id="Resource_wyp1h"]
 script = ExtResource("2_gpk6t")
 speed = 1.0
 damage = 1
-health = 10
+health = 30
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 radius = 16.0
+
+[sub_resource type="Animation" id="Animation_fteyv"]
+resource_name = "take_damage"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_flash"
+}, {
+"args": [false],
+"method": &"set_flash"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_750op"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_aldai"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p77yp"]
+_data = {
+"RESET": SubResource("Animation_aldai"),
+"death": SubResource("Animation_750op"),
+"take_damage": SubResource("Animation_fteyv")
+}
+
+[sub_resource type="Gradient" id="Gradient_u7ufl"]
+offsets = PackedFloat32Array(0, 0.411255)
+colors = PackedColorArray(1, 0, 0, 1, 0.382668, 0, 0.0442862, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f7vco"]
+gradient = SubResource("Gradient_u7ufl")
+
+[sub_resource type="Curve" id="Curve_p3py2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.592308, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dglbx"]
+curve = SubResource("Curve_p3py2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n0vyp"]
+particle_flag_disable_z = true
+angle_min = -156.2
+angle_max = 161.1
+spread = 180.0
+initial_velocity_min = 264.42
+initial_velocity_max = 725.43
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 21.35
+scale_curve = SubResource("CurveTexture_dglbx")
+color_ramp = SubResource("GradientTexture1D_f7vco")
+turbulence_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75b30"]
+resource_local_to_scene = true
+shader = ExtResource("3_tufi6")
+shader_parameter/flash = false
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 3
@@ -24,12 +209,33 @@ enemy_type = SubResource("Resource_wyp1h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_ws2by")
-
 [node name="EntityHealth" type="Node" parent="."]
 script = ExtResource("4_o3ef1")
 max_health = 5
 health = 5
 
-[node name="HealthBar" parent="." instance=ExtResource("5_5p7yr")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p77yp")
+}
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_j2rd3")
+volume_db = 10.065
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_n0vyp")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+material = SubResource("ShaderMaterial_75b30")
+texture = ExtResource("3_ws2by")
+script = ExtResource("5_0twtr")
+
+[node name="HealthBar" parent="Visuals" instance=ExtResource("5_5p7yr")]
+health_node_path = NodePath("../../EntityHealth")

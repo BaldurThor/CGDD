@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=43 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
+[ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
 [ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://player/gun/gun_rotation.gd" id="4_chwgw"]
 [ext_resource type="PackedScene" uid="uid://dlu02g3t5bc3x" path="res://player/gun/gun.tscn" id="5_toqby"]
@@ -23,11 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="13_vcw5i"]
 [ext_resource type="Script" path="res://player/hud/health_bar/health_bar.gd" id="14_543rk"]
 [ext_resource type="Script" path="res://player/hud/hud.gd" id="15_60owl"]
+[ext_resource type="Script" path="res://entity/entity_sprite.gd" id="15_ckibm"]
 [ext_resource type="Script" path="res://entity/entity_health.gd" id="15_t31hb"]
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
 [ext_resource type="PackedScene" uid="uid://bpgndgt1oy8r3" path="res://player/gun/bullets/dynamite/dynamite.tscn" id="23_1qrdh"]
 [ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="23_nnlt7"]
+[ext_resource type="AudioStream" uid="uid://sgcck507y0c8" path="res://entity/hit.wav" id="31_6phdh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -46,6 +49,11 @@ seamless = true
 color_ramp = SubResource("Gradient_wblwn")
 noise = SubResource("FastNoiseLite_eejjh")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qqrlv"]
+resource_local_to_scene = true
+shader = ExtResource("1_321ed")
+shader_parameter/flash = false
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa55p"]
 radius = 16.0
 
@@ -61,6 +69,38 @@ height = 26.0
 
 [sub_resource type="Animation" id="Animation_ileuq"]
 resource_name = "take_damage"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_flash"
+}, {
+"args": [false],
+"method": &"set_flash"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lwr83"]
 _data = {
@@ -139,9 +179,11 @@ material = SubResource("ShaderMaterial_upf5s")
 scale = Vector2(0.547852, 0.365234)
 texture = SubResource("NoiseTexture2D_hhvw1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
+material = SubResource("ShaderMaterial_qqrlv")
 texture = ExtResource("13_2cvpx")
+script = ExtResource("15_ckibm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sa55p")
@@ -232,6 +274,9 @@ bullet_type = ExtResource("23_1qrdh")
 libraries = {
 "": SubResource("AnimationLibrary_lwr83")
 }
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_6phdh")
 
 [connection signal="level_up" from="Experience" to="AbilitySystem" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]

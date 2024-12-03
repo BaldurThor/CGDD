@@ -13,10 +13,11 @@ class_name EntityHealth extends Node
 	set(value):
 		var delta = health - value
 		health = clamp(value, 0, max_health)
-		health_changed.emit(value, delta)
 		
 		if health == 0:
 			death.emit()
+		else:
+			health_changed.emit(value, delta)
 
 @export var armor: int = 1 # logarithmic scale
 @export var invincibility_time: float = 0.25
@@ -30,8 +31,9 @@ signal death
 func deal_damage(amount: int) -> void:
 	if is_invincible:
 		return
-		
+	
 	is_invincible = true
 	health = health - amount
+	
 	await get_tree().create_timer(invincibility_time).timeout
 	is_invincible = false

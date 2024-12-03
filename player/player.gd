@@ -5,7 +5,8 @@ class_name Player extends CharacterBody2D
 @onready var pick_up_sound_effect: AudioStreamPlayer2D = $PickUpSoundEffect
 @onready var player_health: EntityHealth = $PlayerHealth
 @onready var player_stats: Node = $PlayerStats
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite: EntitySprite = $PlayerSprite
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _init() -> void:
 	# Make sure GameManager knows about this player instance.
@@ -23,11 +24,12 @@ func _physics_process(_delta: float) -> void:
 	var direction := Vector2(x_direction, y_direction).normalized()
 	
 	if x_direction != 0:
-		sprite_2d.flip_h = x_direction < 0
+		sprite.flip_h = x_direction < 0
 	
 	velocity = direction * player_stats.speed
 	
 	move_and_slide()
 
 func take_damage(amount: int) -> void:
+	animation_player.play("take_damage")
 	player_health.deal_damage(amount)

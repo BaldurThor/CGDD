@@ -7,6 +7,7 @@ var type: EnemyType = null
 const EXPERIENCE_GEM = preload("res://entity/experience/experience_gem.tscn")
 
 @onready var entity_health: EntityHealth = $EntityHealth
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func initialize(start_position: Vector2, enemy_type: EnemyType):
 	position = start_position
@@ -30,6 +31,7 @@ func _physics_process(_delta: float) -> void:
 			player.take_damage(enemy_type.damage)
 			
 func take_damage(damage: int) -> void:
+	animation_player.play("take_damage")
 	entity_health.deal_damage(damage)
 
 func _on_death() -> void:
@@ -37,4 +39,4 @@ func _on_death() -> void:
 	gem.experience_value = 1
 	gem.global_transform = global_transform
 	get_tree().root.add_child.call_deferred(gem)
-	queue_free()
+	animation_player.play("death")
