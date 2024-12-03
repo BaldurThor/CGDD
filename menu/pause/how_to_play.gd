@@ -1,5 +1,6 @@
 extends Label
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -12,8 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_pressed():
-		get_node("/root/Main/Pause").hide()
-		get_tree().paused = false
+		pass # Replace with function body.
 
 
 func _on_mouse_entered() -> void:
