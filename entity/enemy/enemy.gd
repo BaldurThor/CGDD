@@ -4,6 +4,8 @@ var player: Player = null
 
 const EXPERIENCE_GEM = preload("res://entity/experience/experience_gem.tscn")
 
+@export var xp_drop_amount: int = 1
+
 @onready var entity_stats: EntityStats = %EntityStats
 
 func initialize(start_position: Vector2):
@@ -31,7 +33,7 @@ func take_damage(raw_amount: int) -> void:
 
 func _on_death() -> void:
 	var gem = EXPERIENCE_GEM.instantiate()
-	gem.experience_value = enemy_type.xp_drop_amount
+	gem.experience_value = xp_drop_amount
 	gem.global_transform = global_transform
 	get_tree().root.add_child.call_deferred(gem)
 	queue_free()
