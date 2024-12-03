@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityPool" load_steps=6 format=3 uid="uid://ci2k3ke86qm0e"]
+
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_7pjxk"]
+[ext_resource type="Resource" uid="uid://bbt18co7pmomp" path="res://player/ability_system/abilities/gator_hide/gator_hide.tres" id="2_eei0h"]
+[ext_resource type="Script" path="res://player/ability_system/ability_pool.gd" id="3_bjtgc"]
+[ext_resource type="Resource" uid="uid://b5mv78hb7m7u5" path="res://player/ability_system/abilities/gator_tooth/gator_tooth.tres" id="3_dlt83"]
+[ext_resource type="Resource" uid="uid://dq5syac80mru7" path="res://player/ability_system/abilities/redneck_fury/redneck_fury.tres" id="4_iwhf5"]
+
+[resource]
+script = ExtResource("3_bjtgc")
+abilities = Array[ExtResource("1_7pjxk")]([ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5")])

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://dq5syac80mru7"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/redneck_fury/redneck_fury.gd" id="1_yr8t2"]
+[ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://player/fishing/fish.png" id="2_e8h2g"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="2_mgn6p"]
+
+[resource]
+script = ExtResource("2_mgn6p")
+ability_script = ExtResource("1_yr8t2")
+name = "Redneck Fury"
+rarity = 1
+icon = ExtResource("2_e8h2g")
+incompatabilities = Array[ExtResource("2_mgn6p")]([])
