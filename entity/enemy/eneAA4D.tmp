@@ -1,9 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://xw5n4dxry31f"]
+[gd_scene load_steps=9 format=3 uid="uid://xw5n4dxry31f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="2_gpk6t"]
 [ext_resource type="Texture2D" uid="uid://rtyla47usjny" path="res://entity/enemy/enemy_placeholder.png" id="3_ws2by"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="5_5p7yr"]
 [ext_resource type="Script" path="res://player/stat_manager.gd" id="6_vl4gl"]
+[ext_resource type="Resource" uid="uid://b8pdpfemv1gtc" path="res://entity/enemy/test_enemy_stats.tres" id="7_q08v6"]
+
+[sub_resource type="Resource" id="Resource_wyp1h"]
+script = ExtResource("2_gpk6t")
+speed = 1.0
+damage = 1
+health = 10
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 radius = 16.0
@@ -12,6 +20,7 @@ radius = 16.0
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_mi8tq")
+enemy_type = SubResource("Resource_wyp1h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
@@ -20,10 +29,7 @@ shape = SubResource("CircleShape2D_h238a")
 texture = ExtResource("3_ws2by")
 
 [node name="HealthBar" parent="." instance=ExtResource("5_5p7yr")]
-stat_manager_path = NodePath("../StatManager")
 
 [node name="StatManager" type="Node" parent="."]
 script = ExtResource("6_vl4gl")
-
-[node name="InvincibilityTimer" type="Timer" parent="StatManager"]
-autostart = true
+stats = ExtResource("7_q08v6")

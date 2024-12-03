@@ -6,7 +6,7 @@ class_name Gun extends Node2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var attack_sound_effect: AudioStreamPlayer2D = $AttackSoundEffect
 @onready var gun: Gun = $"."
-@onready var player_stats: PlayerStats = %PlayerStats
+@onready var stat_manager: StatManager = %StatManager
 
 @export var weapon_type: WeaponType
 @export var bullet_type: PackedScene
@@ -17,7 +17,7 @@ signal _normal_attack_signal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	attack_timer.timeout.connect(_attack)
-	attack_timer.wait_time = weapon_type.attack_speed / player_stats.attack_speed
+	attack_timer.wait_time = float(weapon_type.attack_speed) / float(stat_manager.stats.attack_speed_mod)
 	attack_timer.start()
 	sprite_2d.texture = weapon_type.sprite
 	_burst_attack_signal.connect(_burst_attack)
@@ -25,7 +25,6 @@ func _ready() -> void:
 	attack_sound_effect.stream = weapon_type.attack_sfx
 
 func _attack() -> void:
-	attack_timer.wait_time = weapon_type.attack_speed / player_stats.attack_speed
 	if weapon_type.burst == true:
 		_burst_attack_signal.emit()
 	else:

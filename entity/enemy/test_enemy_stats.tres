@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://b8pdpfemv1gtc"]
+
+[ext_resource type="Script" path="res://stats_system/entity_stats.gd" id="1_h2xi4"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_h2xi4")
+health = 10
+max_health = 10
+movement_speed = 3.0
+armor = 1
+contact_damage = 2
+invincibility_time = 0.0
+attack_speed_mod = 1.0
