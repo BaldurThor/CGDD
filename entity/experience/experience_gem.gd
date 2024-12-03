@@ -13,7 +13,7 @@ var should_track: bool = false
 func _physics_process(delta: float) -> void:
 	debug_lable.visible = Debug.enable
 	if Debug.enable:
-		debug_lable.text = "xp valure : " + str(experience_value) + "\nTime to despawn : " + str(int(despawn_timer.time_left))
+		debug_lable.text = "xp value : " + str(experience_value) + "\nTime to despawn : " + str(int(despawn_timer.time_left))
 	var scale_val : float = 1 + experience_value/4
 	$Sprite.scale = Vector2(scale_val, scale_val)
 	if should_track:
