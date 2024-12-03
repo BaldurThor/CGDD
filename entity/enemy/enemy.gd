@@ -36,7 +36,7 @@ func take_damage(damage: int) -> void:
 
 func _on_death() -> void:
 	var gem = EXPERIENCE_GEM.instantiate()
-	gem.experience_value = 1
+	gem.experience_value = enemy_type.xp_drop_amount
 	gem.global_transform = global_transform
 	get_tree().root.add_child.call_deferred(gem)
 	animation_player.play("death")

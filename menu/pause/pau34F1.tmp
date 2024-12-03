@@ -1,19 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8h32mkkaisy6"]
+[gd_scene load_steps=7 format=3 uid="uid://b8h32mkkaisy6"]
 
 [ext_resource type="Script" path="res://menu/pause/pause.gd" id="1_lcdb4"]
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="2_7tms3"]
 [ext_resource type="Script" path="res://menu/pause/continue.gd" id="3_3svv3"]
-[ext_resource type="Script" path="res://menu/shared/how_to_play.gd" id="4_2yxxt"]
-[ext_resource type="Script" path="res://menu/shared/options.gd" id="4_ltcbk"]
-[ext_resource type="Script" path="res://menu/shared/quit.gd" id="5_6hme5"]
-[ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="5_ugmh8"]
-[ext_resource type="PackedScene" uid="uid://bmvuvlfr0jg2p" path="res://menu/options/options.tscn" id="8_dglk4"]
+[ext_resource type="Script" path="res://menu/pause/how_to_play.gd" id="4_2yxxt"]
+[ext_resource type="Script" path="res://menu/main/options.gd" id="4_ltcbk"]
+[ext_resource type="Script" path="res://menu/main/quit.gd" id="5_6hme5"]
 
-[node name="Pause" type="CanvasLayer" node_paths=PackedStringArray("info_node", "options_node")]
+[node name="Pause" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_lcdb4")
-info_node = NodePath("Info")
-options_node = NodePath("Options")
 
 [node name="PauseMenuWrapper" type="MarginContainer" parent="."]
 process_mode = 2
@@ -38,38 +34,36 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "The Shotgun over Fishmouth"
 
 [node name="MenuOptions" type="VBoxContainer" parent="PauseMenuWrapper/PauseMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="Continue" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions" node_paths=PackedStringArray("pause_node")]
+[node name="Continue" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Continue"
 script = ExtResource("3_3svv3")
-pause_node = NodePath("../../../../..")
 
-[node name="How_to_play" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions" node_paths=PackedStringArray("info_node")]
+[node name="How_to_play" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "How To Play"
 script = ExtResource("4_2yxxt")
-info_node = NodePath("../../../../../Info")
 
-[node name="Options" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions" node_paths=PackedStringArray("options_node")]
+[node name="Options" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Options"
 script = ExtResource("4_ltcbk")
-options_node = NodePath("../../../../../Options")
 
 [node name="Quit" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions"]
 layout_mode = 2
@@ -80,14 +74,8 @@ script = ExtResource("5_6hme5")
 
 [node name="Version" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Version - 0.1.0"
-
-[node name="Info" parent="." instance=ExtResource("5_ugmh8")]
-process_mode = 2
-visible = false
-
-[node name="Options" parent="." instance=ExtResource("8_dglk4")]
-process_mode = 2
 
 [connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" method="_on_gui_input"]
 [connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" method="_on_mouse_entered"]

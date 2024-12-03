@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 
 GameManager="*res://game_manager.gd"
 BackgroundMusic="*res://music/background_music.tscn"
+Debug="*res://debug.gd"
 
 [display]
 

@@ -13,7 +13,8 @@
 script = ExtResource("2_gpk6t")
 speed = 1.0
 damage = 1
-health = 30
+health = 10
+xp_drop_amount = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 radius = 16.0

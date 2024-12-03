@@ -6,4 +6,5 @@
 script = ExtResource("1_sykeb")
 speed = 2.0
 damage = 1
-health = 30
+health = 10
+xp_drop_amount = 1
