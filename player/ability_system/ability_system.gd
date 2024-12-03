@@ -7,7 +7,7 @@ class_name AbilitySystem extends Node
 
 func add_ability(ability: AbilityInfo):
 	var ability_node: Ability = ability.ability_script.new()
-	var player_stats: PlayerStats = GameManager.get_player().stat_manager.stats
+	var player_stats: PlayerStats = GameManager.get_player().player_stats
 	ability_node.apply_effects(player_stats)
 
 func _on_experience_level_up() -> void:

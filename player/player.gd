@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@onready var stat_manager: StatManager = %StatManager
+@onready var player_stats: PlayerStats = %PlayerStats
 @onready var pick_up_sound_effect: AudioStreamPlayer2D = $PickUpSoundEffect
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
@@ -18,11 +18,11 @@ func _physics_process(_delta: float) -> void:
 	if x_direction != 0:
 		sprite_2d.flip_h = x_direction < 0
 	
-	velocity = direction * GameManager.get_player().stat_manager.stats.movement_speed
+	velocity = direction * player_stats.movement_speed
 	
 	move_and_slide()
 
 func take_damage(amount: int) -> void:
-	if stat_manager.stats.is_invincible:
+	if player_stats.is_invincible:
 		return
-	stat_manager.take_damage.emit(amount)
+	player_stats.deal_damage(amount)

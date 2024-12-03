@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://b8pdpfemv1gtc"]
 
-[ext_resource type="Script" path="res://stats_system/entity_stats.gd" id="1_h2xi4"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="1_h2xi4"]
 
 [resource]
 resource_local_to_scene = true

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://c46dmrx2g0p7p"]
-
-[ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="1_sykeb"]
-[ext_resource type="Resource" uid="uid://b8pdpfemv1gtc" path="res://entity/enemy/test_enemy_stats.tres" id="2_6vb3k"]
-
-[resource]
-script = ExtResource("1_sykeb")
-name = "Test Enemy"
-stats = ExtResource("2_6vb3k")

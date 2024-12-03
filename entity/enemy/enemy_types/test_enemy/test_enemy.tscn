@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
 [ext_resource type="Texture2D" uid="uid://rtyla47usjny" path="res://entity/enemy/enemy_placeholder.png" id="3_ws2by"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="5_5p7yr"]
-[ext_resource type="Script" path="res://player/stat_manager.gd" id="6_vl4gl"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_vl4gl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 radius = 16.0
@@ -19,11 +19,17 @@ shape = SubResource("CircleShape2D_h238a")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_ws2by")
 
-[node name="HealthBar" parent="." instance=ExtResource("5_5p7yr")]
-stat_manager_path = NodePath("../StatManager")
+[node name="HealthBar" parent="." node_paths=PackedStringArray("stats_node") instance=ExtResource("5_5p7yr")]
+stats_node = NodePath("../EntityStats")
 
-[node name="StatManager" type="Node" parent="."]
+[node name="EntityStats" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("6_vl4gl")
+max_health = 10
+health = 10
+movement_speed = 1.0
+armor = 1
+contact_damage = 2
 
-[node name="InvincibilityTimer" type="Timer" parent="StatManager"]
+[node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
 autostart = true
