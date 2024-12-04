@@ -14,12 +14,32 @@ func reset_timer() -> void:
 	game_timer = Timer.new()
 	game_timer.wait_time = 1200
 	
-func start_game(run: PackedScene) -> void:
+func reset_tree() -> void:
+	get_tree().paused = false
 	var main = get_node("/root/Main")
-	main.remove_child(get_node("/root/Main/Menu"))
+	var children = main.get_children()
+	for child in children:
+		if child == game_timer:
+			continue
+		else:
+			child.queue_free()
+			main.remove_child(child)
+	
+	
+func start_game(run: PackedScene) -> void:
+	reset_tree()
+	reset_timer()
+	
+	var main = get_node("/root/Main")
 	main.add_child(run.instantiate())
 	main.add_child(game_timer)
 	game_timer.start()
+	
+	
+func main_menu(menu: PackedScene) -> void:
+	reset_tree()
+	var main = get_node("/root/Main")
+	main.add_child(menu.instantiate())
 
 # Used by the player.gd script to tell the game manager where the player is.
 # Allows other scripts to access the player from wherever they are.

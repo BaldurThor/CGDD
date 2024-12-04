@@ -12,6 +12,4 @@ func _on_mouse_exited() -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_pressed():
-		var main = get_node("/root/Main")
-		main.remove_child(get_node("/root/Main/Run"))
-		main.add_child(menu.instantiate())
+		GameManager.main_menu(menu)

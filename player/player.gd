@@ -11,9 +11,6 @@ func _init() -> void:
 	# Called in _init() instead of _ready() to make sure it's
 	# properly assigned for other scripts to access.
 	GameManager.assign_player(self)
-	
-func _ready() -> void:
-	player_stats.attack_speed_mod = 0.000000001
 
 func _physics_process(_delta: float) -> void:
 	var x_direction := Input.get_axis("move_left", "move_right")
