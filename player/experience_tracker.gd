@@ -36,3 +36,4 @@ func _gain_experience(amount: int) -> void:
 		update_experience_bar.emit(current_experience)
 		required_for_level_up = xp_needed_form(current_level)
 		level_up.emit()
+		get_tree().paused = true

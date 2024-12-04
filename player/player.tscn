@@ -99,6 +99,7 @@ script = ExtResource("10_pxkv6")
 
 [node name="AbilityPicker" type="VBoxContainer" parent="HUD"]
 unique_name_in_owner = true
+process_mode = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
