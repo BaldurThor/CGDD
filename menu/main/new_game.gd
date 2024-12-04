@@ -4,9 +4,7 @@ extends Label
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_pressed():
-		var main = get_node("/root/Main")
-		main.remove_child(get_node("/root/Main/Menu"))
-		main.add_child(run.instantiate())
+		GameManager.start_game(run)
 
 
 func _on_mouse_entered() -> void:

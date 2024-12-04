@@ -5,8 +5,8 @@ class_name AbilityChoice extends Button
 
 var ability: AbilityInfo = null
 
-func init(ability: AbilityInfo):
-	self.ability = ability
+func init(ability_info: AbilityInfo):
+	ability = ability_info
 
 func _ready():
 	texture_rect.texture = ability.icon

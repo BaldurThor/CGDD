@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b1ooitkb0veuk"
-path="res://.godot/imported/explosion.wav-3185bbc1f1e6dbe974d51826e625b886.sample"
+path="res://.godot/imported/explosion.wav-cb3bf8d1b5a05d81f05d74dd028c76ad.sample"
 
 [deps]
 
-source_file="res://player/gun/bullets/dynamite/explosion.wav"
-dest_files=["res://.godot/imported/explosion.wav-3185bbc1f1e6dbe974d51826e625b886.sample"]
+source_file="res://player/gun/bullets/sfx/explosion.wav"
+dest_files=["res://.godot/imported/explosion.wav-cb3bf8d1b5a05d81f05d74dd028c76ad.sample"]
 
 [params]
 

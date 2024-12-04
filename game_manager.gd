@@ -2,6 +2,24 @@ extends Node
 
 var _player: Player = null
 var _enemy_manager: EnemyManager = null
+var game_timer: Timer
+
+func _init() -> void:
+	reset_timer()
+
+func reset_timer() -> void:
+	if game_timer != null:
+		var main = get_node("/root/Main")
+		main.remove_child(game_timer)
+	game_timer = Timer.new()
+	game_timer.wait_time = 1200
+	
+func start_game(run: PackedScene) -> void:
+	var main = get_node("/root/Main")
+	main.remove_child(get_node("/root/Main/Menu"))
+	main.add_child(run.instantiate())
+	main.add_child(game_timer)
+	game_timer.start()
 
 # Global game events
 signal enemy_take_damage(amount: int)

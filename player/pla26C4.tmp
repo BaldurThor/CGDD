@@ -1,7 +1,6 @@
 [gd_scene load_steps=42 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
-[ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
 [ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://player/player_stats.gd" id="2_s8nph"]
 [ext_resource type="Script" path="res://player/gun/gun_rotation.gd" id="4_chwgw"]
@@ -13,7 +12,6 @@
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://player/ability_system/abilities/loot_table.tres" id="7_75cg3"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://player/fishing/rod_placeholder.png" id="7_l7pv7"]
 [ext_resource type="Script" path="res://player/hud/ability_choice/ability_picker.gd" id="7_v6y57"]
-[ext_resource type="Script" path="res://player/hud/hit_indicator.gd" id="8_lh3hs"]
 [ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="8_18no8"]
 [ext_resource type="Script" path="res://player/fishing/hook.gd" id="8_qymma"]
 [ext_resource type="Script" path="res://player/hud/countdown_timer.gd" id="9_5x5lc"]
@@ -27,24 +25,11 @@
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="13_vcw5i"]
 [ext_resource type="Script" path="res://player/hud/health_bar/health_bar.gd" id="14_543rk"]
 [ext_resource type="Script" path="res://player/hud/hud.gd" id="15_60owl"]
-[ext_resource type="Script" path="res://entity/entity_sprite.gd" id="15_ckibm"]
-[ext_resource type="Script" path="res://player/player_camera.gd" id="15_n0ywd"]
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
 [ext_resource type="Resource" uid="uid://dtw4po3nkf2dj" path="res://player/gun/gun_types/spear_gun/spear_gun.tres" id="20_n34dg"]
 [ext_resource type="PackedScene" uid="uid://dbxkhsyosgs7p" path="res://player/gun/bullets/spear_gun_spear/spear_gun_spear.tscn" id="21_h0w43"]
 [ext_resource type="PackedScene" uid="uid://bpgndgt1oy8r3" path="res://player/gun/bullets/dynamite/dynamite.tscn" id="23_1qrdh"]
-[ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="23_nnlt7"]
-[ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="31_6phdh"]
-
-[sub_resource type="Gradient" id="Gradient_1aqu2"]
-offsets = PackedFloat32Array(0.559902, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ypfjj"]
-gradient = SubResource("Gradient_1aqu2")
-fill = 1
-fill_from = Vector2(0.516239, 0.494017)
 [ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/frag_grenade/frag_grenade_thrower.tres" id="23_nnlt7"]
 [ext_resource type="Resource" uid="uid://bqs45ilkxalc2" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="26_xb17a"]
 [ext_resource type="PackedScene" uid="uid://dg7ce24it667e" path="res://player/gun/bullets/frag_grenade/frag_grenade.tscn" id="29_e1fb4"]
@@ -66,16 +51,8 @@ seamless = true
 color_ramp = SubResource("Gradient_wblwn")
 noise = SubResource("FastNoiseLite_eejjh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qqrlv"]
-resource_local_to_scene = true
-shader = ExtResource("1_321ed")
-shader_parameter/flash = false
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa55p"]
 radius = 16.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_27ynm"]
-noise_type = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35cqd"]
 radius = 35.0
@@ -86,46 +63,6 @@ radius = 25.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dv57t"]
 radius = 7.0
 height = 26.0
-
-[sub_resource type="Animation" id="Animation_ileuq"]
-resource_name = "take_damage"
-length = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"set_flash"
-}, {
-"args": [false],
-"method": &"set_flash"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HitSound")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lwr83"]
-_data = {
-"take_damage": SubResource("Animation_ileuq")
-}
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -187,15 +124,6 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerHitIndicator" type="TextureRect" parent="HUD"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_ypfjj")
-script = ExtResource("8_lh3hs")
 [node name="TopCenter" type="HBoxContainer" parent="HUD"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -230,11 +158,9 @@ material = SubResource("ShaderMaterial_upf5s")
 scale = Vector2(0.547852, 0.365234)
 texture = SubResource("NoiseTexture2D_hhvw1")
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
-material = SubResource("ShaderMaterial_qqrlv")
 texture = ExtResource("13_2cvpx")
-script = ExtResource("15_ckibm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sa55p")
@@ -243,9 +169,6 @@ debug_color = Color(0.456537, 0.00266336, 0.919708, 0.42)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
-script = ExtResource("15_n0ywd")
-max_offset = Vector2(70, 70)
-noise = SubResource("FastNoiseLite_27ynm")
 
 [node name="PickUpSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_ax3nw")
@@ -331,14 +254,6 @@ script = ExtResource("4_chwgw")
 weapon_type = ExtResource("26_xb17a")
 bullet_type = ExtResource("23_1qrdh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_lwr83")
-}
-
-[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("31_6phdh")
-volume_db = 15.0
 [node name="FragGrenadeSwivel" type="Node2D" parent="Weapons"]
 script = ExtResource("4_chwgw")
 

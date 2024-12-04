@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://7yie8rnva7we"
-path="res://.godot/imported/throw.wav-c307526851e55dd3cc6cb38b1692d45b.sample"
+uid="uid://dfxpoj4vlhpwc"
+path="res://.godot/imported/throw.wav-cb3891f5e4cfc4119689b3da4359190a.sample"
 
 [deps]
 
-source_file="res://player/gun/gun_types/dynamite/throw.wav"
-dest_files=["res://.godot/imported/throw.wav-c307526851e55dd3cc6cb38b1692d45b.sample"]
+source_file="res://player/gun/sfx/throw.wav"
+dest_files=["res://.godot/imported/throw.wav-cb3891f5e4cfc4119689b3da4359190a.sample"]
 
 [params]
 
