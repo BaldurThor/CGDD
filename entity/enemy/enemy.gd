@@ -4,9 +4,11 @@ var player: Player = null
 
 const EXPERIENCE_GEM = preload("res://entity/experience/experience_gem.tscn")
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var xp_drop_amount: int = 1
 
 @onready var entity_stats: EntityStats = %EntityStats
+@onready var hit_sfx: AudioStreamPlayer2D = $HitSFX
 
 func initialize(start_position: Vector2):
 	position = start_position
@@ -28,8 +30,11 @@ func _physics_process(_delta: float) -> void:
 		if coll.get_collider_id() == player.get_instance_id():
 			player.take_damage(entity_stats.contact_damage)
 			
-func take_damage(raw_amount: int) -> void:
-	entity_stats.deal_damage(raw_amount)
+func take_damage(damage: int) -> void:
+	animation_player.play("take_damage")
+	hit_sfx.pitch_scale = randf_range(0.8, 1.2)
+	entity_stats.deal_damage(damage)
+	GameManager.enemy_take_damage.emit(int(entity_stats.get_damage_applied(damage)))
 
 func _on_death() -> void:
 	var gem = EXPERIENCE_GEM.instantiate()
@@ -38,3 +43,5 @@ func _on_death() -> void:
 	var run = get_node("/root/Main/Run")
 	run.add_child.call_deferred(gem)
 	queue_free()
+	get_tree().root.add_child.call_deferred(gem)
+	animation_player.play("death")

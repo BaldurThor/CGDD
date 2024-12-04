@@ -41,6 +41,11 @@ func main_menu(menu: PackedScene) -> void:
 	var main = get_node("/root/Main")
 	main.add_child(menu.instantiate())
 
+# Global game events
+signal enemy_take_damage(amount: int)
+signal player_take_damage(amount: int)
+signal explosion_occurred(intensity: float)
+
 # Used by the player.gd script to tell the game manager where the player is.
 # Allows other scripts to access the player from wherever they are.
 func assign_player(player: Player):

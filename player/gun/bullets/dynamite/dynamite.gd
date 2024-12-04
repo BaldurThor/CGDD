@@ -7,6 +7,7 @@ class_name Dynamite extends RigidBody2D
 @onready var area_2d: Area2D = $Area2D
 @onready var explosion_animation: AnimationPlayer = $ExplosionAnimation
 @onready var explosion_sound_effect: AudioStreamPlayer2D = $ExplosionSoundEffect
+@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 
 var direction: Vector2
 var _weapon_type: WeaponType
@@ -19,6 +20,7 @@ func init(weapon_type: WeaponType, bullet_direction: Vector2) -> void:
 func _ready() -> void:
 	despawn_timer.wait_time = despawn_delay
 	despawn_timer.timeout.connect(_explode)
+	gpu_particles_2d.emitting = false
 
 func _physics_process(_delta: float) -> void:
 	linear_velocity = direction.normalized() * _weapon_type.projectile_speed
@@ -28,6 +30,7 @@ func _on_body_entered(body: Node) -> void:
 		direction = Vector2.ZERO
 
 func _on_despawn_timer_timeout() -> void:
+	GameManager.explosion_occurred.emit()
 	_explode()
 
 func _explode() -> void:

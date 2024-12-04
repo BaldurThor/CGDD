@@ -1,4 +1,4 @@
-class_name Bullet extends RigidBody2D
+class_name Bullet extends Area2D
 
 ## The time before the bullet automatically despawns
 @export var despawn_delay: float
@@ -17,8 +17,8 @@ func init(weapon_type: WeaponType, bullet_direction: Vector2) -> void:
 func _ready() -> void:
 	despawn_timer.wait_time = despawn_delay
 
-func _physics_process(_delta: float) -> void:
-	linear_velocity = direction.normalized() * _weapon_type.projectile_speed
+func _process(delta: float) -> void:
+	position += direction.normalized() * _weapon_type.projectile_speed * delta
 
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
