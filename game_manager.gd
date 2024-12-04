@@ -21,6 +21,11 @@ func start_game(run: PackedScene) -> void:
 	main.add_child(game_timer)
 	game_timer.start()
 
+# Global game events
+signal enemy_take_damage(amount: int)
+signal player_take_damage(amount: int)
+signal explosion_occurred(intensity: float)
+
 # Used by the player.gd script to tell the game manager where the player is.
 # Allows other scripts to access the player from wherever they are.
 func assign_player(player: Player):

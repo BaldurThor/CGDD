@@ -4,7 +4,7 @@ enum TargetPriority { CLOSEST, FARTHEST, RANDOM, STRONGEST }
 
 @export_category("Primary Stats")
 ## Base damage dealt by each projectile fired by the weapon
-@export_range(1.0, 1.0, 1.0, "or_greater") var damage: float
+@export_range(1, 10, 1, "or_greater") var damage: int
 ## How effective flat damage multipliers are for the weapon (useful for weapons that inherently fire more projectiles).
 @export_range(0.1, 2.0, 0.1, "or_greater") var damage_effectiveness: float
 ## Base interval of which the weapon attacks
