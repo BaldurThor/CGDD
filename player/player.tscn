@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=42 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://player/hud/ability_choice/ability_picker.gd" id="7_v6y57"]
 [ext_resource type="Script" path="res://player/fishing/hook.gd" id="8_qymma"]
 [ext_resource type="Script" path="res://player/hud/experience_bar.gd" id="10_pxkv6"]
-[ext_resource type="Script" path="res://player/player_stats.gd" id="10_sws3q"]
 [ext_resource type="Script" path="res://entity/experience/experience_radius.gd" id="11_fmot2"]
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://entity/experience/xp.wav" id="12_ax3nw"]
 [ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://player/fishing/hook.png" id="12_tp034"]

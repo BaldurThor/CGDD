@@ -31,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 			
 func take_damage(damage: int) -> void:
 	animation_player.play("take_damage")
-	entity_health.deal_damage(damage)
+	entity_stats.deal_damage(damage)
 
 func _on_death() -> void:
 	var gem = EXPERIENCE_GEM.instantiate()
