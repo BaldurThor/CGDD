@@ -43,5 +43,4 @@ func _on_death() -> void:
 	var run = get_node("/root/Main/Run")
 	run.add_child.call_deferred(gem)
 	queue_free()
-	get_tree().root.add_child.call_deferred(gem)
 	animation_player.play("death")

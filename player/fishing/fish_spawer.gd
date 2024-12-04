@@ -44,5 +44,3 @@ func _ready() -> void:
 	for a in start_fish_ammount: 
 		var cords = gen_cord() + player.position
 		spawn_fish(cords)
-		print("Spawned fish at ", cords)
-		
