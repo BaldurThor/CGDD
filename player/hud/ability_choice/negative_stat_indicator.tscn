@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjsvw1qqdo71c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xw0x2"]
+font_size = 10
+font_color = Color(1, 0.0862745, 0.0823529, 1)
+
+[node name="NegativeStats" type="Label"]
+text = "-10% max health"
+label_settings = SubResource("LabelSettings_xw0x2")
+horizontal_alignment = 1

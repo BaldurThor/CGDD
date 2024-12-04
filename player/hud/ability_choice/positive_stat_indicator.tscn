@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://xcjb1k2o4c0j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu4ed"]
+font_size = 10
+font_color = Color(0.393122, 0.994909, 0.530447, 1)
+
+[node name="PositiveStats" type="Label"]
+text = "+5% damage"
+label_settings = SubResource("LabelSettings_wu4ed")
+horizontal_alignment = 1

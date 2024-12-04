@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_5qkf3"]
 [ext_resource type="Script" path="res://player/ability_system/abilities/lizard_spit/lizard_spit.gd" id="1_hudvu"]
-[ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://player/fishing/fish.png" id="2_kfag2"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_prjft"]
 
 [resource]
 script = ExtResource("1_5qkf3")
@@ -13,5 +13,5 @@ negative_effects = Array[String]([])
 flavor_text = "Slippery"
 max_amount = 0
 rarity = 1
-icon = ExtResource("2_kfag2")
+icon = ExtResource("2_prjft")
 incompatabilities = Array[ExtResource("1_5qkf3")]([])

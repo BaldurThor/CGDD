@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://b5mv78hb7m7u5"]
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/gator_tooth/gator_tooth.gd" id="1_3t3ty"]
-[ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://player/fishing/fish.png" id="2_71y06"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_rgf1g"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="2_wkyug"]
 
 [resource]
@@ -13,5 +13,5 @@ negative_effects = Array[String]([])
 flavor_text = ""
 max_amount = 0
 rarity = 0
-icon = ExtResource("2_71y06")
+icon = ExtResource("2_rgf1g")
 incompatabilities = Array[ExtResource("2_wkyug")]([])
