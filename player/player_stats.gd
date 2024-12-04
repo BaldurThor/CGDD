@@ -15,6 +15,9 @@ class_name PlayerStats extends EntityStats
 ## The "accuracy" of the player's weapons. Affects bullet velocity (and therefore range)
 @export_range(0.5, 3.0, 0.01, "or_greater") var accuracy: float = 1.0
 
+## The number of times a projectile can pass through an entity before despawning (additive with weapon/projectile modifiers).
+@export_range(0, 3, 1, "or_greater") var extra_projectile_pierce: int = 0
+
 @export_group("Defense")
 
 ## A flat amount of health healed by the player every time the regen timer ticks.
@@ -42,5 +45,8 @@ class_name PlayerStats extends EntityStats
 ## A multiplier to the player's maximum health. Increasing this value should heal the player by the modified amount.
 @export var max_health_mod: float = 1.0
 
-# A multiplier to the player's regeneration speed. Increasing this value will make the player regenerate health faster.
+## A multiplier to the player's regeneration speed. Increasing this value will make the player regenerate health faster.
 @export var regen_speed_mod: float = 1.0
+
+## Whether the player can regenerate or not. If false, regen cannot affect the player at all.
+@export var can_regen: bool = true

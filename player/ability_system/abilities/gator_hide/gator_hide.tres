@@ -8,6 +8,10 @@
 script = ExtResource("2_h5hrw")
 ability_script = ExtResource("1_qcqjh")
 name = "Gator Hide"
+positive_effects = Array[String](["+10 maximum health"])
+negative_effects = Array[String]([])
+flavor_text = ""
+max_amount = 0
 rarity = 0
 icon = ExtResource("2_s7ucx")
 incompatabilities = Array[ExtResource("2_h5hrw")]([])

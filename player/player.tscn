@@ -71,6 +71,8 @@ script = ExtResource("1_8f13i")
 [node name="PlayerStats" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_s8nph")
+extra_projectile_pierce = null
+can_regen = null
 armor = 1
 max_health = 20
 health = 20
