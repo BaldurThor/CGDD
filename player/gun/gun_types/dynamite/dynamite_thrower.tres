@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="WeaponType" load_steps=5 format=3 uid="uid://bnqcmjaa8f43f"]
+[gd_resource type="Resource" script_class="WeaponType" load_steps=5 format=3 uid="uid://bqs45ilkxalc2"]
 
-[ext_resource type="AudioStream" uid="uid://7yie8rnva7we" path="res://player/gun/gun_types/dynamite/throw.wav" id="1_qp08m"]
-[ext_resource type="Script" path="res://player/gun/weapon_type.gd" id="2_fc6fq"]
-[ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/gun/bullets/dynamite/dynamite.png" id="3_uixjn"]
+[ext_resource type="AudioStream" uid="uid://dfxpoj4vlhpwc" path="res://player/gun/sfx/throw.wav" id="1_ll6qq"]
+[ext_resource type="Script" path="res://player/gun/weapon_type.gd" id="2_0fdgb"]
+[ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/gun/bullets/dynamite/dynamite.png" id="3_bdho0"]
 
 [sub_resource type="Curve" id="Curve_65s3s"]
 max_value = 25.0
@@ -10,7 +10,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 25), 35.0, 0.0, 0, 0]
 point_count = 2
 
 [resource]
-script = ExtResource("2_fc6fq")
+script = ExtResource("2_0fdgb")
 damage = 12.0
 damage_effectiveness = 0.4
 attack_speed = 2.0
@@ -23,5 +23,5 @@ projectile_speed = 400.0
 projectile_count = 1
 projectile_spread = SubResource("Curve_65s3s")
 target_priority = 0
-sprite = ExtResource("3_uixjn")
-attack_sfx = ExtResource("1_qp08m")
+sprite = ExtResource("3_bdho0")
+attack_sfx = ExtResource("1_ll6qq")
