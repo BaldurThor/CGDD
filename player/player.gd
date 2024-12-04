@@ -5,6 +5,8 @@ class_name Player extends CharacterBody2D
 @onready var sprite: EntitySprite = $PlayerSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@export var death_screen: PackedScene
+
 func _init() -> void:
 	# Make sure GameManager knows about this player instance.
 	# Called in _init() instead of _ready() to make sure it's
@@ -29,3 +31,8 @@ func take_damage(amount: int) -> void:
 	if player_stats.is_invincible:
 		return
 	player_stats.deal_damage(amount)
+
+
+func _on_player_stats_death() -> void:
+	get_tree().paused = true
+	self.add_child(death_screen.instantiate())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8h32mkkaisy6"]
+[gd_scene load_steps=10 format=3 uid="uid://b8h32mkkaisy6"]
 
 [ext_resource type="Script" path="res://menu/pause/pause.gd" id="1_lcdb4"]
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="2_7tms3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://menu/shared/options.gd" id="4_ltcbk"]
 [ext_resource type="Script" path="res://menu/shared/quit.gd" id="5_6hme5"]
 [ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="5_ugmh8"]
+[ext_resource type="Script" path="res://menu/pause/reset.gd" id="6_w46qb"]
 [ext_resource type="PackedScene" uid="uid://bmvuvlfr0jg2p" path="res://menu/options/options.tscn" id="8_dglk4"]
 
 [node name="Pause" type="CanvasLayer" node_paths=PackedStringArray("info_node", "options_node")]
@@ -71,6 +72,14 @@ text = "Options"
 script = ExtResource("4_ltcbk")
 options_node = NodePath("../../../../../Options")
 
+[node name="Reset" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Reset Run"
+script = ExtResource("6_w46qb")
+
 [node name="Quit" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions"]
 layout_mode = 2
 mouse_filter = 0
@@ -98,6 +107,9 @@ process_mode = 2
 [connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" method="_on_gui_input"]
 [connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" method="_on_mouse_exited"]
+[connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" method="_on_gui_input"]
+[connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" method="_on_mouse_exited"]
 [connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" method="_on_gui_input"]
 [connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" method="_on_mouse_exited"]
