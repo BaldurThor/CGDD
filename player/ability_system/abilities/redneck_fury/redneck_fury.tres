@@ -8,6 +8,10 @@
 script = ExtResource("2_mgn6p")
 ability_script = ExtResource("1_yr8t2")
 name = "Redneck Fury"
-rarity = 1
+positive_effects = Array[String](["200% attack speed"])
+negative_effects = Array[String](["-75% maximum health"])
+flavor_text = "The power of generations of rednecks flows through you..."
+max_amount = 1
+rarity = 2
 icon = ExtResource("2_e8h2g")
 incompatabilities = Array[ExtResource("2_mgn6p")]([])

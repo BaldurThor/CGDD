@@ -6,4 +6,3 @@ func _process(delta: float) -> void:
 	var minutes: String = str(time_remaining / 60).pad_zeros(2)
 	var seconds: String = str(time_remaining % 60).pad_zeros(2)
 	text = minutes + ":" + seconds
-	print(text)
