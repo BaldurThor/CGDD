@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmvuvlfr0jg2p"]
+[gd_scene load_steps=4 format=3 uid="uid://bmvuvlfr0jg2p"]
 
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="1_fylp6"]
 [ext_resource type="Script" path="res://menu/options/back.gd" id="2_bcpgf"]
+[ext_resource type="Script" path="res://menu/options/volume.gd" id="2_fn5qq"]
 
 [node name="Options" type="CanvasLayer"]
 visible = false
@@ -34,30 +35,47 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
 layout_mode = 2
-text = "TODO:
-make
-options
-stuff
-things
-and
-stuff"
+size_flags_horizontal = 4
+text = "Options"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="Split" type="HBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer"]
+[node name="Label1" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Label"]
 layout_mode = 2
+text = "Volume"
+
+[node name="BottomLeft" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Label"]
+layout_mode = 2
+size_flags_vertical = 10
 text = "Kill Cthulhu"
 
-[node name="Back" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("options_node")]
+[node name="Button" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Volume" type="HSlider" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("2_fn5qq")
+
+[node name="Back" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button" node_paths=PackedStringArray("options_node")]
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 10
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Back"
+horizontal_alignment = 2
+vertical_alignment = 2
 script = ExtResource("2_bcpgf")
-options_node = NodePath("../../../../../..")
+options_node = NodePath("../../../../../../..")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenuWrapper/CenterContainer"]
 custom_minimum_size = Vector2(370, 212)
@@ -65,6 +83,7 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" method="_on_mouse_exited"]
+[connection signal="value_changed" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Volume" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Volume" method="_on_value_changed"]
+[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" method="_on_gui_input"]
+[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_exited"]
