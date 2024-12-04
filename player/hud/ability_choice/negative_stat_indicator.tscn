@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjsvw1qqdo71c"]
+[gd_scene load_steps=3 format=3 uid="uid://bjsvw1qqdo71c"]
+
+[ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="1_b88i7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xw0x2"]
-font_size = 10
+font = ExtResource("1_b88i7")
+font_size = 9
 font_color = Color(1, 0.0862745, 0.0823529, 1)
 
 [node name="NegativeStats" type="Label"]
+size_flags_horizontal = 3
+size_flags_vertical = 6
 text = "-10% max health"
 label_settings = SubResource("LabelSettings_xw0x2")
 horizontal_alignment = 1
+autowrap_mode = 3

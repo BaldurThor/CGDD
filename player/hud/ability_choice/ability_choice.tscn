@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://1in5byv3fld3"]
+[gd_scene load_steps=6 format=3 uid="uid://1in5byv3fld3"]
 
 [ext_resource type="Script" path="res://player/ability_system/ability_choice.gd" id="1_3i24v"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_ignr2"]
+[ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="3_b46p4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lmys2"]
+font = ExtResource("3_b46p4")
+font_size = 12
+font_color = Color(1, 0.682353, 0.807843, 1)
+outline_size = 2
+outline_color = Color(1, 0.027451, 0.937255, 0.666667)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nydgn"]
+font = ExtResource("3_b46p4")
+font_size = 9
+font_color = Color(0.741385, 0.741385, 0.741385, 1)
 
 [node name="AbilityChoice" type="Button"]
 anchors_preset = 8
@@ -12,7 +25,7 @@ anchor_bottom = 0.5
 offset_left = -72.0
 offset_top = -72.0
 offset_right = 34.0
-offset_bottom = 38.0
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -26,10 +39,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Name" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Gator Skin"
+label_settings = SubResource("LabelSettings_lmys2")
 horizontal_alignment = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer"]
@@ -44,3 +59,13 @@ layout_mode = 2
 
 [node name="NegativeStats" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="Flavor" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Yes"
+label_settings = SubResource("LabelSettings_nydgn")
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3

@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 @onready var sprite: EntitySprite = $PlayerSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var weapon_manager: WeaponManager = $WeaponManager
+@onready var experience: Experience = %Experience
 
 @export var death_screen: PackedScene
 
