@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbilityPool" load_steps=11 format=3 uid="uid://ci2k3ke86qm0e"]
+[gd_resource type="Resource" script_class="AbilityPool" load_steps=14 format=3 uid="uid://ci2k3ke86qm0e"]
 
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_7pjxk"]
 [ext_resource type="Resource" uid="uid://bbt18co7pmomp" path="res://player/ability_system/abilities/gator_hide/gator_hide.tres" id="2_eei0h"]
@@ -10,7 +10,10 @@
 [ext_resource type="Resource" uid="uid://d3tlmuwd5q5j4" path="res://player/ability_system/abilities/lizard_spit/lizard_spit.tres" id="7_d6n8r"]
 [ext_resource type="Resource" uid="uid://d3rowoeoo4vqm" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.tres" id="8_7q2sg"]
 [ext_resource type="Resource" uid="uid://gv6t82cmowrh" path="res://player/ability_system/abilities/pickup_dynamite/pickup_dynamite.tres" id="9_20rmb"]
+[ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="10_0ve1b"]
+[ext_resource type="Resource" uid="uid://dufhryeihr3fe" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.tres" id="11_2k0vh"]
+[ext_resource type="Resource" uid="uid://de5tqvsoulypj" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.tres" id="12_da51d"]
 
 [resource]
 script = ExtResource("3_bjtgc")
-abilities = Array[ExtResource("1_7pjxk")]([ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5"), ExtResource("5_vwjob"), ExtResource("6_pwsg8"), ExtResource("7_d6n8r"), ExtResource("8_7q2sg"), ExtResource("9_20rmb")])
+abilities = Array[ExtResource("1_7pjxk")]([ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5"), ExtResource("5_vwjob"), ExtResource("6_pwsg8"), ExtResource("7_d6n8r"), ExtResource("8_7q2sg"), ExtResource("9_20rmb"), ExtResource("10_0ve1b"), ExtResource("11_2k0vh"), ExtResource("12_da51d")])

@@ -14,4 +14,7 @@ flavor_text = ""
 max_amount = 0
 rarity = 0
 icon = ExtResource("2_rgf1g")
+guaranteed_at = 0
+required_level = 0
 incompatabilities = Array[ExtResource("2_wkyug")]([])
+requirements = Array[ExtResource("2_wkyug")]([])

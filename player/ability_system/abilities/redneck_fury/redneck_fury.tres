@@ -14,4 +14,7 @@ flavor_text = "The power of generations of rednecks flows through you..."
 max_amount = 1
 rarity = 2
 icon = ExtResource("2_yllx5")
+guaranteed_at = 0
+required_level = 0
 incompatabilities = Array[ExtResource("2_mgn6p")]([])
+requirements = Array[ExtResource("2_mgn6p")]([])

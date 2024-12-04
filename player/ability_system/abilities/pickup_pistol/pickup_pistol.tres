@@ -17,3 +17,4 @@ icon = ExtResource("2_mp27k")
 guaranteed_at = 1
 required_level = 0
 incompatabilities = Array[ExtResource("1_w54ps")]([])
+requirements = Array[ExtResource("1_w54ps")]([])
