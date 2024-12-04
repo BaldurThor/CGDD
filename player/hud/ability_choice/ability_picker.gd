@@ -27,3 +27,4 @@ func pick_ability(ability: AbilityInfo):
 	
 	visible = false
 	ability_system.add_ability(ability)
+	get_tree().paused = false
