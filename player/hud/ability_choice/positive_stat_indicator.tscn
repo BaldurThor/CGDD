@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://xcjb1k2o4c0j"]
+
+[ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="1_tdh24"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu4ed"]
+font = ExtResource("1_tdh24")
+font_size = 9
+font_color = Color(0.393122, 0.994909, 0.530447, 1)
+
+[node name="PositiveStats" type="Label"]
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "+5% damage"
+label_settings = SubResource("LabelSettings_wu4ed")
+horizontal_alignment = 1
+autowrap_mode = 3

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://dufhryeihr3fe"]
+
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_ahmqn"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.gd" id="1_grxed"]
+[ext_resource type="Texture2D" uid="uid://dqr0arxmq3ons" path="res://player/gun/gun_types/rifle/rifle_placeholder.png" id="2_v1rul"]
+
+[resource]
+script = ExtResource("1_ahmqn")
+ability_script = ExtResource("1_grxed")
+name = "Rifle"
+positive_effects = Array[String](["+1 Rifle"])
+negative_effects = Array[String]([])
+flavor_text = ""
+max_amount = 1
+rarity = 0
+icon = ExtResource("2_v1rul")
+guarenteed_at = 0
+incompatabilities = Array[ExtResource("1_ahmqn")]([])

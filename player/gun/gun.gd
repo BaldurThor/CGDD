@@ -6,13 +6,18 @@ class_name Gun extends Node2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var attack_sound_effect: AudioStreamPlayer2D = $AttackSoundEffect
 @onready var gun: Gun = $"."
-@onready var player_stats: PlayerStats = %PlayerStats
 
 @export var weapon_type: WeaponType
+@export var player_stats: PlayerStats
 @export var bullet_type: PackedScene
 
 signal _burst_attack_signal
 signal _normal_attack_signal
+
+func init(weapon: WeaponType, bullet: PackedScene, stats: PlayerStats):
+	weapon_type = weapon
+	bullet_type = bullet
+	player_stats = stats
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
