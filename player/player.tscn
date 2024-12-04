@@ -1,6 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=41 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
+[ext_resource type="PackedScene" uid="uid://bjtxacd0qfbqj" path="res://menu/death/death.tscn" id="2_4qn83"]
 [ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://player/player_stats.gd" id="2_s8nph"]
 [ext_resource type="Script" path="res://player/gun/gun_rotation.gd" id="4_chwgw"]
@@ -65,6 +66,7 @@ height = 26.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_8f13i")
+death_screen = ExtResource("2_4qn83")
 
 [node name="PlayerStats" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -241,6 +243,7 @@ script = ExtResource("4_chwgw")
 weapon_type = ExtResource("23_nnlt7")
 bullet_type = ExtResource("29_e1fb4")
 
+[connection signal="death" from="PlayerStats" to="." method="_on_player_stats_death"]
 [connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
 [connection signal="level_up" from="Experience" to="AbilitySystem" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
