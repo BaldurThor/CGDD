@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=38 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
 [ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
@@ -25,6 +25,8 @@
 [ext_resource type="Script" path="res://player/hud/hud.gd" id="15_60owl"]
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
+[ext_resource type="Resource" uid="uid://dtw4po3nkf2dj" path="res://player/gun/gun_types/spear_gun/spear_gun.tres" id="20_n34dg"]
+[ext_resource type="PackedScene" uid="uid://dbxkhsyosgs7p" path="res://player/gun/bullets/spear_gun_spear/spear_gun_spear.tscn" id="21_h0w43"]
 [ext_resource type="PackedScene" uid="uid://bpgndgt1oy8r3" path="res://player/gun/bullets/dynamite/dynamite.tscn" id="23_1qrdh"]
 [ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="23_nnlt7"]
 
@@ -178,6 +180,13 @@ script = ExtResource("4_chwgw")
 
 [node name="Pistol" parent="Weapons/PistolSwivel" instance=ExtResource("5_toqby")]
 bullet_type = ExtResource("6_rvydb")
+
+[node name="SpearGunSwivel" type="Node2D" parent="Weapons"]
+script = ExtResource("4_chwgw")
+
+[node name="SpearGun" parent="Weapons/SpearGunSwivel" instance=ExtResource("5_toqby")]
+weapon_type = ExtResource("20_n34dg")
+bullet_type = ExtResource("21_h0w43")
 
 [node name="RifleSwivel" type="Node2D" parent="Weapons"]
 script = ExtResource("4_chwgw")
