@@ -7,5 +7,4 @@ func _ready() -> void:
 	self.set_value_no_signal(value)
 
 func _on_value_changed(value: float) -> void:
-	print(linear_to_db(value))
 	AudioServer.set_bus_volume_db(bus, linear_to_db(value))
