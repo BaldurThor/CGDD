@@ -17,3 +17,4 @@ texture = ExtResource("3_qhvt0")
 [node name="BurstTimer" type="Timer" parent="."]
 
 [node name="AttackSoundEffect" type="AudioStreamPlayer2D" parent="."]
+bus = &"Effects"

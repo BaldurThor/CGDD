@@ -25,3 +25,4 @@ enum Rarity {
 @export var required_level: int = 0
 
 @export var incompatabilities: Array[AbilityInfo]
+@export var requirements: Array[AbilityInfo]
