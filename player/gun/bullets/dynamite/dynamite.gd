@@ -30,6 +30,7 @@ func _on_body_entered(body: Node) -> void:
 		direction = Vector2.ZERO
 
 func _on_despawn_timer_timeout() -> void:
+	GameManager.explosion_occurred.emit()
 	_explode()
 
 func _explode() -> void:

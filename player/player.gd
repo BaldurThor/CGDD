@@ -24,6 +24,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func take_damage(amount: int) -> void:
+	GameManager.player_take_damage.emit(int(player_stats.get_damage_applied(amount)))
 	animation_player.play("take_damage")
 	if player_stats.is_invincible:
 		return

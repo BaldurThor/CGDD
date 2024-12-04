@@ -8,6 +8,7 @@ const EXPERIENCE_GEM = preload("res://entity/experience/experience_gem.tscn")
 @export var xp_drop_amount: int = 1
 
 @onready var entity_stats: EntityStats = %EntityStats
+@onready var hit_sfx: AudioStreamPlayer2D = $HitSFX
 
 func initialize(start_position: Vector2):
 	position = start_position
@@ -31,7 +32,9 @@ func _physics_process(_delta: float) -> void:
 			
 func take_damage(damage: int) -> void:
 	animation_player.play("take_damage")
+	hit_sfx.pitch_scale = randf_range(0.8, 1.2)
 	entity_stats.deal_damage(damage)
+	GameManager.enemy_take_damage.emit(int(entity_stats.get_damage_applied(damage)))
 
 func _on_death() -> void:
 	var gem = EXPERIENCE_GEM.instantiate()

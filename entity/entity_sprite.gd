@@ -7,5 +7,5 @@ func set_flash(value: bool):
 func flash():
 	if material is ShaderMaterial:
 		material.set_shader_parameter("flash", true)
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.1).timeout
 		material.set_shader_parameter("flash", false)

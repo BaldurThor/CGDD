@@ -38,7 +38,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_6m0wd"]
 resource_name = "explode"
-length = 0.51
+length = 0.8
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -72,7 +72,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.51),
+"times": PackedFloat32Array(0.766667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -99,31 +99,35 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_1pm3g"]
-offsets = PackedFloat32Array(0, 0.209957, 0.580087)
-colors = PackedColorArray(1, 1, 1, 1, 0.97328, 0.39599, 1.54018e-06, 1, 0.862745, 0, 0.129412, 1)
+offsets = PackedFloat32Array(0.0785908, 0.208672, 0.392954, 0.97832)
+colors = PackedColorArray(1, 1, 1, 1, 0.97328, 0.39599, 1.54018e-06, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_a372n"]
 gradient = SubResource("Gradient_1pm3g")
 
 [sub_resource type="Curve" id="Curve_kq2h1"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.592308, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.419554, 0.775985), 0.0, 0.0, 0, 0, Vector2(0.917079, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_7jnrc"]
 curve = SubResource("Curve_kq2h1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0j1og"]
+resource_local_to_scene = true
 particle_flag_disable_z = true
 angle_min = -156.2
 angle_max = 161.1
 spread = 180.0
-initial_velocity_min = 137.3
-initial_velocity_max = 327.12
+initial_velocity_min = 239.75
+initial_velocity_max = 569.88
 gravity = Vector3(0, 0, 0)
-scale_min = 0.0
-scale_max = 6.09
+scale_min = 6.09
+scale_max = 19.45
 scale_curve = SubResource("CurveTexture_7jnrc")
 color_ramp = SubResource("GradientTexture1D_a372n")
+turbulence_enabled = true
+turbulence_influence_min = 0.018
+turbulence_influence_max = 0.212
 
 [node name="Dynamite" type="RigidBody2D"]
 collision_layer = 0
