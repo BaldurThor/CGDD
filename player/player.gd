@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @onready var pick_up_sound_effect: AudioStreamPlayer2D = $PickUpSoundEffect
 @onready var sprite: EntitySprite = $PlayerSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var weapon_manager: WeaponManager = $WeaponManager
 
 @export var death_screen: PackedScene
 
