@@ -36,6 +36,9 @@
 [ext_resource type="PackedScene" uid="uid://bpgndgt1oy8r3" path="res://player/gun/bullets/dynamite/dynamite.tscn" id="23_1qrdh"]
 [ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="23_nnlt7"]
 [ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="31_6phdh"]
+[ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/frag_grenade/frag_grenade_thrower.tres" id="23_nnlt7"]
+[ext_resource type="Resource" uid="uid://bqs45ilkxalc2" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="26_xb17a"]
+[ext_resource type="PackedScene" uid="uid://dg7ce24it667e" path="res://player/gun/bullets/frag_grenade/frag_grenade.tscn" id="29_e1fb4"]
 
 [sub_resource type="Gradient" id="Gradient_1aqu2"]
 offsets = PackedFloat32Array(0.559902, 1)
@@ -45,9 +48,6 @@ colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
 gradient = SubResource("Gradient_1aqu2")
 fill = 1
 fill_from = Vector2(0.516239, 0.494017)
-[ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/frag_grenade/frag_grenade_thrower.tres" id="23_nnlt7"]
-[ext_resource type="Resource" uid="uid://bqs45ilkxalc2" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="26_xb17a"]
-[ext_resource type="PackedScene" uid="uid://dg7ce24it667e" path="res://player/gun/bullets/frag_grenade/frag_grenade.tscn" id="29_e1fb4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
