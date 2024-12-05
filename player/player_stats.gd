@@ -66,14 +66,33 @@ class_name PlayerStats extends EntityStats
 		# No need to emit the signal in this setter, as health calls health_updated
 		health = get_real_max_health() * curr_percentage
 
-## A multiplier to the player's regeneration speed. Increasing this value will make the player regenerate health faster.
-@export_range(0.0, 3.0, 0.1) var regen_speed_mod: float = 1.0
 
 @export_category("Other")
 ## Whether the player can regenerate or not. If false, regen cannot affect the player at all.
-@export var can_regen: bool = true
+@export var can_regen: bool = true:
+	set(value):
+		can_regen = value
+		regen_changed.emit()
 
 ## Evaluates the player's max health. Always returns a value equal to or greater than 1.
 func get_real_max_health() -> int:
 	var base = super()
 	return int(max(base * max_health_mod, 1))
+
+## Handles regeneration for the player
+func _on_regen_timer_timeout() -> void:
+	if can_regen and health != get_real_max_health():
+		var real_max_health = get_real_max_health()
+		var regen_amount = regen_amount_flat + (regen_amount_percentile * real_max_health)
+		health = clamp(health + regen_amount, 0, real_max_health)
+
+## Figures out whether the player should regenerate health or not
+func _on_regen_changed() -> void:
+	# If the player can regen and has some regen amount, the timer should tick.
+	if can_regen and (regen_amount_flat != 0 or regen_amount_percentile != 0.0):
+		regen_timer.wait_time = 1 / regen_speed_mod
+		if regen_timer.is_stopped:
+			regen_timer.start()
+	else:
+		# If the player has no regen or cannot regen at all, the timer should not tick.
+		regen_timer.stop()

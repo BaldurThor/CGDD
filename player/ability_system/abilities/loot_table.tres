@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbilityPool" load_steps=16 format=3 uid="uid://ci2k3ke86qm0e"]
+[gd_resource type="Resource" script_class="AbilityPool" load_steps=18 format=3 uid="uid://ci2k3ke86qm0e"]
 
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_7pjxk"]
 [ext_resource type="Resource" uid="uid://bbt18co7pmomp" path="res://player/ability_system/abilities/gator_hide/gator_hide.tres" id="2_eei0h"]
@@ -15,7 +15,9 @@
 [ext_resource type="Resource" uid="uid://de5tqvsoulypj" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.tres" id="12_da51d"]
 [ext_resource type="Resource" uid="uid://23ncruig76id" path="res://player/ability_system/abilities/homemade_moonshine/homemade_moonshine.tres" id="13_jw80q"]
 [ext_resource type="Resource" uid="uid://cruh02v5cpqnc" path="res://player/ability_system/abilities/second_amendment/second_amendment.tres" id="14_lqc7f"]
+[ext_resource type="Resource" uid="uid://crm2dbnqci47u" path="res://player/ability_system/abilities/shades/shades.tres" id="15_rp87o"]
+[ext_resource type="Resource" uid="uid://yxe75l3vp40d" path="res://player/ability_system/abilities/biggest_patriot/biggest_patriot.tres" id="16_5pu36"]
 
 [resource]
 script = ExtResource("3_bjtgc")
-abilities = Array[ExtResource("1_7pjxk")]([ExtResource("8_7q2sg"), ExtResource("9_20rmb"), ExtResource("10_0ve1b"), ExtResource("11_2k0vh"), ExtResource("12_da51d"), ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5"), ExtResource("5_vwjob"), ExtResource("6_pwsg8"), ExtResource("7_d6n8r"), ExtResource("13_jw80q"), ExtResource("14_lqc7f")])
+abilities = Array[ExtResource("1_7pjxk")]([ExtResource("8_7q2sg"), ExtResource("9_20rmb"), ExtResource("10_0ve1b"), ExtResource("11_2k0vh"), ExtResource("12_da51d"), ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5"), ExtResource("5_vwjob"), ExtResource("6_pwsg8"), ExtResource("7_d6n8r"), ExtResource("13_jw80q"), ExtResource("14_lqc7f"), ExtResource("15_rp87o"), ExtResource("16_5pu36")])

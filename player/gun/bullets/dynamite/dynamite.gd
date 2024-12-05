@@ -12,7 +12,6 @@ class_name Dynamite extends RigidBody2D
 var direction: Vector2
 var _weapon_type: WeaponType
 var _player_stats: PlayerStats
-var hit_count: int = 0
 
 func init(weapon_type: WeaponType, player_stats: PlayerStats, bullet_direction: Vector2) -> void:
 	_weapon_type = weapon_type

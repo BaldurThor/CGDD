@@ -8,7 +8,7 @@
 script = ExtResource("3_ulnvx")
 ability_script = ExtResource("1_tc73u")
 name = "Homemade Moonshine"
-positive_effects = Array[String](["+2 health regen", "+5 max health", "+5% faster health regen"])
+positive_effects = Array[String](["+1 health regen", "+5 max health", "+3% faster health regen"])
 negative_effects = Array[String]([])
 flavor_text = "Not as good as the lost bottle..."
 max_amount = 0

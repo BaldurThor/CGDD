@@ -26,7 +26,7 @@ func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
 		body.take_damage(_calculate_damage())
 		# If the bullet has pierced a certain number of times, delete it.
-		if _weapon_type.pierce_count > hit_count:
+		if _weapon_type.pierce_count + _player_stats.extra_projectile_pierce > hit_count:
 			hit_count += 1
 		else:
 			queue_free()

@@ -9,7 +9,8 @@ class_name EntityStats extends Node
 
 signal health_changed(new_health: int, change: int)
 signal max_health_changed(new_max_health: int, change: int)
-signal death
+signal regen_changed()
+signal death()
 signal take_damage(raw_amount: int)
 
 var is_invincible: bool = false
@@ -60,8 +61,14 @@ var is_invincible: bool = false
 @export var attack_speed_mod: float = 1.0
 
 @export_group("Defense")
+## A multiplier to the entity's regeneration speed. Increasing this value will make the regen tick faster.
+@export_range(0.0, 3.0, 0.1) var regen_speed_mod: float = 1.0:
+	set(value):
+		regen_speed_mod = value
+		regen_changed.emit()
 
 @onready var invincibility_timer: Timer = $InvincibilityTimer
+@onready var regen_timer: Timer = $RegenTimer
 
 
 func _on_invincibility_timer_timeout() -> void:
