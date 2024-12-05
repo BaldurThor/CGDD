@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://xw5n4dxry31f"]
+
+[ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
+[ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/cultist/cultist.png" id="2_cmsmt"]
+[ext_resource type="PackedScene" uid="uid://6w6cq3gf86r4" path="res://entity/enemy/enemy_base.tscn" id="3_b0c3y"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_vl4gl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
+radius = 16.0
+
+[node name="Cultist" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_mi8tq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+shape = SubResource("CircleShape2D_h238a")
+
+[node name="EntityStats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_vl4gl")
+armor = 1
+max_health = 10
+health = 10
+movement_speed = 1.0
+contact_damage = 2
+
+[node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
+autostart = true
+
+[node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_b0c3y")]
+sprite = ExtResource("2_cmsmt")
+entity_stats = NodePath("../EntityStats")
+sprite_scale = null
+sprite_offset = null

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcpe4a44c7d2t"
-path="res://.godot/imported/cultist.png-fbfbfb13787024f7085ed3ccad79fd04.ctex"
+uid="uid://cdmq6tgieoclb"
+path="res://.godot/imported/tentacle.png-72475657b8a2635eb644a84229dcbb1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/enemy/enemy_types/test_enemy/cultist.png"
-dest_files=["res://.godot/imported/cultist.png-fbfbfb13787024f7085ed3ccad79fd04.ctex"]
+source_file="res://entity/enemy/enemy_types/tentacle/tentacle.png"
+dest_files=["res://.godot/imported/tentacle.png-72475657b8a2635eb644a84229dcbb1c.ctex"]
 
 [params]
 

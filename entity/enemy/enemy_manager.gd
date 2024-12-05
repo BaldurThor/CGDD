@@ -2,13 +2,22 @@ class_name EnemyManager extends Node
 
 var player: Player
 
+@onready var enemy_timer: Timer = $EnemyTimer
+
 @export var enemy_types: Array[EnemyType] = []
 @export var spawn_radius: float = 300
+
+@export var timer_start_speed: float = 0.6
+@export var timer_end_speed: float = 0.2
 
 @onready var enemies: Node = $Enemies
 
 func _init() -> void:
 	GameManager.assign_enemy_manager(self)
+
+func _process(_delta: float):
+	var percentage = GameManager.game_timer.time_left / GameManager.game_timer.wait_time
+	enemy_timer.wait_time = lerpf(timer_start_speed, timer_end_speed, 1 - percentage)
 
 func _on_enemy_timer_timeout() -> void:
 	if player == null:

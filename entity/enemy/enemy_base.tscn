@@ -1,0 +1,142 @@
+[gd_scene load_steps=16 format=3 uid="uid://6w6cq3gf86r4"]
+
+[ext_resource type="Script" path="res://entity/enemy/enemy_base.gd" id="1_3wcw0"]
+[ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_x7jxo"]
+[ext_resource type="Script" path="res://entity/entity_sprite.gd" id="3_8xh11"]
+[ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="4_yxxgb"]
+[ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="5_t6voh"]
+[ext_resource type="AudioStream" uid="uid://bgqoinfvqwxl" path="res://entity/death.wav" id="6_e1p54"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yg0a"]
+resource_local_to_scene = true
+shader = ExtResource("1_x7jxo")
+shader_parameter/flash = false
+
+[sub_resource type="Animation" id="Animation_qfi7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyBase/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_12j67"]
+resource_name = "take_damage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyBase/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyBase/Sprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"flash"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyBase/DeathSFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qy2j"]
+_data = {
+"RESET": SubResource("Animation_qfi7x"),
+"death": SubResource("Animation_12j67")
+}
+
+[sub_resource type="Gradient" id="Gradient_8rxuc"]
+offsets = PackedFloat32Array(0, 0.707317)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uhhas"]
+gradient = SubResource("Gradient_8rxuc")
+
+[sub_resource type="Curve" id="Curve_o57xc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8914, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a55di"]
+curve = SubResource("Curve_o57xc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8vpuf"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 545.2
+spread = 180.0
+initial_velocity_max = 418.71
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_min = 8.67
+scale_max = 8.67
+scale_curve = SubResource("CurveTexture_a55di")
+color_ramp = SubResource("GradientTexture1D_uhhas")
+turbulence_enabled = true
+
+[node name="EnemyBase" type="Node2D"]
+script = ExtResource("1_3wcw0")
+sprite_scale = null
+sprite_offset = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2yg0a")
+script = ExtResource("3_8xh11")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_yxxgb")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_0qy2j")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_8vpuf")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_t6voh")
+volume_db = 10.0
+bus = &"Effects"
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_e1p54")
+volume_db = 10.0
+bus = &"Effects"
