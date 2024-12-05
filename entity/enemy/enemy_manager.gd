@@ -85,7 +85,7 @@ func get_strongest_enenmy():
 	pass
 	# not sure how we define the strongest
 	
-func get_weekest_enemy() -> Node2D:
+func get_weakest_enemy() -> Node2D:
 	if player == null:
 		player = GameManager.get_player()
 		
