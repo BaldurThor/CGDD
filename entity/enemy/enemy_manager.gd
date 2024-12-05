@@ -39,7 +39,7 @@ func find_target(target_prio : consts.TargetPriority) -> Node2D:
 		return get_farthest_enemy_to_player()
 	elif target_prio == consts.TargetPriority.RANDOM:
 		return get_random_enemy()
-	elif target_prio == consts.TargetPriority.WEEKEST:
+	elif target_prio == consts.TargetPriority.WEAKEST:
 		return get_weekest_enemy()
 		
 	else:
