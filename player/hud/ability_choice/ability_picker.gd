@@ -18,6 +18,7 @@ func refresh_choices():
 	if backlog == 0:
 		visible = false
 		get_tree().paused = false
+		GameManager.lvl_up = false
 		return
 	
 	visible = true
