@@ -40,6 +40,8 @@ func _ready():
 	health_bar.stats_node = entity_stats
 	entity_stats.death.connect(_on_death)
 	entity_stats.take_damage.connect(_on_take_damage)
+	sprite_2d.scale = Vector2.ONE * sprite_scale
+	sprite_2d.position = sprite_offset
 
 func _on_death():
 	animation_player.play("death")
