@@ -81,7 +81,7 @@ func get_random_enemy() -> Node2D:
 	var rand = randi_range(0,len(all_enemies))
 	return all_enemies[rand]
 	
-func get_strongest_enenmy():
+func get_strongest_enemy():
 	pass
 	# not sure how we define the strongest
 	
