@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://xw5n4dxry31f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
-[ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/test_enemy/cultist.png" id="2_cmsmt"]
+[ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/cultist/cultist.png" id="2_cmsmt"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="5_5p7yr"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_vl4gl"]
 
@@ -25,10 +25,10 @@ stats_node = NodePath("../EntityStats")
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_vl4gl")
+armor = 1
 max_health = 10
 health = 10
 movement_speed = 1.0
-armor = 1
 contact_damage = 2
 
 [node name="InvincibilityTimer" type="Timer" parent="EntityStats"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_manager.gd" id="1_vlxsp"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="3_d277p"]
-[ext_resource type="Resource" uid="uid://c46dmrx2g0p7p" path="res://entity/enemy/enemy_types/test_enemy/cultist.tres" id="4_crmm0"]
+[ext_resource type="Resource" uid="uid://c46dmrx2g0p7p" path="res://entity/enemy/enemy_types/cultist/cultist.tres" id="4_crmm0"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_vlxsp")
