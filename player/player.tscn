@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=56 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://player/hud/experience_bar/experience_bar.gd" id="10_pxkv6"]
 [ext_resource type="Script" path="res://entity/experience/experience_radius.gd" id="11_fmot2"]
 [ext_resource type="PackedScene" uid="uid://ckldvouneujm7" path="res://player/hud/stats_display/stats_display.tscn" id="11_g73cy"]
+[ext_resource type="Script" path="res://player/experience_value.gd" id="12_267ds"]
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://entity/experience/xp.wav" id="12_ax3nw"]
 [ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://player/fishing/hook.png" id="12_tp034"]
 [ext_resource type="Script" path="res://player/pickup_radius.gd" id="12_yq8ij"]
@@ -35,6 +36,7 @@
 [ext_resource type="Script" path="res://player/player_camera.gd" id="15_n0ywd"]
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
+[ext_resource type="Script" path="res://player/health_value.gd" id="19_ky1vu"]
 [ext_resource type="Script" path="res://player/weapon_manager.gd" id="24_jn8j2"]
 [ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="31_6phdh"]
 
@@ -178,16 +180,48 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="HealthBar" type="ProgressBar" parent="HUD/VBoxContainer/HBoxContainer/TopLeft" node_paths=PackedStringArray("stats_node")]
+custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_vertical = 1
 theme = ExtResource("13_soul0")
+show_percentage = false
 script = ExtResource("14_543rk")
 stats_node = NodePath("../../../../../PlayerStats")
 
+[node name="HealthValue" type="Label" parent="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_tgkuv")
+theme_override_font_sizes/font_size = 9
+text = "20/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("19_ky1vu")
+
 [node name="ExperienceBar" type="ProgressBar" parent="HUD/VBoxContainer/HBoxContainer/TopLeft"]
+custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("9_3kt64")
+show_percentage = false
 script = ExtResource("10_pxkv6")
+
+[node name="ExperienceValue" type="Label" parent="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_tgkuv")
+theme_override_font_sizes/font_size = 9
+text = "5/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_267ds")
 
 [node name="StatsDisplay" parent="HUD/VBoxContainer" node_paths=PackedStringArray("stats") instance=ExtResource("11_g73cy")]
 layout_mode = 2
@@ -366,6 +400,8 @@ bus = &"Effects"
 [connection signal="regen_changed" from="PlayerStats" to="PlayerStats" method="_on_regen_changed"]
 [connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
+[connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthValue" method="_on_health_bar_health_ratio_changed"]
+[connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
 [connection signal="level_up" from="Experience" to="HUD/AbilityPicker" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

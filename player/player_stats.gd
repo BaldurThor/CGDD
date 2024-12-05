@@ -60,11 +60,18 @@ class_name PlayerStats extends EntityStats
 ## A multiplier to the player's maximum health. Increasing this value should heal the player by the modified amount.
 @export var max_health_mod: float = 1.0:
 	set(value):
+		var current_health = health
+		var current_max_health = get_real_max_health()
 		# Retain the player's current health : max health ratio
-		var curr_percentage = float(health) / get_real_max_health()
-		max_health_mod = value
+		if value > max_health_mod:
+			max_health_mod = value
+			health += get_real_max_health() - current_max_health
+		else:
+			var curr_percentage = float(health) / get_real_max_health()
+			max_health_mod = value
+			health = clamp(health, 1, get_real_max_health())
 		# No need to emit the signal in this setter, as health calls health_updated
-		health = get_real_max_health() * curr_percentage
+		#health = get_real_max_health() * curr_percentage
 
 
 @export_category("Other")
