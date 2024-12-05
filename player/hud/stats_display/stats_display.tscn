@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckldvouneujm7"]
+
+[ext_resource type="Script" path="res://player/hud/stats_display/stats_display.gd" id="1_mkuig"]
+
+[node name="StatsDisplay" type="VBoxContainer"]
+offset_right = 213.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+script = ExtResource("1_mkuig")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Base Damage"
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "5"
