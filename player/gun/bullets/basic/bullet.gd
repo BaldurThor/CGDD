@@ -38,7 +38,7 @@ func _calculate_damage() -> int:
 	var base_damage = (_weapon_type.damage * _weapon_type.damage_effectiveness) + _player_stats.added_ranged_damage
 	var crit_chance = _weapon_type.crit_chance + _player_stats.crit_chance
 	var damage = base_damage * _player_stats.damage_mod
-	var is_crit: bool = randf_range(0.0, 100.0) < crit_chance
+	var is_crit: bool = randf() < crit_chance
 	if is_crit:
 		damage *= (_weapon_type.crit_damage + _player_stats.crit_multiplier)
 	return max(1, int(damage))
