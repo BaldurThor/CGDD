@@ -13,11 +13,13 @@ func _process(delta: float) -> void:
 	
 	tentacle_slam.rotation = lerp_angle(tentacle_slam.rotation, atan2(dir.y, dir.x), delta * rotation_speed)
 	
+	var mat: ShaderMaterial = sprite_2d.material
+	
 	if not attack_timer.is_stopped():
 		var attack_percentage = 1 - attack_timer.time_left / attack_timer.wait_time
-		sprite_2d.modulate = Color(1.0, 1.0, 1.0, attack_percentage)
+		mat.set_shader_parameter("transparency", attack_percentage)
 	else:
-		sprite_2d.modulate = Color.TRANSPARENT
+		mat.set_shader_parameter("transparency", 0)
 
 func attack():
 	for entity in tentacle_slam.get_overlapping_bodies():
@@ -28,6 +30,10 @@ func _on_cooldown_timer_timeout() -> void:
 	attack_timer.start()
 	await attack_timer.timeout
 	attack()
+	var mat: ShaderMaterial = sprite_2d.material
+	mat.set_shader_parameter("flash", true)
+	await get_tree().create_timer(0.1).timeout
+	mat.set_shader_parameter("flash", false)
 	cooldown_timer.start()
 
 func _on_entity_stats_death() -> void:
