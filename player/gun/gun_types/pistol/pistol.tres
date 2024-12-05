@@ -22,6 +22,6 @@ pierce_count = 0
 projectile_speed = 600.0
 projectile_count = 1
 projectile_spread = SubResource("Curve_wnnwa")
-target_priority = 0
+target_priority = 1
 sprite = ExtResource("3_wukbx")
 attack_sfx = ExtResource("1_gc628")

@@ -31,8 +31,9 @@ func _on_enemy_timer_timeout() -> void:
 func find_target(target_prio : consts.TargetPriority):
 	if target_prio == consts.TargetPriority.CLOSEST:
 		return get_closest_enemy_to_player()
+		
 
-func get_closest_enemy_to_player():
+func get_closest_enemy_to_player() -> Node2D:
 	if player == null:
 		player = GameManager.get_player()
 	
@@ -44,3 +45,30 @@ func get_closest_enemy_to_player():
 		elif player.position.distance_to(closest.position) > player.position.distance_to(enemy.position):
 			closest = enemy
 	return closest
+	
+	
+func get_farthest_enemy_to_player() -> Node2D:
+	if player == null:
+		player = GameManager.get_player()
+		
+	var all_enemies = enemies.get_children()
+	var farthest = null
+	for enemy in all_enemies:
+		if farthest == null:
+			farthest = enemy
+		elif player.position.distance_to(farthest.position) < player.position.distance_to(enemy.position):
+			farthest = enemy
+	return farthest
+
+func get_random_enemy() -> Node2D:
+	if player == null:
+		player = GameManager.get_player()
+		
+	var all_enemies = enemies.get_children()
+	var rand = randi_range(0,len(all_enemies))
+	return all_enemies[rand]
+	
+func get_strongest_enenmy():
+	pass
+	# not sure how we define the strongest
+	
