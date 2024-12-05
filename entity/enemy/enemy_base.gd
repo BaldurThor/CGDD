@@ -51,7 +51,6 @@ func _on_death():
 	destroy_object.emit()
 
 func _on_take_damage(_amt: int):
-	animation_player.play("take_damage")
 	sprite_2d.flash()
 	hit_sfx.pitch_scale = randf_range(0.8, 1.2)
 	hit_sfx.play()

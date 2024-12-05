@@ -44,6 +44,8 @@ contact_damage = 4
 [node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
 autostart = true
 
+[node name="RegenTimer" type="Timer" parent="EntityStats"]
+
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_l6rdd")]
 sprite = ExtResource("4_aaljs")
 entity_stats = NodePath("../EntityStats")
