@@ -27,10 +27,20 @@ var is_invincible: bool = false
 ## The amount of damage this entity can take before dying.
 @export var max_health: int:
 	set(value):
-		var delta = max_health - value
-		max_health = max(1, value)
+		var current_max: int = get_real_max_health()
+		# Edge-case where max health is 0 during initialization
+		if current_max == 0:
+			max_health = value
+			return
+		if value > max_health:
+			# If the entity's max health increased, heal it to keep the health : max health ratio
+			max_health = max(1, value)
+			health += max_health - current_max
+		else:
+			# If the entity's max health decreased, clamp its current health to its max health.
+			max_health = max(1, value)
+			health = min(health, max_health)
 		health_changed.emit()
-		health = min(value, health)
 
 # WARNING: DO NOT PUT HEALTH ABOVE MAX_HEALTH. max_health needs to initialize first
 # otherwise health will be clamped between 0 and 0 during initialization.
@@ -38,7 +48,6 @@ var is_invincible: bool = false
 ## The entity's current health
 @export var health: int:
 	set(value):
-		var delta = health - value
 		health = clamp(value, 0, get_real_max_health())
 		health_changed.emit()
 		

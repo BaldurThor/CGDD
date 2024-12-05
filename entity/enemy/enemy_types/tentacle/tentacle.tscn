@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://lekxiv8w7y4f"]
+
+[ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/tentacle.gd" id="1_s45sm"]
+[ext_resource type="PackedScene" uid="uid://6w6cq3gf86r4" path="res://entity/enemy/enemy_base.tscn" id="3_l6rdd"]
+[ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_aaljs"]
+[ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle.gdshader" id="5_056jx"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_mnqrr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vy7hj"]
+radius = 16.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0adt"]
+resource_local_to_scene = true
+shader = ExtResource("5_056jx")
+shader_parameter/transparency = 1.0
+shader_parameter/flash = false
+
+[sub_resource type="Gradient" id="Gradient_b8aj6"]
+colors = PackedColorArray(1, 0, 0, 1, 0.500741, 3.73013e-07, 1.92523e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_38l5h"]
+gradient = SubResource("Gradient_b8aj6")
+fill_to = Vector2(0.919658, 0)
+repeat = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5no7"]
+radius = 21.0
+
+[node name="Tentacle" type="CharacterBody2D" node_paths=PackedStringArray("contact_damage_override")]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_s45sm")
+xp_drop_amount = 5
+contact_damage_override = NodePath("ContactDamage")
+
+[node name="EntityStats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_mnqrr")
+armor = 1
+max_health = 25
+health = 25
+contact_damage = 4
+
+[node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
+autostart = true
+
+[node name="RegenTimer" type="Timer" parent="EntityStats"]
+
+[node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_l6rdd")]
+sprite = ExtResource("4_aaljs")
+entity_stats = NodePath("../EntityStats")
+sprite_scale = 2.0
+sprite_offset = Vector2(0, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+shape = SubResource("CircleShape2D_vy7hj")
+
+[node name="TentacleSlam" type="Area2D" parent="."]
+scale = Vector2(1.5, 1.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TentacleSlam"]
+polygon = PackedVector2Array(100, 0, 92, -38, 70, -70, 0, 0, 70, 70, 92, 44)
+
+[node name="Sprite2D" type="Sprite2D" parent="TentacleSlam"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_a0adt")
+scale = Vector2(3.133, 3.133)
+texture = SubResource("GradientTexture2D_38l5h")
+region_rect = Rect2(-8.48051, 0, 72.4805, 29.612)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="ContactDamage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactDamage"]
+shape = SubResource("CircleShape2D_g5no7")
+
+[connection signal="death" from="EntityStats" to="." method="_on_entity_stats_death"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

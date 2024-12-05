@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckldvouneujm7"]
+
+[ext_resource type="Script" path="res://player/hud/stats_display/stats_display.gd" id="1_mkuig"]
+[ext_resource type="Theme" uid="uid://3715hk3l6f1l" path="res://player/hud/stats_display/stats_display.tres" id="1_ndpbk"]
+
+[node name="StatsDisplay" type="VBoxContainer"]
+offset_right = 213.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+theme = ExtResource("1_ndpbk")
+script = ExtResource("1_mkuig")
+
+[node name="Armor" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Armor"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Arm."
+
+[node name="ArmorAmount" type="Label" parent="Armor"]
+layout_mode = 2
+text = "5"
+
+[node name="MovementSpeed" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MovementSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mov."
+
+[node name="MovementSpeedAmount" type="Label" parent="MovementSpeed"]
+layout_mode = 2
+text = "5"
+
+[node name="ContactDamage" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ContactDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "C.Dmg"
+
+[node name="ContactDamageAmount" type="Label" parent="ContactDamage"]
+layout_mode = 2
+text = "5"
+
+[node name="AttackSpeedModifier" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AttackSpeedModifier"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A.Spd"
+
+[node name="AttackSpeedModifierAmount" type="Label" parent="AttackSpeedModifier"]
+layout_mode = 2
+text = "5"
+
+[node name="RegenSpeedModifier" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RegenSpeedModifier"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reg.Spd"
+
+[node name="RegenSpeedModifierAmount" type="Label" parent="RegenSpeedModifier"]
+layout_mode = 2
+text = "5"
+
+[node name="BaseDamage" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BaseDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "P.Dmg."
+
+[node name="BaseDamageAmount" type="Label" parent="BaseDamage"]
+layout_mode = 2
+text = "5"

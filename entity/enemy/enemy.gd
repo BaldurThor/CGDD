@@ -3,16 +3,16 @@ class_name Enemy extends CharacterBody2D
 var player: Player = null
 
 const EXPERIENCE_GEM = preload("res://entity/experience/experience_gem.tscn")
+const DAMAGE_LABEL = preload("res://entity/enemy/damage_label/damage_label.tscn")
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var xp_drop_amount: int = 1
-@export var damage_label: PackedScene
 
 #depency injected from enemy manager
 @export var damage_label_parent: Node
+@export var contact_damage_override: Area2D
 
 @onready var entity_stats: EntityStats = %EntityStats
-@onready var hit_sfx: AudioStreamPlayer2D = $HitSFX
+@onready var enemy_base: EnemyBase = $EnemyBase
 
 func initialize(start_position: Vector2):
 	position = start_position
@@ -20,6 +20,7 @@ func initialize(start_position: Vector2):
 func _ready() -> void:
 	player = GameManager.get_player()
 	entity_stats.death.connect(_on_death)
+	enemy_base.destroy_object.connect(queue_free)
 
 func _physics_process(_delta: float) -> void:
 	# Make sure a player is present
@@ -28,15 +29,20 @@ func _physics_process(_delta: float) -> void:
 	
 	# Move towards the player
 	var dir: Vector2 = (player.global_position - global_position).normalized()
+	
 	var coll: KinematicCollision2D = move_and_collide(dir * entity_stats.movement_speed)
-
+	
+	if contact_damage_override != null and contact_damage_override.has_overlapping_bodies():
+		for body in contact_damage_override.get_overlapping_bodies():
+			if body.get_instance_id() == player.get_instance_id():
+				body.take_damage(entity_stats.contact_damage)
+				return
+	
 	if coll:
 		if coll.get_collider_id() == player.get_instance_id():
 			player.take_damage(entity_stats.contact_damage)
-			
+	
 func take_damage(damage: int) -> void:
-	animation_player.play("take_damage")
-	hit_sfx.pitch_scale = randf_range(0.8, 1.2)
 	entity_stats.deal_damage(damage)
 	GameManager.enemy_take_damage.emit(int(entity_stats.get_damage_applied(damage)))
 	create_damage_label(damage)
@@ -47,10 +53,12 @@ func _on_death() -> void:
 	gem.global_transform = global_transform
 	var run = get_node("/root/Main/Run")
 	run.add_child.call_deferred(gem)
-	queue_free()
-	animation_player.play("death")
+	
+	# Disable the rigidbody
+	collision_mask = 0
+	collision_layer = 0
 
 func create_damage_label(damage: int) -> void:
-	var label = damage_label.instantiate()
+	var label = DAMAGE_LABEL.instantiate()
 	label.initialize(self.position, damage)
 	damage_label_parent.add_child(label)

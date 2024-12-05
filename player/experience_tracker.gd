@@ -30,11 +30,15 @@ func _gain_experience(amount: int) -> void:
 	pickup_sound_effect.play()
 	update_experience_bar.emit(current_experience)
 	
-	if current_experience >= required_for_level_up:
-		current_level+=1
+	var levelled_up = false
+	while current_experience >= required_for_level_up:
+		levelled_up = true
+		current_level += 1
 		current_experience -= required_for_level_up
 		update_experience_bar.emit(current_experience)
 		required_for_level_up = xp_needed_form(current_level)
 		level_up.emit()
 		GameManager.lvl_up = true
+	
+	if levelled_up:
 		get_tree().paused = true
