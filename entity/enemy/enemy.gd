@@ -57,6 +57,10 @@ func _on_death() -> void:
 	# Disable the rigidbody
 	collision_mask = 0
 	collision_layer = 0
+	
+	if contact_damage_override != null:
+		contact_damage_override.collision_mask = 0
+		contact_damage_override.collision_layer = 0
 
 func create_damage_label(damage: int) -> void:
 	var label = DAMAGE_LABEL.instantiate()
