@@ -1,6 +1,6 @@
 class_name WeaponType extends Resource
 
-enum TargetPriority { CLOSEST, FARTHEST, RANDOM, STRONGEST }
+
 
 @export_category("Primary Stats")
 ## Base damage dealt by each projectile fired by the weapon
@@ -30,7 +30,7 @@ enum TargetPriority { CLOSEST, FARTHEST, RANDOM, STRONGEST }
 
 @export_category("Configuration")
 ## The type of enemy the weapon targets
-@export var target_priority: TargetPriority
+@export var target_priority: consts.TargetPriority
 
 @export_category("Resources")
 ## The sprite used by the weapon

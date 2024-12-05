@@ -6,6 +6,7 @@ var player: Player
 
 @export var enemy_types: Array[EnemyType] = []
 @export var spawn_radius: float = 300
+@export var damage_numbers: Node
 
 @export var timer_start_speed: float = 0.6
 @export var timer_end_speed: float = 0.2
@@ -34,10 +35,26 @@ func _on_enemy_timer_timeout() -> void:
 	
 	enemy.initialize(spawn_location)
 	
+	#inject the damage numbers node into the enemy so it knows where to place the damage numbers!
+	enemy.damage_label_parent = damage_numbers
+	
 	# Spawn the mob by adding it to the Main scene.
 	enemies.add_child(enemy)
+	
+func find_target(target_prio : consts.TargetPriority) -> Node2D:
+	if target_prio == consts.TargetPriority.CLOSEST:
+		return get_closest_enemy_to_player()
+	elif target_prio == consts.TargetPriority.FARTHEST:
+		return get_farthest_enemy_to_player()
+	elif target_prio == consts.TargetPriority.RANDOM:
+		return get_random_enemy()
+	elif target_prio == consts.TargetPriority.WEAKEST:
+		return get_closest_enemy_to_player()
+	else:
+		return get_closest_enemy_to_player()
+		
 
-func get_closest_enemy_to_player():
+func get_closest_enemy_to_player() -> Node2D:
 	if player == null:
 		player = GameManager.get_player()
 	
@@ -49,3 +66,34 @@ func get_closest_enemy_to_player():
 		elif player.position.distance_to(closest.position) > player.position.distance_to(enemy.position):
 			closest = enemy
 	return closest
+	
+	
+func get_farthest_enemy_to_player() -> Node2D:
+	if player == null:
+		player = GameManager.get_player()
+		
+	var all_enemies = enemies.get_children()
+	var farthest = null
+	for enemy in all_enemies:
+		if farthest == null:
+			farthest = enemy
+		elif player.position.distance_to(farthest.position) < player.position.distance_to(enemy.position):
+			farthest = enemy
+	return farthest
+
+func get_random_enemy() -> Node2D:
+	if player == null:
+		player = GameManager.get_player()
+		
+	var all_enemies = enemies.get_children()
+	var rand = randi_range(0,len(all_enemies))
+	return all_enemies[rand]
+	
+func get_strongest_enemy():
+	pass
+	# not sure how we define the strongest
+	
+func get_weakest_enemy():
+	pass
+	
+	

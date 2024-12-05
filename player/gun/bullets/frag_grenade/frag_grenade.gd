@@ -11,11 +11,12 @@ class_name FragGrenade extends RigidBody2D
 
 var direction: Vector2
 var _weapon_type: WeaponType
-var hit_count: int = 0
+var _player_stats: PlayerStats
 signal release_shrapnel
 
-func init(weapon_type: WeaponType, bullet_direction: Vector2) -> void:
+func init(weapon_type: WeaponType, player_stats: PlayerStats, bullet_direction: Vector2) -> void:
 	_weapon_type = weapon_type
+	_player_stats = player_stats
 	direction = bullet_direction
 	release_shrapnel.connect(_release_shrapnel)
 
@@ -49,6 +50,6 @@ func _release_shrapnel() -> void:
 		# Select a random angle between 0° and 360° (as radians) to launch the shrapnel projectile in.
 		# NOTE: deg_to_rad assumes the value received is in radians, not degrees.
 		var shrapnel_orientation = global_position.normalized().rotated(deg_to_rad(randi_range(0, 360)))
-		shrapnel.init(_weapon_type, shrapnel_orientation)
+		shrapnel.init(_weapon_type, _player_stats, shrapnel_orientation)
 		get_tree().root.add_child(shrapnel)
 		shrapnel.position = global_position

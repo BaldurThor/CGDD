@@ -11,10 +11,11 @@ class_name Dynamite extends RigidBody2D
 
 var direction: Vector2
 var _weapon_type: WeaponType
-var hit_count: int = 0
+var _player_stats: PlayerStats
 
-func init(weapon_type: WeaponType, bullet_direction: Vector2) -> void:
+func init(weapon_type: WeaponType, player_stats: PlayerStats, bullet_direction: Vector2) -> void:
 	_weapon_type = weapon_type
+	_player_stats = player_stats
 	direction = bullet_direction
 
 func _ready() -> void:

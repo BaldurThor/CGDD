@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://k0oa36tur6ic"]
+
+[ext_resource type="Script" path="res://entity/enemy/damage_label/damage_label.gd" id="1_7ncbk"]
+
+[node name="Label" type="Label"]
+modulate = Color(1, 0, 0, 1)
+visibility_layer = 524288
+offset_right = 19.0
+offset_bottom = 23.0
+script = ExtResource("1_7ncbk")

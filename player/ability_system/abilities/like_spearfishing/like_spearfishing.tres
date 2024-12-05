@@ -14,4 +14,7 @@ flavor_text = "Through and through"
 max_amount = 0
 rarity = 2
 icon = ExtResource("2_bxpyx")
+guaranteed_at = 0
+required_level = 0
 incompatabilities = Array[ExtResource("1_f17gy")]([])
+requirements = Array[ExtResource("1_f17gy")]([])

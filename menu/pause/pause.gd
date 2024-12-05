@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 		if not get_tree().paused:
 			show()
 			get_tree().paused = true
+		elif GameManager.lvl_up:
+			return
 		elif info_node.visible:
 			info_node.hide()
 		elif options_node.visible:

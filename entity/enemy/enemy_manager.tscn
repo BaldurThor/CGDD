@@ -3,18 +3,20 @@
 [ext_resource type="Script" path="res://entity/enemy/enemy_manager.gd" id="1_vlxsp"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="3_d277p"]
 [ext_resource type="Resource" uid="uid://c46dmrx2g0p7p" path="res://entity/enemy/enemy_types/cultist/cultist.tres" id="4_crmm0"]
-[ext_resource type="Resource" uid="uid://dxc20dc7ykghi" path="res://entity/enemy/enemy_types/tentacle/tentacle.tres" id="4_qmnqc"]
 
-[node name="EnemyManager" type="Node"]
+[node name="EnemyManager" type="Node" node_paths=PackedStringArray("damage_numbers")]
 script = ExtResource("1_vlxsp")
 enemy_types = Array[ExtResource("3_d277p")]([ExtResource("4_crmm0"), ExtResource("4_qmnqc")])
 spawn_radius = 500.0
 timer_end_speed = 0.1
+damage_numbers = NodePath("DamageNumbers")
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.6
 autostart = true
 
 [node name="Enemies" type="Node" parent="."]
+
+[node name="DamageNumbers" type="Node" parent="."]
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

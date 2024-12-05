@@ -30,7 +30,7 @@ func _ready() -> void:
 	attack_sound_effect.stream = weapon_type.attack_sfx
 
 func _attack() -> void:
-	attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod)
+	attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod * player_stats.ranged_attack_speed_mod)
 	
 	if weapon_type.burst == true:
 		_burst_attack_signal.emit()
@@ -50,16 +50,16 @@ func _calculate_spread_vector() -> Vector2:
 
 func _normal_attack() -> void:
 	# Create a bullet and face it in the same direction of the gun swivel
-	var bullet = gun.bullet_type.instantiate()
 	var angle = _calculate_spread_vector()
-	bullet.init(weapon_type, angle)
+	var bullet = gun.bullet_type.instantiate()
+	bullet.init(weapon_type, player_stats, angle)
 	get_tree().root.add_child(bullet)
 	bullet.position = global_position
 
 func _burst_attack() -> void:
 	if weapon_type.delay_between_burst_projectiles > 0:
 		burst_timer.wait_time = weapon_type.delay_between_burst_projectiles
-	for i in range(weapon_type.projectile_count):
+	for i in range(weapon_type.projectile_count + player_stats.extra_projectiles):
 		_normal_attack()
 		if weapon_type.delay_between_burst_projectiles > 0:
 			burst_timer.start()
