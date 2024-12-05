@@ -1,13 +1,20 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://dq5syac80mru7"]
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/redneck_fury/redneck_fury.gd" id="1_yr8t2"]
-[ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://player/fishing/fish.png" id="2_e8h2g"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="2_mgn6p"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_yllx5"]
 
 [resource]
 script = ExtResource("2_mgn6p")
 ability_script = ExtResource("1_yr8t2")
 name = "Redneck Fury"
-rarity = 1
-icon = ExtResource("2_e8h2g")
+positive_effects = Array[String](["200% attack speed"])
+negative_effects = Array[String](["-75% maximum health"])
+flavor_text = "The power of generations of rednecks flows through you..."
+max_amount = 1
+rarity = 2
+icon = ExtResource("2_yllx5")
+guaranteed_at = 0
+required_level = 0
 incompatabilities = Array[ExtResource("2_mgn6p")]([])
+requirements = Array[ExtResource("2_mgn6p")]([])

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://d3rowoeoo4vqm"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.gd" id="1_8joa6"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_w54ps"]
+[ext_resource type="Texture2D" uid="uid://2kw1cwck5jkk" path="res://player/gun/gun_types/pistol/gun_placeholder.png" id="2_mp27k"]
+
+[resource]
+script = ExtResource("1_w54ps")
+ability_script = ExtResource("1_8joa6")
+name = "Pistol"
+positive_effects = Array[String](["+1 Pistol"])
+negative_effects = Array[String]([])
+flavor_text = ""
+max_amount = 0
+rarity = 0
+icon = ExtResource("2_mp27k")
+guaranteed_at = 1
+required_level = 0
+incompatabilities = Array[ExtResource("1_w54ps")]([])
+requirements = Array[ExtResource("1_w54ps")]([])

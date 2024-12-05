@@ -1,4 +1,4 @@
 extends Ability
 
 func apply_effects(player_stats: PlayerStats) -> void:
-	player_stats.crit_chance += 3.0
+	player_stats.dodge_chance += 5.0

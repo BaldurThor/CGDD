@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://chvfuoesc5piw"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.gd" id="1_54fln"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_kqaeq"]
+[ext_resource type="Texture2D" uid="uid://dpr0wk3mbt7ew" path="res://player/gun/bullets/frag_grenade/frag_grenade.png" id="2_6wcqp"]
+
+[resource]
+script = ExtResource("1_kqaeq")
+ability_script = ExtResource("1_54fln")
+name = "Frag Grenades"
+positive_effects = Array[String](["+1 Frag Grenade Thrower"])
+negative_effects = Array[String]([])
+flavor_text = ""
+max_amount = 1
+rarity = 0
+icon = ExtResource("2_6wcqp")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_kqaeq")]([])
+requirements = Array[ExtResource("1_kqaeq")]([])

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://diankjca6mo8a"]
+
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_b4oev"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/roid_rage/roid_rage.gd" id="1_fvboh"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_mpqts"]
+
+[resource]
+script = ExtResource("1_b4oev")
+ability_script = ExtResource("1_fvboh")
+name = "Roid Rage"
+positive_effects = Array[String](["100% increased health modifiers"])
+negative_effects = Array[String](["Cannot regenerate health"])
+flavor_text = "AAAAAAAAAAAAAAAAAAH!!!!!"
+max_amount = 0
+rarity = 2
+icon = ExtResource("2_mpqts")
+guarenteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_b4oev")]([])
