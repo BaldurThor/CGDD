@@ -70,7 +70,7 @@ func _on_invincibility_timer_timeout() -> void:
 func deal_damage(amount: int) -> void:
 	take_damage.emit(amount)
 	
-	var dmg_modified = amount * damage_reduction()
+	var dmg_modified = get_damage_applied(amount)
 	health -= dmg_modified
 	health_changed.emit()
 	
@@ -78,6 +78,9 @@ func deal_damage(amount: int) -> void:
 		is_invincible = true
 		invincibility_timer.wait_time = invincibility_time
 		invincibility_timer.start()
+
+func get_damage_applied(amount: int) -> float:
+	return amount * damage_reduction()
 
 func damage_reduction() -> float:
 	var a: float = (-1.0 + armor) / (4 * armor)

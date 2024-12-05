@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://de5tqvsoulypj"]
+
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_6q6lc"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.gd" id="1_j6xw2"]
+[ext_resource type="Texture2D" uid="uid://2cnkquntr1en" path="res://player/gun/gun_types/spear_gun/spear_gun.png" id="2_j3odx"]
+
+[resource]
+script = ExtResource("1_6q6lc")
+ability_script = ExtResource("1_j6xw2")
+name = "Speargun"
+positive_effects = Array[String](["+1 Speargun"])
+negative_effects = Array[String]([])
+flavor_text = "Launches a fast, penetrating spear"
+max_amount = 1
+rarity = 0
+icon = ExtResource("2_j3odx")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_6q6lc")]([])
+requirements = Array[ExtResource("1_6q6lc")]([])

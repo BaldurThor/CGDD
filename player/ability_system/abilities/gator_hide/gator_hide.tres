@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/gator_hide/gator_hide.gd" id="1_qcqjh"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="2_h5hrw"]
-[ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://player/fishing/fish.png" id="2_s7ucx"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_ltywq"]
 
 [resource]
 script = ExtResource("2_h5hrw")
@@ -13,5 +13,8 @@ negative_effects = Array[String]([])
 flavor_text = "Good for patching your torn clothing"
 max_amount = 0
 rarity = 0
-icon = ExtResource("2_s7ucx")
+icon = ExtResource("2_ltywq")
+guaranteed_at = 0
+required_level = 0
 incompatabilities = Array[ExtResource("2_h5hrw")]([])
+requirements = Array[ExtResource("2_h5hrw")]([])

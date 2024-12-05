@@ -1,4 +1,4 @@
-class_name Bullet extends RigidBody2D
+class_name Bullet extends Area2D
 
 ## The time before the bullet automatically despawns
 @export var despawn_delay: float
@@ -19,8 +19,8 @@ func init(weapon_type: WeaponType, player_stats: PlayerStats, bullet_direction: 
 func _ready() -> void:
 	despawn_timer.wait_time = despawn_delay
 
-func _physics_process(_delta: float) -> void:
-	linear_velocity = direction.normalized() * _weapon_type.projectile_speed
+func _process(delta: float) -> void:
+	position += direction.normalized() * _weapon_type.projectile_speed * delta
 
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
@@ -38,7 +38,7 @@ func _calculate_damage() -> int:
 	var base_damage = (_weapon_type.damage * _weapon_type.damage_effectiveness) + _player_stats.added_ranged_damage
 	var crit_chance = _weapon_type.crit_chance + _player_stats.crit_chance
 	var damage = base_damage * _player_stats.damage_mod
-	var is_crit: bool = randf_range(0.0, 100.0) <= crit_chance
+	var is_crit: bool = randf_range(0.0, 100.0) < crit_chance
 	if is_crit:
 		damage *= (_weapon_type.crit_damage + _player_stats.crit_multiplier)
-	return int(damage)
+	return max(1, int(damage))

@@ -1,18 +1,20 @@
-[gd_scene load_steps=42 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=49 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
+[ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
+[ext_resource type="PackedScene" uid="uid://bjtxacd0qfbqj" path="res://menu/death/death.tscn" id="2_4qn83"]
 [ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://player/player_stats.gd" id="2_s8nph"]
 [ext_resource type="Script" path="res://player/gun/gun_rotation.gd" id="4_chwgw"]
 [ext_resource type="PackedScene" uid="uid://dlu02g3t5bc3x" path="res://player/gun/gun.tscn" id="5_toqby"]
 [ext_resource type="Resource" uid="uid://b5gw2j56cc2f6" path="res://player/gun/gun_types/shotgun/shotgun.tres" id="6_0jfqt"]
-[ext_resource type="Resource" uid="uid://crp6kr4pegrt8" path="res://player/gun/gun_types/rifle/rifle.tres" id="6_hxhvb"]
 [ext_resource type="PackedScene" uid="uid://bssayd55xxlaq" path="res://player/gun/bullets/basic/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://player/gun/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://player/ability_system/abilities/loot_table.tres" id="7_75cg3"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://player/fishing/rod_placeholder.png" id="7_l7pv7"]
 [ext_resource type="Script" path="res://player/hud/ability_choice/ability_picker.gd" id="7_v6y57"]
 [ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="8_18no8"]
+[ext_resource type="Script" path="res://player/hud/hit_indicator.gd" id="8_lh3hs"]
 [ext_resource type="Script" path="res://player/fishing/hook.gd" id="8_qymma"]
 [ext_resource type="Script" path="res://player/hud/countdown_timer.gd" id="9_5x5lc"]
 [ext_resource type="Script" path="res://player/hud/experience_bar.gd" id="10_pxkv6"]
@@ -25,14 +27,26 @@
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="13_vcw5i"]
 [ext_resource type="Script" path="res://player/hud/health_bar/health_bar.gd" id="14_543rk"]
 [ext_resource type="Script" path="res://player/hud/hud.gd" id="15_60owl"]
+[ext_resource type="Script" path="res://entity/entity_sprite.gd" id="15_ckibm"]
+[ext_resource type="Script" path="res://player/player_camera.gd" id="15_n0ywd"]
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
-[ext_resource type="Resource" uid="uid://dtw4po3nkf2dj" path="res://player/gun/gun_types/spear_gun/spear_gun.tres" id="20_n34dg"]
-[ext_resource type="PackedScene" uid="uid://dbxkhsyosgs7p" path="res://player/gun/bullets/spear_gun_spear/spear_gun_spear.tscn" id="21_h0w43"]
-[ext_resource type="PackedScene" uid="uid://bpgndgt1oy8r3" path="res://player/gun/bullets/dynamite/dynamite.tscn" id="23_1qrdh"]
-[ext_resource type="Resource" uid="uid://bnqcmjaa8f43f" path="res://player/gun/gun_types/frag_grenade/frag_grenade_thrower.tres" id="23_nnlt7"]
-[ext_resource type="Resource" uid="uid://bqs45ilkxalc2" path="res://player/gun/gun_types/dynamite/dynamite_thrower.tres" id="26_xb17a"]
-[ext_resource type="PackedScene" uid="uid://dg7ce24it667e" path="res://player/gun/bullets/frag_grenade/frag_grenade.tscn" id="29_e1fb4"]
+[ext_resource type="Script" path="res://player/weapon_manager.gd" id="24_jn8j2"]
+[ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="31_6phdh"]
+
+[sub_resource type="Gradient" id="Gradient_1aqu2"]
+offsets = PackedFloat32Array(0.559902, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ypfjj"]
+gradient = SubResource("Gradient_1aqu2")
+fill = 1
+fill_from = Vector2(0.516239, 0.494017)
+
+[sub_resource type="LabelSettings" id="LabelSettings_asjdf"]
+font_color = Color(1, 0, 0.792157, 1)
+outline_size = 10
+outline_color = Color(1, 0.27451, 0.54902, 0.262745)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -51,8 +65,16 @@ seamless = true
 color_ramp = SubResource("Gradient_wblwn")
 noise = SubResource("FastNoiseLite_eejjh")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qqrlv"]
+resource_local_to_scene = true
+shader = ExtResource("1_321ed")
+shader_parameter/flash = false
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa55p"]
 radius = 16.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_27ynm"]
+noise_type = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35cqd"]
 radius = 35.0
@@ -64,9 +86,50 @@ radius = 25.0
 radius = 7.0
 height = 26.0
 
+[sub_resource type="Animation" id="Animation_ileuq"]
+resource_name = "take_damage"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_flash"
+}, {
+"args": [false],
+"method": &"set_flash"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lwr83"]
+_data = {
+"take_damage": SubResource("Animation_ileuq")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_8f13i")
+death_screen = ExtResource("2_4qn83")
 
 [node name="PlayerStats" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -87,6 +150,7 @@ offset_left = 9.0
 offset_top = 7.0
 offset_right = 138.0
 offset_bottom = 22.0
+mouse_filter = 2
 
 [node name="HealthBar" type="ProgressBar" parent="HUD/TopLeft" node_paths=PackedStringArray("stats_node")]
 layout_mode = 2
@@ -99,30 +163,15 @@ stats_node = NodePath("../../../PlayerStats")
 layout_mode = 2
 script = ExtResource("10_pxkv6")
 
-[node name="AbilityPicker" type="VBoxContainer" parent="HUD"]
-unique_name_in_owner = true
-process_mode = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -51.0
-offset_right = 125.0
-offset_bottom = 51.0
+[node name="PlayerHitIndicator" type="TextureRect" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("7_v6y57")
-
-[node name="Label" type="Label" parent="HUD/AbilityPicker"]
-layout_mode = 2
-text = "Pick Ability"
-horizontal_alignment = 1
-
-[node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilityPicker"]
-layout_mode = 2
-size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_ypfjj")
+script = ExtResource("8_lh3hs")
 
 [node name="TopCenter" type="HBoxContainer" parent="HUD"]
 anchors_preset = 5
@@ -132,6 +181,7 @@ offset_left = -64.5
 offset_right = 64.5
 offset_bottom = 45.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="HUD/TopCenter"]
 layout_mode = 2
@@ -141,6 +191,42 @@ stretch_mode = 5
 [node name="CountdownTimer" type="Label" parent="HUD/TopCenter"]
 layout_mode = 2
 script = ExtResource("9_5x5lc")
+
+[node name="AbilityPicker" type="VBoxContainer" parent="HUD"]
+unique_name_in_owner = true
+process_mode = 2
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -81.0
+offset_right = -28.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("7_v6y57")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilityPicker"]
+layout_mode = 2
+alignment = 1
+
+[node name="PickAbilityLabel" type="Label" parent="HUD/AbilityPicker/HBoxContainer"]
+layout_mode = 2
+text = "Pick Ability"
+horizontal_alignment = 1
+
+[node name="BacklogCount" type="Label" parent="HUD/AbilityPicker/HBoxContainer"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_asjdf")
+horizontal_alignment = 1
+
+[node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilityPicker"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="AbilitySystem" type="Node" parent="."]
 unique_name_in_owner = true
@@ -158,9 +244,11 @@ material = SubResource("ShaderMaterial_upf5s")
 scale = Vector2(0.547852, 0.365234)
 texture = SubResource("NoiseTexture2D_hhvw1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
+material = SubResource("ShaderMaterial_qqrlv")
 texture = ExtResource("13_2cvpx")
+script = ExtResource("15_ckibm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sa55p")
@@ -169,9 +257,13 @@ debug_color = Color(0.456537, 0.00266336, 0.919708, 0.42)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
+script = ExtResource("15_n0ywd")
+max_offset = Vector2(70, 70)
+noise = SubResource("FastNoiseLite_27ynm")
 
 [node name="PickUpSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_ax3nw")
+bus = &"Effects"
 
 [node name="Experience" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -195,73 +287,53 @@ shape = SubResource("CircleShape2D_5cqtx")
 
 [node name="PickupSoundEffect" type="AudioStreamPlayer2D" parent="Experience"]
 stream = ExtResource("12_ax3nw")
+bus = &"Effects"
 
-[node name="Weapons" type="Node2D" parent="."]
+[node name="WeaponManager" type="Node2D" parent="."]
+script = ExtResource("24_jn8j2")
 
-[node name="PistolSwivel" type="Node2D" parent="Weapons"]
+[node name="ShotgunSwivel" type="Node2D" parent="WeaponManager"]
 script = ExtResource("4_chwgw")
 
-[node name="Pistol" parent="Weapons/PistolSwivel" instance=ExtResource("5_toqby")]
-bullet_type = ExtResource("6_rvydb")
-
-[node name="SpearGunSwivel" type="Node2D" parent="Weapons"]
-script = ExtResource("4_chwgw")
-
-[node name="SpearGun" parent="Weapons/SpearGunSwivel" instance=ExtResource("5_toqby")]
-weapon_type = ExtResource("20_n34dg")
-bullet_type = ExtResource("21_h0w43")
-
-[node name="RifleSwivel" type="Node2D" parent="Weapons"]
-script = ExtResource("4_chwgw")
-
-[node name="Rifle" parent="Weapons/RifleSwivel" instance=ExtResource("5_toqby")]
-weapon_type = ExtResource("6_hxhvb")
-bullet_type = ExtResource("6_rvydb")
-
-[node name="ShotgunSwivel" type="Node2D" parent="Weapons"]
-script = ExtResource("4_chwgw")
-
-[node name="Shotgun" parent="Weapons/ShotgunSwivel" instance=ExtResource("5_toqby")]
+[node name="Shotgun" parent="WeaponManager/ShotgunSwivel" node_paths=PackedStringArray("player_stats") instance=ExtResource("5_toqby")]
 weapon_type = ExtResource("6_0jfqt")
+player_stats = NodePath("../../../PlayerStats")
 bullet_type = ExtResource("6_rvydb")
 
-[node name="RodSwivel" type="Node2D" parent="Weapons"]
+[node name="RodSwivel" type="Node2D" parent="WeaponManager"]
 script = ExtResource("6_swhb5")
 
-[node name="Rod" type="Node2D" parent="Weapons/RodSwivel"]
+[node name="Rod" type="Node2D" parent="WeaponManager/RodSwivel"]
 position = Vector2(30, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/RodSwivel/Rod"]
+[node name="Sprite2D" type="Sprite2D" parent="WeaponManager/RodSwivel/Rod"]
 rotation = 0.785398
 texture = ExtResource("7_l7pv7")
 
-[node name="hook" type="StaticBody2D" parent="Weapons/RodSwivel"]
+[node name="hook" type="StaticBody2D" parent="WeaponManager/RodSwivel"]
 collision_layer = 16
 collision_mask = 34
 script = ExtResource("8_qymma")
 
-[node name="hookSprite2D" type="Sprite2D" parent="Weapons/RodSwivel/hook"]
+[node name="hookSprite2D" type="Sprite2D" parent="WeaponManager/RodSwivel/hook"]
 position = Vector2(4, 0)
 texture = ExtResource("12_tp034")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/RodSwivel/hook"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponManager/RodSwivel/hook"]
 shape = SubResource("CapsuleShape2D_dv57t")
 
-[node name="DynamiteSwivel" type="Node2D" parent="Weapons"]
-script = ExtResource("4_chwgw")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lwr83")
+}
 
-[node name="DynamiteThrower" parent="Weapons/DynamiteSwivel" instance=ExtResource("5_toqby")]
-weapon_type = ExtResource("26_xb17a")
-bullet_type = ExtResource("23_1qrdh")
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_6phdh")
+volume_db = 15.0
+bus = &"Effects"
 
-[node name="FragGrenadeSwivel" type="Node2D" parent="Weapons"]
-script = ExtResource("4_chwgw")
-
-[node name="FragGrenadeThrower" parent="Weapons/FragGrenadeSwivel" instance=ExtResource("5_toqby")]
-weapon_type = ExtResource("23_nnlt7")
-bullet_type = ExtResource("29_e1fb4")
-
+[connection signal="death" from="PlayerStats" to="." method="_on_player_stats_death"]
 [connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
-[connection signal="level_up" from="Experience" to="AbilitySystem" method="_on_experience_level_up"]
+[connection signal="level_up" from="Experience" to="HUD/AbilityPicker" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

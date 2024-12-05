@@ -18,5 +18,11 @@ enum Rarity {
 @export var max_amount: int
 @export var rarity: Rarity = Rarity.COMMON
 @export var icon: Texture2D
+# If above 0, then this ability will always be present at the selected level
+@export var guaranteed_at: int = 0
+# If above 0, then this ability will not show up until a certain level. Can
+# be paired up with guarenteed_at to have it only show up at that level
+@export var required_level: int = 0
 
 @export var incompatabilities: Array[AbilityInfo]
+@export var requirements: Array[AbilityInfo]

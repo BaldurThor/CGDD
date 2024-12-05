@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/like_spearfishing/like_spearfishing.gd" id="1_1m40t"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_f17gy"]
-[ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://player/fishing/fish.png" id="2_5r6e6"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_bxpyx"]
 
 [resource]
 script = ExtResource("1_f17gy")
@@ -13,5 +13,8 @@ negative_effects = Array[String](["-10% damage"])
 flavor_text = "Through and through"
 max_amount = 0
 rarity = 2
-icon = ExtResource("2_5r6e6")
+icon = ExtResource("2_bxpyx")
+guaranteed_at = 0
+required_level = 0
 incompatabilities = Array[ExtResource("1_f17gy")]([])
+requirements = Array[ExtResource("1_f17gy")]([])

@@ -1,12 +1,210 @@
-[gd_scene load_steps=6 format=3 uid="uid://xw5n4dxry31f"]
+[gd_scene load_steps=20 format=3 uid="uid://xw5n4dxry31f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
-[ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/cultist/cultist.png" id="2_cmsmt"]
+[ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/test_enemy/cultist.png" id="2_cmsmt"]
+[ext_resource type="Shader" path="res://entity/entity.gdshader" id="2_llogi"]
+[ext_resource type="Script" path="res://entity/entity_sprite.gd" id="3_m0ick"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="5_5p7yr"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_vl4gl"]
+[ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="6_vyvhm"]
+[ext_resource type="AudioStream" uid="uid://bgqoinfvqwxl" path="res://entity/death.wav" id="8_u8oqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 radius = 16.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yg0a"]
+resource_local_to_scene = true
+shader = ExtResource("2_llogi")
+shader_parameter/flash = false
+
+[sub_resource type="Animation" id="Animation_qfi7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_12j67"]
+resource_name = "take_damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/Sprite2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"flash"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeathSFX")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mwpai"]
+resource_name = "take_damage"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"flash"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qy2j"]
+_data = {
+"RESET": SubResource("Animation_qfi7x"),
+"death": SubResource("Animation_12j67"),
+"take_damage": SubResource("Animation_mwpai")
+}
+
+[sub_resource type="Gradient" id="Gradient_8rxuc"]
+offsets = PackedFloat32Array(0, 0.707317)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uhhas"]
+gradient = SubResource("Gradient_8rxuc")
+
+[sub_resource type="Curve" id="Curve_o57xc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8914, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a55di"]
+curve = SubResource("Curve_o57xc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_be7k3"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 545.2
+spread = 180.0
+initial_velocity_max = 418.71
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_min = 8.67
+scale_max = 8.67
+scale_curve = SubResource("CurveTexture_a55di")
+color_ramp = SubResource("GradientTexture1D_uhhas")
+turbulence_enabled = true
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 3
@@ -16,11 +214,15 @@ script = ExtResource("1_mi8tq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_cmsmt")
+[node name="Visuals" type="Node2D" parent="."]
 
-[node name="HealthBar" parent="." node_paths=PackedStringArray("stats_node") instance=ExtResource("5_5p7yr")]
-stats_node = NodePath("../EntityStats")
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+material = SubResource("ShaderMaterial_2yg0a")
+texture = ExtResource("2_cmsmt")
+script = ExtResource("3_m0ick")
+
+[node name="HealthBar" parent="Visuals" node_paths=PackedStringArray("stats_node") instance=ExtResource("5_5p7yr")]
+stats_node = NodePath("../../EntityStats")
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -33,3 +235,26 @@ contact_damage = 2
 
 [node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0qy2j")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_be7k3")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_vyvhm")
+volume_db = 10.0
+bus = &"Effects"
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_u8oqp")
+volume_db = 10.0
+bus = &"Effects"

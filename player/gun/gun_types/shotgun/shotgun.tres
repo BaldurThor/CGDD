@@ -11,9 +11,9 @@ point_count = 2
 
 [resource]
 script = ExtResource("1_12jdb")
-damage = 0.0
-damage_effectiveness = 0.4
-attack_speed = 2.0
+damage = 2
+damage_effectiveness = 0.5
+attack_speed = 1.81
 crit_chance = 0.0
 crit_damage = 0.0
 burst = true
