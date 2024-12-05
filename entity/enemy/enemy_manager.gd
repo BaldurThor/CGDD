@@ -27,6 +27,10 @@ func _on_enemy_timer_timeout() -> void:
 	
 	# Spawn the mob by adding it to the Main scene.
 	enemies.add_child(enemy)
+	
+func find_target(target_prio : consts.TargetPriority):
+	if target_prio == consts.TargetPriority.CLOSEST:
+		return get_closest_enemy_to_player()
 
 func get_closest_enemy_to_player():
 	if player == null:
