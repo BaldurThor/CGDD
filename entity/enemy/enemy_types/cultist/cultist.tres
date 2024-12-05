@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://c46dmrx2g0p7p"]
 
-[ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://entity/enemy/enemy_types/test_enemy/cultist.tscn" id="1_kn0by"]
+[ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://entity/enemy/enemy_types/cultist/cultist.tscn" id="1_kn0by"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="2_ryycv"]
 
 [resource]

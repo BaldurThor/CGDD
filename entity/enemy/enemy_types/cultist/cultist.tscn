@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://xw5n4dxry31f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
-[ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/test_enemy/cultist.png" id="2_cmsmt"]
+[ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/cultist/cultist.png" id="2_cmsmt"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="2_llogi"]
 [ext_resource type="PackedScene" uid="uid://k0oa36tur6ic" path="res://entity/enemy/damage_label/damage_label.tscn" id="2_pbfhd"]
 [ext_resource type="Script" path="res://entity/entity_sprite.gd" id="3_m0ick"]
@@ -237,6 +237,8 @@ contact_damage = 2
 
 [node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
 autostart = true
+
+[node name="RegenTimer" type="Timer" parent="EntityStats"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

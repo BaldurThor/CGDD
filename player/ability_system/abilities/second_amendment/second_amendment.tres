@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://cruh02v5cpqnc"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/second_amendment/second_amendment.gd" id="1_aif1o"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_fbsu7"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_5aoi4"]
+
+[resource]
+script = ExtResource("3_5aoi4")
+ability_script = ExtResource("1_aif1o")
+name = "2nd Amendment"
+positive_effects = Array[String](["+3 ranged weapon damage", "+5% ranged weapon accuracy", "+5% ranged weapon attack speed"])
+negative_effects = Array[String]([])
+flavor_text = "Billy Bob's favorite!"
+max_amount = 0
+rarity = 1
+icon = ExtResource("2_fbsu7")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_5aoi4")]([])
+requirements = Array[ExtResource("3_5aoi4")]([])

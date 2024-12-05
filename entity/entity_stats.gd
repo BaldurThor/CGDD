@@ -9,26 +9,27 @@ class_name EntityStats extends Node
 
 signal health_changed(new_health: int, change: int)
 signal max_health_changed(new_max_health: int, change: int)
-signal death
+signal regen_changed()
+signal death()
 signal take_damage(raw_amount: int)
 
 var is_invincible: bool = false
 
 @export_category("Stats")
 
-@export_group("Offense")
+# @export_group("Offense") unused at the moment. Re-enable if needed
+
+@export_group("Defense")
 
 ## The entity's armor (damage reduction)
 @export var armor: int
-
-@export_group("Defense")
 
 ## The amount of damage this entity can take before dying.
 @export var max_health: int:
 	set(value):
 		var delta = max_health - value
 		max_health = max(1, value)
-		health_changed.emit(value, delta)
+		health_changed.emit()
 		health = min(value, health)
 
 # WARNING: DO NOT PUT HEALTH ABOVE MAX_HEALTH. max_health needs to initialize first
@@ -38,8 +39,8 @@ var is_invincible: bool = false
 @export var health: int:
 	set(value):
 		var delta = health - value
-		health = clamp(value, 0, max_health)
-		health_changed.emit(value, delta)
+		health = clamp(value, 0, get_real_max_health())
+		health_changed.emit()
 		
 		if health == 0:
 			death.emit()
@@ -60,19 +61,25 @@ var is_invincible: bool = false
 @export var attack_speed_mod: float = 1.0
 
 @export_group("Defense")
+## A multiplier to the entity's regeneration speed. Increasing this value will make the regen tick faster.
+@export_range(0.0, 3.0, 0.1) var regen_speed_mod: float = 1.0:
+	set(value):
+		regen_speed_mod = value
+		regen_changed.emit()
 
 @onready var invincibility_timer: Timer = $InvincibilityTimer
+@onready var regen_timer: Timer = $RegenTimer
 
 
 func _on_invincibility_timer_timeout() -> void:
 	is_invincible = false
 
-func deal_damage(amount: int):
+func deal_damage(amount: int) -> void:
 	take_damage.emit(amount)
 	
 	var dmg_modified = get_damage_applied(amount)
 	health -= dmg_modified
-	health_changed.emit(health, dmg_modified)
+	health_changed.emit()
 	
 	if invincibility_time > 0.0:
 		is_invincible = true
@@ -86,3 +93,6 @@ func damage_reduction() -> float:
 	var a: float = (-1.0 + armor) / (4 * armor)
 	var b: float = (log(armor) / log(2)) / 10
 	return max(a + b, 1)
+
+func get_real_max_health() -> int:
+	return max_health

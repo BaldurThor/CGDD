@@ -14,4 +14,7 @@ flavor_text = "Slippery"
 max_amount = 0
 rarity = 1
 icon = ExtResource("2_prjft")
+guaranteed_at = 0
+required_level = 0
 incompatabilities = Array[ExtResource("1_5qkf3")]([])
+requirements = Array[ExtResource("1_5qkf3")]([])

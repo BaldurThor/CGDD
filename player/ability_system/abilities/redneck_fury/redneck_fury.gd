@@ -1,5 +1,5 @@
 extends Ability
 
 func apply_effects(player_stats: PlayerStats) -> void:
-	player_stats.attack_speed_mod *= 2.0
-	player_stats.max_health /= 4.0
+	player_stats.attack_speed_mod += 1.0
+	player_stats.max_health_mod -= 0.75
