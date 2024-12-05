@@ -190,6 +190,7 @@ theme = ExtResource("9_3kt64")
 script = ExtResource("10_pxkv6")
 
 [node name="StatsDisplay" parent="HUD/VBoxContainer" node_paths=PackedStringArray("stats") instance=ExtResource("11_g73cy")]
+visible = false
 layout_mode = 2
 stats = NodePath("../../../PlayerStats")
 
