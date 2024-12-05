@@ -4,6 +4,7 @@ var player: Player
 
 @export var enemy_types: Array[EnemyType] = []
 @export var spawn_radius: float = 300
+@export var damage_numbers: Node
 
 @onready var enemies: Node = $Enemies
 
@@ -24,6 +25,9 @@ func _on_enemy_timer_timeout() -> void:
 	var spawn_location = Vector2(cos(spawn_theta), sin(spawn_theta)) * spawn_radius + player.global_position
 	
 	enemy.initialize(spawn_location)
+	
+	#inject the damage numbers node into the enemy so it knows where to place the damage numbers!
+	enemy.damage_label_parent = damage_numbers
 	
 	# Spawn the mob by adding it to the Main scene.
 	enemies.add_child(enemy)

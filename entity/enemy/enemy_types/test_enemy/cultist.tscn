@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://xw5n4dxry31f"]
+[gd_scene load_steps=21 format=3 uid="uid://xw5n4dxry31f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
 [ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/test_enemy/cultist.png" id="2_cmsmt"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="2_llogi"]
+[ext_resource type="PackedScene" uid="uid://k0oa36tur6ic" path="res://entity/enemy/damage_label/damage_label.tscn" id="2_pbfhd"]
 [ext_resource type="Script" path="res://entity/entity_sprite.gd" id="3_m0ick"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="5_5p7yr"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_vl4gl"]
@@ -210,6 +211,7 @@ turbulence_enabled = true
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_mi8tq")
+damage_label = ExtResource("2_pbfhd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
