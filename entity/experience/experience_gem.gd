@@ -45,5 +45,5 @@ func _on_clump_range_body_entered(body: Node2D) -> void:
 			experience_value += body.experience_value
 			body.queue_free()
 
-func _on_experience_pickup_radius_body_entered(_body: Node2D):
+func _on_experience_pickup_radius_body_entered(_body: Node2D) -> void:
 	start_tracking_player()
