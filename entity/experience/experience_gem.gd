@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		debug_lable.text = "xp value : " + str(experience_value) + "\nTime to despawn : " + str(int(despawn_timer.time_left))
 	var scale_val: float = 1 + experience_value/4
 	sprite.scale = Vector2.ONE * scale_val
-	experience_pickup_radius.scale = Vector2.ONE * scale_val
+	#experience_pickup_radius.scale = Vector2.ONE * scale_val
 	if should_track:
 		linear_velocity = (GameManager.get_player().global_position - global_position).normalized() * tracking_speed
 
