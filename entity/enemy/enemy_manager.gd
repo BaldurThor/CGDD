@@ -40,8 +40,7 @@ func find_target(target_prio : consts.TargetPriority) -> Node2D:
 	elif target_prio == consts.TargetPriority.RANDOM:
 		return get_random_enemy()
 	elif target_prio == consts.TargetPriority.WEAKEST:
-		return get_weekest_enemy()
-		
+		return get_closest_enemy_to_player()
 	else:
 		return get_closest_enemy_to_player()
 		
@@ -85,17 +84,7 @@ func get_strongest_enemy():
 	pass
 	# not sure how we define the strongest
 	
-func get_weakest_enemy() -> Node2D:
-	if player == null:
-		player = GameManager.get_player()
-		
-	var all_enemies = enemies.get_children()
-	var farthest = null
-	for enemy in all_enemies:
-		print(enemy)
-		if farthest == null:
-			farthest = enemy
-		elif player.position.distance_to(farthest.position) < player.position.distance_to(enemy.position):
-			farthest = enemy
-	return farthest
+func get_weakest_enemy():
+	pass
+	
 	
