@@ -8,10 +8,12 @@ class_name Bullet extends RigidBody2D
 
 var direction: Vector2
 var _weapon_type: WeaponType
+var _player_stats: PlayerStats
 var hit_count: int = 0
 
-func init(weapon_type: WeaponType, bullet_direction: Vector2) -> void:
+func init(weapon_type: WeaponType, player_stats: PlayerStats, bullet_direction: Vector2) -> void:
 	_weapon_type = weapon_type
+	_player_stats = player_stats
 	direction = bullet_direction
 
 func _ready() -> void:
@@ -22,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
-		body.take_damage(_weapon_type.damage * _weapon_type.damage_effectiveness)
+		body.take_damage(_calculate_damage())
 		# If the bullet has pierced a certain number of times, delete it.
 		if _weapon_type.pierce_count > hit_count:
 			hit_count += 1
@@ -31,3 +33,12 @@ func _on_body_entered(body: Node) -> void:
 
 func _on_despawn_timer_timeout() -> void:
 	queue_free()
+
+func _calculate_damage() -> int:
+	var base_damage = (_weapon_type.damage * _weapon_type.damage_effectiveness) + _player_stats.added_ranged_damage
+	var crit_chance = _weapon_type.crit_chance + _player_stats.crit_chance
+	var damage = base_damage * _player_stats.damage_mod
+	var is_crit: bool = randf_range(0.0, 100.0) <= crit_chance
+	if is_crit:
+		damage *= (_weapon_type.crit_damage + _player_stats.crit_multiplier)
+	return int(damage)

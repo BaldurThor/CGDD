@@ -60,10 +60,11 @@ class_name PlayerStats extends EntityStats
 ## A multiplier to the player's maximum health. Increasing this value should heal the player by the modified amount.
 @export var max_health_mod: float = 1.0:
 	set(value):
+		# Retain the player's current health : max health ratio
 		var curr_percentage = float(health) / get_real_max_health()
 		max_health_mod = value
 		# No need to emit the signal in this setter, as health calls health_updated
-		health = get_real_max_health * curr_percentage
+		health = get_real_max_health() * curr_percentage
 
 ## A multiplier to the player's regeneration speed. Increasing this value will make the player regenerate health faster.
 @export_range(0.0, 3.0, 0.1) var regen_speed_mod: float = 1.0

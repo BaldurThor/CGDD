@@ -47,7 +47,7 @@ func _normal_attack() -> void:
 	# Create a bullet and face it in the same direction of the gun swivel
 	var bullet = gun.bullet_type.instantiate()
 	var angle = _calculate_spread_vector()
-	bullet.init(weapon_type, angle)
+	bullet.init(weapon_type, player_stats, angle)
 	get_tree().root.add_child(bullet)
 	bullet.position = global_position
 
