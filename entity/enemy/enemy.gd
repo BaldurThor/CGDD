@@ -6,6 +6,10 @@ const EXPERIENCE_GEM = preload("res://entity/experience/experience_gem.tscn")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var xp_drop_amount: int = 1
+@export var damage_label: PackedScene
+
+#depency injected from enemy manager
+@export var damage_label_parent: Node
 
 @onready var entity_stats: EntityStats = %EntityStats
 @onready var hit_sfx: AudioStreamPlayer2D = $HitSFX
@@ -35,6 +39,7 @@ func take_damage(damage: int) -> void:
 	hit_sfx.pitch_scale = randf_range(0.8, 1.2)
 	entity_stats.deal_damage(damage)
 	GameManager.enemy_take_damage.emit(int(entity_stats.get_damage_applied(damage)))
+	create_damage_label(damage)
 
 func _on_death() -> void:
 	var gem = EXPERIENCE_GEM.instantiate()
@@ -44,3 +49,8 @@ func _on_death() -> void:
 	run.add_child.call_deferred(gem)
 	queue_free()
 	animation_player.play("death")
+
+func create_damage_label(damage: int) -> void:
+	var label = damage_label.instantiate()
+	label.initialize(self.position, damage)
+	damage_label_parent.add_child(label)
