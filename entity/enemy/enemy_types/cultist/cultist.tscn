@@ -12,6 +12,7 @@ radius = 16.0
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_mi8tq")
+xp_drop_amount = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
