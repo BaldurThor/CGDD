@@ -104,6 +104,7 @@ shape = SubResource("CircleShape2D_sxexo")
 
 [node name="ExplosionSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_pifym")
+bus = &"Effects"
 
 [node name="ExplosionAnimation" type="AnimationPlayer" parent="."]
 libraries = {
