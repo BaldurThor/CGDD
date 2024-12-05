@@ -10,7 +10,10 @@
 radius = 16.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0adt"]
+resource_local_to_scene = true
 shader = ExtResource("5_056jx")
+shader_parameter/transparency = 1.0
+shader_parameter/flash = false
 
 [sub_resource type="Gradient" id="Gradient_b8aj6"]
 colors = PackedColorArray(1, 0, 0, 1, 0.500741, 3.73013e-07, 1.92523e-07, 1)

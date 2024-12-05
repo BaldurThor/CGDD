@@ -10,3 +10,4 @@ func add_ability(ability: AbilityInfo):
 	loot_table.add_ability_pick_count(ability)
 	ability_node.init(GameManager.get_player())
 	ability_node.apply_effects(player_stats)
+	GameManager.pickup_ability.emit(ability)
