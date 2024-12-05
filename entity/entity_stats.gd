@@ -51,7 +51,7 @@ var is_invincible: bool = false
 		health = clamp(value, 0, get_real_max_health())
 		health_changed.emit()
 		
-		if health == 0:
+		if health <= 0:
 			death.emit()
 
 ## The entity's movement speed.
@@ -84,6 +84,9 @@ func _on_invincibility_timer_timeout() -> void:
 	is_invincible = false
 
 func deal_damage(amount: int) -> void:
+	if health <= 0:
+		return
+	
 	take_damage.emit(amount)
 	
 	var dmg_modified = get_damage_applied(amount)
