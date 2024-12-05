@@ -16,4 +16,3 @@ theme = ExtResource("1_7v70e")
 value = 53.7
 show_percentage = false
 script = ExtResource("2_occ4x")
-health_node_path = NodePath("../EntityHealth")
