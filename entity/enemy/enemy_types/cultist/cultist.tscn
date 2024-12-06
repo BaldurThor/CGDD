@@ -12,7 +12,7 @@ radius = 16.0
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_mi8tq")
-xp_drop_amount = 3
+xp_drop_amount = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
@@ -21,8 +21,8 @@ shape = SubResource("CircleShape2D_h238a")
 unique_name_in_owner = true
 script = ExtResource("6_vl4gl")
 armor = 1
-max_health = 10
-health = 10
+max_health = 6
+health = 6
 movement_speed = 1.25
 contact_damage = 2
 
