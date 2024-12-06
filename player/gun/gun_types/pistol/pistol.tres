@@ -11,7 +11,7 @@ point_count = 2
 
 [resource]
 script = ExtResource("2_1gjob")
-damage = 3.0
+damage = 3
 damage_effectiveness = 1.0
 attack_speed = 1.0
 crit_chance = 0.0
@@ -22,6 +22,8 @@ pierce_count = 0
 projectile_speed = 600.0
 projectile_count = 1
 projectile_spread = SubResource("Curve_wnnwa")
+range = 150.0
 target_priority = 0
 sprite = ExtResource("3_wukbx")
 attack_sfx = ExtResource("1_gc628")
+attack_range_debug_color = Color(0.498039, 1, 0.831373, 0.294118)

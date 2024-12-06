@@ -10,6 +10,7 @@ script = ExtResource("1_gdwfs")
 weapon_type = ExtResource("2_r50kv")
 
 [node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_qhvt0")

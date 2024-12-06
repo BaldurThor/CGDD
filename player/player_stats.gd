@@ -2,6 +2,8 @@
 @icon("res://player/player_stats_icon.svg")
 class_name PlayerStats extends EntityStats
 
+signal range_changed()
+
 @export_category("Stats")
 
 @export_group("Offense - Ranged")
@@ -39,7 +41,10 @@ class_name PlayerStats extends EntityStats
 @export_group("Offense - Ranged")
 
 ## The "accuracy" of the player's weapons. Affects bullet velocity (and therefore range)
-@export_range(0.5, 3.0, 0.01, "or_greater") var ranged_accuracy_mod: float = 1.0
+@export_range(0.5, 3.0, 0.01, "or_greater") var ranged_accuracy_mod: float = 1.0:
+	set(value):
+		ranged_accuracy_mod = value
+		range_changed.emit()
 
 ## Affects the spread of the player's ranged projectiles. A lower value means higher spread.
 @export_range(0.0, 2.0, 0.01, "or_greater") var ranged_spread_mod: float = 0.0

@@ -9,7 +9,6 @@ extends Enemy
 
 func _process(delta: float) -> void:
 	var dir: Vector2 = (player.global_position - global_position).normalized()
-	var new_target_rotation: float = atan2(dir.y, dir.x)
 	
 	tentacle_slam.rotation = lerp_angle(tentacle_slam.rotation, atan2(dir.y, dir.x), delta * rotation_speed)
 	

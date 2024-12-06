@@ -1,16 +1,12 @@
-[gd_scene load_steps=57 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=53 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
 [ext_resource type="PackedScene" uid="uid://bjtxacd0qfbqj" path="res://menu/death/death.tscn" id="2_4qn83"]
 [ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
 [ext_resource type="Script" path="res://player/player_stats.gd" id="2_s8nph"]
-[ext_resource type="Script" path="res://player/gun/gun_rotation.gd" id="4_chwgw"]
 [ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="5_tgkuv"]
-[ext_resource type="PackedScene" uid="uid://dlu02g3t5bc3x" path="res://player/gun/gun.tscn" id="5_toqby"]
-[ext_resource type="Resource" uid="uid://b5gw2j56cc2f6" path="res://player/gun/gun_types/shotgun/shotgun.tres" id="6_0jfqt"]
 [ext_resource type="Script" path="res://player/hud/level_counter.gd" id="6_jtmi4"]
-[ext_resource type="PackedScene" uid="uid://bssayd55xxlaq" path="res://player/gun/bullets/basic/bullet.tscn" id="6_rvydb"]
 [ext_resource type="Script" path="res://player/gun/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://player/ability_system/abilities/loot_table.tres" id="7_75cg3"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://player/fishing/rod_placeholder.png" id="7_l7pv7"]
@@ -143,8 +139,8 @@ script = ExtResource("1_8f13i")
 death_screen = ExtResource("2_4qn83")
 
 [node name="PlayerStats" type="Node2D" parent="."]
-unique_name_in_owner = true
 script = ExtResource("2_s8nph")
+ranged_spread_mod = 1.0
 armor = 1
 max_health = 20
 health = 20
@@ -368,14 +364,6 @@ bus = &"Effects"
 
 [node name="WeaponManager" type="Node2D" parent="."]
 script = ExtResource("24_jn8j2")
-
-[node name="ShotgunSwivel" type="Node2D" parent="WeaponManager"]
-script = ExtResource("4_chwgw")
-
-[node name="Shotgun" parent="WeaponManager/ShotgunSwivel" node_paths=PackedStringArray("player_stats") instance=ExtResource("5_toqby")]
-weapon_type = ExtResource("6_0jfqt")
-player_stats = NodePath("../../../PlayerStats")
-bullet_type = ExtResource("6_rvydb")
 
 [node name="RodSwivel" type="Node2D" parent="WeaponManager"]
 script = ExtResource("6_swhb5")
