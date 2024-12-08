@@ -139,6 +139,7 @@ script = ExtResource("1_8f13i")
 death_screen = ExtResource("2_4qn83")
 
 [node name="PlayerStats" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_s8nph")
 ranged_spread_mod = 1.0
 armor = 1
