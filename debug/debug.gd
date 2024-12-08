@@ -13,7 +13,8 @@ var console_scene : Node = null
 var console_out : RichTextLabel = null
 var console_in : LineEdit = null
 
-func _ready() -> void:
+
+func _ready() -> void:	
 	make_console()
 	# make this script unpausable 
 	set_process_mode(PROCESS_MODE_ALWAYS)
