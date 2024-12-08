@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="WeaponType" load_steps=5 format=3 uid="uid://bqs45ilkxalc2"]
+[gd_resource type="Resource" script_class="WeaponType" load_steps=6 format=3 uid="uid://bqs45ilkxalc2"]
 
 [ext_resource type="AudioStream" uid="uid://dfxpoj4vlhpwc" path="res://player/gun/sfx/throw.wav" id="1_ll6qq"]
 [ext_resource type="Script" path="res://player/gun/weapon_type.gd" id="2_0fdgb"]
-[ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/gun/bullets/dynamite/dynamite.png" id="3_bdho0"]
+[ext_resource type="PackedScene" uid="uid://k275wq28gev0" path="res://player/projectile/projectiles/dynamite/dynamite.tscn" id="2_ct31y"]
+[ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/projectile/projectiles/dynamite/dynamite.png" id="3_qf464"]
 
 [sub_resource type="Curve" id="Curve_65s3s"]
 max_value = 25.0
@@ -11,8 +12,10 @@ point_count = 2
 
 [resource]
 script = ExtResource("2_0fdgb")
-damage = 12
-damage_effectiveness = 0.4
+damage = 10
+secondary_damage = 0
+damage_effectiveness = 0.6
+secondary_damage_effectiveness = 0.0
 attack_speed = 3.96
 crit_chance = 0.0
 crit_damage = 0.0
@@ -22,8 +25,10 @@ pierce_count = 0
 projectile_speed = 400.0
 projectile_count = 1
 projectile_spread = SubResource("Curve_65s3s")
+explosion_radius = 150.0
 attack_range = 200.0
 target_priority = 3
-sprite = ExtResource("3_bdho0")
+sprite = ExtResource("3_qf464")
 attack_sfx = ExtResource("1_ll6qq")
+projectile = ExtResource("2_ct31y")
 attack_range_debug_color = Color(0.343537, 0, 0.120618, 0.364706)

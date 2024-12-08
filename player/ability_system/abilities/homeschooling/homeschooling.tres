@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/homeschooling/homeschooling.gd" id="1_2dytu"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_lo2dt"]
-[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_co36m"]
+[ext_resource type="Texture2D" uid="uid://dimgtntpanbdn" path="res://player/ability_system/abilities/homeschooling/homeschooling.png" id="2_qce6i"]
 
 [resource]
 script = ExtResource("1_lo2dt")
@@ -13,7 +13,7 @@ negative_effects = Array[String]([])
 flavor_text = "Much better than those fancy-pants private schools"
 max_amount = 0
 rarity = 1
-icon = ExtResource("2_co36m")
+icon = ExtResource("2_qce6i")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("1_lo2dt")]([])

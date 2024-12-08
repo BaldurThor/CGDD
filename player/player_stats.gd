@@ -18,6 +18,14 @@ signal experience_absorb_range_changed()
 ## The number of times a projectile can pass through an entity before despawning (additive with weapon/projectile modifiers).
 @export_range(0, 3, 1, "or_greater") var extra_projectile_pierce: int = 0
 
+@export_group("Offense - Explosive")
+
+## A flat bonus to the amount of damage dealt by explosions.
+@export_range(0, 10, 1, "or_greater") var added_explosive_damage: int = 0
+
+## A flat addition to explosive weapons' explosion radii.
+@export_range(0.0, 100.0, 0.1, "or_greater") var added_explosive_radius: float = 0.0
+
 @export_group("Offense - General")
 
 ## The chance of a single projectile of an attack (NOT the entire attack unless it's melee) getting a critical multiplier.
@@ -52,6 +60,15 @@ signal experience_absorb_range_changed()
 
 ## A multiplier to the attack speed of all ranged weapons.
 @export_range(0.5, 3.0, 0.01, "or_greater") var ranged_attack_speed_mod: float = 1.0
+
+
+@export_group("Offense - Explosive")
+
+## A multiplier to the radius of explosions.
+@export_range(0.1, 100.0, 0.1, "or_greater") var explosive_radius_mod: float = 1.0
+
+## A multiplier to all damage dealt by explosions.
+@export_range(0.5, 2.0, 0.1, "or_greater") var explosive_damage_mod: float = 1.0
 
 @export_group("Offense - General")
 

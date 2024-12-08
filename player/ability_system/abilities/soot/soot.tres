@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://nsy35oky4yii"]
+
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_ceb8b"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/soot/soot.gd" id="1_t0hey"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_1fdqb"]
+
+[resource]
+script = ExtResource("1_ceb8b")
+ability_script = ExtResource("1_t0hey")
+name = "Soot"
+positive_effects = Array[String](["+10% explosive damage", "+5 explosive damage"])
+negative_effects = Array[String]([])
+flavor_text = "Covered head-to-toe"
+max_amount = 0
+rarity = 0
+icon = ExtResource("2_1fdqb")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_ceb8b")]([])
+requirements = Array[ExtResource("1_ceb8b")]([])

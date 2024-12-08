@@ -11,7 +11,7 @@ class_name Gun extends Node2D
 
 var _can_attack: bool = true
 var weapon_type: WeaponType = null
-var bullet_type: PackedScene
+var projectile_type: PackedScene
 var player_stats: PlayerStats
 
 
@@ -21,7 +21,7 @@ signal _normal_attack_signal()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	weapon_type = firearm.weapon_type
-	bullet_type = firearm.bullet_type
+	projectile_type = firearm.weapon_type.projectile
 	player_stats = firearm.player_stats
 	attack_timer.timeout.connect(_permit_attacking)
 	attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod)
@@ -35,11 +35,9 @@ func _permit_attacking() -> void:
 	_can_attack = true
 
 func _process(_delta: float) -> void:
-	if _can_attack:
+	if _can_attack and swivel.enemy != null:
 		_can_attack = false
 		attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod * player_stats.ranged_attack_speed_mod)
-		# Wait for the swivel to confirm that the weapon has a target
-		await swivel.target_acquired
 		if weapon_type.burst == true:
 			_burst_attack_signal.emit()
 		else:
@@ -60,7 +58,7 @@ func _calculate_spread_vector() -> Vector2:
 func _normal_attack() -> void:
 	# Create a bullet and face it in the same direction of the gun swivel
 	var angle = _calculate_spread_vector()
-	var bullet = bullet_type.instantiate()
+	var bullet = projectile_type.instantiate()
 	bullet.init(weapon_type, player_stats, angle)
 	get_tree().root.add_child(bullet)
 	bullet.position = global_position

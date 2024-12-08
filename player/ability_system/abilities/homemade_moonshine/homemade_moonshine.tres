@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://23ncruig76id"]
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/homemade_moonshine/homemade_moonshine.gd" id="1_tc73u"]
-[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_61byd"]
+[ext_resource type="Texture2D" uid="uid://b6s0hlp4kqrkh" path="res://player/ability_system/abilities/homemade_moonshine/homemade_moonshine.png" id="2_iak1g"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_ulnvx"]
 
 [resource]
@@ -13,7 +13,7 @@ negative_effects = Array[String]([])
 flavor_text = "Not as good as the lost bottle..."
 max_amount = 0
 rarity = 0
-icon = ExtResource("2_61byd")
+icon = ExtResource("2_iak1g")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("3_ulnvx")]([])

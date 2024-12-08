@@ -1,7 +1,6 @@
 extends Ability
 
-const RIFLE = preload("res://player/gun/gun_types/rifle/rifle.tres")
-const BULLET = preload("res://player/gun/bullets/basic/bullet.tscn")
 
 func apply_effects(_player_stats: PlayerStats) -> void:
-	player.weapon_manager.add_weapon(RIFLE, BULLET)
+	var weapon = load("res://player/gun/gun_types/rifle/rifle.tres")
+	player.weapon_manager.add_weapon(weapon)
