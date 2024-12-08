@@ -36,7 +36,6 @@ func load_data() -> void:
 	master_volume = json.data[OPTIONS_MASTER_VOLUME_KEY]
 	sfx_volume = json.data[OPTIONS_SFX_VOLUME_KEY]
 	music_volume = json.data[OPTIONS_MUSIC_VOLUME_KEY]
-	pass
 
 func save_data() -> void:
 	var save_file = FileAccess.open(OPTIONS_FILE, FileAccess.WRITE)
