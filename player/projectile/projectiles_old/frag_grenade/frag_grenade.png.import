@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dolkn3dbcy2u"
-path="res://.godot/imported/spear_gun_spear.png-3aeda957f0b8f81cd279d2ba04265bfc.ctex"
+uid="uid://dpr0wk3mbt7ew"
+path="res://.godot/imported/frag_grenade.png-949a0f00e602b2f694bf06db4b8180af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/gun/bullets/spear_gun_spear/spear_gun_spear.png"
-dest_files=["res://.godot/imported/spear_gun_spear.png-3aeda957f0b8f81cd279d2ba04265bfc.ctex"]
+source_file="res://player/projectile/projectiles_old/frag_grenade/frag_grenade.png"
+dest_files=["res://.godot/imported/frag_grenade.png-949a0f00e602b2f694bf06db4b8180af.ctex"]
 
 [params]
 

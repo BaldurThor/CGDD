@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dbxkhsyosgs7p"]
 
-[ext_resource type="Script" path="res://player/gun/bullets/spear_gun_spear/spear_gun_spear.gd" id="1_y21kt"]
-[ext_resource type="Texture2D" uid="uid://dolkn3dbcy2u" path="res://player/gun/bullets/spear_gun_spear/spear_gun_spear.png" id="2_yhsj3"]
+[ext_resource type="Script" path="res://player/projectile/projectiles_old/spear_gun_spear/spear_gun_spear.gd" id="1_y21kt"]
+[ext_resource type="Texture2D" uid="uid://dolkn3dbcy2u" path="res://player/projectile/projectiles/spear_gun_spear/spear_gun_spear.png" id="2_yhsj3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5n58v"]
 

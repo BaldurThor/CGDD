@@ -47,6 +47,8 @@ signal weapon_range_changed(new_radius: float)
 @export var sprite: Texture2D
 ## The sound-effect played on attack
 @export var attack_sfx: AudioStream
+## The projectile to spawn on attack
+@export var projectile: PackedScene
 
 @export_category("Debug")
 ## Debug utility which changes the color of the TargetRange's Shape.

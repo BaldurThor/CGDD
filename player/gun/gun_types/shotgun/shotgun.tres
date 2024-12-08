@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="WeaponType" load_steps=5 format=3 uid="uid://b5gw2j56cc2f6"]
+[gd_resource type="Resource" script_class="WeaponType" load_steps=6 format=3 uid="uid://b5gw2j56cc2f6"]
 
 [ext_resource type="Script" path="res://player/gun/weapon_type.gd" id="1_12jdb"]
 [ext_resource type="AudioStream" uid="uid://bnxrdba47kgob" path="res://player/gun/gun_types/shotgun/shotgun.wav" id="1_v4dlo"]
+[ext_resource type="PackedScene" uid="uid://cciirpvfqn260" path="res://player/projectile/projectiles/bullet/bullet.tscn" id="2_i3gk2"]
 [ext_resource type="Texture2D" uid="uid://bwwuweuxkga87" path="res://player/gun/gun_types/shotgun/shotgun_placeholder.png" id="3_gpv5s"]
 
 [sub_resource type="Curve" id="Curve_65s3s"]
@@ -26,4 +27,5 @@ attack_range = 100.0
 target_priority = 0
 sprite = ExtResource("3_gpv5s")
 attack_sfx = ExtResource("1_v4dlo")
+projectile = ExtResource("2_i3gk2")
 attack_range_debug_color = Color(0.341176, 0.92549, 0.45098, 0.227451)

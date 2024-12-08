@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://dg7ce24it667e"]
 
-[ext_resource type="Script" path="res://player/gun/bullets/frag_grenade/frag_grenade.gd" id="1_qdm42"]
-[ext_resource type="PackedScene" uid="uid://bssayd55xxlaq" path="res://player/gun/bullets/basic/bullet.tscn" id="2_5uvxp"]
-[ext_resource type="Texture2D" uid="uid://dpr0wk3mbt7ew" path="res://player/gun/bullets/frag_grenade/frag_grenade.png" id="3_l1vho"]
-[ext_resource type="AudioStream" uid="uid://b1ooitkb0veuk" path="res://player/gun/bullets/sfx/explosion.wav" id="3_pifym"]
+[ext_resource type="Script" path="res://player/projectile/projectiles_old/frag_grenade/frag_grenade.gd" id="1_qdm42"]
+[ext_resource type="PackedScene" path="res://player/projectile/projectiles/basic/bullet.tscn" id="2_5uvxp"]
+[ext_resource type="Texture2D" uid="uid://dpr0wk3mbt7ew" path="res://player/projectile/projectiles_old/frag_grenade/frag_grenade.png" id="3_l1vho"]
+[ext_resource type="AudioStream" uid="uid://b1ooitkb0veuk" path="res://player/projectile/sfx/explosion.wav" id="3_pifym"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5n58v"]
 

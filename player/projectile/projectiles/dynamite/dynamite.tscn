@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://k275wq28gev0"]
+
+[ext_resource type="Script" path="res://player/projectile/projectile.gd" id="1_ru0ko"]
+[ext_resource type="Script" path="res://player/projectile/projectile_travel_behavior.gd" id="2_7vv01"]
+[ext_resource type="Script" path="res://player/projectile/projectile_despawn_behavior.gd" id="3_ylop5"]
+[ext_resource type="PackedScene" uid="uid://dcyl0kip4p1sl" path="res://player/projectile/projectiles/dynamite/dynamite_explosion.tscn" id="4_q8ptw"]
+[ext_resource type="Script" path="res://player/projectile/projectile_impact_behavior.gd" id="4_tf2f2"]
+[ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/projectile/projectiles/dynamite/dynamite.png" id="5_0w6yq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrwwj"]
+
+[node name="Dynamite" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ru0ko")
+
+[node name="ProjectileTravelBehavior" type="Node" parent="."]
+script = ExtResource("2_7vv01")
+stop_on_impact = true
+
+[node name="ProjectileDespawnBehavior" type="Node" parent="."]
+script = ExtResource("3_ylop5")
+scene_to_spawn_on_despawn = ExtResource("4_q8ptw")
+
+[node name="ProjectileImpactBehavior" type="Node" parent="."]
+script = ExtResource("4_tf2f2")
+deal_damage = false
+disable_collision_on_impact = true
+despawn_on_hit = false
+time_before_despawn = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jrwwj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("5_0w6yq")
