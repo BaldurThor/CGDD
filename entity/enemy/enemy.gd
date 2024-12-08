@@ -10,6 +10,8 @@ const DAMAGE_LABEL = preload("res://entity/enemy/damage_label/damage_label.tscn"
 
 # Dependency injected from enemy manager
 @export var damage_label_parent: Node
+var damage_label: Node = null
+
 @export var contact_damage_override: Area2D
 
 @onready var entity_stats: EntityStats = %EntityStats
@@ -66,6 +68,9 @@ func _on_death() -> void:
 		contact_damage_override.collision_layer = 0
 
 func create_damage_label(damage: int) -> void:
-	var label = DAMAGE_LABEL.instantiate()
-	label.initialize(self.position, damage)
-	damage_label_parent.add_child(label)
+	if self.damage_label == null:
+		self.damage_label = DAMAGE_LABEL.instantiate()
+		self.damage_label.initialize(self.position, damage, self.entity_stats.max_health)
+		damage_label_parent.add_child(self.damage_label)
+	else:
+		self.damage_label.update(self.position, damage)
