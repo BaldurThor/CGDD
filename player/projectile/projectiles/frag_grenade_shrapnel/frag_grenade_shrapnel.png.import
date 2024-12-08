@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpr0wk3mbt7ew"
-path="res://.godot/imported/frag_grenade.png-949a0f00e602b2f694bf06db4b8180af.ctex"
+uid="uid://byy1skexi8x4i"
+path="res://.godot/imported/frag_grenade_shrapnel.png-6aaae78ad32ffee97b31111a1933f74e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/projectile/projectiles_old/frag_grenade/frag_grenade.png"
-dest_files=["res://.godot/imported/frag_grenade.png-949a0f00e602b2f694bf06db4b8180af.ctex"]
+source_file="res://player/projectile/projectiles/frag_grenade_shrapnel/frag_grenade_shrapnel.png"
+dest_files=["res://.godot/imported/frag_grenade_shrapnel.png-6aaae78ad32ffee97b31111a1933f74e.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.gd" id="1_54fln"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_kqaeq"]
-[ext_resource type="Texture2D" uid="uid://dpr0wk3mbt7ew" path="res://player/projectile/projectiles_old/frag_grenade/frag_grenade.png" id="2_6wcqp"]
+[ext_resource type="Texture2D" uid="uid://dpr0wk3mbt7ew" path="res://player/projectile/projectiles/frag_grenade/frag_grenade.png" id="2_6wcqp"]
 
 [resource]
 script = ExtResource("1_kqaeq")

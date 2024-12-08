@@ -1,14 +1,20 @@
-extends Area2D
-
-var _damage: int
+class_name DynamiteExplosion extends Area2D
 
 @onready var explosion_animation: AnimationPlayer = $ExplosionAnimation
 @onready var explosion_sound_effect: AudioStreamPlayer2D = $ExplosionSoundEffect
+@onready var damage_calculation: ExplosionDamageCalculation = $DamageCalculation
+@onready var explosion_radius: CollisionShape2D = $ExplosionRadius
 
-func init(_weapon: WeaponType, _stats: PlayerStats, damage: int) -> void:
-	_damage = damage
-	
+var weapon_type: WeaponType = null
+var player_stats: PlayerStats = null
+
+func init(weapon: WeaponType, stats: PlayerStats, _damage: int) -> void:
+	weapon_type = weapon
+	player_stats = stats
+
 func _ready() -> void:
+	explosion_radius.shape.radius = (weapon_type.explosion_radius + player_stats.added_explosive_radius) * player_stats.explosive_radius_mod
+
 	# I hate this
 	await get_tree().create_timer(0.05).timeout
 	_explode()
@@ -21,4 +27,4 @@ func _explode() -> void:
 	GameManager.explosion_occurred.emit()
 	for enemy in nearby_enemies:
 		if enemy is Enemy:
-			enemy.take_damage(_damage)
+			enemy.take_damage(damage_calculation.calculate())
