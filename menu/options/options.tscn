@@ -110,9 +110,6 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="value_changed" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Master" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Master" method="_on_value_changed"]
-[connection signal="value_changed" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Effects" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Effects" method="_on_value_changed"]
-[connection signal="value_changed" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Music" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Music" method="_on_value_changed"]
 [connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" method="_on_gui_input"]
 [connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_exited"]
