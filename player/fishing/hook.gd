@@ -21,7 +21,7 @@ func _ready() -> void:
 	hook_sprite = $hookSprite2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# lock the hook rotation
 	global_rotation = 0.0
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://6w6cq3gf86r4"]
+[gd_scene load_steps=16 format=3 uid="uid://xqbx4dgecmyu"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_base.gd" id="1_3wcw0"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_x7jxo"]

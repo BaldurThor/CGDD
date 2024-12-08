@@ -108,3 +108,6 @@ func damage_reduction() -> float:
 
 func get_real_max_health() -> int:
 	return max_health
+
+func get_health_percentage() -> float:
+	return float(health) / get_real_max_health()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_kq2yi"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_ht6xv"]
-[ext_resource type="PackedScene" uid="uid://6w6cq3gf86r4" path="res://entity/enemy/enemy_base.tscn" id="3_y44kv"]
+[ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_y44kv"]
 [ext_resource type="Texture2D" uid="uid://bf2wcgvous0rr" path="res://entity/enemy/enemy_types/carptist/carptist.png" id="4_jtnca"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]

@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var current_rotation : Vector2 = Vector2(cos(angle) * radius, sin(angle) * radius)
 	set_position(current_rotation + origin)
 	angle += speed

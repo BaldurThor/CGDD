@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://carn1bwqjorbr"]
+
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="1_7c60d"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_ojnrv"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/skeet_shooting/skeet_shooting.gd" id="1_utfct"]
+
+[resource]
+script = ExtResource("1_ojnrv")
+ability_script = ExtResource("1_utfct")
+name = "Skeet Shootin'"
+positive_effects = Array[String](["+15% ranged weapon range", "-5% ranged weapon spread"])
+negative_effects = Array[String]([])
+flavor_text = "This is way more fun than shootin' clay doves!"
+max_amount = 0
+rarity = 0
+icon = ExtResource("1_7c60d")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_ojnrv")]([])
+requirements = Array[ExtResource("1_ojnrv")]([])
