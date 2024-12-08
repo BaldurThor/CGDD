@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://b4pghm3uh5gui"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/dynamite_fishing/dynamite_fishing.gd" id="1_4wjoi"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_qxsbg"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_8boko"]
+
+[resource]
+script = ExtResource("1_qxsbg")
+ability_script = ExtResource("1_4wjoi")
+name = "Dynamite Fishing"
+positive_effects = Array[String](["+10% explosive weapon radius", "+5% explosive weapon damage"])
+negative_effects = Array[String](["-5% attack speed"])
+flavor_text = "What do you mean it's not fair?"
+max_amount = 0
+rarity = 0
+icon = ExtResource("2_8boko")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_qxsbg")]([])
+requirements = Array[ExtResource("1_qxsbg")]([])

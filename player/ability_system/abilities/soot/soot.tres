@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=2 format=3 uid="uid://nsy35oky4yii"]
+
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_ceb8b"]
+
+[resource]
+script = ExtResource("1_ceb8b")
+name = "Soot"
+positive_effects = Array[String](["+10% explosive damage", "+5 explosive damage"])
+negative_effects = Array[String]([])
+flavor_text = "Covered head-to-toe"
+max_amount = 0
+rarity = 0
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_ceb8b")]([])
+requirements = Array[ExtResource("1_ceb8b")]([])

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://yxe75l3vp40d"]
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/biggest_patriot/biggest_patriot.gd" id="1_5mjmf"]
-[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_mj8v4"]
+[ext_resource type="Texture2D" uid="uid://lip8wj5qd5ik" path="res://player/ability_system/abilities/biggest_patriot/biggest_patriot.png" id="2_y77ba"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_fecp1"]
 
 [resource]
@@ -13,7 +13,7 @@ negative_effects = Array[String](["-20% ranged weapon attack speed", "-5% critic
 flavor_text = "What is a kilometer, anyway?"
 max_amount = 1
 rarity = 2
-icon = ExtResource("2_mj8v4")
+icon = ExtResource("2_y77ba")
 guaranteed_at = 0
 required_level = 10
 incompatabilities = Array[ExtResource("3_fecp1")]([])
