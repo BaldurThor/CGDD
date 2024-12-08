@@ -13,5 +13,5 @@ func _handle_despawn() -> void:
 		if obj.has_method("init"):
 			obj.init(projectile.weapon_type, projectile.player_stats, projectile.calculate_damage())
 		obj.global_position = projectile.global_position
-		GameManager.get_game_root().add_child(obj)
+		GameManager.get_game_root().add_child.call_deferred(obj)
 	projectile.queue_free.call_deferred()

@@ -7,10 +7,7 @@ const FIREARM = preload("res://player/gun/firearm.tscn")
 ## Initialize the player with the shotgun via the manager so the player can
 ## have consistent logic between all weapons.
 func _ready() -> void:
-	var weapon = load("res://player/gun/gun_types/rifle/rifle.tres")
-	#var weapon = load("res://player/gun/gun_types/dynamite/dynamite_thrower.tres")
-	#var weapon = load("res://player/gun/gun_types/shotgun/shotgun.tres")
-	#var weapon = load("res://player/gun/gun_types/frag_grenade/frag_grenade_thrower.tres")
+	var weapon = load("res://player/gun/gun_types/shotgun/shotgun.tres")
 	add_weapon(weapon)
 
 func add_weapon(weapon_type: WeaponType) -> void:

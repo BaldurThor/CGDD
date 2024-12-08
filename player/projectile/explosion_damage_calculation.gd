@@ -11,11 +11,8 @@ func _ready() -> void:
 	_player_stats = explosion.player_stats
 	_weapon_type = explosion.weapon_type
 
+## Calculate the damage for the explosion. Explosives cannot crit, but their secondary effects may.
 func calculate() -> int:
-	var base_damage = (_weapon_type.damage + _player_stats.added_explosive_damage) * (_weapon_type.damage_effectiveness + _player_stats.explosive_damage_mod + _player_stats.damage_mod)
-	var crit_chance = _weapon_type.crit_chance + _player_stats.crit_chance
-	var damage: float = float(base_damage) * _player_stats.damage_mod
-	var is_crit: bool = randf() < crit_chance
-	if is_crit:
-		damage *= float(_weapon_type.crit_damage + _player_stats.crit_multiplier)
+	var base_damage = (_weapon_type.damage + _player_stats.added_explosive_damage) * (_weapon_type.damage_effectiveness)
+	var damage: float = float(base_damage) * (_player_stats.damage_mod + _player_stats.explosive_damage_mod)
 	return max(1, int(damage))

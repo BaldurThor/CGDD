@@ -19,13 +19,15 @@ func _ready() -> void:
 
 func _handle_impact(collided_with: Node2D) -> void:
 	if collided_with is Enemy:
+		if collided_with.entity_stats.get_health_percentage() <= 0.0:
+			return
 		if deal_damage:
 			collided_with.take_damage(projectile.calculate_damage())
 		if disable_collision_on_impact:
 			projectile.collision_layer = 0
 			projectile.collision_mask = 0
 		collision_count += 1
-		if despawn_on_hit or (can_pierce and projectile.weapon_type.pierce_count == collision_count - 1):
+		if despawn_on_hit or projectile.weapon_type.pierce_count == collision_count - 1:
 			projectile.despawn.emit()
 
 func _on_timeout() -> void:

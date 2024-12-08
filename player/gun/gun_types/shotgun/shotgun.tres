@@ -13,7 +13,9 @@ point_count = 2
 [resource]
 script = ExtResource("1_12jdb")
 damage = 2
+secondary_damage = 0
 damage_effectiveness = 0.5
+secondary_damage_effectiveness = 0.0
 attack_speed = 1.81
 crit_chance = 0.0
 crit_damage = 0.0
@@ -23,6 +25,7 @@ pierce_count = 0
 projectile_speed = 400.0
 projectile_count = 6
 projectile_spread = SubResource("Curve_65s3s")
+explosion_radius = 0.0
 attack_range = 100.0
 target_priority = 0
 sprite = ExtResource("3_gpv5s")
