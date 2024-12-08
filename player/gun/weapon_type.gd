@@ -3,7 +3,7 @@ class_name WeaponType extends Resource
 
 ## A useful resource which handles all details related to a weapon type's base stats.
 
-signal range_changed(new_radius: float)
+signal weapon_range_changed(new_radius: float)
 
 @export_category("Primary Stats")
 ## Base damage dealt by each projectile fired by the weapon
@@ -33,10 +33,10 @@ signal range_changed(new_radius: float)
 ## The min/max angle of which the projectile is curved when the weapon attacks
 @export var projectile_spread: Curve
 ## The radius of the Area2D which determines the max targeting range
-@export var range: float:
+@export var attack_range: float:
 	set(value):
-		range = value
-		range_changed.emit(value)
+		attack_range = value
+		weapon_range_changed.emit(value)
 
 @export_category("Configuration")
 ## The type of enemy the weapon targets

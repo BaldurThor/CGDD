@@ -2,7 +2,8 @@
 @icon("res://player/player_stats_icon.svg")
 class_name PlayerStats extends EntityStats
 
-signal range_changed()
+signal player_range_changed()
+signal experience_absorb_range_changed()
 
 @export_category("Stats")
 
@@ -41,10 +42,10 @@ signal range_changed()
 @export_group("Offense - Ranged")
 
 ## The "accuracy" of the player's weapons. Affects bullet velocity (and therefore range)
-@export_range(0.5, 3.0, 0.01, "or_greater") var ranged_accuracy_mod: float = 1.0:
+@export_range(0.5, 3.0, 0.01, "or_greater") var ranged_range_mod: float = 1.0:
 	set(value):
-		ranged_accuracy_mod = value
-		range_changed.emit()
+		ranged_range_mod = value
+		player_range_changed.emit()
 
 ## Affects the spread of the player's ranged projectiles. A lower value means higher spread.
 @export_range(0.0, 2.0, 0.01, "or_greater") var ranged_spread_mod: float = 0.0
@@ -65,14 +66,12 @@ signal range_changed()
 ## A multiplier to the player's maximum health. Increasing this value should heal the player by the modified amount.
 @export var max_health_mod: float = 1.0:
 	set(value):
-		var current_health = health
 		var current_max_health = get_real_max_health()
 		# Retain the player's current health : max health ratio
 		if value > max_health_mod:
 			max_health_mod = value
 			health += get_real_max_health() - current_max_health
 		else:
-			var curr_percentage = float(health) / get_real_max_health()
 			max_health_mod = value
 			health = clamp(health, 1, get_real_max_health())
 		# No need to emit the signal in this setter, as health calls health_updated
@@ -85,6 +84,21 @@ signal range_changed()
 	set(value):
 		can_regen = value
 		regen_changed.emit()
+
+## A multiplier to experience gained by the player.
+@export var experience_gain_mod: float = 1.0
+
+## The base absorb range for experience orbs for the player. Should not change at runtime.
+@export var experience_absorb_range: float
+
+## A multiplier to the player's experience absorb range. May be changed at runtime.
+@export var experience_absorb_range_mod: float = 1.0:
+	set(value):
+		experience_absorb_range_mod = value
+		experience_absorb_range_changed.emit()
+
+## A multiplier to the speed of the experience orbs when they are drawn towards the player.
+@export var experience_orb_absorb_speed_mod: float = 1.0
 
 ## Evaluates the player's max health. Always returns a value equal to or greater than 1.
 func get_real_max_health() -> int:

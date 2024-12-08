@@ -14,6 +14,7 @@ const DAMAGE_LABEL = preload("res://entity/enemy/damage_label/damage_label.tscn"
 
 @onready var entity_stats: EntityStats = %EntityStats
 @onready var enemy_base: EnemyBase = $EnemyBase
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 func initialize(start_position: Vector2) -> void:
 	position = start_position

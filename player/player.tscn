@@ -142,6 +142,7 @@ death_screen = ExtResource("2_4qn83")
 unique_name_in_owner = true
 script = ExtResource("2_s8nph")
 ranged_spread_mod = 1.0
+experience_absorb_range = 35.0
 armor = 1
 max_health = 20
 health = 20
@@ -399,6 +400,7 @@ volume_db = 15.0
 bus = &"Effects"
 
 [connection signal="death" from="PlayerStats" to="." method="_on_player_stats_death"]
+[connection signal="experience_absorb_range_changed" from="PlayerStats" to="Experience/AbsorbRadius" method="_on_player_stats_experience_absorb_range_changed"]
 [connection signal="regen_changed" from="PlayerStats" to="PlayerStats" method="_on_regen_changed"]
 [connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]

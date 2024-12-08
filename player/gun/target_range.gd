@@ -11,13 +11,13 @@ var current_target: Enemy
 
 func _ready() -> void:
 	_on_player_stats_range_changed()
-	gun_swivel.player_stats.range_changed.connect(_on_player_stats_range_changed)
+	gun_swivel.player_stats.player_range_changed.connect(_on_player_stats_range_changed)
 	target_range_shape.debug_color = gun_swivel.weapon_type.attack_range_debug_color
 
 ## Signal receiver which handles any changes to the weapon's accuracy.
 ## NOTE: If weapon-specific scaling is ever added, this must be updated.
 func _on_player_stats_range_changed() -> void:
-	target_range_shape.shape.radius = gun_swivel.weapon_type.range * gun_swivel.player_stats.ranged_accuracy_mod
+	target_range_shape.shape.radius = gun_swivel.weapon_type.attack_range * gun_swivel.player_stats.ranged_range_mod
 
 ## Retrieves a single enemy based on the weapon type's target priority.
 func get_target() -> Enemy:

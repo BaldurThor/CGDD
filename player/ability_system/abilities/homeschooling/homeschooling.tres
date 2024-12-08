@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://dk7wlysrb1oyl"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/homeschooling/homeschooling.gd" id="1_2dytu"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_lo2dt"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_co36m"]
+
+[resource]
+script = ExtResource("1_lo2dt")
+ability_script = ExtResource("1_2dytu")
+name = "Homeschooling"
+positive_effects = Array[String](["+10% experience gained", "+25% experience absorb range"])
+negative_effects = Array[String]([])
+flavor_text = "Much better than those fancy-pants private schools"
+max_amount = 0
+rarity = 1
+icon = ExtResource("2_co36m")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_lo2dt")]([])
+requirements = Array[ExtResource("1_lo2dt")]([])

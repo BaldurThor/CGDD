@@ -37,11 +37,9 @@ func _permit_attacking() -> void:
 func _process(_delta: float) -> void:
 	if _can_attack:
 		_can_attack = false
-		print("attacking")
 		attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod * player_stats.ranged_attack_speed_mod)
-		#var target = target_range.get_target(weapon_type.target_priority)
+		# Wait for the swivel to confirm that the weapon has a target
 		await swivel.target_acquired
-		#if target != null:
 		if weapon_type.burst == true:
 			_burst_attack_signal.emit()
 		else:

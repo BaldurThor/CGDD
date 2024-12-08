@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbilityPool" load_steps=18 format=3 uid="uid://ci2k3ke86qm0e"]
+[gd_resource type="Resource" script_class="AbilityPool" load_steps=20 format=3 uid="uid://ci2k3ke86qm0e"]
 
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_7pjxk"]
 [ext_resource type="Resource" uid="uid://bbt18co7pmomp" path="res://player/ability_system/abilities/gator_hide/gator_hide.tres" id="2_eei0h"]
@@ -17,7 +17,9 @@
 [ext_resource type="Resource" uid="uid://cruh02v5cpqnc" path="res://player/ability_system/abilities/second_amendment/second_amendment.tres" id="14_lqc7f"]
 [ext_resource type="Resource" uid="uid://crm2dbnqci47u" path="res://player/ability_system/abilities/shades/shades.tres" id="15_rp87o"]
 [ext_resource type="Resource" uid="uid://yxe75l3vp40d" path="res://player/ability_system/abilities/biggest_patriot/biggest_patriot.tres" id="16_5pu36"]
+[ext_resource type="Resource" uid="uid://carn1bwqjorbr" path="res://player/ability_system/abilities/skeet_shooting/skeet_shooting.tres" id="17_8t3e7"]
+[ext_resource type="Resource" uid="uid://dk7wlysrb1oyl" path="res://player/ability_system/abilities/homeschooling/homeschooling.tres" id="18_7ngye"]
 
 [resource]
 script = ExtResource("3_bjtgc")
-abilities = Array[ExtResource("1_7pjxk")]([ExtResource("8_7q2sg"), ExtResource("9_20rmb"), ExtResource("10_0ve1b"), ExtResource("11_2k0vh"), ExtResource("12_da51d"), ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5"), ExtResource("5_vwjob"), ExtResource("6_pwsg8"), ExtResource("7_d6n8r"), ExtResource("13_jw80q"), ExtResource("14_lqc7f"), ExtResource("15_rp87o"), ExtResource("16_5pu36")])
+abilities = Array[ExtResource("1_7pjxk")]([ExtResource("8_7q2sg"), ExtResource("9_20rmb"), ExtResource("10_0ve1b"), ExtResource("11_2k0vh"), ExtResource("12_da51d"), ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5"), ExtResource("5_vwjob"), ExtResource("6_pwsg8"), ExtResource("7_d6n8r"), ExtResource("13_jw80q"), ExtResource("14_lqc7f"), ExtResource("15_rp87o"), ExtResource("16_5pu36"), ExtResource("17_8t3e7"), ExtResource("18_7ngye")])

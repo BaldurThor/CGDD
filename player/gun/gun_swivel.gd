@@ -6,7 +6,6 @@ var weapon_type: WeaponType = null
 var bullet_type: PackedScene = null
 var player_stats: PlayerStats = null
 
-@onready var _gun: Gun = $Gun
 @onready var _target_range: TargetRange = $"../TargetRange"
 @onready var firearm: Firearm = $".."
 
@@ -16,7 +15,6 @@ func _ready() -> void:
 	self.player_stats = firearm.player_stats
 
 func _process(_delta: float) -> void:
-	var a = get_children()
 	var enemy = _target_range.get_target()
 	if enemy != null:
 		look_at(enemy.position)

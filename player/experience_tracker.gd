@@ -8,8 +8,10 @@ var required_for_level_up: int = xp_needed_form(0)
 
 signal gain_experience(amount: int)
 signal update_experience_bar(experience: int)
-signal level_up
+signal level_up()
+
 @onready var pickup_sound_effect: AudioStreamPlayer2D = $PickupSoundEffect
+@onready var player_stats: PlayerStats = %PlayerStats
 
 func _ready() -> void:
 	gain_experience.connect(_gain_experience)
@@ -25,7 +27,7 @@ func xp_needed_form(level : int) -> int:
 	return (level ** 2) + (3 * level) + 10
 
 func _gain_experience(amount: int) -> void:
-	current_experience += amount
+	current_experience += int(amount * player_stats.experience_gain_mod)
 	pickup_sound_effect.pitch_scale = clamp(1.0 + (float(current_experience) / float(required_for_level_up)), 0.1, 2)
 	pickup_sound_effect.play()
 	update_experience_bar.emit(current_experience)
