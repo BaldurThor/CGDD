@@ -37,7 +37,6 @@ func make_console() -> void:
 	# make a signal for when text is edited
 	console_in.text_submitted.connect(self._on_text_submitted)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_open"):
@@ -53,4 +52,10 @@ func _process(_delta: float) -> void:
 		get_tree().paused = console_enabled
 		
 func _on_text_submitted(text) -> void:
-	console_out.text += text + "\n"
+	var parse_err = expression.parse(text)
+	# code that runs if there is an error
+	if parse_err != OK:
+		console_out.text += expression.get_error_text() + "\n"
+	
+	var res = expression.execute([], DebugCommands)
+	console_out.text += str(res) + "\n"
