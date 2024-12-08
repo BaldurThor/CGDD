@@ -26,6 +26,7 @@ deal_damage = false
 disable_collision_on_impact = true
 despawn_on_hit = false
 time_before_despawn = 1.0
+can_pierce = false
 
 [node name="DespawnBehavior" type="Node" parent="."]
 script = ExtResource("4_rl8wp")
