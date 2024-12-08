@@ -1,4 +1,4 @@
-class_name debug extends Node
+extends Node
 
 #Constants
 var CONSOLE_SCENE = preload("res://debug/console.tscn")
@@ -15,16 +15,27 @@ var console_in : LineEdit = null
 
 func _ready() -> void:
 	make_console()
+	# make this script unpausable 
+	set_process_mode(PROCESS_MODE_ALWAYS)
+	
+	
+func assigne_console_out(obj : RichTextLabel) -> void:
+	console_out = obj
+	
+func assigne_console_in(obj : LineEdit) -> void:
+	console_in = obj
 
 # makes the console and sets all needed variables
 func make_console() -> void:
-	set_process_mode(PROCESS_MODE_ALWAYS)
+
 	expression = Expression.new()
 	console_scene = CONSOLE_SCENE.instantiate()
+	
 	add_child(console_scene)
-	console_out = console_scene.get_child(0)
-	console_in = console_scene.get_child(1)
 	console_scene.visible = false
+	
+	# make a signal for when text is edited
+	console_in.text_submitted.connect(self._on_text_submitted)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,3 +51,6 @@ func _process(_delta: float) -> void:
 			console_in.clear()
 			
 		get_tree().paused = console_enabled
+		
+func _on_text_submitted(text) -> void:
+	console_out.text += text + "\n"
