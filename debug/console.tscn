@@ -14,12 +14,12 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="console_out" type="RichTextLabel" parent="VBoxContainer"]
+[node name="ConsoleOut" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 fit_content = true
 script = ExtResource("1_ejd44")
 
-[node name="console_in" type="LineEdit" parent="VBoxContainer"]
+[node name="ConsoleIn" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
 script = ExtResource("2_lytu7")

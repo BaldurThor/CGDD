@@ -1,6 +1,6 @@
 extends Node
 
 func toggle_debug() -> String:
-	Debug.enable = false if Debug.enable else true
+	Debug.enable = not Debug.enable
 	
 	return "Debug.enable : " + str(Debug.enable)
