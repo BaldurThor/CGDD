@@ -63,3 +63,11 @@ func assign_enemy_manager(enemy_manager: EnemyManager) -> void:
 
 func get_enemy_manager() -> EnemyManager:
 	return _enemy_manager
+
+func quit() -> void:
+	SaveManager.save_data()
+	get_tree().quit()
+
+func _notification(type: int) -> void:
+	if type == NOTIFICATION_WM_CLOSE_REQUEST:
+		quit()

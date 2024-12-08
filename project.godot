@@ -22,6 +22,7 @@ Debug="*res://debug/debug.gd"
 DebugCommands="*res://debug/debug_commands.gd"
 GameManager="*res://game_manager.gd"
 BackgroundMusic="*res://music/background_music.tscn"
+SaveManager="*res://save_manager.gd"
 
 [display]
 
