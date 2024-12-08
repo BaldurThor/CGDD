@@ -66,3 +66,11 @@ func get_enemy_manager() -> EnemyManager:
 
 func get_game_root() -> Node2D:
 	return _player.get_parent()
+
+func quit() -> void:
+	SaveManager.save_data()
+	get_tree().quit()
+
+func _notification(type: int) -> void:
+	if type == NOTIFICATION_WM_CLOSE_REQUEST:
+		quit()

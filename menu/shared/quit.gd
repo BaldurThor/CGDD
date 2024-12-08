@@ -10,4 +10,4 @@ func _on_mouse_exited() -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_pressed():
-		get_tree().quit()
+		GameManager.quit()
