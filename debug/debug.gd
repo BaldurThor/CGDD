@@ -13,6 +13,9 @@ var console_scene : Node = null
 var console_out : RichTextLabel = null
 var console_in : LineEdit = null
 
+# History
+var history: Array[String] = []
+var history_index: int = -1
 
 func _ready() -> void:	
 	make_console()
@@ -54,9 +57,32 @@ func _process(_delta: float) -> void:
 		
 func _on_text_submitted(text) -> void:
 	var parse_err = expression.parse(text)
+	
+	history.push_front(text)
+	history_index = -1
+	console_in.clear()
+	
 	# code that runs if there is an error
 	if parse_err != OK:
 		console_out.text += expression.get_error_text() + "\n"
 	
 	var res = expression.execute([], DebugCommands)
 	console_out.text += str(res) + "\n"
+
+
+func _input(event : InputEvent) -> void:
+	if event is InputEventKey:
+		if Input.is_action_just_released('debug_hist_pref'):
+			if history.size() == 0:
+				return
+			history_index = clamp(history_index + 1, 0, history.size() - 1)
+			console_in.text = history[history_index]
+			# Hack to make the caret go to the end of the line
+			# If I ever have a line of code over 100k characters, please send help
+			console_in.caret_column = 100000
+		elif Input.is_action_just_released('debug_hist_next'):
+			if history.size() == 0 or history_index <= 0:
+				return
+			history_index = clamp(history_index - 1, 0, history.size() - 1)
+			console_in.text = history[history_index]
+			console_in.caret_column = 100000
