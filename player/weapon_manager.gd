@@ -8,10 +8,10 @@ const MELEE_WEAPON = preload("res://player/melee/melee_weapon.tscn")
 ## Initialize the player with the shotgun via the manager so the player can
 ## have consistent logic between all weapons.
 func _ready() -> void:
-	#var weapon = load("res://player/gun/gun_types/shotgun/shotgun.tres")
-	var weapon = load("res://player/melee/metal_baseball_bat/metal_baseball_bat.tres")
-	#add_weapon(weapon)
-	add_melee_weapon(weapon)
+	var weapon = load("res://player/gun/gun_types/shotgun/shotgun.tres")
+	#var weapon = load("res://player/melee/metal_baseball_bat/metal_baseball_bat.tres")
+	add_weapon(weapon)
+	#add_melee_weapon(weapon)
 
 func add_weapon(weapon_type: WeaponType) -> void:
 	var firearm = FIREARM.instantiate()
