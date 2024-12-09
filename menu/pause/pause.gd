@@ -13,4 +13,4 @@ func _process(_delta: float) -> void:
 			return
 		
 		visible = not visible
-		GameManager.set_pause(self, not visible)
+		GameManager.set_pause(self, visible)

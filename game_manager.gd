@@ -85,9 +85,9 @@ func get_world_level_progress() -> float:
 
 func set_pause(id: Node, paused: bool) -> void:
 	if paused:
-		unpause(id)
-	else:
 		pause(id)
+	else:
+		unpause(id)
 
 func toggle_pause(id: Node) -> void:
 	if id in pause_tracker:
