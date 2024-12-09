@@ -28,6 +28,7 @@ func reset_timer() -> void:
 	game_timer = Timer.new()
 	game_timer.wait_time = 1200 / 2
 	game_timer.one_shot = true
+	game_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	
 func reset_tree() -> void:
 	get_tree().paused = false

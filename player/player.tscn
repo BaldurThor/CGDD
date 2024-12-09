@@ -964,7 +964,7 @@ shape = SubResource("CircleShape2D_sa55p")
 debug_color = Color(0.456537, 0.00266336, 0.919708, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.25, 1.25)
 position_smoothing_enabled = true
 script = ExtResource("15_n0ywd")
 max_offset = Vector2(70, 70)
