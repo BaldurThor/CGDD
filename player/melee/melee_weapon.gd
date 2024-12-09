@@ -54,5 +54,5 @@ func _strike() -> bool:
 	var knockback = melee_damage_calculation.calculate_knockback()
 	for target in targets:
 		if target is Enemy:
-			target.take_damage(melee_damage_calculation.calculate(), knockback)
+			target.take_damage(melee_damage_calculation.calculate_damage(), knockback)
 	return true
