@@ -1,16 +1,17 @@
-class_name ProjectileSecondaryDamageCalculation extends Node
+class_name MeleeDamageCalculation extends Node
 
-@onready var projectile: Projectile = $".."
+@onready var melee: Melee = $".."
+
 var _player_stats: PlayerStats = null
 var _weapon_type: WeaponType = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_player_stats = projectile.player_stats
-	_weapon_type = projectile.weapon_type
+	_player_stats = melee.player_stats
+	_weapon_type = melee.weapon_type
 
 func calculate_damage() -> int:
-	var base_damage = (_weapon_type.secondary_damage + _player_stats.added_ranged_damage) * _weapon_type.secondary_damage_effectiveness
+	var base_damage = (_weapon_type.damage + _player_stats.added_melee_damage) * _weapon_type.damage_effectiveness
 	var crit_chance = _weapon_type.crit_chance + _player_stats.crit_chance
 	var damage: float = float(base_damage) * _player_stats.damage_mod
 	var is_crit: bool = randf() < crit_chance
@@ -20,5 +21,5 @@ func calculate_damage() -> int:
 
 func calculate_knockback() -> int:
 	if _weapon_type.can_knockback:
-		return _weapon_type.secondary_knockback
+		return int((_weapon_type.knockback + _player_stats.added_melee_knockback) * _player_stats.melee_knockback_mod)
 	return 0

@@ -10,7 +10,7 @@ func _ready() -> void:
 	_player_stats = projectile.player_stats
 	_weapon_type = projectile.weapon_type
 
-func calculate() -> int:
+func calculate_damage() -> int:
 	var base_damage = (_weapon_type.damage + _player_stats.added_ranged_damage) * _weapon_type.damage_effectiveness
 	var crit_chance = _weapon_type.crit_chance + _player_stats.crit_chance
 	var damage: float = float(base_damage) * _player_stats.damage_mod
@@ -18,3 +18,8 @@ func calculate() -> int:
 	if is_crit:
 		damage *= float(_weapon_type.crit_damage + _player_stats.crit_multiplier)
 	return max(1, int(damage))
+
+func calculate_knockback() -> int:
+	if _weapon_type.can_knockback:
+		return _weapon_type.knockback
+	return 0

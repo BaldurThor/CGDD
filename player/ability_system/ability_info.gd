@@ -4,6 +4,7 @@ enum Rarity {
 	COMMON,
 	UNCOMMON,
 	RARE,
+	CORRUPTED,
 }
 
 @export var ability_script: Script
