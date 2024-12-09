@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=72 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -35,9 +35,14 @@
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
 [ext_resource type="Shader" path="res://player/hud/level_effect.gdshader" id="19_74cft"]
 [ext_resource type="Script" path="res://player/health_value.gd" id="19_ky1vu"]
-[ext_resource type="Script" path="res://player/levels/level_graphics.gd" id="22_ffm7r"]
-[ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://player/levels/level1/level1_background.png" id="23_77gle"]
+[ext_resource type="Script" path="res://levels/level_aesthetics.gd" id="22_ffm7r"]
+[ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://levels/level1/level1_background.png" id="23_77gle"]
 [ext_resource type="Script" path="res://player/weapon_manager.gd" id="24_jn8j2"]
+[ext_resource type="AudioStream" uid="uid://bylxksq47v5jc" path="res://levels/level1/rage-15292.mp3" id="26_dwusy"]
+[ext_resource type="Shader" path="res://levels/flashlight.gdshader" id="26_ybvvv"]
+[ext_resource type="AudioStream" uid="uid://c6lmy1o8c81rn" path="res://levels/level3/the-unkillable-155342.mp3" id="28_aow06"]
+[ext_resource type="AudioStream" uid="uid://bxapg40fyu7qy" path="res://levels/level2/deadite-ash-vs-evil-dead-song-8688.mp3" id="29_7cluu"]
+[ext_resource type="AudioStream" uid="uid://bvfislwpk2aub" path="res://levels/level4/fury-253300.mp3" id="30_5weuf"]
 [ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="31_6phdh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4lj6"]
@@ -86,16 +91,32 @@ shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
 shader = ExtResource("2_k5ka0")
 shader_parameter/scale = 4.0
 shader_parameter/power = 1.0
-shader_parameter/modulate = Color(0.492816, 0.479556, 0.886175, 1)
+shader_parameter/modulate = Color(0.273938, 0.23476, 0.611301, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7m1hu"]
 shader = ExtResource("19_74cft")
 shader_parameter/scale = 1.0
-shader_parameter/speed = 2.0
-shader_parameter/color = Color(0.261723, 0.326431, 0.631302, 1)
+shader_parameter/speed = 4.0
+shader_parameter/color = Color(0.0289914, 0.0455986, 0.132388, 1)
 shader_parameter/modulate = Color(1, 1, 1, 0.505882)
 shader_parameter/cutoff = -0.47
 shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqm6f"]
+shader = ExtResource("26_ybvvv")
+shader_parameter/modulate = Color(0.745098, 0.819608, 0.972549, 0.364706)
+shader_parameter/steps = 12
+
+[sub_resource type="Gradient" id="Gradient_prtup"]
+offsets = PackedFloat32Array(0, 0.535452)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ifgk3"]
+gradient = SubResource("Gradient_prtup")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r3ydj"]
 shader = ExtResource("2_k5ka0")
@@ -106,11 +127,16 @@ shader_parameter/modulate = Color(0.439185, 0.14302, 0.563848, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_30ge2"]
 shader = ExtResource("19_74cft")
 shader_parameter/scale = 1.0
-shader_parameter/speed = 2.0
+shader_parameter/speed = 8.0
 shader_parameter/color = Color(0.241222, 0.0586888, 0.287606, 1)
 shader_parameter/modulate = Color(1, 1, 1, 0.505882)
 shader_parameter/cutoff = -0.47
 shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm4i7"]
+shader = ExtResource("26_ybvvv")
+shader_parameter/modulate = Color(0.547275, 0.3331, 0.795522, 0.364706)
+shader_parameter/steps = 12
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ct3wy"]
 shader = ExtResource("2_k5ka0")
@@ -121,11 +147,16 @@ shader_parameter/modulate = Color(0.516634, 1.39579e-06, 0.310591, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pg48r"]
 shader = ExtResource("19_74cft")
 shader_parameter/scale = 1.0
-shader_parameter/speed = 10.0
-shader_parameter/color = Color(0.302308, 0.0557081, 4.81308e-08, 1)
-shader_parameter/modulate = Color(1, 1, 1, 0.505882)
-shader_parameter/cutoff = -0.47
+shader_parameter/speed = 16.0
+shader_parameter/color = Color(0.0288407, 6.58038e-09, 1.88011e-09, 1)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/cutoff = 0.0
 shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2wy2"]
+shader = ExtResource("26_ybvvv")
+shader_parameter/modulate = Color(0.894118, 0.388235, 0.639216, 0.152941)
+shader_parameter/steps = 12
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qqrlv"]
 resource_local_to_scene = true
@@ -366,12 +397,12 @@ loot_table = ExtResource("7_75cg3")
 [node name="HealthBar" parent="." node_paths=PackedStringArray("stats_node") instance=ExtResource("13_vcw5i")]
 stats_node = NodePath("../PlayerStats")
 
-[node name="LevelGraphics" type="Node2D" parent="."]
+[node name="LevelAesthetics" type="Node2D" parent="."]
 script = ExtResource("22_ffm7r")
 
-[node name="Level1" type="Node2D" parent="LevelGraphics"]
+[node name="Level1" type="Node2D" parent="LevelAesthetics"]
 
-[node name="BGSprite" type="Sprite2D" parent="LevelGraphics/Level1"]
+[node name="BGSprite" type="Sprite2D" parent="LevelAesthetics/Level1"]
 z_index = -50
 texture_filter = 1
 texture_repeat = 2
@@ -379,7 +410,7 @@ material = SubResource("ShaderMaterial_upf5s")
 scale = Vector2(3.94531, 2.6302)
 texture = ExtResource("23_77gle")
 
-[node name="LevelEffects" type="Sprite2D" parent="LevelGraphics/Level1"]
+[node name="LevelEffects" type="Sprite2D" parent="LevelAesthetics/Level1"]
 z_index = -50
 texture_filter = 1
 texture_repeat = 2
@@ -387,59 +418,95 @@ material = SubResource("ShaderMaterial_plmxn")
 scale = Vector2(3.94531, 2.6302)
 texture = ExtResource("23_77gle")
 
-[node name="Level2" type="Node2D" parent="LevelGraphics"]
+[node name="Music" type="AudioStreamPlayer" parent="LevelAesthetics/Level1"]
+process_mode = 3
+stream = ExtResource("26_dwusy")
 
-[node name="BGSprite" type="Sprite2D" parent="LevelGraphics/Level2"]
-z_index = -50
+[node name="Level2" type="Node2D" parent="LevelAesthetics"]
+
+[node name="BGSprite" type="Sprite2D" parent="LevelAesthetics/Level2"]
+z_index = -49
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_qx478")
 scale = Vector2(3.94531, 2.6302)
 texture = ExtResource("23_77gle")
 
-[node name="LevelEffects" type="Sprite2D" parent="LevelGraphics/Level2"]
-z_index = -50
+[node name="LevelEffects" type="Sprite2D" parent="LevelAesthetics/Level2"]
+z_index = -49
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_7m1hu")
 scale = Vector2(3.94531, 2.6302)
 texture = ExtResource("23_77gle")
 
-[node name="Level3" type="Node2D" parent="LevelGraphics"]
+[node name="Flashlight" type="Sprite2D" parent="LevelAesthetics/Level2"]
+z_index = -49
+material = SubResource("ShaderMaterial_pqm6f")
+scale = Vector2(1.33594, 1.33594)
+texture = SubResource("GradientTexture2D_ifgk3")
 
-[node name="BGSprite" type="Sprite2D" parent="LevelGraphics/Level3"]
-z_index = -50
+[node name="Music" type="AudioStreamPlayer" parent="LevelAesthetics/Level2"]
+process_mode = 3
+stream = ExtResource("29_7cluu")
+
+[node name="Level3" type="Node2D" parent="LevelAesthetics"]
+visible = false
+
+[node name="BGSprite" type="Sprite2D" parent="LevelAesthetics/Level3"]
+z_index = -48
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_r3ydj")
 scale = Vector2(3.94531, 2.6302)
 texture = ExtResource("23_77gle")
 
-[node name="LevelEffects" type="Sprite2D" parent="LevelGraphics/Level3"]
-z_index = -50
+[node name="LevelEffects" type="Sprite2D" parent="LevelAesthetics/Level3"]
+z_index = -48
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_30ge2")
 scale = Vector2(3.94531, 2.6302)
 texture = ExtResource("23_77gle")
 
-[node name="Level4" type="Node2D" parent="LevelGraphics"]
+[node name="Flashlight" type="Sprite2D" parent="LevelAesthetics/Level3"]
+z_index = -48
+material = SubResource("ShaderMaterial_sm4i7")
+scale = Vector2(1.33594, 1.33594)
+texture = SubResource("GradientTexture2D_ifgk3")
 
-[node name="BGSprite" type="Sprite2D" parent="LevelGraphics/Level4"]
-z_index = -50
+[node name="Music" type="AudioStreamPlayer" parent="LevelAesthetics/Level3"]
+process_mode = 3
+stream = ExtResource("28_aow06")
+
+[node name="Level4" type="Node2D" parent="LevelAesthetics"]
+visible = false
+
+[node name="BGSprite" type="Sprite2D" parent="LevelAesthetics/Level4"]
+z_index = -47
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_ct3wy")
 scale = Vector2(3.94531, 2.6302)
 texture = ExtResource("23_77gle")
 
-[node name="LevelEffects" type="Sprite2D" parent="LevelGraphics/Level4"]
-z_index = -50
+[node name="LevelEffects" type="Sprite2D" parent="LevelAesthetics/Level4"]
+z_index = -47
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_pg48r")
 scale = Vector2(3.94531, 2.6302)
 texture = ExtResource("23_77gle")
+
+[node name="Flashlight" type="Sprite2D" parent="LevelAesthetics/Level4"]
+z_index = -47
+material = SubResource("ShaderMaterial_f2wy2")
+scale = Vector2(1.33594, 1.33594)
+texture = SubResource("GradientTexture2D_ifgk3")
+
+[node name="Music" type="AudioStreamPlayer" parent="LevelAesthetics/Level4"]
+process_mode = 3
+stream = ExtResource("30_5weuf")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
