@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2kiqklk3b5fp"]
+[gd_scene load_steps=7 format=3 uid="uid://c2kiqklk3b5fp"]
 
 [ext_resource type="Script" path="res://player/gun/gun_swivel.gd" id="1_e0va4"]
 [ext_resource type="Script" path="res://player/gun/firearm.gd" id="1_og432"]
 [ext_resource type="Script" path="res://player/gun/gun.gd" id="2_xqite"]
 [ext_resource type="Script" path="res://player/gun/target_range.gd" id="3_jb0ya"]
+[ext_resource type="Script" path="res://player/gun/crosshair.gd" id="5_1v42o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4fb0h"]
 resource_local_to_scene = true
@@ -34,3 +35,8 @@ script = ExtResource("3_jb0ya")
 
 [node name="TargetRangeShape" type="CollisionShape2D" parent="TargetRange"]
 shape = SubResource("CircleShape2D_4fb0h")
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+script = ExtResource("5_1v42o")
