@@ -26,7 +26,7 @@ func reset_timer() -> void:
 		var main = get_node("/root/Main")
 		main.remove_child(game_timer)
 	game_timer = Timer.new()
-	game_timer.wait_time = 1200
+	game_timer.wait_time = 1200 / 2
 	game_timer.one_shot = true
 	
 func reset_tree() -> void:

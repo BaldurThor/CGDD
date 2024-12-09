@@ -67,6 +67,8 @@ func _on_death() -> void:
 	collision_mask = 0
 	collision_layer = 0
 	
+	GameManager.enemy_died.emit()
+	
 	if contact_damage_override != null:
 		contact_damage_override.collision_mask = 0
 		contact_damage_override.collision_layer = 0

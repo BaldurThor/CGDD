@@ -21,8 +21,8 @@ func _ready():
 	new_level = levels[0]
 	levels[0].get_node("Music").play()
 
-func _on_new_world_level(new_level: int):
-	set_level(new_level)
+func _on_new_world_level(level: int):
+	set_level(level)
 
 func set_level(level: int) -> void:
 	animation_player.play("level_transition")
@@ -44,7 +44,6 @@ func transition_next_level():
 	var music: AudioStreamPlayer = new_level.get_node("Music")
 	music.volume_db = 0
 	music.play()
-	var tween = get_tree().create_tween()
 	var nodes_to_clear = get_tree().get_nodes_in_group("level_clear")
 	for node in nodes_to_clear:
 		node.queue_free()

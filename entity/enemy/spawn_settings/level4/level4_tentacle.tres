@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=3 format=3 uid="uid://bqyfjv85wr6hl"]
+
+[ext_resource type="Resource" uid="uid://dxc20dc7ykghi" path="res://entity/enemy/enemy_types/tentacle/tentacle.tres" id="1_airl6"]
+[ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="2_un813"]
+
+[resource]
+script = ExtResource("2_un813")
+enemy_type = ExtResource("1_airl6")
+strength_multiplier = 4.0
+starting_spawn_rate = 1.5
+ending_spawn_rate = 0.7

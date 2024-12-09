@@ -252,6 +252,7 @@ fill_to = Vector2(0.564103, 0.45641)
 resource_local_to_scene = true
 shader = ExtResource("1_321ed")
 shader_parameter/flash = false
+shader_parameter/modulate = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa55p"]
 radius = 16.0

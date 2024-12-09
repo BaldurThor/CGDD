@@ -7,4 +7,3 @@
 script = ExtResource("2_ryycv")
 name = "Cultist"
 enemy_scene = ExtResource("1_kn0by")
-spawn_rate = 1.0

@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="LevelSpawnSettings" load_steps=3 format=3 uid="uid://bal88yqws87j5"]
+[gd_resource type="Resource" script_class="LevelSpawnSettings" load_steps=6 format=3 uid="uid://bal88yqws87j5"]
 
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_53eob"]
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="2_hs13f"]
+[ext_resource type="Resource" uid="uid://0m6d1hviptg7" path="res://entity/enemy/spawn_settings/level4/level4_carptist.tres" id="2_hxq1x"]
+[ext_resource type="Resource" uid="uid://bqyfjv85wr6hl" path="res://entity/enemy/spawn_settings/level4/level4_tentacle.tres" id="3_sbm02"]
+[ext_resource type="Resource" uid="uid://dfrmdq7stvhgb" path="res://entity/enemy/spawn_settings/level4/level4_tentacle2.tres" id="4_c7qi6"]
 
 [resource]
 script = ExtResource("2_hs13f")
-levels = Array[ExtResource("1_53eob")]([])
+enemies = Array[ExtResource("1_53eob")]([ExtResource("2_hxq1x"), ExtResource("3_sbm02"), ExtResource("4_c7qi6")])
