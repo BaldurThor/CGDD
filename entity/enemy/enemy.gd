@@ -47,8 +47,9 @@ func _physics_process(_delta: float) -> void:
 		if coll.get_collider_id() == player.get_instance_id():
 			player.take_damage(entity_stats.contact_damage)
 	
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, knockback_amount: float) -> void:
 	entity_stats.deal_damage(damage)
+	_take_knockback(knockback_amount)
 	GameManager.enemy_take_damage.emit(int(entity_stats.get_damage_applied(damage)))
 	create_damage_label(damage)
 
@@ -66,6 +67,9 @@ func _on_death() -> void:
 	if contact_damage_override != null:
 		contact_damage_override.collision_mask = 0
 		contact_damage_override.collision_layer = 0
+		
+func _take_knockback(amount: float) -> void:
+	pass
 
 func create_damage_label(damage: int) -> void:
 	if self.damage_label == null:

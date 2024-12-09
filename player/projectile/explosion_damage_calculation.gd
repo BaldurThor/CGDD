@@ -12,7 +12,10 @@ func _ready() -> void:
 	_weapon_type = explosion.weapon_type
 
 ## Calculate the damage for the explosion. Explosives cannot crit, but their secondary effects may.
-func calculate() -> int:
+func calculate_damage() -> int:
 	var base_damage = (_weapon_type.damage + _player_stats.added_explosive_damage) * (_weapon_type.damage_effectiveness)
 	var damage: float = float(base_damage) * (_player_stats.damage_mod + _player_stats.explosive_damage_mod)
 	return max(1, int(damage))
+
+func calculate_knockback() -> int:
+	return _weapon_type.knockback

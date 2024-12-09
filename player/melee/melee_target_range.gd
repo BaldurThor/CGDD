@@ -16,7 +16,7 @@ func _ready() -> void:
 ## Signal receiver which handles any changes to the weapon's accuracy.
 ## NOTE: If weapon-specific scaling is ever added, this must be updated.
 func _on_player_stats_range_changed() -> void:
-	melee_target_range_shape.shape.radius = melee.weapon_type.attack_range * melee.player_stats.melee_range_mod
+	scale = Vector2.ONE * (melee.weapon_type.attack_range + melee.player_stats.melee_range_mod)
 
 ## Retrieves a single enemy based on the weapon type's target priority.
 func get_target() -> Enemy:

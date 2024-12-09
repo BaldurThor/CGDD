@@ -16,3 +16,6 @@ func init(weapon: WeaponType, stats: PlayerStats, bullet_direction: Vector2) -> 
 
 func calculate_damage() -> int:
 	return damage_calculation.calculate()
+
+func calculate_knockback() -> float:
+	return weapon_type.knockback

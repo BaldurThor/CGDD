@@ -26,9 +26,10 @@ func _explode() -> void:
 	explosion_sound_effect.pitch_scale = randf_range(0.8, 1.2)
 	explosion_animation.play("explode")
 	GameManager.explosion_occurred.emit()
+	var knockback = damage_calculation.calculate_knockback()
 	for enemy in nearby_enemies:
 		if enemy is Enemy:
-			enemy.take_damage(damage_calculation.calculate())
+			enemy.take_damage(damage_calculation.calculate_damage(), knockback)
 
 func create_shrapnel() -> void:
 	for i in range(weapon_type.projectile_count + player_stats.extra_projectiles):

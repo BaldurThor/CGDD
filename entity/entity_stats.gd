@@ -76,6 +76,9 @@ var is_invincible: bool = false
 		regen_speed_mod = value
 		regen_changed.emit()
 
+## A multiplier to all knockback received by this entity. Higher values cause in higher knockback received.
+@export_range(0.0, 2.0, 0.01) var self_knockback_mod: float = 1.0
+
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var regen_timer: Timer = $RegenTimer
 

@@ -6,11 +6,11 @@
 
 [resource]
 script = ExtResource("1_kmsvg")
-damage = 6
+damage = 8
 secondary_damage = 0
 damage_effectiveness = 1.2
 secondary_damage_effectiveness = 0.0
-attack_speed = 1.4
+attack_speed = 1.2
 crit_chance = 0.0
 crit_damage = 0.0
 burst = true
@@ -19,7 +19,10 @@ pierce_count = 0
 projectile_speed = 0.0
 projectile_count = 0
 explosion_radius = 0.0
-attack_range = 60.0
+attack_range = 0.65
+knockback = 10
+melee_strike_count = 1
+melee_strike_delay = null
 target_priority = 0
 sprite = ExtResource("3_3yr2f")
 attack_sfx = ExtResource("1_mpn1m")

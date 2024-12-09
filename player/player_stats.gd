@@ -66,6 +66,9 @@ signal experience_absorb_range_changed()
 ## A multiplier to the attack speed of all melee weapons.
 @export_range(0.5, 3.0, 0.01, "or_greater") var melee_attack_speed_mod: float = 1.0
 
+## A multiplier to all melee weapon knockback.
+@export_range(0.0, 3.0, 0.01, "or_greater") var melee_knockback_mod: float = 1.0
+
 
 @export_group("Offense - Ranged")
 

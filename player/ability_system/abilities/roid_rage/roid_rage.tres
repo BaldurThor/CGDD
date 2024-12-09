@@ -8,11 +8,11 @@
 script = ExtResource("1_b4oev")
 ability_script = ExtResource("1_fvboh")
 name = "Roid Rage"
-positive_effects = Array[String](["+100% max health"])
-negative_effects = Array[String](["Cannot regenerate health"])
+positive_effects = Array[String](["+20% melee attack speed", "+15% melee range"])
+negative_effects = Array[String](["-15% max health"])
 flavor_text = "AAAAAAAAAAAAAAAAAAH!!!!!"
 max_amount = 1
-rarity = 2
+rarity = 1
 icon = ExtResource("2_mpqts")
 guaranteed_at = 0
 required_level = 0
