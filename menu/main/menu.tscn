@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://db5yyodexjuf1"]
+[gd_scene load_steps=11 format=3 uid="uid://db5yyodexjuf1"]
 
 [ext_resource type="Texture2D" uid="uid://eb55mdcve1m0" path="res://menu/main/image0.jpg" id="1_m1u38"]
 [ext_resource type="Script" path="res://menu/main/menu.gd" id="1_wk1l7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://menu/shared/options.gd" id="4_vktvh"]
 [ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="8_c5jhc"]
 [ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="10_b5mhb"]
+[ext_resource type="AudioStream" uid="uid://bwyyr85im3ii5" path="res://menu/main/survival-metal-with-solo-109315.mp3" id="10_dbaeb"]
 
 [node name="Menu" type="MarginContainer" node_paths=PackedStringArray("info_node", "options_node")]
 clip_contents = true
@@ -99,6 +100,10 @@ layout_mode = 2
 [node name="Options" parent="." instance=ExtResource("10_b5mhb")]
 visible = false
 layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_dbaeb")
+autoplay = true
 
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_gui_input"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_mouse_entered"]
