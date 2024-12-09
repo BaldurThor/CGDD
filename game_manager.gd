@@ -28,8 +28,7 @@ func _ready() -> void:
 
 func start_game() -> void:
 	get_tree().change_scene_to_file("res://levels/game.tscn")
-	pause_tracker.clear()
-	get_tree().paused = false
+	reset_pause()
 	
 	game_timer.stop()
 	game_timer.wait_time = 1200 / 2
@@ -48,8 +47,9 @@ func _process(_delta: float) -> void:
 		world_level = level
 		new_world_level.emit(level)
 
-func main_menu(menu: PackedScene) -> void:
-	get_tree().change_scene_to_packed(menu)
+func main_menu() -> void:
+	get_tree().change_scene_to_file("res://menu/main/menu.tscn")
+	reset_pause()
 
 # Used by the player.gd script to tell the game manager where the player is.
 # Allows other scripts to access the player from wherever they are.
@@ -110,6 +110,10 @@ func unpause(id: Node) -> void:
 	pause_tracker.remove_at(idx)
 	if pause_tracker.size() == 0:
 		get_tree().paused = false
+
+func reset_pause() -> void:
+	pause_tracker.clear()
+	get_tree().paused = false
 
 func is_paused() -> bool:
 	return pause_tracker.size() > 0
