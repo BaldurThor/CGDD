@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_s3isd")
+enemy_type = ExtResource("1_rmsdf")
+strength_multiplier = 1.0
 starting_spawn_rate = 0.8
 ending_spawn_rate = 0.1
-enemy_type = ExtResource("1_rmsdf")
