@@ -14,7 +14,6 @@ const DAMAGE_LABEL = preload("res://entity/enemy/damage_label/damage_label.tscn"
 var damage_label: Node = null
 var should_drop_xp: bool = true
 
-var _is_being_knocked_back: bool = false
 var _target_velocity: Vector2
 var _current_velocity: Vector2
 
