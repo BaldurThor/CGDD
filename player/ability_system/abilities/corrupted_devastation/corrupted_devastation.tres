@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://bao5vuhekc1ew"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/corrupted_devastation/corrupted_devastation.gd" id="1_0165x"]
+[ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="2_jgtyk"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_0mn54"]
+
+[resource]
+script = ExtResource("3_0mn54")
+ability_script = ExtResource("1_0165x")
+name = "Corrupted Vitality"
+positive_effects = Array[String](["+25 armor", "+50% explosion damage", "+50% explosion size"])
+negative_effects = Array[String](["You cannot dodge", "-50% max health", "-50% regen speed"])
+tags = Array[String]([])
+flavor_text = "Obliterate all who stand in your way..."
+max_amount = 1
+rarity = 3
+icon = ExtResource("2_jgtyk")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_0mn54")]([])
+requirements = Array[ExtResource("3_0mn54")]([])

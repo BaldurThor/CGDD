@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 	if x_direction != 0:
 		sprite.flip_h = x_direction < 0
 	
-	velocity = direction * player_stats.movement_speed
+	velocity = (direction * player_stats.movement_speed) * player_stats.movement_speed_mod
 	
 	move_and_slide()
 	

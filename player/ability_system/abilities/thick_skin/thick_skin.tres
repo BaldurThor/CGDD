@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://c5pbhk7lpyshf"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/thick_skin/thick_skin.gd" id="1_cgbg2"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_o8muc"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_57yv1"]
+
+[resource]
+script = ExtResource("3_57yv1")
+ability_script = ExtResource("1_cgbg2")
+name = "Thick Skin"
+positive_effects = Array[String](["+3 armor", "+5% faster health regen"])
+negative_effects = Array[String](["-5% movement speed", "-3% dodge chance"])
+tags = Array[String](["armor", "regen_speed", "regen_speed_mod", "movement_speed", "dodge"])
+flavor_text = "It's mostly callus at this point"
+max_amount = 0
+rarity = 0
+icon = ExtResource("2_o8muc")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_57yv1")]([])
+requirements = Array[ExtResource("3_57yv1")]([])

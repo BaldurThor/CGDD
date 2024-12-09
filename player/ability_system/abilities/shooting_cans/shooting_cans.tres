@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://bcqngirid0rsu"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/shooting_cans/shooting_cans.gd" id="1_qaxk2"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_cqpe1"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_oqwds"]
+
+[resource]
+script = ExtResource("3_oqwds")
+ability_script = ExtResource("1_qaxk2")
+name = "Castle Doctrine"
+positive_effects = Array[String](["-15% ranged projectile spread", "+10% ranged range"])
+negative_effects = Array[String]([])
+tags = Array[String](["ranged_spread_mod", "ranged_range_mod"])
+flavor_text = "Love that satisfying \"dink\" sound"
+max_amount = 0
+rarity = 1
+icon = ExtResource("2_cqpe1")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_oqwds")]([])
+requirements = Array[ExtResource("3_oqwds")]([])

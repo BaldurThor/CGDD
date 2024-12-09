@@ -5,6 +5,7 @@ extends VBoxContainer
 var _has_content: bool = false
 const TAG_DESCRIPTION = preload("res://player/ability_system/tag_description.tscn")
 @onready var panel_container: PanelContainer = $"../.."
+@onready var v_box_container: VBoxContainer = $"../../../VBoxContainer"
 
 func _ready() -> void:
 	panel_container.hide()
@@ -20,6 +21,8 @@ func _ready() -> void:
 func _on_ability_choice_mouse_entered() -> void:
 	if _has_content:
 		panel_container.show()
+		v_box_container.hide()
 
 func _on_ability_choice_mouse_exited() -> void:
 	panel_container.hide()
+	v_box_container.show()

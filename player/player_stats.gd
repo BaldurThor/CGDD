@@ -103,6 +103,12 @@ signal experience_absorb_range_changed()
 
 @export_group("Defense")
 
+## A multiplier to the player's movement speed.
+@export var movement_speed_mod: float = 1.0
+
+## The absolute maximum health for the player. Defaults to max int.
+var absolute_max_health: int = (1 << 31) - 1
+
 ## A multiplier to the player's maximum health. Increasing this value should heal the player by the modified amount.
 @export var max_health_mod: float = 1.0:
 	set(value):
@@ -125,6 +131,18 @@ signal experience_absorb_range_changed()
 		can_regen = value
 		regen_changed.emit()
 
+## Whether the player can dodge or not.
+@export var can_dodge: bool = true
+
+## Whether the player has armor or not.
+@export var can_have_armor: bool = true
+
+## Whether the player's crits deal damage or not.
+@export var crits_deal_damage: bool = true
+
+## Whether the player can knock enemies back or not.
+@export var can_knockback: bool = true
+
 ## A multiplier to experience gained by the player.
 @export var experience_gain_mod: float = 1.0
 
@@ -143,7 +161,7 @@ signal experience_absorb_range_changed()
 ## Evaluates the player's max health. Always returns a value equal to or greater than 1.
 func get_real_max_health() -> int:
 	var base = super()
-	return int(max(base * max_health_mod, 1))
+	return min(int(max(base * max_health_mod, 1)), absolute_max_health)
 
 ## Handles regeneration for the player
 func _on_regen_timer_timeout() -> void:
