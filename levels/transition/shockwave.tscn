@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bibxmm2jj5hoc"]
+
+[ext_resource type="Script" path="res://levels/transition/shockwave.gd" id="1_ihtae"]
+[ext_resource type="AudioStream" uid="uid://dmxhxschy3e5w" path="res://levels/transition/ground_shake.wav" id="2_rn2y2"]
+
+[sub_resource type="Gradient" id="Gradient_klsyb"]
+offsets = PackedFloat32Array(0, 0.45, 0.45, 0.5, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_72ef7"]
+gradient = SubResource("Gradient_klsyb")
+width = 2048
+height = 2048
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5q6p"]
+radius = 725.1
+
+[node name="Shockwave" type="Area2D"]
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("1_ihtae")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_72ef7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s5q6p")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rn2y2")
+volume_db = 5.0
+autoplay = true
+bus = &"Effects"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

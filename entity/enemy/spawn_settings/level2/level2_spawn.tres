@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelSpawnSettings" load_steps=5 format=3 uid="uid://crjj48lkhqf1b"]
+
+[ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_72fmf"]
+[ext_resource type="Script" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="2_uodpa"]
+[ext_resource type="Resource" uid="uid://bm3kv66oos8xp" path="res://entity/enemy/spawn_settings/level2/level2_carptist.tres" id="2_xbv20"]
+[ext_resource type="Resource" uid="uid://dxt5r7qm4l6j" path="res://entity/enemy/spawn_settings/level2/level2_cultist.tres" id="3_jg6f0"]
+
+[resource]
+script = ExtResource("2_uodpa")
+enemies = Array[ExtResource("1_72fmf")]([ExtResource("2_xbv20"), ExtResource("3_jg6f0")])

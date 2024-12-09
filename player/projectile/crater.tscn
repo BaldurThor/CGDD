@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://s1r11nc1m1nx"]
+
+[ext_resource type="Texture2D" uid="uid://r0w8gbbvlpjo" path="res://player/projectile/crater.png" id="1_4xm8e"]
+
+[node name="Crater" type="Sprite2D" groups=["level_clear"]]
+z_index = -10
+texture = ExtResource("1_4xm8e")

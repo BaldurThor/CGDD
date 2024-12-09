@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://nx61vvhfdu67"
-path="res://.godot/imported/ground_shake.wav-8ebf654dd7ed847b0c17fcd4039064de.sample"
+path="res://.godot/imported/ground_crumble.wav-d4398d65ba00f134e7dce46d0aee388b.sample"
 
 [deps]
 
-source_file="res://levels/ground_shake.wav"
-dest_files=["res://.godot/imported/ground_shake.wav-8ebf654dd7ed847b0c17fcd4039064de.sample"]
+source_file="res://levels/transition/ground_crumble.wav"
+dest_files=["res://.godot/imported/ground_crumble.wav-d4398d65ba00f134e7dce46d0aee388b.sample"]
 
 [params]
 

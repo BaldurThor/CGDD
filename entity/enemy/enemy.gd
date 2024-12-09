@@ -10,7 +10,9 @@ const DAMAGE_LABEL = preload("res://entity/enemy/damage_label/damage_label.tscn"
 
 # Dependency injected from enemy manager
 @export var damage_label_parent: Node
+
 var damage_label: Node = null
+var should_drop_xp: bool = true
 
 @export var contact_damage_override: Area2D
 
@@ -47,17 +49,19 @@ func _physics_process(_delta: float) -> void:
 		if coll.get_collider_id() == player.get_instance_id():
 			player.take_damage(entity_stats.contact_damage)
 	
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, drop_xp: bool = true) -> void:
+	should_drop_xp = drop_xp
 	entity_stats.deal_damage(damage)
 	GameManager.enemy_take_damage.emit(int(entity_stats.get_damage_applied(damage)))
 	create_damage_label(damage)
 
 func _on_death() -> void:
-	var gem = EXPERIENCE_GEM.instantiate()
-	gem.experience_value = xp_drop_amount
-	gem.global_transform = global_transform
-	var run = get_node("/root/Main/Run")
-	run.add_child.call_deferred(gem)
+	if should_drop_xp:
+		var gem = EXPERIENCE_GEM.instantiate()
+		gem.experience_value = xp_drop_amount
+		gem.global_transform = global_transform
+		var run = get_node("/root/Main/Run")
+		run.add_child.call_deferred(gem)
 	
 	# Disable the rigidbody
 	collision_mask = 0

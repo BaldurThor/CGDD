@@ -4,8 +4,9 @@ extends Camera2D
 @export var max_offset: Vector2
 @export var noise: FastNoiseLite
 
-var trauma: float = 0.0
-var trauma_pwr: int = 2
+@export var trauma: float = 0.0
+@export var trauma_pwr: int = 2
+
 var noise_y = 0
 
 func _ready():

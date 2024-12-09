@@ -6,9 +6,11 @@ var game_timer: Timer
 var lvl_up: bool = false
 
 var world_level: int = 1
+var level_transitioning: bool = false
 
 # Global game events
 signal enemy_take_damage(amount: int)
+signal enemy_died
 signal player_take_damage(amount: int)
 signal explosion_occurred(intensity: float)
 signal pickup_ability(ability: AbilityInfo)
@@ -24,7 +26,7 @@ func reset_timer() -> void:
 		var main = get_node("/root/Main")
 		main.remove_child(game_timer)
 	game_timer = Timer.new()
-	game_timer.wait_time = 1200 / 4
+	game_timer.wait_time = 1200
 	game_timer.one_shot = true
 	
 func reset_tree() -> void:
@@ -91,3 +93,8 @@ func quit() -> void:
 func _notification(type: int) -> void:
 	if type == NOTIFICATION_WM_CLOSE_REQUEST:
 		quit()
+
+func get_world_level_progress() -> float:
+	var percentage = 1.0 - (game_timer.time_left / game_timer.wait_time)
+	var segment = 1.0 / LEVEL_COUNT
+	return fmod(percentage, segment) * LEVEL_COUNT

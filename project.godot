@@ -17,10 +17,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameManager="*res://game_manager.gd"
-Debug="*res://debug/debug.gd"
 consts="*res://consts.gd"
+Debug="*res://debug/debug.gd"
 DebugCommands="*res://debug/debug_commands.gd"
+GameManager="*res://game_manager.gd"
 SaveManager="*res://save_manager.gd"
 
 [display]
@@ -30,11 +30,14 @@ window/size/viewport_height=540
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[global_group]
+
+level_clear=""
 
 [input]
 

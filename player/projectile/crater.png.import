@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtu8fv5wyau7"
-path="res://.godot/imported/ground_break.png-c57af99634782ce2c74a3cf162c84324.ctex"
+uid="uid://r0w8gbbvlpjo"
+path="res://.godot/imported/crater.png-b05227410e89fa77baa9fc65f0ae5201.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/ground_break.png"
-dest_files=["res://.godot/imported/ground_break.png-c57af99634782ce2c74a3cf162c84324.ctex"]
+source_file="res://player/projectile/crater.png"
+dest_files=["res://.godot/imported/crater.png-b05227410e89fa77baa9fc65f0ae5201.ctex"]
 
 [params]
 

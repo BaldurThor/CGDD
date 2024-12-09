@@ -7,3 +7,4 @@
 script = ExtResource("2_s25d5")
 name = "Tentacle"
 enemy_scene = ExtResource("1_aummv")
+spawn_rate = 1.0

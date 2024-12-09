@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://lekxiv8w7y4f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/tentacle.gd" id="1_s45sm"]
-[ext_resource type="PackedScene" path="res://entity/enemy/enemy_base.tscn" id="3_l6rdd"]
+[ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_l6rdd"]
 [ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_aaljs"]
 [ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle.gdshader" id="5_056jx"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_mnqrr"]
@@ -26,7 +26,7 @@ repeat = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5no7"]
 radius = 21.0
 
-[node name="Tentacle" type="CharacterBody2D" node_paths=PackedStringArray("contact_damage_override")]
+[node name="Tentacle" type="CharacterBody2D" node_paths=PackedStringArray("contact_damage_override") groups=["level_clear"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_s45sm")
@@ -50,14 +50,14 @@ autostart = true
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_l6rdd")]
 sprite = ExtResource("4_aaljs")
 entity_stats = NodePath("../EntityStats")
-sprite_scale = 2.0
-sprite_offset = Vector2(0, -17)
+sprite_scale = 4.0
+sprite_offset = Vector2(0, -43.28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_vy7hj")
 
 [node name="TentacleSlam" type="Area2D" parent="."]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TentacleSlam"]
 polygon = PackedVector2Array(100, 0, 92, -38, 70, -70, 0, 0, 70, 70, 92, 44)
