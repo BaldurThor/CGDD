@@ -51,5 +51,4 @@ func take_damage(amount: int) -> void:
 
 
 func _on_player_stats_death() -> void:
-	get_tree().paused = true
 	self.add_child(death_screen.instantiate())

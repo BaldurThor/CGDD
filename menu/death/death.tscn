@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjtxacd0qfbqj"]
+[gd_scene load_steps=6 format=3 uid="uid://bjtxacd0qfbqj"]
 
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="1_4o0kr"]
+[ext_resource type="Script" path="res://menu/death/death.gd" id="1_jpsbo"]
 [ext_resource type="Script" path="res://menu/death/restart.gd" id="2_2ty7x"]
 [ext_resource type="Script" path="res://menu/shared/quit.gd" id="2_xqsca"]
 [ext_resource type="Script" path="res://menu/death/mainmenu.gd" id="3_sg43a"]
 
 [node name="Death" type="CanvasLayer"]
 process_mode = 2
+script = ExtResource("1_jpsbo")
 
 [node name="PauseMenuWrapper" type="MarginContainer" parent="."]
 offset_right = 480.0

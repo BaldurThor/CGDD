@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmvuvlfr0jg2p"]
+[gd_scene load_steps=6 format=3 uid="uid://bbcemibct0rey"]
 
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="1_fylp6"]
 [ext_resource type="Script" path="res://menu/options/back.gd" id="2_bcpgf"]
@@ -6,92 +6,89 @@
 [ext_resource type="Script" path="res://menu/options/effects.gd" id="3_ohqc2"]
 [ext_resource type="Script" path="res://menu/options/music.gd" id="4_n03l1"]
 
-[node name="Options" type="CanvasLayer"]
-visible = false
-
-[node name="PauseMenuWrapper" type="MarginContainer" parent="."]
+[node name="OptionsMenuWrapper" type="MarginContainer"]
 offset_right = 480.0
 offset_bottom = 270.0
 
-[node name="CenterContainer" type="CenterContainer" parent="PauseMenuWrapper"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(370, 212)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PauseMenu" type="MarginContainer" parent="PauseMenuWrapper/CenterContainer"]
+[node name="OptionsMenu" type="MarginContainer" parent="CenterContainer"]
 z_index = 2
 custom_minimum_size = Vector2(364, 206)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Background" type="TextureRect" parent="PauseMenuWrapper/CenterContainer/PauseMenu"]
+[node name="Background" type="TextureRect" parent="CenterContainer/OptionsMenu"]
 z_index = -1
 layout_mode = 2
 texture = ExtResource("1_fylp6")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/OptionsMenu"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Options"
 
-[node name="Split" type="HBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="Split" type="HBoxContainer" parent="CenterContainer/OptionsMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split"]
+[node name="Label" type="VBoxContainer" parent="CenterContainer/OptionsMenu/VBoxContainer/Split"]
 layout_mode = 2
 
-[node name="Master" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Label"]
+[node name="Master" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Label"]
 layout_mode = 2
 text = "Master"
 
-[node name="Effects" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Label"]
+[node name="Effects" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Label"]
 layout_mode = 2
 text = "Effects
 "
 
-[node name="Music" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Label"]
+[node name="Music" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Label"]
 layout_mode = 2
 text = "Music
 "
 
-[node name="BottomLeft" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Label"]
+[node name="BottomLeft" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Label"]
 layout_mode = 2
 size_flags_vertical = 10
 text = "Kill Cthulhu"
 
-[node name="Button" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split"]
+[node name="Button" type="VBoxContainer" parent="CenterContainer/OptionsMenu/VBoxContainer/Split"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Master" type="HSlider" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button"]
+[node name="Master" type="HSlider" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Button"]
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 script = ExtResource("2_fn5qq")
 
-[node name="Effects" type="HSlider" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button"]
+[node name="Effects" type="HSlider" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Button"]
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 script = ExtResource("3_ohqc2")
 
-[node name="Music" type="HSlider" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button"]
+[node name="Music" type="HSlider" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Button"]
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 script = ExtResource("4_n03l1")
 
-[node name="Back" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button" node_paths=PackedStringArray("options_node")]
+[node name="Back" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Button" node_paths=PackedStringArray("options_node")]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 10
@@ -102,14 +99,14 @@ text = "Back"
 horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("2_bcpgf")
-options_node = NodePath("../../../../../../..")
+options_node = NodePath("../../../../../..")
 
-[node name="ColorRect" type="ColorRect" parent="PauseMenuWrapper/CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
 custom_minimum_size = Vector2(370, 212)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_exited"]
+[connection signal="gui_input" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" method="_on_gui_input"]
+[connection signal="mouse_entered" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_exited"]

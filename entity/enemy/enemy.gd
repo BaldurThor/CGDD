@@ -60,8 +60,7 @@ func _on_death() -> void:
 		var gem = EXPERIENCE_GEM.instantiate()
 		gem.experience_value = xp_drop_amount
 		gem.global_transform = global_transform
-		var run = get_node("/root/Main/Run")
-		run.add_child.call_deferred(gem)
+		GameManager.get_game_root().add_child.call_deferred(gem)
 	
 	# Disable the rigidbody
 	collision_mask = 0

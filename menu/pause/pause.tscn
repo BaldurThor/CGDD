@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://menu/shared/quit.gd" id="5_6hme5"]
 [ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="5_ugmh8"]
 [ext_resource type="Script" path="res://menu/pause/reset.gd" id="6_w46qb"]
-[ext_resource type="PackedScene" uid="uid://bmvuvlfr0jg2p" path="res://menu/options/options.tscn" id="8_dglk4"]
+[ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="8_dglk4"]
 
 [node name="Pause" type="CanvasLayer" node_paths=PackedStringArray("info_node", "options_node")]
 process_mode = 3
@@ -97,6 +97,7 @@ visible = false
 
 [node name="Options" parent="." instance=ExtResource("8_dglk4")]
 process_mode = 2
+visible = false
 
 [connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" method="_on_gui_input"]
 [connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" method="_on_mouse_entered"]

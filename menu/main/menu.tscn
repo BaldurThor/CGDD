@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://db5yyodexjuf1"]
+[gd_scene load_steps=10 format=3 uid="uid://db5yyodexjuf1"]
 
 [ext_resource type="Texture2D" uid="uid://eb55mdcve1m0" path="res://menu/main/image0.jpg" id="1_m1u38"]
 [ext_resource type="Script" path="res://menu/main/menu.gd" id="1_wk1l7"]
@@ -6,10 +6,9 @@
 [ext_resource type="Script" path="res://menu/shared/quit.gd" id="2_ni7lo"]
 [ext_resource type="Script" path="res://menu/main/new_game.gd" id="3_f6fg1"]
 [ext_resource type="Script" path="res://menu/shared/how_to_play.gd" id="3_fo3wn"]
-[ext_resource type="PackedScene" uid="uid://bbesagqumwgtd" path="res://menu/run.tscn" id="3_u5fo7"]
 [ext_resource type="Script" path="res://menu/shared/options.gd" id="4_vktvh"]
 [ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="8_c5jhc"]
-[ext_resource type="PackedScene" uid="uid://bmvuvlfr0jg2p" path="res://menu/options/options.tscn" id="10_b5mhb"]
+[ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="10_b5mhb"]
 
 [node name="Menu" type="MarginContainer" node_paths=PackedStringArray("info_node", "options_node")]
 clip_contents = true
@@ -52,7 +51,6 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "Dive in"
 script = ExtResource("3_f6fg1")
-run = ExtResource("3_u5fo7")
 
 [node name="How_to_play" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions" node_paths=PackedStringArray("info_node")]
 layout_mode = 2
@@ -96,8 +94,11 @@ stretch_mode = 6
 
 [node name="Info" parent="." instance=ExtResource("8_c5jhc")]
 visible = false
+layout_mode = 2
 
 [node name="Options" parent="." instance=ExtResource("10_b5mhb")]
+visible = false
+layout_mode = 2
 
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_gui_input"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_mouse_entered"]

@@ -6,18 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://b6rjnevhtac41" path="res://entity/enemy/enemy_manager.tscn" id="4_beey7"]
 [ext_resource type="PackedScene" uid="uid://b8h32mkkaisy6" path="res://menu/pause/pause.tscn" id="5_csob6"]
 
-[node name="Run" type="Node2D"]
-process_mode = 3
-
-[node name="Game" type="Node2D" parent="."]
+[node name="Game" type="Node2D"]
 process_mode = 1
 
-[node name="Player" parent="Game" instance=ExtResource("1_fbep7")]
+[node name="Player" parent="." instance=ExtResource("1_fbep7")]
 
-[node name="Fish_spawner" type="Node2D" parent="Game"]
+[node name="Fish_spawner" type="Node2D" parent="."]
 script = ExtResource("2_oohfr")
 fish_scene = ExtResource("3_jf00o")
 
-[node name="EnemyManager" parent="Game" instance=ExtResource("4_beey7")]
+[node name="EnemyManager" parent="." instance=ExtResource("4_beey7")]
 
 [node name="Pause" parent="." instance=ExtResource("5_csob6")]
+visible = false

@@ -41,6 +41,3 @@ func _gain_experience(amount: int) -> void:
 		required_for_level_up = xp_needed_form(current_level)
 		level_up.emit()
 		GameManager.lvl_up = true
-	
-	if levelled_up:
-		get_tree().paused = true
