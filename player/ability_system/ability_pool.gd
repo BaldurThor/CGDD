@@ -47,6 +47,11 @@ func _get_weapon_pool() -> Array[AbilityInfo]:
 	weapon_pool.shuffle()
 	return weapon_pool
 	
+func _get_corrupted_pool() -> Array[AbilityInfo]:
+	var corrupted_pool = corrupted_abilities.duplicate()
+	corrupted_pool.shuffle()
+	return corrupted_pool
+	
 func _create_ability_accumulator(pool: Array[AbilityInfo]) -> Array[int]:
 	var total_weight: int = 0
 	var accumulator: Array[int] = []
@@ -80,6 +85,7 @@ func _init_pool():
 	
 	initialized = true
 
+## Picks a certain number of random weapons from the weapon pool.
 func _get_weapon_selection(count: int = 3) -> Array[AbilityInfo]:
 	var weapon_pool = _get_weapon_pool()
 	var choices: Array[AbilityInfo] = []
@@ -89,11 +95,23 @@ func _get_weapon_selection(count: int = 3) -> Array[AbilityInfo]:
 		weapon_pool.remove_at(index)
 	return choices
 
+func get_corrupted_abilities(count: int = 3) -> Array[AbilityInfo]:
+	if !initialized:
+		_init_pool()
+	var corrupted_pool = _get_corrupted_pool()
+	var choices: Array[AbilityInfo] = []
+	for i in range(count):
+		var index = randi_range(0, corrupted_pool.size() - 1)
+		choices.push_back(corrupted_pool[index])
+		corrupted_pool.remove_at(index)
+	return choices
+
 func get_ability_selection(count: int = 3) -> Array[AbilityInfo]:
 	if !initialized:
 		_init_pool()
 	
 	var player_level = GameManager.get_player().experience.current_level
+	# If the player is at a weapon breakpoint, give them a weapon instead of a skill.
 	if player_level in weapon_guarantee_breakpoints:
 		return _get_weapon_selection(count)
 
@@ -122,8 +140,13 @@ func get_ability_selection(count: int = 3) -> Array[AbilityInfo]:
 	return picked_abilities
 
 func add_ability_pick_count(ability: AbilityInfo):
+	## Corrupted abilities should always have a maximum of 1
+	if ability.rarity == ability.Rarity.CORRUPTED:
+		var ability_index: int = corrupted_abilities.find(ability)
+		corrupted_abilities.remove_at(ability_index)
+		return
+
 	var pick_count = pick_counts.get(ability)
-		
 	if pick_count == null:
 		pick_counts[ability] = 0
 	

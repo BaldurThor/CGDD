@@ -1,5 +1,5 @@
 extends Ability
 
 func apply_effects(player_stats: PlayerStats) -> void:
-	player_stats.can_regen = false
-	player_stats.max_health_mod += 1.0
+	player_stats.absolute_max_health_regen = 0.0
+	player_stats.max_health_mod += 1.25

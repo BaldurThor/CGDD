@@ -108,7 +108,16 @@ signal experience_absorb_range_changed()
 
 ## The absolute maximum health for the player. Defaults to max int.
 var absolute_max_health: int = (1 << 31) - 1
-
+## The absolute maximum amount the player can regenerate per tick. Defaults to max int.
+var absolute_max_health_regen: int = (1 << 31) - 1
+## The absolute maximum amount of armor the player can have. Defaults to max int.
+var absolute_max_armor: int = (1 << 31) - 1
+## The absolute maximum chance for the player to dodge. Defaults to 75%.
+var absolute_max_dodge: float = 0.75
+## The absolute maximum chance for the player to critically strike.
+var absolute_max_crit_chance: float = 100.0
+## A modifier to non-critical strikes.
+var non_crit_damage_multiplier: float = 1.0
 ## A multiplier to the player's maximum health. Increasing this value should heal the player by the modified amount.
 @export var max_health_mod: float = 1.0:
 	set(value):
@@ -131,17 +140,11 @@ var absolute_max_health: int = (1 << 31) - 1
 		can_regen = value
 		regen_changed.emit()
 
-## Whether the player can dodge or not.
-@export var can_dodge: bool = true
-
-## Whether the player has armor or not.
-@export var can_have_armor: bool = true
-
-## Whether the player's crits deal damage or not.
-@export var crits_deal_damage: bool = true
-
 ## Whether the player can knock enemies back or not.
 @export var can_knockback: bool = true
+
+## Do the player's critical strikes deal damage?
+@export var crits_deal_damage: bool = true
 
 ## A multiplier to experience gained by the player.
 @export var experience_gain_mod: float = 1.0
@@ -158,6 +161,9 @@ var absolute_max_health: int = (1 << 31) - 1
 ## A multiplier to the speed of the experience orbs when they are drawn towards the player.
 @export var experience_orb_absorb_speed_mod: float = 1.0
 
+func damage_reduction() -> float:
+	return calculate_damage_reduction(min(absolute_max_armor, armor))
+
 ## Evaluates the player's max health. Always returns a value equal to or greater than 1.
 func get_real_max_health() -> int:
 	var base = super()
@@ -165,15 +171,21 @@ func get_real_max_health() -> int:
 
 ## Handles regeneration for the player
 func _on_regen_timer_timeout() -> void:
-	if can_regen and health != get_real_max_health():
-		var real_max_health = get_real_max_health()
-		var regen_amount = regen_amount_flat + (regen_amount_percentile * real_max_health)
+	var regen_amount = _get_regen_amount()
+	var real_max_health = get_real_max_health()
+	if regen_amount > 0.0 and health != real_max_health:
 		health = clamp(health + regen_amount, 0, real_max_health)
+
+func _get_regen_amount() -> int:
+	var real_max_health = get_real_max_health()
+	var regen_amount = min(regen_amount_flat + (regen_amount_percentile * real_max_health), absolute_max_health_regen)
+	return regen_amount
 
 ## Figures out whether the player should regenerate health or not
 func _on_regen_changed() -> void:
+	var regen_amount = _get_regen_amount()
 	# If the player can regen and has some regen amount, the timer should tick.
-	if can_regen and (regen_amount_flat != 0 or regen_amount_percentile != 0.0):
+	if regen_amount > 0.0:
 		regen_timer.wait_time = 1 / regen_speed_mod
 		if regen_timer.is_stopped:
 			regen_timer.start()

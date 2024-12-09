@@ -105,12 +105,15 @@ func get_damage_applied(amount: int) -> float:
 	return amount * damage_reduction()
 
 func damage_reduction() -> float:
-	var a: float = (-1.0 + armor) / (4 * armor)
-	var b: float = (log(armor) / log(2)) / 10
-	return max(a + b, 1)
+	return calculate_damage_reduction(armor)
 
 func get_real_max_health() -> int:
 	return max_health
 
 func get_health_percentage() -> float:
 	return float(health) / get_real_max_health()
+
+func calculate_damage_reduction(armor_value: int) -> float:
+	var a: float = (-1.0 + armor) / (4 * armor)
+	var b: float = (log(armor) / log(2)) / 10
+	return max(a + b, 1)

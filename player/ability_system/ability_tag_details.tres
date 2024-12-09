@@ -11,7 +11,7 @@ _tags = {
 "added_melee_knockback": "+# melee knockback: Increases knockback by a flat amount with melee weapons.",
 "added_melee_strikes": "+# melee strikes: Melee weapons strike an additional time per attack based on the number of added strikes.",
 "added_ranged_damage": "+# ranged damage: A flat amount of added damage with ranged weapons.",
-"armor": "+# armor: Armor reduces all damage taken by a percentage based on its value.",
+"armor": "Armor reduces all damage taken by a percentage based on its value.",
 "attack_speed_mod": "+#% attack speed: A multiplier to attack speed with all weapons",
 "baseball_bat": "The metal baseball bat scales with melee weapon modifiers.",
 "crit_chance": "+#% crit chance: Grants your attacks and projectiles a chance to deal extra damage (default 200%). Explosions cannot deal critical strikes.",

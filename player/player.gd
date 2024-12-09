@@ -40,7 +40,7 @@ func take_damage(amount: int) -> void:
 	if freeze_player:
 		return
 	
-	if randf() < player_stats.dodge_chance:
+	if randf() < min(player_stats.absolute_max_dodge, player_stats.dodge_chance):
 		amount = 0
 	
 	GameManager.player_take_damage.emit(int(player_stats.get_damage_applied(amount)))
