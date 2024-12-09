@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=90 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -33,9 +33,20 @@
 [ext_resource type="Script" path="res://player/hud/ability_display.gd" id="16_fr4t7"]
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
+[ext_resource type="Shader" path="res://player/hud/level_effect.gdshader" id="19_74cft"]
 [ext_resource type="Script" path="res://player/health_value.gd" id="19_ky1vu"]
+[ext_resource type="Script" path="res://levels/level_switcher.gd" id="22_ffm7r"]
+[ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://levels/level1/level1_background.png" id="23_77gle"]
 [ext_resource type="Script" path="res://player/weapon_manager.gd" id="24_jn8j2"]
+[ext_resource type="AudioStream" uid="uid://bylxksq47v5jc" path="res://levels/level1/rage-15292.mp3" id="26_dwusy"]
+[ext_resource type="Shader" path="res://levels/flashlight.gdshader" id="26_ybvvv"]
+[ext_resource type="AudioStream" uid="uid://c6lmy1o8c81rn" path="res://levels/level3/the-unkillable-155342.mp3" id="28_aow06"]
+[ext_resource type="AudioStream" uid="uid://bxapg40fyu7qy" path="res://levels/level2/deadite-ash-vs-evil-dead-song-8688.mp3" id="29_7cluu"]
+[ext_resource type="AudioStream" uid="uid://bvfislwpk2aub" path="res://levels/level4/fury-253300.mp3" id="30_5weuf"]
 [ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="31_6phdh"]
+[ext_resource type="Texture2D" uid="uid://bhsi60iufrm2v" path="res://levels/transition/ground_break.png" id="31_atf6l"]
+[ext_resource type="AudioStream" uid="uid://nx61vvhfdu67" path="res://levels/transition/ground_crumble.wav" id="32_jv2t7"]
+[ext_resource type="AudioStream" uid="uid://dmxhxschy3e5w" path="res://levels/transition/ground_shake.wav" id="33_ty4v7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4lj6"]
 font = ExtResource("5_tgkuv")
@@ -57,25 +68,191 @@ outline_color = Color(1, 0.27451, 0.54902, 0.262745)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
-shader_parameter/scale = 0.25
+shader_parameter/scale = 4.0
+shader_parameter/power = 1.0
+shader_parameter/modulate = Color(1, 1, 0.843137, 1)
 
-[sub_resource type="Gradient" id="Gradient_wblwn"]
-offsets = PackedFloat32Array(0, 0.402597, 0.493506, 0.766234, 1)
-colors = PackedColorArray(0.227597, 0.136936, 0.0944396, 1, 0.151173, 0.0735585, 0.0351978, 1, 0.261164, 0.13532, 0.0718369, 1, 0.189824, 0.0385414, 0.00037027, 1, 0.156835, 0.0635484, 0.0151681, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_petf2"]
+noise_type = 2
+fractal_octaves = 2
+fractal_gain = 9.845
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_eejjh"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qc4lt"]
+seamless = true
+noise = SubResource("FastNoiseLite_petf2")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hhvw1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_plmxn"]
+shader = ExtResource("19_74cft")
+shader_parameter/scale = 1.0
+shader_parameter/speed = 2.0
+shader_parameter/color = Color(0.490196, 0.592157, 1, 0.737255)
+shader_parameter/modulate = Color(1, 1, 1, 0.403922)
+shader_parameter/cutoff = 0.0
+shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx478"]
+shader = ExtResource("2_k5ka0")
+shader_parameter/scale = 4.0
+shader_parameter/power = 1.0
+shader_parameter/modulate = Color(0.293043, 0.306432, 0.611975, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7m1hu"]
+shader = ExtResource("19_74cft")
+shader_parameter/scale = 1.0
+shader_parameter/speed = 4.0
+shader_parameter/color = Color(0.0289914, 0.0455986, 0.132388, 1)
+shader_parameter/modulate = Color(1, 1, 1, 0.505882)
+shader_parameter/cutoff = -0.47
+shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqm6f"]
+shader = ExtResource("26_ybvvv")
+shader_parameter/modulate = Color(0.745098, 0.819608, 0.972549, 0.364706)
+shader_parameter/steps = 12
+
+[sub_resource type="Gradient" id="Gradient_prtup"]
+offsets = PackedFloat32Array(0, 0.535452)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ifgk3"]
+gradient = SubResource("Gradient_prtup")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3ydj"]
+shader = ExtResource("2_k5ka0")
+shader_parameter/scale = 4.0
+shader_parameter/power = 3.0
+shader_parameter/modulate = Color(0.439185, 0.14302, 0.563848, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_30ge2"]
+shader = ExtResource("19_74cft")
+shader_parameter/scale = 1.0
+shader_parameter/speed = 8.0
+shader_parameter/color = Color(0.241222, 0.0586888, 0.287606, 1)
+shader_parameter/modulate = Color(1, 1, 1, 0.505882)
+shader_parameter/cutoff = -0.47
+shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm4i7"]
+shader = ExtResource("26_ybvvv")
+shader_parameter/modulate = Color(0.547275, 0.3331, 0.795522, 0.364706)
+shader_parameter/steps = 12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ct3wy"]
+shader = ExtResource("2_k5ka0")
+shader_parameter/scale = 4.0
+shader_parameter/power = 3.0
+shader_parameter/modulate = Color(0.516634, 1.39579e-06, 0.310591, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pg48r"]
+shader = ExtResource("19_74cft")
+shader_parameter/scale = 1.0
+shader_parameter/speed = 16.0
+shader_parameter/color = Color(0.0288407, 6.58038e-09, 1.88011e-09, 1)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/cutoff = 0.0
+shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2wy2"]
+shader = ExtResource("26_ybvvv")
+shader_parameter/modulate = Color(0.894118, 0.388235, 0.639216, 0.152941)
+shader_parameter/steps = 12
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdw3d"]
+atlas = ExtResource("31_atf6l")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irun6"]
+atlas = ExtResource("31_atf6l")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2crn"]
+atlas = ExtResource("31_atf6l")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiddb"]
+atlas = ExtResource("31_atf6l")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr4hv"]
+atlas = ExtResource("31_atf6l")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6of8"]
+atlas = ExtResource("31_atf6l")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh0t5"]
+atlas = ExtResource("31_atf6l")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcepi"]
+atlas = ExtResource("31_atf6l")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rtix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdw3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irun6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2crn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiddb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr4hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6of8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh0t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcepi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_844o7"]
+offsets = PackedFloat32Array(0.5, 0.5)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5d4by"]
+gradient = SubResource("Gradient_844o7")
 width = 2048
 height = 2048
-seamless = true
-color_ramp = SubResource("Gradient_wblwn")
-noise = SubResource("FastNoiseLite_eejjh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_os5ey"]
+offsets = PackedFloat32Array(0.5, 0.5)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_magqx"]
+gradient = SubResource("Gradient_os5ey")
+width = 8192
+height = 8192
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.564103, 0.45641)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qqrlv"]
 resource_local_to_scene = true
 shader = ExtResource("1_321ed")
 shader_parameter/flash = false
+shader_parameter/modulate = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa55p"]
 radius = 16.0
@@ -92,6 +269,324 @@ radius = 25.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dv57t"]
 radius = 7.0
 height = 26.0
+
+[sub_resource type="Animation" id="Animation_tsxam"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelSwitcher/GroundBreak:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelSwitcher/ScreenTransitionOut:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LevelSwitcher/ScreenTransitionOut:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LevelSwitcher/ScreenTransitionIn:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.449219, 0.449219)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LevelSwitcher/GroundBreak:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LevelSwitcher/ScreenTransitionOut:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LevelSwitcher/ScreenTransitionIn:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:freeze_player")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8ala6"]
+resource_name = "level_transition"
+length = 8.33334
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelSwitcher/GroundShakeSFX")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.06667, 2.96667, 5.16667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelSwitcher/GroundCrumbleSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSwitcher/GroundBreak:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.06667, 1.1, 1.13333, 2.93333, 2.96667, 3, 5.13333, 5.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.16667, 5.3, 5.36667, 5.46667, 5.86667, 6.16667),
+"transitions": PackedFloat32Array(1, -2, 1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -25.82), Vector2(0, -30.977), Vector2(0, -19.736), Vector2(0, 30), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerSprite:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.16667, 5.3, 5.86667, 6.16667),
+"transitions": PackedFloat32Array(1, 2, 0.5, 1),
+"update": 0,
+"values": [0.0, 0.244346, 1.40848, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LevelSwitcher/ScreenTransitionOut:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.66667, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1e-05, 1e-05), Vector2(2, 2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LevelSwitcher/ScreenTransitionOut:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(6.2, 6.33333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LevelSwitcher/ScreenTransitionIn:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 6.2, 6.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.1, 0.1), Vector2(2, 2)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LevelSwitcher/GroundBreak:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.06667, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("LevelSwitcher")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(6.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"transition_next_level"
+}]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("LevelSwitcher/ScreenTransitionOut:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 5.66667, 6.33333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("LevelSwitcher/ScreenTransitionIn:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 5.96667, 6.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".:freeze_player")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 6.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Camera2D")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.06667, 2.96667, 5.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [0.5],
+"method": &"add_trauma"
+}, {
+"args": [1.0],
+"method": &"add_trauma"
+}, {
+"args": [1.0],
+"method": &"add_trauma"
+}, {
+"args": [1.0],
+"method": &"add_trauma"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ileuq"]
 resource_name = "take_damage"
@@ -130,11 +625,14 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lwr83"]
 _data = {
+"RESET": SubResource("Animation_tsxam"),
+"level_transition": SubResource("Animation_8ala6"),
 "take_damage": SubResource("Animation_ileuq")
 }
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
+collision_priority = 2.0
 script = ExtResource("1_8f13i")
 death_screen = ExtResource("2_4qn83")
 
@@ -311,13 +809,149 @@ loot_table = ExtResource("7_75cg3")
 [node name="HealthBar" parent="." node_paths=PackedStringArray("stats_node") instance=ExtResource("13_vcw5i")]
 stats_node = NodePath("../PlayerStats")
 
-[node name="BGSprite" type="Sprite2D" parent="."]
+[node name="LevelSwitcher" type="Node2D" parent="."]
+script = ExtResource("22_ffm7r")
+
+[node name="Level1" type="Node2D" parent="LevelSwitcher"]
+
+[node name="BGSprite" type="Sprite2D" parent="LevelSwitcher/Level1"]
 z_index = -50
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_upf5s")
-scale = Vector2(0.547852, 0.365234)
-texture = SubResource("NoiseTexture2D_hhvw1")
+scale = Vector2(3.94531, 2.6302)
+texture = ExtResource("23_77gle")
+
+[node name="LevelEffects" type="Sprite2D" parent="LevelSwitcher/Level1"]
+z_index = -50
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_plmxn")
+scale = Vector2(3.94531, 2.6302)
+texture = ExtResource("23_77gle")
+
+[node name="Music" type="AudioStreamPlayer" parent="LevelSwitcher/Level1"]
+process_mode = 3
+stream = ExtResource("26_dwusy")
+bus = &"Music"
+
+[node name="Level2" type="Node2D" parent="LevelSwitcher"]
+visible = false
+
+[node name="BGSprite" type="Sprite2D" parent="LevelSwitcher/Level2"]
+z_index = -49
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_qx478")
+scale = Vector2(3.94531, 2.6302)
+texture = ExtResource("23_77gle")
+
+[node name="LevelEffects" type="Sprite2D" parent="LevelSwitcher/Level2"]
+z_index = -49
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_7m1hu")
+scale = Vector2(3.94531, 2.6302)
+texture = ExtResource("23_77gle")
+
+[node name="Flashlight" type="Sprite2D" parent="LevelSwitcher/Level2"]
+z_index = -49
+material = SubResource("ShaderMaterial_pqm6f")
+scale = Vector2(1.33594, 1.33594)
+texture = SubResource("GradientTexture2D_ifgk3")
+
+[node name="Music" type="AudioStreamPlayer" parent="LevelSwitcher/Level2"]
+process_mode = 3
+stream = ExtResource("29_7cluu")
+bus = &"Music"
+
+[node name="Level3" type="Node2D" parent="LevelSwitcher"]
+visible = false
+
+[node name="BGSprite" type="Sprite2D" parent="LevelSwitcher/Level3"]
+z_index = -48
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_r3ydj")
+scale = Vector2(3.94531, 2.6302)
+texture = ExtResource("23_77gle")
+
+[node name="LevelEffects" type="Sprite2D" parent="LevelSwitcher/Level3"]
+z_index = -48
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_30ge2")
+scale = Vector2(3.94531, 2.6302)
+texture = ExtResource("23_77gle")
+
+[node name="Flashlight" type="Sprite2D" parent="LevelSwitcher/Level3"]
+z_index = -48
+material = SubResource("ShaderMaterial_sm4i7")
+scale = Vector2(1.33594, 1.33594)
+texture = SubResource("GradientTexture2D_ifgk3")
+
+[node name="Music" type="AudioStreamPlayer" parent="LevelSwitcher/Level3"]
+process_mode = 3
+stream = ExtResource("28_aow06")
+bus = &"Music"
+
+[node name="Level4" type="Node2D" parent="LevelSwitcher"]
+visible = false
+
+[node name="BGSprite" type="Sprite2D" parent="LevelSwitcher/Level4"]
+z_index = -47
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ct3wy")
+scale = Vector2(3.94531, 2.6302)
+texture = ExtResource("23_77gle")
+
+[node name="LevelEffects" type="Sprite2D" parent="LevelSwitcher/Level4"]
+z_index = -47
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pg48r")
+scale = Vector2(3.94531, 2.6302)
+texture = ExtResource("23_77gle")
+
+[node name="Flashlight" type="Sprite2D" parent="LevelSwitcher/Level4"]
+z_index = -47
+material = SubResource("ShaderMaterial_f2wy2")
+scale = Vector2(1.33594, 1.33594)
+texture = SubResource("GradientTexture2D_ifgk3")
+
+[node name="Music" type="AudioStreamPlayer" parent="LevelSwitcher/Level4"]
+process_mode = 3
+stream = ExtResource("30_5weuf")
+bus = &"Music"
+
+[node name="GroundBreak" type="AnimatedSprite2D" parent="LevelSwitcher"]
+visible = false
+position = Vector2(0, 14)
+scale = Vector2(3.5625, 3.5625)
+sprite_frames = SubResource("SpriteFrames_6rtix")
+frame = 7
+speed_scale = 0.0
+
+[node name="GroundCrumbleSFX" type="AudioStreamPlayer" parent="LevelSwitcher"]
+stream = ExtResource("32_jv2t7")
+bus = &"Effects"
+
+[node name="GroundShakeSFX" type="AudioStreamPlayer" parent="LevelSwitcher"]
+stream = ExtResource("33_ty4v7")
+volume_db = 5.0
+bus = &"Effects"
+
+[node name="ScreenTransitionOut" type="Sprite2D" parent="LevelSwitcher"]
+visible = false
+z_index = 50
+texture = SubResource("GradientTexture2D_5d4by")
+
+[node name="ScreenTransitionIn" type="Sprite2D" parent="LevelSwitcher"]
+visible = false
+z_index = 50
+scale = Vector2(0.449219, 0.449219)
+texture = SubResource("GradientTexture2D_magqx")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
@@ -330,14 +964,16 @@ shape = SubResource("CircleShape2D_sa55p")
 debug_color = Color(0.456537, 0.00266336, 0.919708, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.75, 0.75)
+zoom = Vector2(1.25, 1.25)
 position_smoothing_enabled = true
 script = ExtResource("15_n0ywd")
 max_offset = Vector2(70, 70)
 noise = SubResource("FastNoiseLite_27ynm")
+trauma_pwr = 3
 
 [node name="PickUpSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_ax3nw")
+volume_db = 5.0
 bus = &"Effects"
 
 [node name="Experience" type="Node2D" parent="."]

@@ -14,26 +14,32 @@ signal destroy_object
 	set(value):
 		sprite = value
 		if Engine.is_editor_hint():
-			sprite_2d.texture = value
+			$Sprite2D.texture = value
 
 @export var entity_stats: EntityStats:
 	set(value):
 		entity_stats = value
 		if Engine.is_editor_hint():
-			health_bar.stats_node = value
+			$HealthBar.stats_node = value
 			update_configuration_warnings()
 
 @export var sprite_scale: float = 1.0:
 	set(value):
 		sprite_scale = value
 		if Engine.is_editor_hint():
-			sprite_2d.scale = Vector2.ONE * value
+			$Sprite2D.scale = Vector2.ONE * value
 
 @export var sprite_offset: Vector2 = Vector2.ZERO:
 	set(value):
 		sprite_offset = value
 		if Engine.is_editor_hint():
-			sprite_2d.position = sprite_offset
+			$Sprite2D.position = sprite_offset
+
+@export var sprite_modulate: Color = Color.WHITE:
+	set(value):
+		sprite_modulate = value
+		if Engine.is_editor_hint():
+			sprite_2d.material.set_shader_parameter("modulate", value)
 
 func _ready():
 	sprite_2d.texture = sprite
@@ -42,6 +48,7 @@ func _ready():
 	entity_stats.take_damage.connect(_on_take_damage)
 	sprite_2d.scale = Vector2.ONE * sprite_scale
 	sprite_2d.position = sprite_offset
+	sprite_2d.material.set_shader_parameter("modulate", sprite_modulate)
 
 func _on_death():
 	animation_player.play("death")

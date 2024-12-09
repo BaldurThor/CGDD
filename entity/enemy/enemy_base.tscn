@@ -11,6 +11,7 @@
 resource_local_to_scene = true
 shader = ExtResource("1_x7jxo")
 shader_parameter/flash = false
+shader_parameter/modulate = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_qfi7x"]
 length = 0.001

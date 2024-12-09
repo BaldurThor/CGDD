@@ -5,7 +5,7 @@ extends Label
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_pressed():
 		pause_node.hide()
-		get_tree().paused = false
+		GameManager.unpause(pause_node)
 
 
 func _on_mouse_entered() -> void:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=3 format=3 uid="uid://0m6d1hviptg7"]
+
+[ext_resource type="Resource" uid="uid://m7u7qraek2rl" path="res://entity/enemy/enemy_types/carptist/carptist.tres" id="1_wulva"]
+[ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="2_dpejx"]
+
+[resource]
+script = ExtResource("2_dpejx")
+enemy_type = ExtResource("1_wulva")
+strength_multiplier = 3.0
+starting_spawn_rate = 0.8
+ending_spawn_rate = 0.3

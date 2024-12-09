@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=3 format=3 uid="uid://cqef4cjogn80k"]
+
+[ext_resource type="Resource" uid="uid://c46dmrx2g0p7p" path="res://entity/enemy/enemy_types/cultist/cultist.tres" id="1_ctcmi"]
+[ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="2_t7a0s"]
+
+[resource]
+script = ExtResource("2_t7a0s")
+enemy_type = ExtResource("1_ctcmi")
+strength_multiplier = 4.0
+starting_spawn_rate = 0.4
+ending_spawn_rate = 0.05

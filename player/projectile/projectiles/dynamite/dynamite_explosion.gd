@@ -5,6 +5,8 @@ class_name DynamiteExplosion extends Area2D
 @onready var damage_calculation: ExplosionDamageCalculation = $DamageCalculation
 @onready var explosion_radius: CollisionShape2D = $ExplosionRadius
 
+const CRATER = preload("res://player/projectile/crater.tscn")
+
 var weapon_type: WeaponType = null
 var player_stats: PlayerStats = null
 
@@ -18,6 +20,11 @@ func _ready() -> void:
 	# I hate this
 	await get_tree().create_timer(0.05).timeout
 	_explode()
+	
+	var crater = CRATER.instantiate()
+	GameManager.get_game_root().add_child(crater)
+	crater.global_position = global_position
+	crater.scale = Vector2.ONE * (weapon_type.explosion_radius + player_stats.added_explosive_radius) / 75.0
 
 func _explode() -> void:
 	var nearby_enemies = get_overlapping_bodies()

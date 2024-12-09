@@ -3,35 +3,33 @@
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="1_2mm7l"]
 [ext_resource type="Script" path="res://menu/how_to_play/back.gd" id="2_80pcx"]
 
-[node name="Info" type="CanvasLayer"]
-
-[node name="PauseMenuWrapper" type="MarginContainer" parent="."]
+[node name="InfoMenuWrapper" type="MarginContainer"]
 offset_right = 480.0
 offset_bottom = 270.0
 
-[node name="CenterContainer" type="CenterContainer" parent="PauseMenuWrapper"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(370, 212)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PauseMenu" type="MarginContainer" parent="PauseMenuWrapper/CenterContainer"]
+[node name="InfoMenu" type="MarginContainer" parent="CenterContainer"]
 z_index = 2
 custom_minimum_size = Vector2(364, 206)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Background" type="TextureRect" parent="PauseMenuWrapper/CenterContainer/PauseMenu"]
+[node name="Background" type="TextureRect" parent="CenterContainer/InfoMenu"]
 z_index = -1
 layout_mode = 2
 texture = ExtResource("1_2mm7l")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/InfoMenu"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/InfoMenu/VBoxContainer"]
 layout_mode = 2
 text = "How to play:
 Use WASD to move
@@ -41,14 +39,14 @@ Use your mouse to hook the fish and lvl up
 Collect xp from killed enemies to lvl up
 When you lvl up choose a new skill"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/InfoMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/InfoMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Kill god"
 
-[node name="Back" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("info_node")]
+[node name="Back" type="Label" parent="CenterContainer/InfoMenu/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("info_node")]
 layout_mode = 2
 size_flags_horizontal = 10
 mouse_filter = 0
@@ -56,14 +54,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Back"
 script = ExtResource("2_80pcx")
-info_node = NodePath("../../../../../..")
+info_node = NodePath("../../../../..")
 
-[node name="ColorRect" type="ColorRect" parent="PauseMenuWrapper/CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
 custom_minimum_size = Vector2(370, 212)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/HBoxContainer/Back" method="_on_mouse_exited"]
+[connection signal="gui_input" from="CenterContainer/InfoMenu/VBoxContainer/HBoxContainer/Back" to="CenterContainer/InfoMenu/VBoxContainer/HBoxContainer/Back" method="_on_gui_input"]
+[connection signal="mouse_entered" from="CenterContainer/InfoMenu/VBoxContainer/HBoxContainer/Back" to="CenterContainer/InfoMenu/VBoxContainer/HBoxContainer/Back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CenterContainer/InfoMenu/VBoxContainer/HBoxContainer/Back" to="CenterContainer/InfoMenu/VBoxContainer/HBoxContainer/Back" method="_on_mouse_exited"]

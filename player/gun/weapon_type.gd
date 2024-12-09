@@ -67,6 +67,8 @@ signal weapon_range_changed(new_radius: float)
 @export var attack_sfx: AudioStream
 ## The projectile to spawn on attack
 @export var projectile: PackedScene
+## Crosshair that the weapon uses
+@export var crosshair: Texture2D
 
 @export_category("Debug")
 ## Debug utility which changes the color of the TargetRange's Shape.

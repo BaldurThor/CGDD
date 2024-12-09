@@ -1,10 +1,8 @@
 extends Label
 
-@export var run: PackedScene
-
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_pressed():
-		GameManager.start_game(run)
+		GameManager.start_game()
 
 
 func _on_mouse_entered() -> void:
