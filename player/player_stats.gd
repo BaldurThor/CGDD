@@ -51,7 +51,7 @@ signal experience_absorb_range_changed()
 @export_range(0.0, 0.75, 0.01) var dodge_chance: float = 0.0 # linear
 
 ## The number of seconds it takes for each regen tick.
-@export_range(0.1, 100.0, 0.1, "or_greater") var regen_speed: float = 1.0
+@export_range(0.1, 100.0, 0.1, "or_greater") var regen_speed: float = 2.0
 
 ## Multipliers which affect other stats but are not stats in themselves.
 @export_category("Multipliers")
@@ -78,7 +78,7 @@ signal experience_absorb_range_changed()
 		ranged_range_mod = value
 		player_ranged_range_changed.emit()
 
-## Affects the spread of the player's ranged projectiles. A lower value means higher spread.
+## Affects the spread of the player's ranged projectiles. A lower value means lower spread.
 @export_range(0.0, 2.0, 0.01, "or_greater") var ranged_spread_mod: float = 0.0
 
 ## A multiplier to the attack speed of all ranged weapons.
@@ -99,7 +99,7 @@ signal experience_absorb_range_changed()
 @export var damage_mod: float = 1.0 # linear
 
 ## A multiplier to attacks that crit.
-@export_range(1.0, 3.0, 0.01) var crit_multiplier: float = 1.0
+@export_range(1.0, 3.0, 0.01) var crit_multiplier: float = 2.0
 
 @export_group("Defense")
 

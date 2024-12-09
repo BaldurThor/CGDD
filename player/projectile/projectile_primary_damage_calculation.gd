@@ -21,5 +21,5 @@ func calculate_damage() -> int:
 
 func calculate_knockback() -> int:
 	if _weapon_type.can_knockback:
-		return _weapon_type.knockback
+		return int(_weapon_type.knockback)
 	return 0

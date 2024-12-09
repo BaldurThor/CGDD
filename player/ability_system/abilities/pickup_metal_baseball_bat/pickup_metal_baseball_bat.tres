@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://tyvey76efpb4"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_metal_baseball_bat/pickup_metal_baseball_bat.gd" id="1_ey284"]
+[ext_resource type="Texture2D" uid="uid://cikcypx4bhv8c" path="res://player/melee/metal_baseball_bat/metal_baseball_bat.png" id="2_ybmha"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_wup6i"]
+
+[resource]
+script = ExtResource("3_wup6i")
+ability_script = ExtResource("1_ey284")
+name = "Metal Baseball Bat"
+positive_effects = Array[String](["+1 Metal Baseball Bat"])
+negative_effects = Array[String]([])
+tags = Array[String](["baseball_bat"])
+flavor_text = "Swings in front of you, knocking enemies back"
+max_amount = 0
+rarity = 0
+icon = ExtResource("2_ybmha")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_wup6i")]([])
+requirements = Array[ExtResource("3_wup6i")]([])

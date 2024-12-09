@@ -1,8 +1,23 @@
 class_name AbilityPool extends Resource
 
+## Passive abilities
 @export var abilities: Array[AbilityInfo] = []
+## Abilities that grant the player a weapon
+@export var weapons: Array[AbilityInfo] = []
+## Abilities that are only offered on killing a boss
+@export var corrupted_abilities: Array[AbilityInfo] = []
+## The weight of a common ability being chosen.
+@export var rate_common: int = 0
+## The weight of an uncommon ability being chosen.
+@export var rate_uncommon: int = 0
+## The weight of a rare ability being chosen.
+@export var rate_rare: int = 0
+## The levels at which the player is guaranteed to get a choice of weapons
+@export var weapon_guarantee_breakpoints: Array[int] = []
 
 var global_ability_pool: Array[AbilityInfo] = []
+var global_weapon_pool: Array[AbilityInfo] = []
+
 var pick_counts: Dictionary = {}
 var guarantees: Dictionary = {}
 
@@ -22,14 +37,38 @@ func _pick_ability(ability_pool: Array[AbilityInfo]) -> AbilityInfo:
 	return null
 
 func _get_ability_pool() -> Array[AbilityInfo]:
-	# TODO: Make this shuffle based on rarity. Least rare should generally be
-	# placed more in the front.
 	var ability_pool = global_ability_pool.duplicate()
-	ability_pool.shuffle()
+	## Sort the array in ascending order based on ability rarity
+	ability_pool.sort_custom(func(a, b): return int(a.rarity) < int(b.rarity))
 	return ability_pool
+	
+func _get_weapon_pool() -> Array[AbilityInfo]:
+	var weapon_pool = global_weapon_pool.duplicate()
+	weapon_pool.shuffle()
+	return weapon_pool
+	
+func _create_ability_accumulator(pool: Array[AbilityInfo]) -> Array[int]:
+	var total_weight: int = 0
+	var accumulator: Array[int] = []
+	for ability in pool:
+		var this_weight: int = 0
+		match ability.rarity:
+			AbilityInfo.Rarity.COMMON:
+				this_weight = rate_common
+			AbilityInfo.Rarity.UNCOMMON:
+				this_weight = rate_uncommon
+			AbilityInfo.Rarity.RARE:
+				this_weight = rate_rare
+			_:
+				print_debug("WARNING: An ability was found in loot_table that was of an invalid rarity. Ignoring...")
+				continue
+		total_weight += this_weight
+		accumulator.append(total_weight)
+	return accumulator
 
 func _init_pool():
 	global_ability_pool = abilities.duplicate()
+	global_weapon_pool = weapons.duplicate()
 	for ability in global_ability_pool:
 		if ability.guaranteed_at == 0:
 			continue
@@ -41,21 +80,44 @@ func _init_pool():
 	
 	initialized = true
 
+func _get_weapon_selection(count: int = 3) -> Array[AbilityInfo]:
+	var weapon_pool = _get_weapon_pool()
+	var choices: Array[AbilityInfo] = []
+	for i in range(count):
+		var index = randi_range(0, weapon_pool.size() - 1)
+		choices.push_back(weapon_pool[index])
+		weapon_pool.remove_at(index)
+	return choices
+
 func get_ability_selection(count: int = 3) -> Array[AbilityInfo]:
 	if !initialized:
 		_init_pool()
 	
+	var player_level = GameManager.get_player().experience.current_level
+	if player_level in weapon_guarantee_breakpoints:
+		return _get_weapon_selection(count)
+
 	var ability_pool = _get_ability_pool()
 	var picked_abilities: Array[AbilityInfo] = []
-	
-	var player_level = GameManager.get_player().experience.current_level
 	var guaranteed_picks = guarantees.get(player_level)
+	
 	if guaranteed_picks != null:
 		for pick in guaranteed_picks:
 			picked_abilities.push_back(pick)
-	
+
 	for i in range(min(count - picked_abilities.size(), ability_pool.size())):
-		picked_abilities.push_back(ability_pool.pop_front())
+		var accumulator = _create_ability_accumulator(ability_pool)
+		var accumulator_total: int = accumulator[-1]
+		var desired_weight: int = randi_range(0, accumulator_total)
+		var index_of_ability: int = -1
+		for j in accumulator.size():
+			var weight = accumulator[j]
+			if weight == desired_weight or weight <= desired_weight and accumulator[j + 1] > desired_weight:
+				index_of_ability = j
+				break
+		var ability: AbilityInfo = ability_pool[index_of_ability]
+		ability_pool.pop_at(index_of_ability)
+		picked_abilities.push_back(ability)
 	
 	return picked_abilities
 
