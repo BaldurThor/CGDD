@@ -30,7 +30,7 @@ func _explode() -> void:
 	var knockback = damage_calculation.calculate_knockback()
 	for enemy in nearby_enemies:
 		if enemy is Enemy:
-			enemy.take_damage(damage_calculation.calculate(), knockback)
+			enemy.take_damage(damage_calculation.calculate_damage(), knockback)
 	
 	var crater = CRATER.instantiate()
 	GameManager.get_game_root().add_child(crater)

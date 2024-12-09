@@ -1,7 +1,7 @@
 extends Sprite2D
 
-@onready var firearm: Firearm = $".."
+@onready var weapon: Node2D = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.texture = firearm.weapon_type.crosshair
+	self.texture = weapon.weapon_type.crosshair
