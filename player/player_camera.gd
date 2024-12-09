@@ -12,9 +12,9 @@ func _ready():
 	randomize()
 	noise.seed = randi()
 	
-	GameManager.enemy_take_damage.connect(func(amt: int): add_trauma(0.05))
-	GameManager.player_take_damage.connect(func(amt: int): add_trauma(1))
-	GameManager.explosion_occurred.connect(func(intensity: float): add_trauma(0.5))
+	GameManager.enemy_take_damage.connect(func(amt: int=0.05): add_trauma(amt))
+	GameManager.player_take_damage.connect(func(amt: int=1): add_trauma(amt))
+	GameManager.explosion_occurred.connect(func(intensity: float=0.5): add_trauma(intensity))
 
 func add_trauma(amount: float):
 	amount = clamp(amount, 0, 1)

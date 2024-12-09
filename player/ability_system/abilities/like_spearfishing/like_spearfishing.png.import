@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dolkn3dbcy2u"
-path="res://.godot/imported/spear_gun_spear.png-3aeda957f0b8f81cd279d2ba04265bfc.ctex"
+uid="uid://bliab2ex61dn"
+path="res://.godot/imported/like_spearfishing.png-6e935eb3941e335a1a56e4c5e99683e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/gun/bullets/spear_gun_spear/spear_gun_spear.png"
-dest_files=["res://.godot/imported/spear_gun_spear.png-3aeda957f0b8f81cd279d2ba04265bfc.ctex"]
+source_file="res://player/ability_system/abilities/like_spearfishing/like_spearfishing.png"
+dest_files=["res://.godot/imported/like_spearfishing.png-6e935eb3941e335a1a56e4c5e99683e8.ctex"]
 
 [params]
 

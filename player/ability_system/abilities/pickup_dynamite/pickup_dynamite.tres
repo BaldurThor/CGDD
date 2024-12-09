@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/pickup_dynamite/pickup_dynamite.gd" id="1_4t2vr"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_jtd0s"]
-[ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/gun/bullets/dynamite/dynamite.png" id="2_qinel"]
+[ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/projectile/projectiles/dynamite/dynamite.png" id="2_qinel"]
 
 [resource]
 script = ExtResource("1_jtd0s")

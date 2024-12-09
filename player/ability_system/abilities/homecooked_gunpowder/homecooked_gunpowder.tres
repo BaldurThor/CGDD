@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://b2ftepp71awho"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/homecooked_gunpowder/homecooked_gunpowder.gd" id="1_ramdr"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_1day0"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_qo4cp"]
+
+[resource]
+script = ExtResource("3_qo4cp")
+ability_script = ExtResource("1_ramdr")
+name = "Homecooked Gunpowder"
+positive_effects = Array[String](["+5 explosive damage", "+20 explosive radius"])
+negative_effects = Array[String](["-10% max health"])
+flavor_text = "It's well-done!"
+max_amount = 0
+rarity = 1
+icon = ExtResource("2_1day0")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_qo4cp")]([])
+requirements = Array[ExtResource("3_qo4cp")]([])

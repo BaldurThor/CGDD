@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fb1msiylgjtc"
-path="res://.godot/imported/dynamite.png-4368339e334b6fd9d61d37200573ddcb.ctex"
+uid="uid://byy1skexi8x4i"
+path="res://.godot/imported/frag_grenade_shrapnel.png-6aaae78ad32ffee97b31111a1933f74e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/gun/bullets/dynamite/dynamite.png"
-dest_files=["res://.godot/imported/dynamite.png-4368339e334b6fd9d61d37200573ddcb.ctex"]
+source_file="res://player/projectile/projectiles/frag_grenade_shrapnel/frag_grenade_shrapnel.png"
+dest_files=["res://.godot/imported/frag_grenade_shrapnel.png-6aaae78ad32ffee97b31111a1933f74e.ctex"]
 
 [params]
 

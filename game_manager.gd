@@ -81,6 +81,9 @@ func assign_enemy_manager(enemy_manager: EnemyManager) -> void:
 func get_enemy_manager() -> EnemyManager:
 	return _enemy_manager
 
+func get_game_root() -> Node2D:
+	return _player.get_parent()
+
 func quit() -> void:
 	SaveManager.save_data()
 	get_tree().quit()
