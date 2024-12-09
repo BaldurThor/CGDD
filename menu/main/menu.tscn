@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://db5yyodexjuf1"]
+[gd_scene load_steps=10 format=3 uid="uid://db5yyodexjuf1"]
 
 [ext_resource type="Texture2D" uid="uid://eb55mdcve1m0" path="res://menu/main/image0.jpg" id="1_m1u38"]
 [ext_resource type="Script" path="res://menu/main/menu.gd" id="1_wk1l7"]
@@ -6,15 +6,17 @@
 [ext_resource type="Script" path="res://menu/shared/quit.gd" id="2_ni7lo"]
 [ext_resource type="Script" path="res://menu/main/new_game.gd" id="3_f6fg1"]
 [ext_resource type="Script" path="res://menu/shared/how_to_play.gd" id="3_fo3wn"]
-[ext_resource type="PackedScene" uid="uid://bbesagqumwgtd" path="res://menu/run.tscn" id="3_u5fo7"]
 [ext_resource type="Script" path="res://menu/shared/options.gd" id="4_vktvh"]
 [ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="8_c5jhc"]
-[ext_resource type="PackedScene" uid="uid://bmvuvlfr0jg2p" path="res://menu/options/options.tscn" id="10_b5mhb"]
+[ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="10_b5mhb"]
 
 [node name="Menu" type="MarginContainer" node_paths=PackedStringArray("info_node", "options_node")]
 clip_contents = true
-offset_right = 480.0
-offset_bottom = 270.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_wk1l7")
 info_node = NodePath("Info")
 options_node = NodePath("Options")
@@ -46,15 +48,16 @@ layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
 text = "Dive in"
 script = ExtResource("3_f6fg1")
-run = ExtResource("3_u5fo7")
 
 [node name="How_to_play" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions" node_paths=PackedStringArray("info_node")]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
 text = "How To Play"
 script = ExtResource("3_fo3wn")
 info_node = NodePath("../../../../Info")
@@ -64,6 +67,7 @@ layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
 text = "Options"
 script = ExtResource("4_vktvh")
 options_node = NodePath("../../../../Options")
@@ -72,6 +76,7 @@ options_node = NodePath("../../../../Options")
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
 text = "Quit"
 script = ExtResource("2_ni7lo")
 
@@ -79,20 +84,21 @@ script = ExtResource("2_ni7lo")
 layout_mode = 2
 text = "Version - 0.1.0"
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-
-[node name="MenuImage" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+[node name="MenuImage" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(190, 270)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("1_m1u38")
 expand_mode = 4
+stretch_mode = 6
 
 [node name="Info" parent="." instance=ExtResource("8_c5jhc")]
 visible = false
+layout_mode = 2
 
 [node name="Options" parent="." instance=ExtResource("10_b5mhb")]
+visible = false
+layout_mode = 2
 
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_gui_input"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_mouse_entered"]

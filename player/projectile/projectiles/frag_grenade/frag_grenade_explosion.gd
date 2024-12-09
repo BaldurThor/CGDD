@@ -1,6 +1,7 @@
 class_name FragGrenadeExplosion extends Area2D
 
 const FRAG_GRENADE_SHRAPNEL = preload("res://player/projectile/projectiles/frag_grenade_shrapnel/frag_grenade_shrapnel.tscn")
+const CRATER = preload("res://player/projectile/crater.tscn")
 
 var weapon_type: WeaponType = null
 var player_stats: PlayerStats = null
@@ -29,6 +30,11 @@ func _explode() -> void:
 	for enemy in nearby_enemies:
 		if enemy is Enemy:
 			enemy.take_damage(damage_calculation.calculate())
+	
+	var crater = CRATER.instantiate()
+	GameManager.get_game_root().add_child(crater)
+	crater.global_position = global_position
+	crater.scale = Vector2.ONE * (weapon_type.explosion_radius + player_stats.added_explosive_radius) / 75.0
 
 func create_shrapnel() -> void:
 	for i in range(weapon_type.projectile_count + player_stats.extra_projectiles):

@@ -8,6 +8,7 @@ class_name Player extends CharacterBody2D
 @onready var experience: Experience = %Experience
 
 @export var death_screen: PackedScene
+@export var freeze_player: bool = false
 
 func _init() -> void:
 	# Make sure GameManager knows about this player instance.
@@ -16,6 +17,9 @@ func _init() -> void:
 	GameManager.assign_player(self)
 
 func _physics_process(_delta: float) -> void:
+	if freeze_player:
+		return
+	
 	var x_direction := Input.get_axis("move_left", "move_right")
 	var y_direction := Input.get_axis("move_up", "move_down")
 	var direction := Vector2(x_direction, y_direction).normalized()
@@ -26,8 +30,16 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * player_stats.movement_speed
 	
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var col = get_slide_collision(i)
+		if col.get_collider() is Enemy:
+			col.get_collider().apply_force(col.get_normal() * -2000.0)
 
 func take_damage(amount: int) -> void:
+	if freeze_player:
+		return
+	
 	if randf() < player_stats.dodge_chance:
 		amount = 0
 	
@@ -39,5 +51,4 @@ func take_damage(amount: int) -> void:
 
 
 func _on_player_stats_death() -> void:
-	get_tree().paused = true
 	self.add_child(death_screen.instantiate())

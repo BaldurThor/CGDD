@@ -1,4 +1,4 @@
-class_name Enemy extends CharacterBody2D
+class_name Enemy extends RigidBody2D
 
 var player: Player = null
 var distance_to_player: float
@@ -10,7 +10,9 @@ const DAMAGE_LABEL = preload("res://entity/enemy/damage_label/damage_label.tscn"
 
 # Dependency injected from enemy manager
 @export var damage_label_parent: Node
+
 var damage_label: Node = null
+var should_drop_xp: bool = true
 
 @export var contact_damage_override: Area2D
 
@@ -26,7 +28,7 @@ func _ready() -> void:
 	entity_stats.death.connect(_on_death)
 	enemy_base.destroy_object.connect(queue_free)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# Make sure a player is present
 	if !player:
 		return
@@ -35,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	var dir: Vector2 = player.global_position - global_position
 	distance_to_player = dir.length()
 	var dir_norm: Vector2 = dir.normalized()
-	var coll: KinematicCollision2D = move_and_collide(dir_norm * entity_stats.movement_speed)
+	var coll: KinematicCollision2D = move_and_collide(dir_norm * entity_stats.movement_speed * delta * 100)
 	
 	if contact_damage_override != null and contact_damage_override.has_overlapping_bodies():
 		for body in contact_damage_override.get_overlapping_bodies():
@@ -47,21 +49,24 @@ func _physics_process(_delta: float) -> void:
 		if coll.get_collider_id() == player.get_instance_id():
 			player.take_damage(entity_stats.contact_damage)
 	
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, drop_xp: bool = true) -> void:
+	should_drop_xp = drop_xp
 	entity_stats.deal_damage(damage)
 	GameManager.enemy_take_damage.emit(int(entity_stats.get_damage_applied(damage)))
 	create_damage_label(damage)
 
 func _on_death() -> void:
-	var gem = EXPERIENCE_GEM.instantiate()
-	gem.experience_value = xp_drop_amount
-	gem.global_transform = global_transform
-	var run = get_node("/root/Main/Run")
-	run.add_child.call_deferred(gem)
+	if should_drop_xp:
+		var gem = EXPERIENCE_GEM.instantiate()
+		gem.experience_value = xp_drop_amount
+		gem.global_transform = global_transform
+		GameManager.get_game_root().add_child.call_deferred(gem)
 	
 	# Disable the rigidbody
 	collision_mask = 0
 	collision_layer = 0
+	
+	GameManager.enemy_died.emit()
 	
 	if contact_damage_override != null:
 		contact_damage_override.collision_mask = 0

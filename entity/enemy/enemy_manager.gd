@@ -1,33 +1,62 @@
 class_name EnemyManager extends Node
 
 var player: Player
+var timers: Dictionary = {}
+var enemy_count: int = 0
 
-@onready var enemy_timer: Timer = $EnemyTimer
+const MAX_ENEMIES: int = 500
 
-@export var enemy_types: Array[EnemyType] = []
+@export var level_spawn_settings: Array[LevelSpawnSettings] = []
 @export var spawn_radius: float = 300
 @export var damage_numbers: Node
-
-@export var timer_start_speed: float = 0.6
-@export var timer_end_speed: float = 0.2
 
 @onready var enemies: Node = $Enemies
 
 func _init() -> void:
 	GameManager.assign_enemy_manager(self)
 
-func _process(_delta: float):
-	var percentage = GameManager.game_timer.time_left / GameManager.game_timer.wait_time
-	enemy_timer.wait_time = lerpf(timer_start_speed, timer_end_speed, 1 - percentage)
+func _ready():
+	_init_level()
+	GameManager.new_world_level.connect(func(_level: int): _init_level())
+	GameManager.enemy_died.connect(func(): enemy_count -= 1)
 
-func _on_enemy_timer_timeout() -> void:
+func _process(_delta: float):
+	var level_spawn: LevelSpawnSettings = level_spawn_settings[GameManager.world_level - 1]
+	var level_progress = GameManager.get_world_level_progress()
+	for enemy: EnemySpawnSettings in level_spawn.enemies:
+		var timer: Timer = timers[enemy]
+		timer.wait_time = lerpf(enemy.starting_spawn_rate, enemy.ending_spawn_rate, level_progress)
+
+func _init_level() -> void:
+	enemy_count = 0
+	var level_spawn = level_spawn_settings[GameManager.world_level - 1]
+	
+	for elem in timers.values():
+		elem.queue_free()
+	
+	timers.clear()
+	
+	for enemy: EnemySpawnSettings in level_spawn.enemies:
+		var timer = Timer.new()
+		add_child(timer)
+		timer.wait_time = enemy.starting_spawn_rate
+		timer.timeout.connect(func(): _on_enemy_timer_timeout(enemy))
+		timers[enemy] = timer
+		timer.start()
+
+func _on_enemy_timer_timeout(enemy_spawn: EnemySpawnSettings) -> void:
 	if player == null:
 		player = GameManager.get_player()
 	
-	var enemy_type = enemy_types.pick_random()
+	if GameManager.level_transitioning:
+		return
+	
+	if enemy_count >= MAX_ENEMIES:
+		return
 	
 	# Create a new instance of the Mob scene.
-	var enemy = enemy_type.enemy_scene.instantiate()
+	var enemy = enemy_spawn.enemy_type.enemy_scene.instantiate()
+	enemy_count += 1
 
 	# Choose a random spawn location around the player in a circle
 	var spawn_theta = randf_range(0, 2 * PI)

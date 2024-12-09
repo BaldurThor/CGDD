@@ -11,31 +11,33 @@ config_version=5
 [application]
 
 config/name="CGDD"
-run/main_scene="res://main.tscn"
+run/main_scene="res://menu/main/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.png"
 
 [autoload]
 
-GameManager="*res://game_manager.gd"
-BackgroundMusic="*res://music/background_music.tscn"
-Debug="*res://debug/debug.gd"
 consts="*res://consts.gd"
+Debug="*res://debug/debug.gd"
 DebugCommands="*res://debug/debug_commands.gd"
+GameManager="*res://game_manager.gd"
 SaveManager="*res://save_manager.gd"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=270
+window/size/viewport_width=960
+window/size/viewport_height=540
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[global_group]
+
+level_clear=""
 
 [input]
 

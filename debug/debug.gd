@@ -52,9 +52,9 @@ func _process(_delta: float) -> void:
 			console_in.grab_focus()
 		else:
 			console_in.clear()
-			
-		get_tree().paused = console_enabled
 		
+		GameManager.set_pause(self, console_enabled)
+
 func _on_text_submitted(text) -> void:
 	var parse_err = expression.parse(text)
 	

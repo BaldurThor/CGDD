@@ -13,7 +13,7 @@ func _ready() -> void:
 	if face_direction:
 		projectile.look_at(projectile.direction)
 
-func _handle_impact(collided_with: Node2D) -> void:
+func _handle_impact(_collided_with: Node2D) -> void:
 	_impacted = true
 
 func _physics_process(delta: float) -> void:

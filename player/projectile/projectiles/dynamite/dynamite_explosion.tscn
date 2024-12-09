@@ -122,6 +122,7 @@ autostart = true
 
 [node name="ExplosionSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_8cj63")
+volume_db = 15.0
 bus = &"Effects"
 
 [node name="ExplosionAnimation" type="AnimationPlayer" parent="."]
