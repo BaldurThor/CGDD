@@ -1,4 +1,4 @@
-class_name Enemy extends CharacterBody2D
+class_name Enemy extends RigidBody2D
 
 var player: Player = null
 var distance_to_player: float
@@ -28,7 +28,7 @@ func _ready() -> void:
 	entity_stats.death.connect(_on_death)
 	enemy_base.destroy_object.connect(queue_free)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# Make sure a player is present
 	if !player:
 		return
@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	var dir: Vector2 = player.global_position - global_position
 	distance_to_player = dir.length()
 	var dir_norm: Vector2 = dir.normalized()
-	var coll: KinematicCollision2D = move_and_collide(dir_norm * entity_stats.movement_speed)
+	var coll: KinematicCollision2D = move_and_collide(dir_norm * entity_stats.movement_speed * delta * 100)
 	
 	if contact_damage_override != null and contact_damage_override.has_overlapping_bodies():
 		for body in contact_damage_override.get_overlapping_bodies():

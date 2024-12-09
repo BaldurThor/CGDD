@@ -30,6 +30,11 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * player_stats.movement_speed
 	
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var col = get_slide_collision(i)
+		if col.get_collider() is Enemy:
+			col.get_collider().apply_force(col.get_normal() * -2000.0)
 
 func take_damage(amount: int) -> void:
 	if freeze_player:
