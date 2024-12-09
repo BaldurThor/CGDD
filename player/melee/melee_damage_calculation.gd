@@ -20,4 +20,6 @@ func calculate_damage() -> int:
 	return max(1, int(damage))
 
 func calculate_knockback() -> int:
-	return int((_weapon_type.knockback + _player_stats.added_melee_knockback) * _player_stats.melee_knockback_mod)
+	if _weapon_type.can_knockback:
+		return int((_weapon_type.knockback + _player_stats.added_melee_knockback) * _player_stats.melee_knockback_mod)
+	return 0

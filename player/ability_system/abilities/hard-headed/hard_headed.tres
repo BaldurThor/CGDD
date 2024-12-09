@@ -8,7 +8,7 @@
 script = ExtResource("1_wraw6")
 ability_script = ExtResource("1_r3l0j")
 name = "Hard-Headed"
-positive_effects = Array[String](["+10% max health", "+1 melee strikes", "+10 melee knockback"])
+positive_effects = Array[String](["+10% max health", "+1 melee strikes", "+10% melee knockback"])
 negative_effects = Array[String](["-10% attack speed"])
 flavor_text = "Useful for hammering nails"
 max_amount = 0

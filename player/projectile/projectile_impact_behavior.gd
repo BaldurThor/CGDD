@@ -24,7 +24,7 @@ func _handle_impact(collided_with: Node2D) -> void:
 		if collided_with.entity_stats.get_health_percentage() <= 0.0:
 			return
 		if deal_damage:
-			collided_with.take_damage(projectile.calculate_damage(), projectile.calculate_knockback())
+			collided_with.take_damage(projectile.calculate_damage(), projectile.calculate_knockback(), projectile.global_position)
 		if disable_collision_on_impact:
 			projectile.collision_layer = 0
 			projectile.collision_mask = 0

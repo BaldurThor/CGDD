@@ -45,10 +45,13 @@ signal weapon_range_changed(new_radius: float)
 		weapon_range_changed.emit(value)
 
 ## The amount of knockback this weapon inflicts on hit.
-@export var knockback: int = 0
+@export var knockback: float = 0.0
 
 ## The amount of knockback this weapon's secondary effects inflict on hit.
 @export var secondary_knockback: int = 0
+
+## Can this weapon apply a knockback to the enemy on impact?
+@export var can_knockback: bool = true
 
 ## The number of times that the weapon inherently attacks
 @export var melee_strike_count: int = 1
