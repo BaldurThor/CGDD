@@ -107,15 +107,17 @@ signal experience_absorb_range_changed()
 @export var movement_speed_mod: float = 1.0
 
 ## The absolute maximum health for the player. Defaults to max int.
-var absolute_max_health: int = (1 << 31) - 1
+var absolute_max_health: int = (1 << 63) - 1
 ## The absolute maximum amount the player can regenerate per tick. Defaults to max int.
-var absolute_max_health_regen: int = (1 << 31) - 1
+var absolute_max_health_regen: int = (1 << 63) - 1
 ## The absolute maximum amount of armor the player can have. Defaults to max int.
-var absolute_max_armor: int = (1 << 31) - 1
+var absolute_max_armor: int = (1 << 63) - 1
+## The absolute minimum amount of armor the player can have. Defaults to 1.
+var absolute_min_armor: int = 1
 ## The absolute maximum chance for the player to dodge. Defaults to 75%.
 var absolute_max_dodge: float = 0.75
 ## The absolute maximum chance for the player to critically strike.
-var absolute_max_crit_chance: float = 100.0
+var absolute_max_crit_chance: float = 1.0
 ## A modifier to non-critical strikes.
 var non_crit_damage_multiplier: float = 1.0
 ## A multiplier to the player's maximum health. Increasing this value should heal the player by the modified amount.
@@ -129,8 +131,6 @@ var non_crit_damage_multiplier: float = 1.0
 		else:
 			max_health_mod = value
 			health = clamp(health, 1, get_real_max_health())
-		# No need to emit the signal in this setter, as health calls health_updated
-		#health = get_real_max_health() * curr_percentage
 
 
 @export_category("Other")
@@ -162,12 +162,12 @@ var non_crit_damage_multiplier: float = 1.0
 @export var experience_orb_absorb_speed_mod: float = 1.0
 
 func damage_reduction() -> float:
-	return calculate_damage_reduction(min(absolute_max_armor, armor))
+	return calculate_damage_reduction(clamp(armor, absolute_min_armor, absolute_max_armor))
 
 ## Evaluates the player's max health. Always returns a value equal to or greater than 1.
 func get_real_max_health() -> int:
 	var base = super()
-	return min(int(max(base * max_health_mod, 1)), absolute_max_health)
+	return clamp(int(base * max_health_mod), 1, absolute_max_health)
 
 ## Handles regeneration for the player
 func _on_regen_timer_timeout() -> void:

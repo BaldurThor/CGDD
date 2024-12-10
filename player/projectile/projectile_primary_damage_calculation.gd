@@ -19,7 +19,8 @@ func calculate_damage() -> int:
 		if !_player_stats.crits_deal_damage:
 			return 0
 		damage *= float(_weapon_type.crit_damage + _player_stats.crit_multiplier)
-	return max(1, int(damage))
+		return max(1, int(damage))
+	return max(1, int(damage)) * _player_stats.non_crit_damage_multiplier
 
 func calculate_knockback() -> int:
 	if _weapon_type.can_knockback:

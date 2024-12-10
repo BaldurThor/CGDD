@@ -112,6 +112,9 @@ unique_name_in_owner = true
 [node name="TypeSFX" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_nflxa")
+volume_db = -8.0
+pitch_scale = 0.51
+attenuation = 3.605
 bus = &"Effects"
 
 [node name="RevealSFX" type="AudioStreamPlayer2D" parent="."]
