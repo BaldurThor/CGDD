@@ -104,6 +104,7 @@ layout_mode = 2
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_dbaeb")
 autoplay = true
+bus = &"Music"
 
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_gui_input"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_mouse_entered"]

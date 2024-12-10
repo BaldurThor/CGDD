@@ -41,6 +41,12 @@ signal destroy_object
 		if Engine.is_editor_hint():
 			sprite_2d.material.set_shader_parameter("modulate", value)
 
+@export var show_health_bar: bool = true:
+	set(value):
+		show_health_bar = value
+		if Engine.is_editor_hint():
+			health_bar.visible = value
+
 func _ready():
 	sprite_2d.texture = sprite
 	health_bar.stats_node = entity_stats
@@ -49,6 +55,7 @@ func _ready():
 	sprite_2d.scale = Vector2.ONE * sprite_scale
 	sprite_2d.position = sprite_offset
 	sprite_2d.material.set_shader_parameter("modulate", sprite_modulate)
+	health_bar.visible = show_health_bar
 
 func _on_death():
 	animation_player.play("death")

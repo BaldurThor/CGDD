@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=91 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
 [ext_resource type="Shader" path="res://player/hud/level_effect.gdshader" id="19_74cft"]
 [ext_resource type="Script" path="res://player/health_value.gd" id="19_ky1vu"]
+[ext_resource type="Script" path="res://player/hud/boss_bar.gd" id="19_xmm0l"]
 [ext_resource type="Script" path="res://levels/level_switcher.gd" id="22_ffm7r"]
 [ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://levels/level1/level1_background.png" id="23_77gle"]
 [ext_resource type="Script" path="res://player/weapon_manager.gd" id="24_jn8j2"]
@@ -805,6 +806,16 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("16_fr4t7")
 
+[node name="BossBar" type="ProgressBar" parent="HUD"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("19_xmm0l")
+
 [node name="AbilitySystem" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("18_wo8qc")
@@ -823,7 +834,7 @@ z_index = -50
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_upf5s")
-scale = Vector2(3.94531, 2.6302)
+scale = Vector2(15.78, 10.52)
 texture = ExtResource("23_77gle")
 
 [node name="LevelEffects" type="Sprite2D" parent="LevelSwitcher/Level1"]
@@ -831,7 +842,7 @@ z_index = -50
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_plmxn")
-scale = Vector2(3.94531, 2.6302)
+scale = Vector2(15.78, 10.52)
 texture = ExtResource("23_77gle")
 
 [node name="Music" type="AudioStreamPlayer" parent="LevelSwitcher/Level1"]
@@ -847,7 +858,7 @@ z_index = -49
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_qx478")
-scale = Vector2(3.94531, 2.6302)
+scale = Vector2(15.78, 10.52)
 texture = ExtResource("23_77gle")
 
 [node name="LevelEffects" type="Sprite2D" parent="LevelSwitcher/Level2"]
@@ -855,7 +866,7 @@ z_index = -49
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_7m1hu")
-scale = Vector2(3.94531, 2.6302)
+scale = Vector2(15.78, 10.52)
 texture = ExtResource("23_77gle")
 
 [node name="Flashlight" type="Sprite2D" parent="LevelSwitcher/Level2"]
@@ -877,7 +888,7 @@ z_index = -48
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_r3ydj")
-scale = Vector2(3.94531, 2.6302)
+scale = Vector2(15.78, 10.52)
 texture = ExtResource("23_77gle")
 
 [node name="LevelEffects" type="Sprite2D" parent="LevelSwitcher/Level3"]
@@ -885,7 +896,7 @@ z_index = -48
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_30ge2")
-scale = Vector2(3.94531, 2.6302)
+scale = Vector2(15.78, 10.52)
 texture = ExtResource("23_77gle")
 
 [node name="Flashlight" type="Sprite2D" parent="LevelSwitcher/Level3"]
@@ -907,7 +918,7 @@ z_index = -47
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_ct3wy")
-scale = Vector2(3.94531, 2.6302)
+scale = Vector2(15.78, 10.52)
 texture = ExtResource("23_77gle")
 
 [node name="LevelEffects" type="Sprite2D" parent="LevelSwitcher/Level4"]
@@ -915,7 +926,7 @@ z_index = -47
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_pg48r")
-scale = Vector2(3.94531, 2.6302)
+scale = Vector2(15.78, 10.52)
 texture = ExtResource("23_77gle")
 
 [node name="Flashlight" type="Sprite2D" parent="LevelSwitcher/Level4"]

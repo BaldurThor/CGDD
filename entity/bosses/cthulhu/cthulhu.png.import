@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs4okt74tdsy8"
-path="res://.godot/imported/eye_stalker.png-31c51eac7ad57fe295f9fdde4166cbad.ctex"
+uid="uid://ds0d5q58yo8f3"
+path="res://.godot/imported/cthulhu.png-3270129e64981be41eb79a971acfde79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/enemy/enemy_types/eye_stalker/eye_stalker.png"
-dest_files=["res://.godot/imported/eye_stalker.png-31c51eac7ad57fe295f9fdde4166cbad.ctex"]
+source_file="res://entity/bosses/cthulhu/cthulhu.png"
+dest_files=["res://.godot/imported/cthulhu.png-3270129e64981be41eb79a971acfde79.ctex"]
 
 [params]
 

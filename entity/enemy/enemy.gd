@@ -87,6 +87,6 @@ func create_damage_label(damage: int) -> void:
 	if self.damage_label == null:
 		self.damage_label = DAMAGE_LABEL.instantiate()
 		self.damage_label.initialize(self.position, damage, self.entity_stats.max_health)
-		damage_label_parent.add_child(self.damage_label)
+		GameManager.get_game_root().add_child(self.damage_label)
 	else:
 		self.damage_label.update(self.position, damage)

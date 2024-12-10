@@ -9,6 +9,7 @@ var level_transitioning: bool = false
 
 var pause_count: int = 0
 var pause_tracker: Array[Node] = []
+var active_bosses: Array[Boss] = []
 
 # Global game events
 signal enemy_take_damage(amount: int)
