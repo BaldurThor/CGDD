@@ -639,7 +639,6 @@ death_screen = ExtResource("2_4qn83")
 [node name="PlayerStats" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_s8nph")
-regen_speed = 1.0
 ranged_spread_mod = 1.0
 crit_multiplier = 1.0
 movement_speed_mod = null
