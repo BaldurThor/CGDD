@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://lekxiv8w7y4f"]
+[gd_scene load_steps=16 format=3 uid="uid://lekxiv8w7y4f"]
 
-[ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/tentacle.gd" id="1_s45sm"]
+[ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_5x0go"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_l6rdd"]
 [ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_aaljs"]
-[ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle.gdshader" id="5_056jx"]
+[ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_056jx"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_mnqrr"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_plk0o"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/check_for_targets.gd" id="7_oh7c4"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gd" id="8_uim5p"]
+[ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="9_qy6fs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vy7hj"]
 radius = 16.0
@@ -26,14 +30,16 @@ repeat = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5no7"]
 radius = 21.0
 
-[node name="Tentacle" type="RigidBody2D" node_paths=PackedStringArray("contact_damage_override") groups=["level_clear"]]
-collision_layer = 3
+[sub_resource type="CircleShape2D" id="CircleShape2D_8q0xh"]
+radius = 200.0
+
+[node name="Tentacle" type="RigidBody2D" groups=["level_clear"]]
+collision_layer = 2
 collision_mask = 3
 lock_rotation = true
 freeze = true
-script = ExtResource("1_s45sm")
+script = ExtResource("1_5x0go")
 xp_drop_amount = 9
-contact_damage_override = NodePath("ContactDamage")
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -72,19 +78,39 @@ scale = Vector2(3.133, 3.133)
 texture = SubResource("GradientTexture2D_38l5h")
 region_rect = Rect2(-8.48051, 0, 72.4805, 29.612)
 
-[node name="AttackTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-autostart = true
-
 [node name="ContactDamage" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactDamage"]
 shape = SubResource("CircleShape2D_g5no7")
 
+[node name="LogicTree" type="Node" parent="."]
+script = ExtResource("6_plk0o")
+
+[node name="CheckForTargets" type="Node" parent="LogicTree" node_paths=PackedStringArray("area_2d")]
+script = ExtResource("7_oh7c4")
+area_2d = NodePath("../../TentacleSlamSearchRadius")
+
+[node name="TentacleSlam" type="Node" parent="LogicTree/CheckForTargets" node_paths=PackedStringArray("slam_area", "enemy", "entity_stats", "sprite_2d")]
+script = ExtResource("8_uim5p")
+slam_area = NodePath("../../../TentacleSlam")
+enemy = NodePath("../../..")
+entity_stats = NodePath("../../../EntityStats")
+cooldown_time = 3.0
+windup_time = 2.0
+sprite_2d = NodePath("../../../TentacleSlam/Sprite2D")
+
+[node name="CooldownTimer" type="Timer" parent="LogicTree/CheckForTargets/TentacleSlam"]
+one_shot = true
+
+[node name="WindupTimer" type="Timer" parent="LogicTree/CheckForTargets/TentacleSlam"]
+one_shot = true
+
+[node name="SlamSFX" type="AudioStreamPlayer2D" parent="LogicTree/CheckForTargets/TentacleSlam"]
+stream = ExtResource("9_qy6fs")
+
+[node name="TentacleSlamSearchRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleSlamSearchRadius"]
+shape = SubResource("CircleShape2D_8q0xh")
+
 [connection signal="death" from="EntityStats" to="." method="_on_entity_stats_death"]
-[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

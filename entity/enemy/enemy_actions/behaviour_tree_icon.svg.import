@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmhuh8bmhkf73"
-path="res://.godot/imported/tentacle2.png-d686924fb0f866a3f63ad78e53dff297.ctex"
+uid="uid://ckxx7t31fg5vf"
+path="res://.godot/imported/behaviour_tree_icon.svg-eeecd6f121f1ebd1b4b971f08ca33492.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/enemy/enemy_types/tentacle2/tentacle2.png"
-dest_files=["res://.godot/imported/tentacle2.png-d686924fb0f866a3f63ad78e53dff297.ctex"]
+source_file="res://entity/enemy/enemy_actions/behaviour_tree_icon.svg"
+dest_files=["res://.godot/imported/behaviour_tree_icon.svg-eeecd6f121f1ebd1b4b971f08ca33492.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
