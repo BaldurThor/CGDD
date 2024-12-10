@@ -8,7 +8,7 @@
 script = ExtResource("3_lrhcm")
 ability_script = ExtResource("1_d2tl3")
 name = "Corrupted Might"
-positive_effects = Array[String](["+100% damage", "+25% crit chance"])
+positive_effects = Array[String](["+100% damage", "+50% crit chance"])
 negative_effects = Array[String](["Your critical strikes deal no damage", "-80% explosive damage"])
 tags = Array[String]([])
 flavor_text = "Your eyes see what others cannot..."

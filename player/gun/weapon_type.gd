@@ -17,9 +17,9 @@ signal weapon_range_changed(new_radius: float)
 ## Base interval of which the weapon attacks
 @export_range(0.1, 5.0, 0.01, "or_greater") var attack_speed: float
 ## Chance of an attack from the weapon dealing bonus damage
-@export_range(0.0, 100.0, 0.1, "or_greater") var crit_chance: float
+@export_range(0.0, 1.0, 0.01, "or_greater") var crit_chance: float = 0.0
 ## Multiplier to attacks that are critical strikes
-@export_range(1.0, 3.0, 0.1, "or_greater") var crit_damage: float
+@export_range(1.0, 3.0, 0.1, "or_greater") var crit_damage: float = 2.0
 
 @export_category("Secondary Stats")
 ## Whether to fire all of the projectiles consecutively (if true), or only fire
