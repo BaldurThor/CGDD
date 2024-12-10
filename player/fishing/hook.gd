@@ -2,6 +2,7 @@ class_name hook extends StaticBody2D
 
 var player: Player = null
 var hook_sprite : Sprite2D = null
+@onready var ability_picker: AbilityPicker = %AbilityPicker
 
 # the possision of the hook when it is cast
 var pos := Vector2(0,0)
@@ -50,6 +51,7 @@ func _input(event: InputEvent) -> void:
 				if col:
 					var col_obj : RigidBody2D = col.get_collider()
 					if col_obj is Fish:
+						#ability_picker
 						DebugCommands.get_ability_picker()
 						col_obj.queue_free()
 					elif col_obj is ExperienceGem:
