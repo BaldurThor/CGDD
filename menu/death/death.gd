@@ -12,7 +12,7 @@ extends Node
 var enemy: Enemy
 var visibility: float = 0.0
 
-var death_text_text = "Billy Bob was unable to reclaim his bottle. Soon after the minions of C'thulhu stormed the land. All reality, namely the moonshine bottle, was torn apart by Cthulhu's presence"
+var death_text_text = "Billy Bob was unable to reclaim his bottle. Soon after the minions of C'thulhu stormed the land. All reality, namely the moonshine bottle, was torn apart by C'thulhu's presence"
 var death_text_index = 0
 var death_text_done = false
 
