@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://brsqyn4weordx"]
+
+[ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/spike.gd" id="1_q11k6"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/spike_travel_behavior.gd" id="2_cig0s"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/spike_impact_behavior.gd" id="3_exnxv"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/spike_despawn_behavior.gd" id="4_0gokc"]
+[ext_resource type="Texture2D" uid="uid://byy1skexi8x4i" path="res://player/projectile/projectiles/frag_grenade_shrapnel/frag_grenade_shrapnel.png" id="5_tobqs"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/spike_damage_calculation.gd" id="6_2gm1t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ihrgw"]
+
+[node name="Spike" type="Area2D"]
+script = ExtResource("1_q11k6")
+damage_on_hit = 5
+projectile_speed = 250.0
+
+[node name="TravelBehavior" type="Node" parent="."]
+script = ExtResource("2_cig0s")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ihrgw")
+
+[node name="ImpactBehavior" type="Node" parent="."]
+script = ExtResource("3_exnxv")
+
+[node name="DespawnBehavior" type="Node" parent="."]
+script = ExtResource("4_0gokc")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("5_tobqs")
+
+[node name="DamageCalculation" type="Node" parent="."]
+script = ExtResource("6_2gm1t")

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://btoeraqbjia54"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/lumberjack_at_heart/lumberjack_at_heart.gd" id="1_ncvty"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_4k8i2"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_8tl5y"]
+
+[resource]
+script = ExtResource("3_8tl5y")
+ability_script = ExtResource("1_ncvty")
+name = "Lumberjack at Heart"
+positive_effects = Array[String](["+10% melee attack speed", "+10% faster health regen", "+2 armor"])
+negative_effects = Array[String](["+25% ranged projectile spread", "-15% ranged attack speed"])
+tags = Array[String](["armor", "regen_speed", "regen_speed_mod", "ranged_spread_mod", "ranged_attack_speed_mod"])
+flavor_text = "I was always more of a slugger"
+max_amount = 0
+rarity = 0
+icon = ExtResource("2_4k8i2")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_8tl5y")]([])
+requirements = Array[ExtResource("3_8tl5y")]([])

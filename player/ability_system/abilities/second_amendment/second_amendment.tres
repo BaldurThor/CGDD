@@ -8,8 +8,9 @@
 script = ExtResource("3_5aoi4")
 ability_script = ExtResource("1_aif1o")
 name = "2nd Amendment"
-positive_effects = Array[String](["+3 ranged weapon damage", "+5% ranged weapon accuracy", "+5% ranged weapon attack speed"])
+positive_effects = Array[String](["+3 ranged damage", "-5% ranged projectile spread", "+5% ranged attack speed"])
 negative_effects = Array[String]([])
+tags = Array[String](["added_ranged_damage", "ranged_spread_mod", "ranged_attack_speed_mod"])
 flavor_text = "Billy Bob's favorite!"
 max_amount = 0
 rarity = 1

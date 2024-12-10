@@ -8,8 +8,9 @@
 script = ExtResource("1_5qkf3")
 ability_script = ExtResource("1_hudvu")
 name = "Lizard Spit"
-positive_effects = Array[String](["+5% dodge chance"])
+positive_effects = Array[String](["+5% dodge chance", "+1 armor"])
 negative_effects = Array[String]([])
+tags = Array[String](["dodge", "armor"])
 flavor_text = "Slippery"
 max_amount = 0
 rarity = 1

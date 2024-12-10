@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://cg8prhhkck5hn"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/corrupted_knowledge/corrupted_knowledge.gd" id="1_jrgqm"]
+[ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="2_0cuv7"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_6ur6l"]
+
+[resource]
+script = ExtResource("3_6ur6l")
+ability_script = ExtResource("1_jrgqm")
+name = "Corrupted Knowledge"
+positive_effects = Array[String](["+150% experience gained"])
+negative_effects = Array[String](["You cannot dodge", "Your armor is 0"])
+tags = Array[String]([])
+flavor_text = "Your newfound intellect weighs you down..."
+max_amount = 1
+rarity = 3
+icon = ExtResource("2_0cuv7")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_6ur6l")]([])
+requirements = Array[ExtResource("3_6ur6l")]([])

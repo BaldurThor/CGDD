@@ -15,6 +15,8 @@ var prev_level: Node2D = null
 var new_level: Node2D = null
 var new_level_id: int = 1
 
+signal level_switched()
+
 func _ready():
 	GameManager.new_world_level.connect(_on_new_world_level)
 	prev_level = levels[0]
@@ -52,3 +54,4 @@ func transition_next_level():
 		var active = i == new_level_id - 1
 		levels[i].visible = active
 	prev_level = new_level
+	level_switched.emit()

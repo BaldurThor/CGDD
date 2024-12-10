@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 	if x_direction != 0:
 		sprite.flip_h = x_direction < 0
 	
-	velocity = direction * player_stats.movement_speed
+	velocity = (direction * player_stats.movement_speed) * player_stats.movement_speed_mod
 	
 	move_and_slide()
 	
@@ -40,7 +40,7 @@ func take_damage(amount: int) -> void:
 	if freeze_player:
 		return
 	
-	if randf() < player_stats.dodge_chance:
+	if randf() < min(player_stats.absolute_max_dodge, player_stats.dodge_chance):
 		amount = 0
 	
 	GameManager.player_take_damage.emit(int(player_stats.get_damage_applied(amount)))
