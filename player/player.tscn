@@ -1,6 +1,6 @@
 [gd_scene load_steps=90 format=3 uid="uid://33kwqbnxj6dq"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_8f13i"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
 [ext_resource type="PackedScene" uid="uid://bjtxacd0qfbqj" path="res://menu/death/death.tscn" id="2_4qn83"]
 [ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
@@ -633,7 +633,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 collision_priority = 2.0
-script = ExtResource("1_8f13i")
+script = ExtResource("1_7xfc3")
 death_screen = ExtResource("2_4qn83")
 
 [node name="PlayerStats" type="Node2D" parent="."]
@@ -814,6 +814,7 @@ loot_table = ExtResource("7_75cg3")
 stats_node = NodePath("../PlayerStats")
 
 [node name="LevelSwitcher" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("22_ffm7r")
 
 [node name="Level1" type="Node2D" parent="LevelSwitcher"]

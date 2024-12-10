@@ -10,6 +10,8 @@ var level_transitioning: bool = false
 var pause_count: int = 0
 var pause_tracker: Array[Node] = []
 
+var death: bool = false
+
 # Global game events
 signal enemy_take_damage(amount: int)
 signal enemy_died
@@ -19,8 +21,6 @@ signal pickup_ability(ability: AbilityInfo)
 signal new_world_level(new_level: int)
 
 const LEVEL_COUNT: int = 4
-
-@onready var death_scene: PackedScene = preload("res://menu/death/death.tscn")
 
 func _ready() -> void:
 	game_timer = Timer.new()

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://se5nh604rqan"]
+[gd_scene load_steps=8 format=3 uid="uid://se5nh604rqan"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_kq2yi"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_ht6xv"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_y44kv"]
 [ext_resource type="Texture2D" uid="uid://bf2wcgvous0rr" path="res://entity/enemy/enemy_types/carptist/carptist.png" id="4_jtnca"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_sj6pk"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="6_eqoi5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 radius = 16.0
@@ -37,3 +39,11 @@ autostart = true
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_y44kv")]
 sprite = ExtResource("4_jtnca")
 entity_stats = NodePath("../EntityStats")
+
+[node name="LogicTree" type="Node" parent="."]
+script = ExtResource("5_sj6pk")
+
+[node name="Node" type="Node" parent="LogicTree" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_eqoi5")
+enemy = NodePath("../..")
+always_chase = true

@@ -7,12 +7,20 @@ enum Rarity {
 	CORRUPTED,
 }
 
+enum AbilityType {
+	PASSIVE,
+	CORRUPTED,
+	WEAPON,
+}
+
 @export var ability_script: Script
 @export var name: String
 ## Describes the positive effects of the ability
 @export var positive_effects: Array[String]
 ## Describes the negative effects of the ability
 @export var negative_effects: Array[String]
+## Describes the ability pool used by the ability
+@export var type: AbilityType
 ## Tags that indicate what text to show when the ability is hovered.
 @export var tags: Array[String]
 ## Describes some lore or misc text

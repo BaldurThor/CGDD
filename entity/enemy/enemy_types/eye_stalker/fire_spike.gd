@@ -22,8 +22,7 @@ func evaluate() -> bool:
 func execute_logic() -> void:
 	var player_position = parent_node.player.global_position
 	var spike = SPIKE.instantiate()
-	
-	spike.init(enemy.entity_stats, enemy.global_position.direction_to(player_position))
+	spike.init(enemy, enemy.global_position.direction_to(player_position))
 	get_tree().root.add_child(spike)
 	spike.position = enemy.global_position
 	can_fire = false

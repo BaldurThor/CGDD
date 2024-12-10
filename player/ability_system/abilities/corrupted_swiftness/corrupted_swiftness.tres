@@ -10,6 +10,7 @@ ability_script = ExtResource("1_j67v5")
 name = "Corrupted Frenzy"
 positive_effects = Array[String](["+50% dodge chance", "+50% movement speed"])
 negative_effects = Array[String](["Your maximum health is 1"])
+type = 1
 tags = Array[String]([])
 flavor_text = "You cannot die if you kill them first..."
 max_amount = 1
