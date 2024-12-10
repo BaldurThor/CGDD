@@ -6,11 +6,13 @@ class_name Spike extends Area2D
 
 var direction: Vector2
 var entity_stats: EntityStats
+var enemy: Enemy
 
 signal despawn()
 
-func init(stats: EntityStats, bullet_direction: Vector2) -> void:
-	entity_stats = stats
+func init(enemy_instance: Enemy, bullet_direction: Vector2) -> void:
+	enemy = enemy_instance
+	entity_stats = enemy.entity_stats
 	direction = bullet_direction.normalized()
 
 func calculate_damage() -> int:
