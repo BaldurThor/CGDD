@@ -10,6 +10,7 @@ ability_script = ExtResource("1_0165x")
 name = "Corrupted Devastation"
 positive_effects = Array[String](["+25 armor", "+50% explosion damage", "+50% explosion size"])
 negative_effects = Array[String](["You cannot dodge", "-50% max health", "-50% regen speed"])
+type = 1
 tags = Array[String]([])
 flavor_text = "Obliterate all who stand in your way..."
 max_amount = 1

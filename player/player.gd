@@ -8,7 +8,7 @@ class_name Player extends CharacterBody2D
 @onready var experience: Experience = %Experience
 @onready var hud_modulate: CanvasModulate = %HUDModulate
 @onready var level_switcher: Node2D = %LevelSwitcher
-@onready var ability_system: AbilitySystem = %AbilitySystem
+@onready var ability_picker: AbilityPicker = %AbilityPicker
 
 @export var freeze_player: bool = false
 @export var death_screen: PackedScene
@@ -21,6 +21,9 @@ func _init() -> void:
 	# properly assigned for other scripts to access.
 	GameManager.assign_player(self)
 	GameManager.death = false
+	
+func _ready() -> void:
+	ability_picker.add_to_backlog(AbilityPicker.ChoiceType.WEAPONS)
 
 func _physics_process(_delta: float) -> void:
 	if freeze_player:

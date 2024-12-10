@@ -6,12 +6,6 @@ const FIREARM = preload("res://player/gun/firearm.tscn")
 const MELEE_WEAPON = preload("res://player/melee/melee_weapon.tscn")
 const ORBITAL_MELEE_WEAPON = preload("res://player/orbital_melee/orbital_melee_weapon.tscn")
 
-## Initialize the player with the shotgun via the manager so the player can
-## have consistent logic between all weapons.
-func _ready() -> void:
-	await get_tree().create_timer(1).timeout
-	GameManager.get_player().ability_system.loot_table.get_ability_selection(3)
-
 func add_weapon(weapon_type: WeaponType) -> void:
 	var firearm = FIREARM.instantiate()
 	firearm.init(weapon_type, player_stats)
