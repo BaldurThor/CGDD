@@ -83,6 +83,8 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Rest" type="Node" parent="."]
+
 [connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_gui_input"]
 [connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_mouse_exited"]

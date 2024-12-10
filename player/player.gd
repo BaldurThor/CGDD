@@ -7,8 +7,9 @@ class_name Player extends CharacterBody2D
 @onready var weapon_manager: WeaponManager = $WeaponManager
 @onready var experience: Experience = %Experience
 
-@export var death_screen: PackedScene
 @export var freeze_player: bool = false
+
+var last_damage_from: Enemy
 
 func _init() -> void:
 	# Make sure GameManager knows about this player instance.
@@ -36,7 +37,8 @@ func _physics_process(_delta: float) -> void:
 		if col.get_collider() is Enemy:
 			col.get_collider().apply_force(col.get_normal() * -2000.0)
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, enemy: Enemy) -> void:
+	self.last_damage_from = enemy
 	if freeze_player:
 		return
 	
@@ -51,4 +53,4 @@ func take_damage(amount: int) -> void:
 
 
 func _on_player_stats_death() -> void:
-	self.add_child(death_screen.instantiate())
+	GameManager.death(self.last_damage_from)

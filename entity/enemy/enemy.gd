@@ -42,12 +42,12 @@ func _physics_process(delta: float) -> void:
 	if contact_damage_override != null and contact_damage_override.has_overlapping_bodies():
 		for body in contact_damage_override.get_overlapping_bodies():
 			if body.get_instance_id() == player.get_instance_id():
-				body.take_damage(entity_stats.contact_damage)
+				body.take_damage(entity_stats.contact_damage, self)
 				return
 	
 	if coll:
 		if coll.get_collider_id() == player.get_instance_id():
-			player.take_damage(entity_stats.contact_damage)
+			player.take_damage(entity_stats.contact_damage, self)
 	
 func take_damage(damage: int, drop_xp: bool = true) -> void:
 	should_drop_xp = drop_xp

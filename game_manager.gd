@@ -117,3 +117,8 @@ func reset_pause() -> void:
 
 func is_paused() -> bool:
 	return pause_tracker.size() > 0
+
+func death(enemy: Enemy) -> void:
+	var old_root = get_tree().root
+	get_tree().change_scene_to_file("res://menu/death/death.tscn")
+	get_node("/root").print_tree_pretty()
