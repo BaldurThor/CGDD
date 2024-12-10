@@ -9,7 +9,7 @@ var level_transitioning: bool = false
 
 var pause_count: int = 0
 var pause_tracker: Array[Node] = []
-var active_bosses: Array[Boss] = []
+var active_boss: Boss = null
 
 var death: bool = false
 
@@ -20,6 +20,8 @@ signal player_take_damage(amount: int)
 signal explosion_occurred(intensity: float)
 signal pickup_ability(ability: AbilityInfo)
 signal new_world_level(new_level: int)
+signal boss_spawned(boss: Boss)
+signal boss_killed(boss: Boss)
 
 const LEVEL_COUNT: int = 4
 
@@ -27,6 +29,16 @@ func _ready() -> void:
 	game_timer = Timer.new()
 	game_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_child(game_timer)
+
+func add_boss(boss: Boss) -> void:
+	if active_boss != null:
+		active_boss.queue_free()
+	
+	active_boss = boss
+	boss_spawned.emit(boss)
+
+func get_active_boss() -> Boss:
+	return active_boss
 
 func start_game() -> void:
 	get_tree().change_scene_to_file("res://levels/game.tscn")

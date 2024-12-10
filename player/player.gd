@@ -8,6 +8,7 @@ class_name Player extends CharacterBody2D
 @onready var experience: Experience = %Experience
 @onready var hud_modulate: CanvasModulate = %HUDModulate
 @onready var level_switcher: Node2D = %LevelSwitcher
+@onready var camera: PlayerCamera = $Camera2D
 
 @export var freeze_player: bool = false
 @export var death_screen: PackedScene

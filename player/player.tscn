@@ -814,6 +814,7 @@ anchor_bottom = 1.0
 offset_top = -27.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("13_soul0")
 script = ExtResource("19_xmm0l")
 
 [node name="AbilitySystem" type="Node" parent="."]
