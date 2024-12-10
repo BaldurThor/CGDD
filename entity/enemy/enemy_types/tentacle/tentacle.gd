@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 func attack():
 	for entity in tentacle_slam.get_overlapping_bodies():
 		if entity.get_instance_id() == player.get_instance_id():
-			player.take_damage(entity_stats.contact_damage)
+			player.take_damage(entity_stats.contact_damage, self)
 
 func _on_cooldown_timer_timeout() -> void:
 	attack_timer.start()

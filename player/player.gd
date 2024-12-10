@@ -6,9 +6,12 @@ class_name Player extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var weapon_manager: WeaponManager = $WeaponManager
 @onready var experience: Experience = %Experience
+@onready var hud_modulate: CanvasModulate = % HUDModulate
 
-@export var death_screen: PackedScene
 @export var freeze_player: bool = false
+@export var death_screen: PackedScene
+
+var last_damage_from: Enemy
 
 func _init() -> void:
 	# Make sure GameManager knows about this player instance.
@@ -36,7 +39,8 @@ func _physics_process(_delta: float) -> void:
 		if col.get_collider() is Enemy:
 			col.get_collider().apply_force(col.get_normal() * -2000.0)
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, enemy: Enemy) -> void:
+	self.last_damage_from = enemy
 	if freeze_player:
 		return
 	
@@ -51,4 +55,8 @@ func take_damage(amount: int) -> void:
 
 
 func _on_player_stats_death() -> void:
-	self.add_child(death_screen.instantiate())
+	var death_node = death_screen.instantiate()
+	death_node.initialize(last_damage_from)
+	self.add_child(death_node)
+	death_node.fade_to_black.position.x = self.position.x - death_node.fade_to_black.size.x / 2
+	death_node.fade_to_black.position.y = self.position.y - death_node.fade_to_black.size.y / 2

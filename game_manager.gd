@@ -20,6 +20,8 @@ signal new_world_level(new_level: int)
 
 const LEVEL_COUNT: int = 4
 
+@onready var death_scene: PackedScene = preload("res://menu/death/death.tscn")
+
 func _ready() -> void:
 	game_timer = Timer.new()
 	game_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
