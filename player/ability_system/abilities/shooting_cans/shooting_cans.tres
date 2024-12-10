@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_oqwds")
 ability_script = ExtResource("1_qaxk2")
-name = "Castle Doctrine"
+name = "Shootin' Cans"
 positive_effects = Array[String](["-15% ranged projectile spread", "+10% ranged range"])
 negative_effects = Array[String]([])
 tags = Array[String](["ranged_spread_mod", "ranged_range_mod"])
