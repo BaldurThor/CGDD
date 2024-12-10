@@ -8,7 +8,8 @@ const ABILITY_CHOICE = preload("res://player/hud/ability_choice/ability_choice.t
 
 enum ChoiceType {
 	NORMAL,
-	CORRUPTED
+	CORRUPTED,
+	WEAPONS
 }
 
 var backlog: Array[ChoiceType] = []
@@ -32,6 +33,7 @@ func refresh() -> void:
 	match backlog[0]:
 		ChoiceType.NORMAL: choices = ability_system.loot_table.get_ability_selection()
 		ChoiceType.CORRUPTED: choices = ability_system.loot_table.get_corrupted_abilities()
+		ChoiceType.WEAPONS: choices = ability_system.loot_table.get_weapon_selection()
 	
 	for choice in choices:
 		add_choice(choice)
@@ -61,3 +63,6 @@ func _on_experience_level_up() -> void:
 ## TODO: Replace this signal connection with one that is emitted when a miniboss dies
 func _on_level_switcher_level_switched() -> void:
 	add_to_backlog(ChoiceType.CORRUPTED)
+
+func _on_game_start() -> void:
+	add_to_backlog(ChoiceType.WEAPONS)

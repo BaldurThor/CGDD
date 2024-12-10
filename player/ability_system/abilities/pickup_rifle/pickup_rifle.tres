@@ -10,6 +10,7 @@ ability_script = ExtResource("1_grxed")
 name = "Rifle"
 positive_effects = Array[String](["+1 Rifle"])
 negative_effects = Array[String]([])
+type = 2
 tags = Array[String](["rifle", "ranged"])
 flavor_text = "High damage. Targets the farthest enemy"
 max_amount = 0

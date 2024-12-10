@@ -10,6 +10,7 @@ ability_script = ExtResource("1_0k6ll")
 name = "Corrupted Vitality"
 positive_effects = Array[String](["+125% max health"])
 negative_effects = Array[String](["Cannot regenerate health"])
+type = 1
 tags = Array[String]([])
 flavor_text = "An indescribable wave of strength flows through you..."
 max_amount = 1
