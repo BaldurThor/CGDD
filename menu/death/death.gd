@@ -28,7 +28,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		visibility += 1.0
+		visibility = 1.0
 		fade_to_black.color.a = visibility
 		GameManager._player.hud_modulate.color.a = 1.0 - visibility
 		death_menu.visible = true
