@@ -43,9 +43,9 @@ script = ExtResource("1_4fg77")
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_3o7dn")
-armor = 3
-max_health = 50
-health = 50
+armor = 5
+max_health = 150
+health = 150
 contact_damage = 12
 self_knockback_mod = 0.0
 

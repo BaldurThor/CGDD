@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://c8b5ccymhda4a"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/corrupted_brutality/corrupted_brutality.gd" id="1_trjys"]
+[ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="2_m5gxb"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_8jytq"]
+
+[resource]
+script = ExtResource("3_8jytq")
+ability_script = ExtResource("1_trjys")
+name = "Corrupted Brutality"
+positive_effects = Array[String](["+5 melee damage", "+3 melee strikes"])
+negative_effects = Array[String](["-50% melee attack speed", "-50% melee range"])
+type = 1
+tags = Array[String]([])
+flavor_text = "Rip them all to shreds..."
+max_amount = 1
+rarity = 3
+icon = ExtResource("2_m5gxb")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_8jytq")]([])
+requirements = Array[ExtResource("3_8jytq")]([])
