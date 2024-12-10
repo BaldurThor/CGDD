@@ -1,30 +1,191 @@
 [gd_scene load_steps=9 format=3 uid="uid://cuwn8ued6yhhs"]
 
-[ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/eye_stalker.gd" id="1_8ytse"]
-[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_c0cyp"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_psxsg"]
 [ext_resource type="Texture2D" uid="uid://be6p2i1meq5t4" path="res://entity/enemy/enemy_types/eye_stalker/eye_stalker.png" id="4_kpd4v"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_oxdwj"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="6_xpni3"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/fire_spike.gd" id="7_wpy5x"]
 
+[sub_resource type="GDScript" id="GDScript_ebr2b"]
+script/source = "extends Enemy
+
+var target_velocity: Vector2
+var current_velocity: Vector2
+
+func initialize(start_position: Vector2) -> void:
+	position = start_position
+
+func _physics_process(delta: float) -> void:
+	pass
+
+func _add_knockback(amount: int, damage_origin: Vector2) -> void:
+	var knockback_amount = amount * entity_stats.self_knockback_mod
+	if knockback_amount > 0.0:
+		var knockback_direction = damage_origin.direction_to(global_position)
+		current_velocity = knockback_direction * knockback_amount
+
+func _on_death() -> void:
+	if should_drop_xp:
+		var gem = EXPERIENCE_GEM.instantiate()
+		gem.experience_value = xp_drop_amount
+		gem.global_transform = global_transform
+		GameManager.get_game_root().add_child.call_deferred(gem)
+	
+	# Disable the rigidbody
+	collision_mask = 0
+	collision_layer = 0
+	
+	GameManager.enemy_died.emit()
+
+func create_damage_label(damage: int) -> void:
+	if self.damage_label == null:
+		self.damage_label = DAMAGE_LABEL.instantiate()
+		self.damage_label.initialize(self.position, damage, self.entity_stats.max_health)
+		damage_label_parent.add_child(self.damage_label)
+	else:
+		self.damage_label.update(self.position, damage)
+"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 resource_local_to_scene = true
 radius = 16.0
+
+[sub_resource type="GDScript" id="GDScript_ui6vi"]
+script/source = "@tool
+@icon(\"res://player/player_stats_icon.svg\")
+class_name EntityStats extends Node
+
+# This Node contains all stats that are shared between the player and entities (enemies).
+# If you intend to add a new stat, do NOT add it here unless applicable. If it is
+# a stat for the player, change PlayerStats instead.
+
+
+signal health_changed(new_health: int, change: int)
+signal max_health_changed(new_max_health: int, change: int)
+signal regen_changed()
+signal death()
+signal take_damage(raw_amount: int)
+
+var is_invincible: bool = false
+
+@export_category(\"Stats\")
+
+# @export_group(\"Offense\") unused at the moment. Re-enable if needed
+
+@export_group(\"Defense\")
+
+## The entity's armor (damage reduction)
+@export var armor: int
+
+## The amount of damage this entity can take before dying.
+@export var max_health: int:
+	set(value):
+		var current_max: int = get_real_max_health()
+		# Edge-case where max health is 0 during initialization
+		if current_max == 0:
+			max_health = value
+			return
+		if value > max_health:
+			# If the entity's max health increased, heal it to keep the health : max health ratio
+			max_health = max(1, value)
+			health += max_health - current_max
+		else:
+			# If the entity's max health decreased, clamp its current health to its max health.
+			max_health = max(1, value)
+			health = min(health, get_real_max_health())
+		health_changed.emit()
+
+# WARNING: DO NOT PUT HEALTH ABOVE MAX_HEALTH. max_health needs to initialize first
+# otherwise health will be clamped between 0 and 0 during initialization.
+
+## The entity's current health
+@export var health: int:
+	set(value):
+		health = clamp(value, 0, get_real_max_health())
+		health_changed.emit()
+		
+		if health <= 0:
+			death.emit()
+
+## The entity's movement speed.
+@export var movement_speed: float
+## The damage dealt to opposing entities on contact
+@export var contact_damage: int = 0
+
+## The number of seconds where the player is granted damage immunity on taking damage
+@export_range(0, 2, 0.1, \"or_greater\") var invincibility_time: float = 0.25
+
+@export_category(\"Multipliers\")
+
+@export_group(\"Offense\")
+
+## The entity's attack speed modifier.
+@export var attack_speed_mod: float = 1.0
+
+@export_group(\"Defense\")
+## A multiplier to the entity's regeneration speed. Increasing this value will make the regen tick faster.
+@export_range(0.0, 3.0, 0.1) var regen_speed_mod: float = 1.0:
+	set(value):
+		regen_speed_mod = value
+		regen_changed.emit()
+
+## A multiplier to all knockback received by this entity. Higher values cause in higher knockback received.
+@export_range(0.0, 2.0, 0.01) var self_knockback_mod: float = 1.0
+
+@onready var invincibility_timer: Timer = $InvincibilityTimer
+@onready var regen_timer: Timer = $RegenTimer
+
+
+func _on_invincibility_timer_timeout() -> void:
+	is_invincible = false
+
+func deal_damage(amount: int) -> void:
+	if health <= 0:
+		return
+	
+	take_damage.emit(amount)
+	
+	var dmg_modified = get_damage_applied(amount)
+	health -= dmg_modified
+	health_changed.emit()
+	
+	if invincibility_time > 0.0:
+		is_invincible = true
+		invincibility_timer.wait_time = invincibility_time
+		invincibility_timer.start()
+
+func get_damage_applied(amount: int) -> float:
+	return amount * damage_reduction()
+
+func damage_reduction() -> float:
+	return calculate_damage_reduction(armor)
+
+func get_real_max_health() -> int:
+	return max_health
+
+func get_health_percentage() -> float:
+	return float(health) / get_real_max_health()
+
+func calculate_damage_reduction(armor_value: int) -> float:
+	var a: float = (-1.0 + armor_value) / (4 * armor_value)
+	var b: float = (log(armor_value) / log(2)) / 10
+	return max(a + b, 1)
+"
 
 [node name="EyeStalker" type="RigidBody2D" groups=["level_clear"]]
 collision_layer = 3
 collision_mask = 3
 lock_rotation = true
 linear_damp = 5.0
-script = ExtResource("1_8ytse")
+script = SubResource("GDScript_ebr2b")
+xp_drop_amount = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("2_c0cyp")
+script = SubResource("GDScript_ui6vi")
 armor = 1
 max_health = 35
 health = 35

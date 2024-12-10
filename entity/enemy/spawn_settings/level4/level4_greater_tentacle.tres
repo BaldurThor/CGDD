@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=3 format=3 uid="uid://dfrmdq7stvhgb"]
 
-[ext_resource type="Resource" uid="uid://beo8u85vo618v" path="res://entity/enemy/enemy_types/tentacle2/tentacle2.tres" id="1_v44of"]
+[ext_resource type="Resource" uid="uid://beo8u85vo618v" path="res://entity/enemy/enemy_types/greater_tentacle/greater_tentacle.tres" id="1_v44of"]
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="2_glstd"]
 
 [resource]
