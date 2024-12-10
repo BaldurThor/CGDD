@@ -114,6 +114,6 @@ func get_health_percentage() -> float:
 	return float(health) / get_real_max_health()
 
 func calculate_damage_reduction(armor_value: int) -> float:
-	var a: float = (-1.0 + armor) / (4 * armor)
-	var b: float = (log(armor) / log(2)) / 10
+	var a: float = (-1.0 + armor_value) / (4 * armor_value)
+	var b: float = (log(armor_value) / log(2)) / 10
 	return max(a + b, 1)
