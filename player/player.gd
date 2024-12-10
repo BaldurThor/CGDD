@@ -6,7 +6,8 @@ class_name Player extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var weapon_manager: WeaponManager = $WeaponManager
 @onready var experience: Experience = %Experience
-@onready var hud_modulate: CanvasModulate = % HUDModulate
+@onready var hud_modulate: CanvasModulate = %HUDModulate
+@onready var level_switcher: Node2D = %LevelSwitcher
 
 @export var freeze_player: bool = false
 @export var death_screen: PackedScene
@@ -18,6 +19,7 @@ func _init() -> void:
 	# Called in _init() instead of _ready() to make sure it's
 	# properly assigned for other scripts to access.
 	GameManager.assign_player(self)
+	GameManager.death = false
 
 func _physics_process(_delta: float) -> void:
 	if freeze_player:
@@ -55,6 +57,7 @@ func take_damage(amount: int, enemy: Enemy) -> void:
 
 
 func _on_player_stats_death() -> void:
+	GameManager.death = true
 	var death_node = death_screen.instantiate()
 	death_node.initialize(last_damage_from)
 	self.add_child(death_node)
