@@ -8,6 +8,7 @@ class_name Player extends CharacterBody2D
 @onready var experience: Experience = %Experience
 
 @export var freeze_player: bool = false
+@export var death_screen: PackedScene
 
 var last_damage_from: Enemy
 
@@ -53,4 +54,5 @@ func take_damage(amount: int, enemy: Enemy) -> void:
 
 
 func _on_player_stats_death() -> void:
-	GameManager.death(self.last_damage_from)
+	self.add_child(death_screen.instantiate())
+	#GameManager.death(self.last_damage_from)

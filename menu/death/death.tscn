@@ -6,55 +6,57 @@
 [ext_resource type="Script" path="res://menu/shared/quit.gd" id="2_xqsca"]
 [ext_resource type="Script" path="res://menu/death/mainmenu.gd" id="3_sg43a"]
 
-[node name="Death" type="CanvasLayer"]
+[node name="Death" type="Node"]
 process_mode = 2
 script = ExtResource("1_jpsbo")
 
-[node name="PauseMenuWrapper" type="MarginContainer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenuWrapper" type="MarginContainer" parent="CanvasLayer"]
 offset_right = 480.0
 offset_bottom = 270.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PauseMenuWrapper"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenuWrapper"]
 custom_minimum_size = Vector2(370, 212)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PauseMenu" type="MarginContainer" parent="PauseMenuWrapper/CenterContainer"]
+[node name="PauseMenu" type="MarginContainer" parent="CanvasLayer/PauseMenuWrapper/CenterContainer"]
 z_index = 2
 custom_minimum_size = Vector2(364, 206)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Background" type="TextureRect" parent="PauseMenuWrapper/CenterContainer/PauseMenu"]
+[node name="Background" type="TextureRect" parent="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu"]
 z_index = -1
 layout_mode = 2
 texture = ExtResource("1_4o0kr")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "The Deep claims another"
 
-[node name="Label2" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Billy Bob was unable to reclaim his bottle. Soon after the minions of Cthulu stormed the land. All reality, namely the moonshine bottle, was torn apart by Cthulhu's presence"
 autowrap_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="Restart" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer"]
+[node name="Restart" type="Label" parent="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -62,7 +64,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Try Again"
 script = ExtResource("2_2ty7x")
 
-[node name="Menu" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer"]
+[node name="Menu" type="Label" parent="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -70,14 +72,14 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Main Menu"
 script = ExtResource("3_sg43a")
 
-[node name="Quit" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer"]
+[node name="Quit" type="Label" parent="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Quit"
 script = ExtResource("2_xqsca")
 
-[node name="ColorRect" type="ColorRect" parent="PauseMenuWrapper/CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenuWrapper/CenterContainer"]
 custom_minimum_size = Vector2(370, 212)
 layout_mode = 2
 mouse_filter = 2
@@ -85,12 +87,25 @@ color = Color(0, 0, 0, 1)
 
 [node name="Rest" type="Node" parent="."]
 
-[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_mouse_exited"]
-[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" method="_on_mouse_exited"]
-[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" method="_on_mouse_exited"]
+[node name="FadeToBlack" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="PlayerEnemy" type="Node" parent="."]
+process_mode = 1
+
+[connection signal="gui_input" from="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_mouse_exited"]
+[connection signal="gui_input" from="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" to="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" method="_on_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" to="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" to="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" method="_on_mouse_exited"]
+[connection signal="gui_input" from="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" to="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" method="_on_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" to="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" to="CanvasLayer/PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" method="_on_mouse_exited"]

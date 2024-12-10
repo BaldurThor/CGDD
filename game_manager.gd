@@ -21,6 +21,8 @@ signal new_world_level(new_level: int)
 
 const LEVEL_COUNT: int = 4
 
+@onready var death_scene: PackedScene = preload("res://menu/death/death.tscn")
+
 func _ready() -> void:
 	game_timer = Timer.new()
 	game_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -119,6 +121,10 @@ func is_paused() -> bool:
 	return pause_tracker.size() > 0
 
 func death(enemy: Enemy) -> void:
-	var old_root = get_tree().root
-	get_tree().change_scene_to_file("res://menu/death/death.tscn")
-	get_node("/root").print_tree_pretty()
+	get_tree().root.add_child(death_scene.instantiate())
+	#get_node("/root/Game").reparent(get_node("/root/Death/Rest"))
+	var fade_to_black = get_node("/root/Death/FadeToBlack")
+	fade_to_black.position.x = _player.position.x - (fade_to_black.size.x / 2)
+	fade_to_black.position.y = _player.position.y - (fade_to_black.size.y / 2)
+	#_player.reparent(get_node("/root/Death/PlayerEnemy"))
+	#enemy.enemy_base.sprite_2d.reparent(get_node("/root/Death/PlayerEnemy"))
