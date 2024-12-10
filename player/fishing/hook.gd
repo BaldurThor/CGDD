@@ -48,10 +48,12 @@ func _input(event: InputEvent) -> void:
 				pos = get_global_position()
 
 				if col:
-					var col_obj = col.get_collider()
-					
+					var col_obj : RigidBody2D = col.get_collider()
+					if col_obj.is_class("Fish"):
+						print("fish")
 					if col_obj.is_in_group("Fish"):
-						print("We have a fish :D")
+						DebugCommands.get_ability_picker()
+						col_obj.queue_free()
 					
 				
 				

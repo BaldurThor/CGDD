@@ -11,6 +11,9 @@ var corrupted_backlog: int = 0
 
 func _ready() -> void:
 	visible = false
+	DebugCommands.connect("pick_ability",_on_DebugCommands_pick_ability)
+	#DebugCommands.connect("pick_corrubted_ability")
+	
 
 func refresh_corrupted() -> void:
 	_refresh_choices()
@@ -21,11 +24,12 @@ func refresh_corrupted() -> void:
 	
 	GameManager.pause(self)
 	visible = true
-	
-	var choices = ability_system.loot_table.get_corrupted_abilities()
-	
-	for choice in choices:
-		add_corrupted_choice(choice)
+	while backlog != 0:
+		var choices = ability_system.loot_table.get_corrupted_abilities()
+		
+		for choice in choices:
+			add_corrupted_choice(choice)
+		backlog -= 1
 
 func refresh_normal() -> void:
 	_refresh_choices()
@@ -74,6 +78,10 @@ func _on_experience_level_up() -> void:
 	
 	if backlog == 1:
 		refresh_normal()
+		
+func _on_DebugCommands_pick_ability(_ammount : int) -> void:
+	backlog += 1
+	refresh_normal()
 
 ## TODO: Replace this signal connection with one that is emitted when a miniboss dies
 func _on_level_switcher_level_switched() -> void:
