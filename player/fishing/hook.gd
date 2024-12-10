@@ -49,10 +49,11 @@ func _input(event: InputEvent) -> void:
 
 				if col:
 					var col_obj : RigidBody2D = col.get_collider()
-					if col_obj.is_class("Fish"):
-						print("fish")
-					if col_obj.is_in_group("Fish"):
+					if col_obj is Fish:
 						DebugCommands.get_ability_picker()
+						col_obj.queue_free()
+					elif col_obj is ExperienceGem:
+						GameManager.get_player().experience.gain_experience.emit(col_obj.experience_value)
 						col_obj.queue_free()
 					
 				
