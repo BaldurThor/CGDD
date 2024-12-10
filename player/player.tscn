@@ -655,6 +655,9 @@ one_shot = true
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("15_60owl")
 
+[node name="HUDModulate" type="CanvasModulate" parent="HUD"]
+unique_name_in_owner = true
+
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
 offset_left = 13.0
 offset_top = 6.0

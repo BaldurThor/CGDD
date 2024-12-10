@@ -6,6 +6,7 @@ class_name Player extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var weapon_manager: WeaponManager = $WeaponManager
 @onready var experience: Experience = %Experience
+@onready var hud_modulate: CanvasModulate = % HUDModulate
 
 @export var freeze_player: bool = false
 @export var death_screen: PackedScene
@@ -54,5 +55,8 @@ func take_damage(amount: int, enemy: Enemy) -> void:
 
 
 func _on_player_stats_death() -> void:
-	self.add_child(death_screen.instantiate())
-	#GameManager.death(self.last_damage_from)
+	var death_node = death_screen.instantiate()
+	death_node.initialize(last_damage_from)
+	self.add_child(death_node)
+	death_node.fade_to_black.position.x = self.position.x - death_node.fade_to_black.size.x / 2
+	death_node.fade_to_black.position.y = self.position.y - death_node.fade_to_black.size.y / 2
