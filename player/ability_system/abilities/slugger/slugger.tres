@@ -10,6 +10,7 @@ ability_script = ExtResource("1_j1a0g")
 name = "Slugger"
 positive_effects = Array[String](["+15% melee range", "+3 melee damage"])
 negative_effects = Array[String]([])
+type = 0
 tags = Array[String](["melee_range_mod", "added_melee_damage"])
 flavor_text = "I played homeschool baseball, y'know"
 max_amount = 0

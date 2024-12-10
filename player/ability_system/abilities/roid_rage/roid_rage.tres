@@ -10,6 +10,7 @@ ability_script = ExtResource("1_fvboh")
 name = "Roid Rage"
 positive_effects = Array[String](["+20% melee attack speed", "+15% melee range"])
 negative_effects = Array[String](["-15% max health"])
+type = 0
 tags = Array[String](["melee_attack_speed_mod", "melee_range_mod", "max_health", "max_health_mod"])
 flavor_text = "AAAAAAAAAAAAAAAAAAH!!!!!"
 max_amount = 1

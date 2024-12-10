@@ -2,7 +2,8 @@ class_name AbilityPicker extends VBoxContainer
 
 @onready var ability_selection: HBoxContainer = $AbilitySelection
 @onready var ability_system: AbilitySystem = %AbilitySystem
-@onready var backlog_count: Label = $HBoxContainer/BacklogCount
+@onready var skip_button: SkipButton = $HBoxContainer/Control/SkipButton
+@onready var backlog_count: Label = $HBoxContainer/HBoxContainer/BacklogCount
 
 const ABILITY_CHOICE = preload("res://player/hud/ability_choice/ability_choice.tscn")
 
@@ -30,6 +31,8 @@ func refresh() -> void:
 		return
 	
 	GameManager.pause(self)
+	skip_button.refresh_string(backlog[0])
+	skip_button.visible = GameManager.get_player().experience.current_level > 0
 	visible = true
 	while backlog != 0:
 		var choices = ability_system.loot_table.get_corrupted_abilities()
@@ -91,3 +94,20 @@ func _on_level_switcher_level_switched() -> void:
 
 func _on_game_start() -> void:
 	add_to_backlog(ChoiceType.WEAPONS)
+
+func _get_skip_experience_multiplier(type: AbilityInfo.AbilityType) -> float:
+	var exp_mult: float = 0.0
+	match type:
+		AbilityInfo.AbilityType.CORRUPTED:
+			exp_mult = 1.0
+		_:
+			exp_mult = 0.5
+	return exp_mult
+
+func _on_skip_button_button_up() -> void:
+	var type = backlog.pop_front()
+	var player = GameManager.get_player()
+	var exp_mult = _get_skip_experience_multiplier(type)
+	var experience_for_skipping: int = int(player.experience.required_for_level_up * exp_mult)
+	player.experience.gain_experience.emit(experience_for_skipping, false)
+	refresh()

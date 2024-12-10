@@ -21,6 +21,7 @@ projectile_speed = 0.0
 projectile_count = 0
 explosion_radius = 0.0
 attack_range = 100.0
+base_orbital_size = 10
 knockback = 3.0
 secondary_knockback = 0
 can_knockback = true
