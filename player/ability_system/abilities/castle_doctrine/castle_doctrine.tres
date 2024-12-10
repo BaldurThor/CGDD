@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://cqu7abllwpk3j"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/castle_doctrine/castle_doctrine.gd" id="1_65kgr"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_1oskn"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_gkc0p"]
+
+[resource]
+script = ExtResource("3_gkc0p")
+ability_script = ExtResource("1_65kgr")
+name = "Castle Doctrine"
+positive_effects = Array[String](["+3 ranged projectile pierce", "+3 ranged damage", "+5% dodge chance"])
+negative_effects = Array[String]([])
+tags = Array[String](["pierce", "extra_projectile_pierce", "dodge"])
+flavor_text = "Get off my lawn!"
+max_amount = 1
+rarity = 2
+icon = ExtResource("2_1oskn")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_gkc0p")]([])
+requirements = Array[ExtResource("3_gkc0p")]([])

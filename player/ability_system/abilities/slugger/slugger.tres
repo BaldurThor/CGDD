@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://knax4pryl0p6"]
+
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_13aqb"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/slugger/slugger.gd" id="1_j1a0g"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_c5see"]
+
+[resource]
+script = ExtResource("1_13aqb")
+ability_script = ExtResource("1_j1a0g")
+name = "Slugger"
+positive_effects = Array[String](["+15% melee range", "+3 melee damage"])
+negative_effects = Array[String]([])
+tags = Array[String](["melee_range_mod", "added_melee_damage"])
+flavor_text = "I played homeschool baseball, y'know"
+max_amount = 0
+rarity = 0
+icon = ExtResource("2_c5see")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_13aqb")]([])
+requirements = Array[ExtResource("1_13aqb")]([])

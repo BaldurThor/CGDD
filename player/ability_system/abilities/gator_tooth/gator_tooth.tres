@@ -8,8 +8,9 @@
 script = ExtResource("2_wkyug")
 ability_script = ExtResource("1_3t3ty")
 name = "Gator Tooth"
-positive_effects = Array[String](["+3% critical chance"])
+positive_effects = Array[String](["+8% critical chance", "+5% critical damage multiplier"])
 negative_effects = Array[String]([])
+tags = Array[String](["crit_chance", "crit_multiplier"])
 flavor_text = "I have a necklace made of these back home!"
 max_amount = 0
 rarity = 0

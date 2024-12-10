@@ -4,6 +4,7 @@ enum Rarity {
 	COMMON,
 	UNCOMMON,
 	RARE,
+	CORRUPTED,
 }
 
 @export var ability_script: Script
@@ -12,6 +13,8 @@ enum Rarity {
 @export var positive_effects: Array[String]
 ## Describes the negative effects of the ability
 @export var negative_effects: Array[String]
+## Tags that indicate what text to show when the ability is hovered.
+@export var tags: Array[String]
 ## Describes some lore or misc text
 @export var flavor_text: String
 ## The max number of copies the player can have of this ability. 0 = no limit.

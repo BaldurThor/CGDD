@@ -1,60 +1,77 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjtxacd0qfbqj"]
+[gd_scene load_steps=8 format=3 uid="uid://bjtxacd0qfbqj"]
 
-[ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="1_4o0kr"]
 [ext_resource type="Script" path="res://menu/death/death.gd" id="1_jpsbo"]
 [ext_resource type="Script" path="res://menu/death/restart.gd" id="2_2ty7x"]
+[ext_resource type="Texture2D" uid="uid://cg5phh3gjim0e" path="res://menu/death/rip.png" id="2_7xpmv"]
 [ext_resource type="Script" path="res://menu/shared/quit.gd" id="2_xqsca"]
 [ext_resource type="Script" path="res://menu/death/mainmenu.gd" id="3_sg43a"]
+[ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="6_nflxa"]
+[ext_resource type="AudioStream" uid="uid://bnxrdba47kgob" path="res://player/gun/gun_types/shotgun/shotgun.wav" id="7_ace4u"]
 
-[node name="Death" type="CanvasLayer"]
+[node name="Death" type="Node"]
 process_mode = 2
 script = ExtResource("1_jpsbo")
 
-[node name="PauseMenuWrapper" type="MarginContainer" parent="."]
-offset_right = 480.0
-offset_bottom = 270.0
+[node name="DeathMenu" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseMenuWrapper" type="MarginContainer" parent="DeathMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -182.0
+offset_top = 20.0
+offset_right = 182.0
+offset_bottom = 234.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PauseMenuWrapper"]
-custom_minimum_size = Vector2(370, 212)
+[node name="ColorRect" type="ColorRect" parent="DeathMenu/PauseMenuWrapper"]
+layout_mode = 2
+color = Color(0, 0, 0.572549, 0.588235)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathMenu/PauseMenuWrapper"]
+layout_mode = 2
+
+[node name="Title" type="HBoxContainer" parent="DeathMenu/PauseMenuWrapper/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="PauseMenu" type="MarginContainer" parent="PauseMenuWrapper/CenterContainer"]
-z_index = 2
-custom_minimum_size = Vector2(364, 206)
+[node name="TextureRect" type="TextureRect" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Title"]
+layout_mode = 2
+texture = ExtResource("2_7xpmv")
+
+[node name="Label" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Title"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Background" type="TextureRect" parent="PauseMenuWrapper/CenterContainer/PauseMenu"]
-z_index = -1
-layout_mode = 2
-texture = ExtResource("1_4o0kr")
-expand_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
 text = "The Deep claims another"
 
-[node name="Label2" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Title"]
+layout_mode = 2
+texture = ExtResource("2_7xpmv")
+
+[node name="DeathText" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
-text = "Billy Bob was unable to reclaim his bottle. Soon after the minions of Cthulu stormed the land. All reality, namely the moonshine bottle, was torn apart by Cthulhu's presence"
 autowrap_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer"]
+[node name="Buttons" type="VBoxContainer" parent="DeathMenu/PauseMenuWrapper/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="Restart" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer"]
+[node name="Restart" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -62,7 +79,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Try Again"
 script = ExtResource("2_2ty7x")
 
-[node name="Menu" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer"]
+[node name="Menu" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -70,25 +87,45 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Main Menu"
 script = ExtResource("3_sg43a")
 
-[node name="Quit" type="Label" parent="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer"]
+[node name="Quit" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Quit"
 script = ExtResource("2_xqsca")
 
-[node name="ColorRect" type="ColorRect" parent="PauseMenuWrapper/CenterContainer"]
-custom_minimum_size = Vector2(370, 212)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="FadeToBlack" type="ColorRect" parent="."]
+unique_name_in_owner = true
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0)
 
-[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Restart" method="_on_mouse_exited"]
-[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Menu" method="_on_mouse_exited"]
-[connection signal="gui_input" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" to="PauseMenuWrapper/CenterContainer/PauseMenu/VBoxContainer/VBoxContainer/Quit" method="_on_mouse_exited"]
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="TypeSFX" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_nflxa")
+bus = &"Effects"
+
+[node name="RevealSFX" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_ace4u")
+bus = &"Effects"
+
+[connection signal="gui_input" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" method="_on_gui_input"]
+[connection signal="mouse_entered" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" method="_on_mouse_exited"]
+[connection signal="gui_input" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" method="_on_gui_input"]
+[connection signal="mouse_entered" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" method="_on_mouse_exited"]
+[connection signal="gui_input" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" method="_on_gui_input"]
+[connection signal="mouse_entered" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" method="_on_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_sec_timer_timeout"]

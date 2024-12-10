@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://bw6ywyh4ppvlk"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/corrupted_frenzy/corrupted_frenzy.gd" id="1_0ivo3"]
+[ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="2_xy25b"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_fyfcp"]
+
+[resource]
+script = ExtResource("3_fyfcp")
+ability_script = ExtResource("1_0ivo3")
+name = "Corrupted Frenzy"
+positive_effects = Array[String](["+50% melee attack speed", "+50% ranged attack speed"])
+negative_effects = Array[String](["-40% movement speed", "-20% explosion size", "-40% melee range", "-40% ranged range"])
+tags = Array[String]([])
+flavor_text = "Rush ahead and slaughter your foes..."
+max_amount = 1
+rarity = 3
+icon = ExtResource("2_xy25b")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_fyfcp")]([])
+requirements = Array[ExtResource("3_fyfcp")]([])

@@ -17,9 +17,9 @@ signal weapon_range_changed(new_radius: float)
 ## Base interval of which the weapon attacks
 @export_range(0.1, 5.0, 0.01, "or_greater") var attack_speed: float
 ## Chance of an attack from the weapon dealing bonus damage
-@export_range(0.0, 100.0, 0.1, "or_greater") var crit_chance: float
+@export_range(0.0, 1.0, 0.01, "or_greater") var crit_chance: float = 0.0
 ## Multiplier to attacks that are critical strikes
-@export_range(1.0, 3.0, 0.1, "or_greater") var crit_damage: float
+@export_range(1.0, 3.0, 0.1, "or_greater") var crit_damage: float = 2.0
 
 @export_category("Secondary Stats")
 ## Whether to fire all of the projectiles consecutively (if true), or only fire
@@ -43,6 +43,21 @@ signal weapon_range_changed(new_radius: float)
 	set(value):
 		attack_range = value
 		weapon_range_changed.emit(value)
+
+## The amount of knockback this weapon inflicts on hit.
+@export var knockback: float = 0.0
+
+## The amount of knockback this weapon's secondary effects inflict on hit.
+@export var secondary_knockback: int = 0
+
+## Can this weapon apply a knockback to the enemy on impact?
+@export var can_knockback: bool = true
+
+## The number of times that the weapon inherently attacks
+@export var melee_strike_count: int = 1
+
+## The delay between each additional strike of a single attack for a melee weapon
+@export var melee_strike_delay: float = 0.33
 
 @export_category("Configuration")
 ## The type of enemy the weapon targets

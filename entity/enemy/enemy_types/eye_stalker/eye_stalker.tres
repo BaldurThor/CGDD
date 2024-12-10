@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://00kex3w708tn"]
+
+[ext_resource type="PackedScene" uid="uid://cuwn8ued6yhhs" path="res://entity/enemy/enemy_types/eye_stalker/eye_stalker.tscn" id="1_ckd5w"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="2_eaxs2"]
+
+[resource]
+script = ExtResource("2_eaxs2")
+name = "Eye Stalker"
+enemy_scene = ExtResource("1_ckd5w")

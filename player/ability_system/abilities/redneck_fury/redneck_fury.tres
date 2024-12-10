@@ -10,6 +10,7 @@ ability_script = ExtResource("1_yr8t2")
 name = "Redneck Fury"
 positive_effects = Array[String](["+100% attack speed"])
 negative_effects = Array[String](["-75% max health"])
+tags = Array[String](["attack_speed_mod", "max_health", "max_health_mod"])
 flavor_text = "The power of generations of rednecks flows through you..."
 max_amount = 1
 rarity = 2

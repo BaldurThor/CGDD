@@ -76,6 +76,9 @@ var is_invincible: bool = false
 		regen_speed_mod = value
 		regen_changed.emit()
 
+## A multiplier to all knockback received by this entity. Higher values cause in higher knockback received.
+@export_range(0.0, 2.0, 0.01) var self_knockback_mod: float = 1.0
+
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var regen_timer: Timer = $RegenTimer
 
@@ -102,12 +105,15 @@ func get_damage_applied(amount: int) -> float:
 	return amount * damage_reduction()
 
 func damage_reduction() -> float:
-	var a: float = (-1.0 + armor) / (4 * armor)
-	var b: float = (log(armor) / log(2)) / 10
-	return max(a + b, 1)
+	return calculate_damage_reduction(armor)
 
 func get_real_max_health() -> int:
 	return max_health
 
 func get_health_percentage() -> float:
 	return float(health) / get_real_max_health()
+
+func calculate_damage_reduction(armor_value: int) -> float:
+	var a: float = (-1.0 + armor) / (4 * armor)
+	var b: float = (log(armor) / log(2)) / 10
+	return max(a + b, 1)

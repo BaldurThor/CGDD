@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://c61617n5x6qyw"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/hard-headed/hard_headed.gd" id="1_r3l0j"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_wraw6"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_6t4jp"]
+
+[resource]
+script = ExtResource("1_wraw6")
+ability_script = ExtResource("1_r3l0j")
+name = "Hard-Headed"
+positive_effects = Array[String](["+10% max health", "+1 melee strikes", "+10% melee knockback"])
+negative_effects = Array[String](["-10% attack speed"])
+tags = Array[String](["max_health", "max_health_mod", "added_melee_strikes", "melee_knockback_mod", "attack_speed_mod"])
+flavor_text = "Useful for hammering nails"
+max_amount = 0
+rarity = 1
+icon = ExtResource("2_6t4jp")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("1_wraw6")]([])
+requirements = Array[ExtResource("1_wraw6")]([])

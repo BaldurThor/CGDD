@@ -10,6 +10,7 @@ ability_script = ExtResource("1_1m40t")
 name = "Like Spearfishing!"
 positive_effects = Array[String](["+1 projectile piercing"])
 negative_effects = Array[String](["-10% damage"])
+tags = Array[String](["pierce", "extra_projectile_pierce", "damage_mod"])
 flavor_text = "Through and through"
 max_amount = 0
 rarity = 2

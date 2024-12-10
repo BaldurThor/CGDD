@@ -3,7 +3,6 @@ extends Node
 var _player: Player = null
 var _enemy_manager: EnemyManager = null
 var game_timer: Timer
-var lvl_up: bool = false
 
 var world_level: int = 1
 var level_transitioning: bool = false
@@ -20,6 +19,8 @@ signal pickup_ability(ability: AbilityInfo)
 signal new_world_level(new_level: int)
 
 const LEVEL_COUNT: int = 4
+
+@onready var death_scene: PackedScene = preload("res://menu/death/death.tscn")
 
 func _ready() -> void:
 	game_timer = Timer.new()

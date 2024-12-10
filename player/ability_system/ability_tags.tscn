@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw0jdrbqt6eok"]
+
+[ext_resource type="Script" path="res://player/ability_system/ability_tags.gd" id="1_aoduh"]
+
+[node name="AbilityTags" type="Node2D"]
+script = ExtResource("1_aoduh")

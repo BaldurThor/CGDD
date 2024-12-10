@@ -11,7 +11,7 @@ var current_target: Enemy
 
 func _ready() -> void:
 	_on_player_stats_range_changed()
-	gun_swivel.player_stats.player_range_changed.connect(_on_player_stats_range_changed)
+	gun_swivel.player_stats.player_ranged_range_changed.connect(_on_player_stats_range_changed)
 	target_range_shape.debug_color = gun_swivel.weapon_type.attack_range_debug_color
 
 ## Signal receiver which handles any changes to the weapon's accuracy.

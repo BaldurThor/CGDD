@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://brp7xmd5v6cl8"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/way_of_the_bat/way_of_the_bat.gd" id="1_vojok"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_l2wxs"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_bb1ts"]
+
+[resource]
+script = ExtResource("3_bb1ts")
+ability_script = ExtResource("1_vojok")
+name = "Way of the Bat"
+positive_effects = Array[String](["+2 melee strikes", "+3 melee damage", "+10% movement speed"])
+negative_effects = Array[String]([])
+tags = Array[String](["added_melee_strikes", "added_melee_damage", "movement_speed_mod"])
+flavor_text = "While you were out partying, I studied the bat..."
+max_amount = 1
+rarity = 2
+icon = ExtResource("2_l2wxs")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_bb1ts")]([])
+requirements = Array[ExtResource("3_bb1ts")]([])
