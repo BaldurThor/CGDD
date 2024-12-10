@@ -118,12 +118,3 @@ func reset_pause() -> void:
 
 func is_paused() -> bool:
 	return pause_tracker.size() > 0
-
-func death(enemy: Enemy) -> void:
-	get_tree().root.add_child(death_scene.instantiate())
-	#get_node("/root/Game").reparent(get_node("/root/Death/Rest"))
-	var fade_to_black = get_node("/root/Death/FadeToBlack")
-	fade_to_black.position.x = _player.position.x - (fade_to_black.size.x / 2)
-	fade_to_black.position.y = _player.position.y - (fade_to_black.size.y / 2)
-	#_player.reparent(get_node("/root/Death/PlayerEnemy"))
-	#enemy.enemy_base.sprite_2d.reparent(get_node("/root/Death/PlayerEnemy"))
