@@ -24,7 +24,7 @@ func _ready() -> void:
 	projectile_type = firearm.weapon_type.projectile
 	player_stats = firearm.player_stats
 	attack_timer.timeout.connect(_permit_attacking)
-	attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod)
+	attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod * player_stats.ranged_attack_speed_mod)
 	attack_timer.start()
 	gun_sprite.texture = weapon_type.sprite
 	_burst_attack_signal.connect(_burst_attack)

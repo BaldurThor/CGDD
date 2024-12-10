@@ -7,4 +7,4 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Enemy:
-		body.take_damage(1000, false)
+		body.take_damage(1000, 0, Vector2.ZERO, false)

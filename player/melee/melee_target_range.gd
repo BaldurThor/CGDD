@@ -1,23 +1,22 @@
-class_name TargetRange extends Area2D
+class_name MeleeTargetRange extends Area2D
 
 # This object handles the attack radius for weapons.
 # NOTE: WARNING: ENSURE THAT THE SHAPE IS LOCAL TO THE SCENE!!!
 # If it is not, all changes to any weapon's radius will reflect to the same, single instance.
-
-@onready var target_range_shape: CollisionShape2D = $TargetRangeShape
-@onready var gun_swivel: GunSwivel = $"../GunSwivel"
+@onready var melee_target_range_shape: CollisionShape2D = $MeleeTargetRangeShape
+@onready var melee: Melee = $"../../.."
 
 var current_target: Enemy
 
 func _ready() -> void:
 	_on_player_stats_range_changed()
-	gun_swivel.player_stats.player_ranged_range_changed.connect(_on_player_stats_range_changed)
-	target_range_shape.debug_color = gun_swivel.weapon_type.attack_range_debug_color
+	melee.player_stats.player_melee_range_changed.connect(_on_player_stats_range_changed)
+	melee_target_range_shape.debug_color = melee.weapon_type.attack_range_debug_color
 
 ## Signal receiver which handles any changes to the weapon's accuracy.
 ## NOTE: If weapon-specific scaling is ever added, this must be updated.
 func _on_player_stats_range_changed() -> void:
-	target_range_shape.shape.radius = gun_swivel.weapon_type.attack_range * gun_swivel.player_stats.ranged_range_mod
+	scale = Vector2.ONE * (melee.weapon_type.attack_range + melee.player_stats.melee_range_mod)
 
 ## Retrieves a single enemy based on the weapon type's target priority.
 func get_target() -> Enemy:
@@ -26,7 +25,7 @@ func get_target() -> Enemy:
 	targets.assign(get_overlapping_bodies())
 	if targets.size() == 0:
 		return null
-	match gun_swivel.weapon_type.target_priority:
+	match melee.weapon_type.target_priority:
 		consts.TargetPriority.CLOSEST:
 			_target_closest(targets)
 		consts.TargetPriority.FARTHEST:

@@ -14,6 +14,9 @@ const DAMAGE_LABEL = preload("res://entity/enemy/damage_label/damage_label.tscn"
 var damage_label: Node = null
 var should_drop_xp: bool = true
 
+var _target_velocity: Vector2
+var _current_velocity: Vector2
+
 @export var contact_damage_override: Area2D
 
 @onready var entity_stats: EntityStats = %EntityStats
@@ -32,12 +35,13 @@ func _physics_process(delta: float) -> void:
 	# Make sure a player is present
 	if !player:
 		return
-	
 	# Move towards the player
 	var dir: Vector2 = player.global_position - global_position
 	distance_to_player = dir.length()
 	var dir_norm: Vector2 = dir.normalized()
-	var coll: KinematicCollision2D = move_and_collide(dir_norm * entity_stats.movement_speed * delta * 100)
+	_target_velocity = dir_norm * entity_stats.movement_speed
+	_current_velocity = _current_velocity.move_toward(_target_velocity, delta * 10.0)
+	var coll: KinematicCollision2D = move_and_collide(_current_velocity * delta * 100.0)
 	
 	if contact_damage_override != null and contact_damage_override.has_overlapping_bodies():
 		for body in contact_damage_override.get_overlapping_bodies():
@@ -49,11 +53,18 @@ func _physics_process(delta: float) -> void:
 		if coll.get_collider_id() == player.get_instance_id():
 			player.take_damage(entity_stats.contact_damage, self)
 	
-func take_damage(damage: int, drop_xp: bool = true) -> void:
+func take_damage(damage: int, knockback_amount: int, damage_origin: Vector2, drop_xp: bool = true) -> void:
 	should_drop_xp = drop_xp
 	entity_stats.deal_damage(damage)
+	_add_knockback(knockback_amount, damage_origin)
 	GameManager.enemy_take_damage.emit(int(entity_stats.get_damage_applied(damage)))
 	create_damage_label(damage)
+	
+func _add_knockback(amount: int, damage_origin: Vector2) -> void:
+	var knockback_amount = amount * entity_stats.self_knockback_mod
+	if knockback_amount > 0.0:
+		var knockback_direction = damage_origin.direction_to(global_position)
+		_current_velocity = knockback_direction * knockback_amount
 
 func _on_death() -> void:
 	if should_drop_xp:

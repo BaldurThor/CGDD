@@ -2,10 +2,19 @@
 @icon("res://player/player_stats_icon.svg")
 class_name PlayerStats extends EntityStats
 
-signal player_range_changed()
+signal player_ranged_range_changed()
+signal player_melee_range_changed()
 signal experience_absorb_range_changed()
 
 @export_category("Stats")
+
+@export_group("Offense - Melee")
+## A flat amount of bonus damage to each strike of a melee weapon
+@export_range(0, 10, 1, "or_greater") var added_melee_damage: int = 0
+## The number of additional attacks triggered every melee attack
+@export_range(0, 3, 1, "or_greater") var added_melee_strikes: int = 0
+## An additional amount of knockback for melee weapons
+@export_range(0, 100, 1, "or_greater") var added_melee_knockback: int = 0
 
 @export_group("Offense - Ranged")
 
@@ -47,13 +56,27 @@ signal experience_absorb_range_changed()
 ## Multipliers which affect other stats but are not stats in themselves.
 @export_category("Multipliers")
 
+@export_group("Offense - Melee")
+## Affects the length of melee strikes.
+@export_range(0.5, 3.0, 0.01, "or_greater") var melee_range_mod: float = 1.0:
+	set(value):
+		melee_range_mod = value
+		player_melee_range_changed.emit()
+
+## A multiplier to the attack speed of all melee weapons.
+@export_range(0.5, 3.0, 0.01, "or_greater") var melee_attack_speed_mod: float = 1.0
+
+## A multiplier to all melee weapon knockback.
+@export_range(0.0, 3.0, 0.01, "or_greater") var melee_knockback_mod: float = 1.0
+
+
 @export_group("Offense - Ranged")
 
 ## The "accuracy" of the player's weapons. Affects bullet velocity (and therefore range)
 @export_range(0.5, 3.0, 0.01, "or_greater") var ranged_range_mod: float = 1.0:
 	set(value):
 		ranged_range_mod = value
-		player_range_changed.emit()
+		player_ranged_range_changed.emit()
 
 ## Affects the spread of the player's ranged projectiles. A lower value means higher spread.
 @export_range(0.0, 2.0, 0.01, "or_greater") var ranged_spread_mod: float = 0.0
@@ -72,7 +95,7 @@ signal experience_absorb_range_changed()
 
 @export_group("Offense - General")
 
-## A multiplier to a melee attack or a single projectile's damage.
+## A multiplier to a melee attack or a single explosion or projectile's damage.
 @export var damage_mod: float = 1.0 # linear
 
 ## A multiplier to attacks that crit.

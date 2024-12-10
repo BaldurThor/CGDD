@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbilityPool" load_steps=23 format=3 uid="uid://ci2k3ke86qm0e"]
+[gd_resource type="Resource" script_class="AbilityPool" load_steps=25 format=3 uid="uid://ci2k3ke86qm0e"]
 
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_7pjxk"]
 [ext_resource type="Resource" uid="uid://bbt18co7pmomp" path="res://player/ability_system/abilities/gator_hide/gator_hide.tres" id="2_eei0h"]
@@ -22,7 +22,9 @@
 [ext_resource type="Resource" uid="uid://b4pghm3uh5gui" path="res://player/ability_system/abilities/dynamite_fishing/dynamite_fishing.tres" id="19_5o4ex"]
 [ext_resource type="Resource" uid="uid://b2ftepp71awho" path="res://player/ability_system/abilities/homecooked_gunpowder/homecooked_gunpowder.tres" id="20_8mgyf"]
 [ext_resource type="Resource" uid="uid://nsy35oky4yii" path="res://player/ability_system/abilities/soot/soot.tres" id="21_qiwpt"]
+[ext_resource type="Resource" uid="uid://knax4pryl0p6" path="res://player/ability_system/abilities/slugger/slugger.tres" id="22_h33gp"]
+[ext_resource type="Resource" uid="uid://c61617n5x6qyw" path="res://player/ability_system/abilities/hard-headed/hard_headed.tres" id="23_3n38m"]
 
 [resource]
 script = ExtResource("3_bjtgc")
-abilities = Array[ExtResource("1_7pjxk")]([ExtResource("8_7q2sg"), ExtResource("9_20rmb"), ExtResource("10_0ve1b"), ExtResource("11_2k0vh"), ExtResource("12_da51d"), ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5"), ExtResource("5_vwjob"), ExtResource("6_pwsg8"), ExtResource("7_d6n8r"), ExtResource("13_jw80q"), ExtResource("14_lqc7f"), ExtResource("15_rp87o"), ExtResource("16_5pu36"), ExtResource("17_8t3e7"), ExtResource("18_7ngye"), ExtResource("19_5o4ex"), ExtResource("20_8mgyf"), ExtResource("21_qiwpt")])
+abilities = Array[ExtResource("1_7pjxk")]([ExtResource("8_7q2sg"), ExtResource("9_20rmb"), ExtResource("10_0ve1b"), ExtResource("11_2k0vh"), ExtResource("12_da51d"), ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5"), ExtResource("5_vwjob"), ExtResource("6_pwsg8"), ExtResource("7_d6n8r"), ExtResource("13_jw80q"), ExtResource("14_lqc7f"), ExtResource("15_rp87o"), ExtResource("16_5pu36"), ExtResource("17_8t3e7"), ExtResource("18_7ngye"), ExtResource("19_5o4ex"), ExtResource("20_8mgyf"), ExtResource("21_qiwpt"), ExtResource("22_h33gp"), ExtResource("23_3n38m")])

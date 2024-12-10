@@ -3,6 +3,7 @@ class_name ProjectileImpactBehavior extends Node
 @onready var projectile: Projectile = $".."
 @export var deal_damage: bool = true
 @export var disable_collision_on_impact: bool = false
+@export var knockback_on_hit: bool = true
 @export var despawn_on_hit: bool = true
 ## If despawn_on_hit is false, this timer will determine the projectile's lifetime.
 @export var time_before_despawn: float = 0.0
@@ -23,7 +24,7 @@ func _handle_impact(collided_with: Node2D) -> void:
 		if collided_with.entity_stats.get_health_percentage() <= 0.0:
 			return
 		if deal_damage:
-			collided_with.take_damage(projectile.calculate_damage())
+			collided_with.take_damage(projectile.calculate_damage(), projectile.calculate_knockback(), projectile.global_position)
 		if disable_collision_on_impact:
 			projectile.collision_layer = 0
 			projectile.collision_mask = 0

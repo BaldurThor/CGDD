@@ -44,6 +44,21 @@ signal weapon_range_changed(new_radius: float)
 		attack_range = value
 		weapon_range_changed.emit(value)
 
+## The amount of knockback this weapon inflicts on hit.
+@export var knockback: float = 0.0
+
+## The amount of knockback this weapon's secondary effects inflict on hit.
+@export var secondary_knockback: int = 0
+
+## Can this weapon apply a knockback to the enemy on impact?
+@export var can_knockback: bool = true
+
+## The number of times that the weapon inherently attacks
+@export var melee_strike_count: int = 1
+
+## The delay between each additional strike of a single attack for a melee weapon
+@export var melee_strike_delay: float = 0.33
+
 @export_category("Configuration")
 ## The type of enemy the weapon targets
 @export var target_priority: consts.TargetPriority
