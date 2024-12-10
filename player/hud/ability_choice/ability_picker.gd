@@ -42,29 +42,29 @@ func refresh_normal() -> void:
 	for choice in choices:
 		add_choice(choice)
 
-func _refresh_choices():
+func _refresh_choices() -> void:
 	for child in ability_selection.get_children():
 		child.queue_free()
 
-func add_choice(ability: AbilityInfo):
+func add_choice(ability: AbilityInfo) -> void:
 	var choice: AbilityChoice = ABILITY_CHOICE.instantiate()
 	choice.init(ability)
 	choice.pressed.connect(func(): pick_ability(ability))
 	ability_selection.add_child(choice)
 
-func add_corrupted_choice(ability: AbilityInfo):
+func add_corrupted_choice(ability: AbilityInfo) -> void:
 	var choice: AbilityChoice = ABILITY_CHOICE.instantiate()
 	choice.init(ability)
 	choice.pressed.connect(func(): pick_corrupted(ability))
 	ability_selection.add_child(choice)
 
-func pick_ability(ability: AbilityInfo):
+func pick_ability(ability: AbilityInfo) -> void:
 	ability_system.add_ability(ability)
 	backlog -= 1
 	backlog_count.text = "%d" % [backlog]
 	refresh_normal()
 
-func pick_corrupted(ability: AbilityInfo):
+func pick_corrupted(ability: AbilityInfo) -> void:
 	ability_system.add_ability(ability)
 	refresh_normal()
 
