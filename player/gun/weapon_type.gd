@@ -43,6 +43,8 @@ signal weapon_range_changed(new_radius: float)
 	set(value):
 		attack_range = value
 		weapon_range_changed.emit(value)
+## The base size of an orbital weapon's child weapon instance.
+@export var base_orbital_size: int = 10
 
 ## The amount of knockback this weapon inflicts on hit.
 @export var knockback: float = 0.0

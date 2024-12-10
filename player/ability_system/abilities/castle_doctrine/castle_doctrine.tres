@@ -10,6 +10,7 @@ ability_script = ExtResource("1_65kgr")
 name = "Castle Doctrine"
 positive_effects = Array[String](["+3 ranged projectile pierce", "+3 ranged damage", "+5% dodge chance"])
 negative_effects = Array[String]([])
+type = 0
 tags = Array[String](["pierce", "extra_projectile_pierce", "dodge"])
 flavor_text = "Get off my lawn!"
 max_amount = 1

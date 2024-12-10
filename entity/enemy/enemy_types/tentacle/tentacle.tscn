@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="9_qy6fs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vy7hj"]
-radius = 16.0
+radius = 32.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0adt"]
 resource_local_to_scene = true
@@ -59,7 +59,7 @@ autostart = true
 sprite = ExtResource("4_aaljs")
 entity_stats = NodePath("../EntityStats")
 sprite_scale = 4.0
-sprite_offset = Vector2(0, -43.28)
+sprite_offset = Vector2(0, -94.06)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_vy7hj")
