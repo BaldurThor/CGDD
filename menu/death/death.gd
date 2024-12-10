@@ -12,7 +12,7 @@ extends Node
 var enemy: Enemy
 var visibility: float = 0.0
 
-var death_text_text = "Billy Bob was unable to reclaim his bottle. Soon after the minions of Cthulu stormed the land. All reality, namely the moonshine bottle, was torn apart by Cthulhu's presence"
+var death_text_text = "Billy Bob was unable to reclaim his bottle. Soon after the minions of C'thulu stormed the land. All reality, namely the moonshine bottle, was torn apart by Cthulhu's presence"
 var death_text_index = 0
 var death_text_done = false
 
@@ -24,9 +24,25 @@ func initialize(enemy: Enemy) -> void:
 
 func _ready() -> void:
 	GameManager.pause(self)
+	GameManager._player.level_switcher.stop_music()
 
 func _process(delta: float) -> void:
-	if visibility <= 1.0:
+	if Input.is_action_just_pressed("ui_cancel"):
+		visibility += 1.0
+		fade_to_black.color.a = visibility
+		GameManager._player.hud_modulate.color.a = 1.0 - visibility
+		death_menu.visible = true
+		title.visible = true
+		death_text.visible = true
+		while death_text_index != death_text_text.length():
+			death_text.text += death_text_text[death_text_index]
+			death_text_index += 1
+		death_text_done = true
+		buttons.visible = true
+		timer.stop()
+		timer_started = true
+		
+	if visibility < 1.0:
 		visibility += delta
 		fade_to_black.color.a = visibility
 		GameManager._player.hud_modulate.color.a = 1.0 - visibility
