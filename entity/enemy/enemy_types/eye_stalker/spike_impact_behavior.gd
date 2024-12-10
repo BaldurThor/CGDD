@@ -10,7 +10,7 @@ func _handle_impact(collided_with: Node2D) -> void:
 	if collided_with is Player:
 		if collided_with.player_stats.get_health_percentage() <= 0.0:
 			return
-		collided_with.take_damage(spike.calculate_damage())
+		collided_with.take_damage(spike.calculate_damage(), spike.enemy)
 		spike.despawn.emit()
 
 func _on_timeout() -> void:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cuwn8ued6yhhs"]
 
-[ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/eye_stalker.gd" id="1_8ytse"]
-[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_c0cyp"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="1_7eu66"]
+[ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_uoggt"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_psxsg"]
 [ext_resource type="Texture2D" uid="uid://be6p2i1meq5t4" path="res://entity/enemy/enemy_types/eye_stalker/eye_stalker.png" id="4_kpd4v"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_oxdwj"]
@@ -17,14 +17,14 @@ collision_layer = 3
 collision_mask = 3
 lock_rotation = true
 linear_damp = 5.0
-script = ExtResource("1_8ytse")
+script = ExtResource("1_uoggt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("2_c0cyp")
+script = ExtResource("1_7eu66")
 armor = 1
 max_health = 35
 health = 35
@@ -40,12 +40,14 @@ autostart = true
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_psxsg")]
 sprite = ExtResource("4_kpd4v")
 entity_stats = NodePath("../EntityStats")
+sprite_scale = 1.8
 
 [node name="LogicTree" type="Node" parent="."]
 script = ExtResource("5_oxdwj")
 
-[node name="Chase" type="Node" parent="LogicTree"]
+[node name="Chase" type="Node" parent="LogicTree" node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_xpni3")
+enemy = NodePath("../..")
 
 [node name="FireSpike" type="Node" parent="LogicTree/Chase"]
 script = ExtResource("7_wpy5x")

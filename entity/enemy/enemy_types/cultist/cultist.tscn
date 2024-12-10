@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://xw5n4dxry31f"]
+[gd_scene load_steps=8 format=3 uid="uid://df2qr1ni8rb1p"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
 [ext_resource type="Texture2D" uid="uid://bcpe4a44c7d2t" path="res://entity/enemy/enemy_types/cultist/cultist.png" id="2_cmsmt"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_b0c3y"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_kqoh1"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="6_b3v4b"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_vl4gl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8q08c"]
 radius = 16.0
 
 [node name="Cultist" type="RigidBody2D" groups=["level_clear"]]
@@ -17,7 +19,7 @@ script = ExtResource("1_mi8tq")
 xp_drop_amount = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
-shape = SubResource("CircleShape2D_h238a")
+shape = SubResource("CircleShape2D_8q08c")
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -36,3 +38,11 @@ autostart = true
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_b0c3y")]
 sprite = ExtResource("2_cmsmt")
 entity_stats = NodePath("../EntityStats")
+
+[node name="LogicTree" type="Node" parent="."]
+script = ExtResource("5_kqoh1")
+
+[node name="Chase" type="Node" parent="LogicTree" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_b3v4b")
+enemy = NodePath("../..")
+always_chase = true
