@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmhuh8bmhkf73"
-path="res://.godot/imported/tentacle2.png-d686924fb0f866a3f63ad78e53dff297.ctex"
+uid="uid://ba7pfw6be0oo0"
+path="res://.godot/imported/Empty.png-ec74f0190ef3a42755e4a5ce94f4db7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/enemy/enemy_types/tentacle2/tentacle2.png"
-dest_files=["res://.godot/imported/tentacle2.png-d686924fb0f866a3f63ad78e53dff297.ctex"]
+source_file="res://entity/experience/Empty.png"
+dest_files=["res://.godot/imported/Empty.png-ec74f0190ef3a42755e4a5ce94f4db7d.ctex"]
 
 [params]
 

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://beo8u85vo618v"]
-
-[ext_resource type="PackedScene" uid="uid://bki8vgkek4s61" path="res://entity/enemy/enemy_types/tentacle2/tentacle2.tscn" id="1_6cmll"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="2_6i683"]
-
-[resource]
-script = ExtResource("2_6i683")
-name = "Tentacle 2"
-enemy_scene = ExtResource("1_6cmll")

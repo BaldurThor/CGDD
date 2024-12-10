@@ -6,8 +6,13 @@ class_name AbilityPicker extends VBoxContainer
 
 const ABILITY_CHOICE = preload("res://player/hud/ability_choice/ability_choice.tscn")
 
-var backlog: int = 0
-var corrupted_backlog: int = 0
+enum ChoiceType {
+	NORMAL,
+	CORRUPTED,
+	WEAPONS
+}
+
+var backlog: Array[ChoiceType] = []
 
 func _ready() -> void:
 	visible = false
@@ -15,9 +20,11 @@ func _ready() -> void:
 	#DebugCommands.connect("pick_corrubted_ability")
 	
 
-func refresh_corrupted() -> void:
-	_refresh_choices()
-	if corrupted_backlog == 0:
+func refresh() -> void:
+	for child in ability_selection.get_children():
+		child.queue_free()
+	
+	if backlog.size() == 0:
 		visible = false
 		GameManager.unpause(self)
 		return
@@ -43,41 +50,36 @@ func refresh_normal() -> void:
 	
 	var choices = ability_system.loot_table.get_ability_selection()
 	
+	var choices = []
+	match backlog[0]:
+		ChoiceType.NORMAL: choices = ability_system.loot_table.get_ability_selection()
+		ChoiceType.CORRUPTED: choices = ability_system.loot_table.get_corrupted_abilities()
+		ChoiceType.WEAPONS: choices = ability_system.loot_table.get_weapon_selection()
+	
 	for choice in choices:
 		add_choice(choice)
 
-func _refresh_choices():
-	for child in ability_selection.get_children():
-		child.queue_free()
-
-func add_choice(ability: AbilityInfo):
+func add_choice(ability: AbilityInfo) -> void:
 	var choice: AbilityChoice = ABILITY_CHOICE.instantiate()
 	choice.init(ability)
 	choice.pressed.connect(func(): pick_ability(ability))
 	ability_selection.add_child(choice)
 
-func add_corrupted_choice(ability: AbilityInfo):
-	var choice: AbilityChoice = ABILITY_CHOICE.instantiate()
-	choice.init(ability)
-	choice.pressed.connect(func(): pick_corrupted(ability))
-	ability_selection.add_child(choice)
-
-func pick_ability(ability: AbilityInfo):
+func pick_ability(ability: AbilityInfo) -> void:
 	ability_system.add_ability(ability)
-	backlog -= 1
-	backlog_count.text = "%d" % [backlog]
-	refresh_normal()
+	backlog.pop_front()
+	backlog_count.text = "%d" % [backlog.size()]
+	refresh()
 
-func pick_corrupted(ability: AbilityInfo):
-	ability_system.add_ability(ability)
-	refresh_normal()
+func add_to_backlog(choice_type: ChoiceType) -> void:
+	backlog.append(choice_type)
+	backlog_count.text = "%d" % [backlog.size()]
+	
+	if backlog.size() == 1:
+		refresh()
 
 func _on_experience_level_up() -> void:
-	backlog += 1
-	backlog_count.text = "%d" % [backlog]
-	
-	if backlog == 1:
-		refresh_normal()
+	add_to_backlog(ChoiceType.NORMAL)
 		
 func _on_DebugCommands_pick_ability(_ammount : int) -> void:
 	backlog += 1
@@ -85,5 +87,7 @@ func _on_DebugCommands_pick_ability(_ammount : int) -> void:
 
 ## TODO: Replace this signal connection with one that is emitted when a miniboss dies
 func _on_level_switcher_level_switched() -> void:
-	corrupted_backlog += 1
-	refresh_corrupted()
+	add_to_backlog(ChoiceType.CORRUPTED)
+
+func _on_game_start() -> void:
+	add_to_backlog(ChoiceType.WEAPONS)

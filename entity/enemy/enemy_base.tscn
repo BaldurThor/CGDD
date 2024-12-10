@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://xqbx4dgecmyu"]
 
-[ext_resource type="Script" path="res://entity/enemy/enemy_base.gd" id="1_3wcw0"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_base.gd" id="1_4tenj"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_x7jxo"]
 [ext_resource type="Script" path="res://entity/entity_sprite.gd" id="3_8xh11"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="4_yxxgb"]
@@ -108,7 +108,7 @@ color_ramp = SubResource("GradientTexture1D_uhhas")
 turbulence_enabled = true
 
 [node name="EnemyBase" type="Node2D"]
-script = ExtResource("1_3wcw0")
+script = ExtResource("1_4tenj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_2yg0a")

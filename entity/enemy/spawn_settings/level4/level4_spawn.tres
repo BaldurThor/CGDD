@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="2_hs13f"]
 [ext_resource type="Resource" uid="uid://0m6d1hviptg7" path="res://entity/enemy/spawn_settings/level4/level4_carptist.tres" id="2_hxq1x"]
 [ext_resource type="Resource" uid="uid://bqyfjv85wr6hl" path="res://entity/enemy/spawn_settings/level4/level4_tentacle.tres" id="3_sbm02"]
-[ext_resource type="Resource" uid="uid://dfrmdq7stvhgb" path="res://entity/enemy/spawn_settings/level4/level4_tentacle2.tres" id="4_c7qi6"]
+[ext_resource type="Resource" uid="uid://dfrmdq7stvhgb" path="res://entity/enemy/spawn_settings/level4/level4_greater_tentacle.tres" id="4_c7qi6"]
 
 [resource]
 script = ExtResource("2_hs13f")

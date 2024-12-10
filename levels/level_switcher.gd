@@ -55,3 +55,7 @@ func transition_next_level():
 		levels[i].visible = active
 	prev_level = new_level
 	level_switched.emit()
+	
+func stop_music() -> void:
+	var music: AudioStreamPlayer = new_level.get_node("Music")
+	music.stop()

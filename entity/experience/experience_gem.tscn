@@ -1,7 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0q6vx2i5hoaw"]
+[gd_scene load_steps=9 format=3 uid="uid://c0q6vx2i5hoaw"]
 
-[ext_resource type="Texture2D" uid="uid://cwl6e5mcoxjx5" path="res://entity/experience/experience_gem.png" id="1_brv8q"]
 [ext_resource type="Script" path="res://entity/experience/experience_gem.gd" id="1_fxl5l"]
+[ext_resource type="Shader" path="res://entity/experience/experience_gem.gdshader" id="2_2rmfd"]
+[ext_resource type="Texture2D" uid="uid://dcxnv20br32tg" path="res://entity/experience/cans.png" id="2_utpxc"]
+[ext_resource type="Texture2D" uid="uid://ba7pfw6be0oo0" path="res://entity/experience/Empty.png" id="3_qtyjo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_odkdn"]
+shader = ExtResource("2_2rmfd")
+shader_parameter/glow_color = Color(0, 1, 0, 1)
+shader_parameter/intensity = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_erfk8"]
 
@@ -15,8 +22,14 @@ collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_fxl5l")
 
+[node name="Glow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_odkdn")
+texture = ExtResource("3_qtyjo")
+
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_brv8q")
+texture = ExtResource("2_utpxc")
+hframes = 4
+region_rect = Rect2(0, 0, 32, 88)
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 30.0

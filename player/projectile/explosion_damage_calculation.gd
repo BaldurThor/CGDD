@@ -15,7 +15,7 @@ func _ready() -> void:
 func calculate_damage() -> int:
 	var base_damage = (_weapon_type.damage + _player_stats.added_explosive_damage) * (_weapon_type.damage_effectiveness)
 	var damage: float = float(base_damage) * (_player_stats.damage_mod + _player_stats.explosive_damage_mod)
-	return max(1, int(damage))
+	return max(1, int(damage)) * _player_stats.non_crit_damage_multiplier
 
 func calculate_knockback() -> int:
 	if _weapon_type.can_knockback:
