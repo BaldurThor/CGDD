@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://dus86bmoltxlc"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/corrupted_might/corrupted_might.gd" id="1_d2tl3"]
+[ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="2_g2ekl"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_lrhcm"]
+
+[resource]
+script = ExtResource("3_lrhcm")
+ability_script = ExtResource("1_d2tl3")
+name = "Corrupted Might"
+positive_effects = Array[String](["+100% damage", "+50% crit chance"])
+negative_effects = Array[String](["Your critical strikes deal no damage", "-80% explosive damage"])
+tags = Array[String]([])
+flavor_text = "Your eyes see what others cannot..."
+max_amount = 1
+rarity = 3
+icon = ExtResource("2_g2ekl")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_lrhcm")]([])
+requirements = Array[ExtResource("3_lrhcm")]([])

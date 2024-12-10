@@ -3,7 +3,6 @@ extends Node
 var _player: Player = null
 var _enemy_manager: EnemyManager = null
 var game_timer: Timer
-var lvl_up: bool = false
 
 var world_level: int = 1
 var level_transitioning: bool = false

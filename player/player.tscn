@@ -261,7 +261,7 @@ radius = 16.0
 noise_type = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35cqd"]
-radius = 35.0
+radius = 55.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cqtx"]
 radius = 25.0
@@ -640,6 +640,7 @@ death_screen = ExtResource("2_4qn83")
 unique_name_in_owner = true
 script = ExtResource("2_s8nph")
 ranged_spread_mod = 1.0
+crit_multiplier = 1.0
 experience_absorb_range = 35.0
 armor = 1
 max_health = 20
@@ -1043,6 +1044,7 @@ bus = &"Effects"
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
 [connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthValue" method="_on_health_bar_health_ratio_changed"]
 [connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
+[connection signal="level_switched" from="LevelSwitcher" to="HUD/AbilityPicker" method="_on_level_switcher_level_switched"]
 [connection signal="level_up" from="Experience" to="HUD/AbilityPicker" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

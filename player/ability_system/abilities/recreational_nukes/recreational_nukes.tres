@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://dryvod1ct2gd3"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/recreational_nukes/recreational_nukes.gd" id="1_bkcgj"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_u6ga2"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_w81k2"]
+
+[resource]
+script = ExtResource("3_w81k2")
+ability_script = ExtResource("1_bkcgj")
+name = "Recreational Nukes"
+positive_effects = Array[String](["+25% explosion size", "+25% explosion damage"])
+negative_effects = Array[String]([])
+tags = Array[String](["explosive_radius_mod", "explosive_damage_mod"])
+flavor_text = "Y'know... for home defense..."
+max_amount = 1
+rarity = 2
+icon = ExtResource("2_u6ga2")
+guaranteed_at = 0
+required_level = 10
+incompatabilities = Array[ExtResource("3_w81k2")]([])
+requirements = Array[ExtResource("3_w81k2")]([])
