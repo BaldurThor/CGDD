@@ -261,7 +261,7 @@ radius = 16.0
 noise_type = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35cqd"]
-radius = 35.0
+radius = 55.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cqtx"]
 radius = 25.0
