@@ -4,14 +4,13 @@ class_name WeaponManager extends Node2D
 
 const FIREARM = preload("res://player/gun/firearm.tscn")
 const MELEE_WEAPON = preload("res://player/melee/melee_weapon.tscn")
+const ORBITAL_MELEE_WEAPON = preload("res://player/orbital_melee/orbital_melee_weapon.tscn")
 
 ## Initialize the player with the shotgun via the manager so the player can
 ## have consistent logic between all weapons.
 func _ready() -> void:
-	var weapon = load("res://player/gun/gun_types/shotgun/shotgun.tres")
-	#var weapon = load("res://player/melee/metal_baseball_bat/metal_baseball_bat.tres")
-	add_weapon(weapon)
-	#add_melee_weapon(weapon)
+	await get_tree().create_timer(1).timeout
+	GameManager.get_player().ability_system.loot_table.get_ability_selection(3)
 
 func add_weapon(weapon_type: WeaponType) -> void:
 	var firearm = FIREARM.instantiate()
@@ -22,3 +21,8 @@ func add_melee_weapon(weapon_type: WeaponType) -> void:
 	var melee = MELEE_WEAPON.instantiate()
 	melee.init(weapon_type, player_stats)
 	add_child.call_deferred(melee)
+
+func add_orbital_melee_weapon(weapon_type: WeaponType) -> void:
+	var orbital_melee = ORBITAL_MELEE_WEAPON.instantiate()
+	orbital_melee.init(weapon_type, player_stats)
+	add_child.call_deferred(orbital_melee)
