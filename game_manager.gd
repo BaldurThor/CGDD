@@ -92,7 +92,7 @@ func quit() -> void:
 
 func _notification(type: int) -> void:
 	if type == NOTIFICATION_WM_CLOSE_REQUEST:
-		quit()
+		SaveManager.save_data()
 
 func get_world_level_progress() -> float:
 	var percentage = 1.0 - (game_timer.time_left / game_timer.wait_time)
