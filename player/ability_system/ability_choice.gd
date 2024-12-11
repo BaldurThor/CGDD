@@ -1,16 +1,19 @@
 class_name AbilityChoice extends Button
 
-@onready var ability_name: Label = $VBoxContainer/Name
+@onready var ability_name: Label = $VBoxContainer/HBoxContainer/Name
 @onready var ability_icon: TextureRect = $VBoxContainer/Icon
 @onready var positive_stats: VBoxContainer = $VBoxContainer/PositiveStats
 @onready var negative_stats: VBoxContainer = $VBoxContainer/NegativeStats
 @onready var flavor: Label = $VBoxContainer/Flavor
 
+@onready var corrupted: TextureRect = $VBoxContainer/HBoxContainer/Control/Corrupted
+@onready var rare: TextureRect = $VBoxContainer/HBoxContainer/Control/Rare
+@onready var uncommon: TextureRect = $VBoxContainer/HBoxContainer/Control/Uncommon
+
 const POSITIVE_STAT_INDICATOR = preload("res://player/hud/ability_choice/positive_stat_indicator.tscn")
 const NEGATIVE_STAT_INDICATOR = preload("res://player/hud/ability_choice/negative_stat_indicator.tscn")
 
 var ability: AbilityInfo = null
-var color: Color
 
 func init(ability_info: AbilityInfo):
 	ability = ability_info
@@ -30,6 +33,13 @@ func _ready():
 		var indicator = NEGATIVE_STAT_INDICATOR.instantiate()
 		indicator.text = negative_effect
 		negative_stats.add_child(indicator)
+	
+	if ability.rarity > 0:
+		uncommon.show()
+	if ability.rarity > 1:
+		rare.show()
+	if ability.rarity > 2:
+		corrupted.show()
 	
 func _on_focus_entered() -> void:
 	self.modulate = Color("ffffff")
