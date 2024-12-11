@@ -6,6 +6,5 @@ class_name PickupRadius extends Area2D
 @onready var experience: Experience = $".."
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is ExperienceGem:
-		experience.gain_experience.emit(body.experience_value)
-		body.queue_free()
+	if body is PickupBase:
+		body.pickup()
