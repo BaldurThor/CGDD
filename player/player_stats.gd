@@ -5,7 +5,8 @@ class_name PlayerStats extends EntityStats
 signal player_ranged_range_changed()
 signal player_melee_range_changed()
 signal player_melee_strike_count_changed(added: int)
-signal experience_absorb_range_changed()
+signal item_absorb_range_changed()
+signal medkit_picked_up(heal_amount: int)
 
 @export_category("Stats")
 
@@ -154,17 +155,17 @@ var non_crit_damage_multiplier: float = 1.0
 ## A multiplier to experience gained by the player.
 @export var experience_gain_mod: float = 1.0
 
-## The base absorb range for experience orbs for the player. Should not change at runtime.
-@export var experience_absorb_range: float
-
-## A multiplier to the player's experience absorb range. May be changed at runtime.
-@export var experience_absorb_range_mod: float = 1.0:
+## The absorb range for item drops for the player.
+@export var item_absorb_range: float = 55.0:
 	set(value):
-		experience_absorb_range_mod = value
-		experience_absorb_range_changed.emit()
+		item_absorb_range = value
+		item_absorb_range_changed.emit()
 
-## A multiplier to the speed of the experience orbs when they are drawn towards the player.
-@export var experience_orb_absorb_speed_mod: float = 1.0
+## A multiplier to the player's item drop absorb range. May be changed at runtime.
+@export var item_absorb_range_mod: float = 1.0:
+	set(value):
+		item_absorb_range_mod = value
+		item_absorb_range_changed.emit()
 
 func damage_reduction() -> float:
 	return calculate_damage_reduction(clamp(armor, absolute_min_armor, absolute_max_armor))

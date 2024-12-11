@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://diankjca6mo8a"]
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=6 format=3 uid="uid://diankjca6mo8a"]
 
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_b4oev"]
 [ext_resource type="Script" path="res://player/ability_system/abilities/roid_rage/roid_rage.gd" id="1_fvboh"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_mpqts"]
+[ext_resource type="Resource" uid="uid://cxf0jwyvrhjb5" path="res://player/ability_system/abilities/pickup_friendly_fish/pickup_friendly_fish.tres" id="4_ptkol"]
+[ext_resource type="Resource" uid="uid://tyvey76efpb4" path="res://player/ability_system/abilities/pickup_metal_baseball_bat/pickup_metal_baseball_bat.tres" id="5_yul7s"]
 
 [resource]
 script = ExtResource("1_b4oev")
@@ -19,4 +21,4 @@ icon = ExtResource("2_mpqts")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("1_b4oev")]([])
-requirements = Array[ExtResource("1_b4oev")]([])
+requirements = Array[ExtResource("1_b4oev")]([ExtResource("4_ptkol"), ExtResource("5_yul7s")])

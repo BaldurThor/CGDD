@@ -1,9 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://5csrk60jew7b"]
+[gd_scene load_steps=20 format=3 uid="uid://5csrk60jew7b"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_4fg77"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_3o7dn"]
+[ext_resource type="PackedScene" uid="uid://c0q6vx2i5hoaw" path="res://entity/enemy/enemy_drops/experience/experience_gem.tscn" id="2_4arga"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_55w53"]
+[ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_tfoxj"]
 [ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_bbdcc"]
+[ext_resource type="PackedScene" uid="uid://doryalypknx2c" path="res://entity/enemy/enemy_drops/magnet/magnet.tscn" id="4_ma4bp"]
 [ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_nu2o0"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_1pmwj"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/check_for_targets.gd" id="7_3vl38"]
@@ -33,12 +36,15 @@ radius = 70.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_05b0x"]
 
-[node name="Tentacle" type="RigidBody2D" groups=["level_clear"]]
+[node name="GreaterTentacle" type="RigidBody2D" groups=["level_clear"]]
 collision_layer = 2
 collision_mask = 3
 lock_rotation = true
 freeze = true
 script = ExtResource("1_4fg77")
+item_drops = Array[PackedScene]([ExtResource("2_4arga"), ExtResource("3_tfoxj"), ExtResource("4_ma4bp")])
+item_drop_chances = Array[float]([1.0, 0.1, 0.007])
+item_drop_values = Array[int]([30, 8, 0])
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -58,7 +64,7 @@ autostart = true
 sprite = ExtResource("4_bbdcc")
 entity_stats = NodePath("../EntityStats")
 sprite_scale = 8.0
-sprite_offset = Vector2(0, -110)
+sprite_offset = Vector2(0, -192.945)
 sprite_modulate = Color(1, 0.08, 0.08, 1)
 
 [node name="TentacleSlam" type="Area2D" parent="."]

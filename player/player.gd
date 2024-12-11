@@ -59,7 +59,9 @@ func take_damage(amount: int, enemy: Enemy) -> void:
 	if player_stats.is_invincible:
 		return
 	player_stats.deal_damage(amount)
-
+	
+func heal(value) -> void:
+	player_stats.health += value
 
 func _on_player_stats_death() -> void:
 	GameManager.death = true

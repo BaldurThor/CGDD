@@ -8,10 +8,10 @@
 script = ExtResource("3_8knk1")
 ability_script = ExtResource("1_wafft")
 name = "Kleptomaniac"
-positive_effects = Array[String](["+3 experience absorb acceleration", "+80% experience absorb range"])
+positive_effects = Array[String](["+80% item absorb range"])
 negative_effects = Array[String]([])
 type = 0
-tags = Array[String](["exp", "exp_absorb", "exp_acceleration"])
+tags = Array[String](["item", "item_absorb"])
 flavor_text = "Of course I need it!"
 max_amount = 0
 rarity = 1
