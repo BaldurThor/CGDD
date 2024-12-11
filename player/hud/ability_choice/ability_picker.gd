@@ -46,14 +46,10 @@ func refresh() -> void:
 func add_choice(ability: AbilityInfo, index: int) -> void:
 	var choice: AbilityChoice = ABILITY_CHOICE.instantiate()
 	choice.init(ability)
-	#choice.pressed.connect(func(): pick_ability(ability))
-	choice.pressed.connect(_pick_ability)
+	choice.pressed.connect(func(): pick_ability(ability))
 	ability_selection.add_child(choice)
 	if index == 0:
 		choice.grab_focus()
-
-func _pick_ability():
-	print("hello")
 
 func pick_ability(ability: AbilityInfo) -> void:
 	ability_system.add_ability(ability)
