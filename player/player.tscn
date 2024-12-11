@@ -17,10 +17,10 @@
 [ext_resource type="Theme" uid="uid://butlk6m3p6ywf" path="res://player/hud/experience_bar/experience_bar.tres" id="9_3kt64"]
 [ext_resource type="Script" path="res://player/hud/countdown_timer.gd" id="9_5x5lc"]
 [ext_resource type="Script" path="res://player/hud/experience_bar/experience_bar.gd" id="10_pxkv6"]
-[ext_resource type="Script" path="res://entity/experience/experience_radius.gd" id="11_fmot2"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_drops/experience/pickup_radius.gd" id="11_fmot2"]
 [ext_resource type="PackedScene" uid="uid://ckldvouneujm7" path="res://player/hud/stats_display/stats_display.tscn" id="11_g73cy"]
 [ext_resource type="Script" path="res://player/experience_value.gd" id="12_267ds"]
-[ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://entity/experience/xp.wav" id="12_ax3nw"]
+[ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://entity/enemy/enemy_drops/experience/xp.wav" id="12_ax3nw"]
 [ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://player/fishing/hook.png" id="12_tp034"]
 [ext_resource type="Script" path="res://player/pickup_radius.gd" id="12_yq8ij"]
 [ext_resource type="Texture2D" uid="uid://cs040aleyeibp" path="res://player/billy_bob.png" id="13_2cvpx"]
@@ -68,6 +68,9 @@ outline_size = 10
 outline_color = Color(1, 0.27451, 0.54902, 0.262745)
 
 [sub_resource type="FontFile" id="FontFile_eovdj"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/18/0/ascent = 0.0
 cache/0/18/0/descent = 0.0
 cache/0/18/0/underline_position = 0.0
@@ -659,7 +662,6 @@ unique_name_in_owner = true
 script = ExtResource("2_s8nph")
 ranged_spread_mod = 1.0
 crit_multiplier = 1.0
-experience_absorb_range = 35.0
 armor = 1
 max_health = 20
 health = 20
@@ -1079,7 +1081,8 @@ volume_db = 15.0
 bus = &"Effects"
 
 [connection signal="death" from="PlayerStats" to="." method="_on_player_stats_death"]
-[connection signal="experience_absorb_range_changed" from="PlayerStats" to="Experience/AbsorbRadius" method="_on_player_stats_experience_absorb_range_changed"]
+[connection signal="item_absorb_range_changed" from="PlayerStats" to="Experience/AbsorbRadius" method="_on_player_stats_item_absorb_range_changed"]
+[connection signal="medkit_picked_up" from="PlayerStats" to="." method="heal"]
 [connection signal="regen_changed" from="PlayerStats" to="PlayerStats" method="_on_regen_changed"]
 [connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]

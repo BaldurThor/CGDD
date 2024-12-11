@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://doryalypknx2c"]
+
+[ext_resource type="Script" path="res://entity/enemy/enemy_drops/magnet/magnet.gd" id="1_j3mdt"]
+[ext_resource type="Texture2D" uid="uid://30xgxdq60ud8" path="res://entity/enemy/enemy_drops/magnet/magnet.png" id="2_yw3bl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ovwg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l40u8"]
+
+[node name="Magnet" type="RigidBody2D" groups=["level_clear"]]
+collision_layer = 8
+collision_mask = 0
+lock_rotation = true
+script = ExtResource("1_j3mdt")
+can_track_player = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yw3bl")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="AccelerationTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="ColliderShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ovwg")
+
+[node name="PickupRadius" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="PickupShape" type="CollisionShape2D" parent="PickupRadius"]
+shape = SubResource("CircleShape2D_l40u8")

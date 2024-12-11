@@ -39,6 +39,7 @@ enabled=PackedStringArray()
 [global_group]
 
 level_clear=""
+experience="Experience orbs"
 
 [input]
 
@@ -169,7 +170,7 @@ mouse_left={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Bullet"
-2d_physics/layer_4="Experience"
+2d_physics/layer_4="Pickups"
 2d_physics/layer_5="Hook"
 2d_physics/layer_6="fish"
 
