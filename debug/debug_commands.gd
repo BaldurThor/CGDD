@@ -12,6 +12,6 @@ func add_xp(amount: int) -> String:
 	GameManager.get_player().experience.gain_experience.emit(amount)
 	return "Added %d XP" % [amount]
 
-func get_ability_picker() -> String:
-	pick_ability.emit(3)
+func get_ability_picker(type : int = 1) -> String:
+	pick_ability.emit(type)
 	return "uwu"
