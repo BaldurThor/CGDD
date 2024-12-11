@@ -19,6 +19,7 @@ func init(
 
 func _ready() -> void:
 	attack_delay.timeout.connect(_attack)
+	enemy.entity_stats.death.connect(queue_free)
 
 func _attack() -> void:
 	animated_sprite_2d.play("attack")
