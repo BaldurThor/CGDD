@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2kiqklk3b5fp"]
+
+[ext_resource type="Script" path="res://player/weapons/gun/gun_swivel.gd" id="1_e0va4"]
+[ext_resource type="Script" path="res://player/weapons/gun/firearm.gd" id="1_og432"]
+[ext_resource type="Script" path="res://player/weapons/gun/gun.gd" id="2_xqite"]
+[ext_resource type="Script" path="res://player/weapons/gun/target_range.gd" id="3_jb0ya"]
+[ext_resource type="Script" path="res://player/weapons/gun/crosshair.gd" id="5_1v42o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fb0h"]
+resource_local_to_scene = true
+
+[node name="Firearm" type="Node2D"]
+script = ExtResource("1_og432")
+
+[node name="GunSwivel" type="Node2D" parent="."]
+script = ExtResource("1_e0va4")
+
+[node name="Gun" type="Node2D" parent="GunSwivel"]
+position = Vector2(20, 0)
+script = ExtResource("2_xqite")
+
+[node name="AttackTimer" type="Timer" parent="GunSwivel/Gun"]
+one_shot = true
+
+[node name="GunSprite" type="Sprite2D" parent="GunSwivel/Gun"]
+
+[node name="BurstTimer" type="Timer" parent="GunSwivel/Gun"]
+
+[node name="AttackSoundEffect" type="AudioStreamPlayer2D" parent="GunSwivel/Gun"]
+
+[node name="TargetRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_jb0ya")
+
+[node name="TargetRangeShape" type="CollisionShape2D" parent="TargetRange"]
+shape = SubResource("CircleShape2D_4fb0h")
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+script = ExtResource("5_1v42o")

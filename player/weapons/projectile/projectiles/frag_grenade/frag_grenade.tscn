@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://daq0w34un80my"]
+
+[ext_resource type="Script" path="res://player/weapons/projectile/projectile.gd" id="1_7q46h"]
+[ext_resource type="Script" path="res://player/weapons/projectile/projectile_travel_behavior.gd" id="2_n6h00"]
+[ext_resource type="Script" path="res://player/weapons/projectile/projectile_impact_behavior.gd" id="3_bel0i"]
+[ext_resource type="Script" path="res://player/weapons/projectile/projectile_despawn_behavior.gd" id="4_rl8wp"]
+[ext_resource type="PackedScene" uid="uid://cxnn5rjuatbd4" path="res://player/weapons/projectile/projectiles/frag_grenade/frag_grenade_explosion.tscn" id="5_jtxm3"]
+[ext_resource type="Texture2D" uid="uid://dpr0wk3mbt7ew" path="res://player/weapons/projectile/projectiles/frag_grenade/frag_grenade.png" id="5_obsjg"]
+[ext_resource type="Script" path="res://player/weapons/projectile/explosion_damage_calculation.gd" id="7_564r7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3n4c"]
+
+[node name="FragGrenade" type="Area2D"]
+script = ExtResource("1_7q46h")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o3n4c")
+
+[node name="TravelBehavior" type="Node" parent="."]
+script = ExtResource("2_n6h00")
+stop_on_impact = true
+
+[node name="ImpactBehavior" type="Node" parent="."]
+script = ExtResource("3_bel0i")
+deal_damage = false
+disable_collision_on_impact = true
+despawn_on_hit = false
+time_before_despawn = 1.0
+can_pierce = false
+
+[node name="DespawnBehavior" type="Node" parent="."]
+script = ExtResource("4_rl8wp")
+scene_to_spawn_on_despawn = ExtResource("5_jtxm3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("5_obsjg")
+
+[node name="DamageCalculation" type="Node" parent="."]
+script = ExtResource("7_564r7")

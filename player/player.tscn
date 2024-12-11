@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://player/player_stats.gd" id="2_s8nph"]
 [ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="5_tgkuv"]
 [ext_resource type="Script" path="res://player/hud/level_counter.gd" id="6_jtmi4"]
-[ext_resource type="Script" path="res://player/gun/rod_swivel.gd" id="6_swhb5"]
+[ext_resource type="Script" path="res://player/weapons/gun/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://player/ability_system/abilities/loot_table.tres" id="7_75cg3"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://player/fishing/rod_placeholder.png" id="7_l7pv7"]
 [ext_resource type="Script" path="res://player/hud/ability_choice/ability_picker.gd" id="7_v6y57"]
