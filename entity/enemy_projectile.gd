@@ -47,9 +47,14 @@ func _handle_impact(collided_with: Node2D) -> void:
 
 func _physics_process(delta: float) -> void:
 	if look_in_travel_direction:
-		look_at(direction)
+		look_at(position + direction)
 	elif look_at_player:
 		look_at(GameManager.get_player().global_position)
+	
+	var dir_to_player = GameManager.get_player().global_position - global_position
+	var angle_to_player = atan2(dir_to_player.y, dir_to_player.x)
+	var new_angle = lerp_angle(rotation, angle_to_player, homing_strength * delta)
+	direction = Vector2(cos(new_angle), sin(new_angle))
 	
 	var progress = 1 - timer.time_left / timer.wait_time
 	var speed = lerpf(projectile_speed, final_projectile_speed, progress)

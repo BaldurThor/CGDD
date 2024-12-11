@@ -34,11 +34,11 @@ shader = ExtResource("11_d3j54")
 shader_parameter/transparency = 1.0
 shader_parameter/flash = false
 
-[sub_resource type="Gradient" id="Gradient_b8aj6"]
+[sub_resource type="Gradient" id="Gradient_wctl5"]
 colors = PackedColorArray(0.133333, 0, 0.25098, 1, 0.35736, 0.00118873, 0.566207, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kjnti"]
-gradient = SubResource("Gradient_b8aj6")
+gradient = SubResource("Gradient_wctl5")
 fill_to = Vector2(0.919658, 0)
 repeat = 2
 
@@ -164,7 +164,11 @@ script = ExtResource("14_dqi3c")
 process_mode = 1
 wait_time = 15.82
 one_shot = true
-autostart = true
+
+[node name="BurstLength" type="Timer" parent="LogicTree/BulletSpray"]
+process_mode = 1
+wait_time = 10.0
+one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="LogicTree/BulletSpray"]
 process_mode = 1
@@ -192,5 +196,5 @@ region_rect = Rect2(-8.48051, 0, 72.4805, 29.612)
 
 [connection signal="timeout" from="LogicTree/BulletHell/CooldownTimer" to="LogicTree/BulletHell" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="LogicTree/TentacleAttack/CooldownTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]
-[connection signal="timeout" from="LogicTree/BulletSpray/CooldownTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="LogicTree/BulletSpray/BurstLength" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="LogicTree/BulletSpray/AttackTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]
