@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_ahmqn"]
 [ext_resource type="Script" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.gd" id="1_grxed"]
-[ext_resource type="Texture2D" uid="uid://dqr0arxmq3ons" path="res://player/gun/gun_types/rifle/rifle_placeholder.png" id="2_v1rul"]
+[ext_resource type="Texture2D" uid="uid://dqr0arxmq3ons" path="res://player/weapons/gun/gun_types/rifle/rifle_placeholder.png" id="2_v1rul"]
 
 [resource]
 script = ExtResource("1_ahmqn")
