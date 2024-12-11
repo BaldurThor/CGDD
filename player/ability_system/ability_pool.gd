@@ -17,6 +17,7 @@ class_name AbilityPool extends Resource
 
 var global_ability_pool: Array[AbilityInfo] = []
 var global_weapon_pool: Array[AbilityInfo] = []
+var global_corrupted_pool: Array[AbilityInfo] = []
 
 var pick_counts: Dictionary = {}
 var guarantees: Dictionary = {}
@@ -74,6 +75,7 @@ func _create_ability_accumulator(pool: Array[AbilityInfo]) -> Array[int]:
 func _init_pool():
 	global_ability_pool = abilities.duplicate()
 	global_weapon_pool = weapons.duplicate()
+	global_corrupted_pool = corrupted_abilities.duplicate()
 	for ability in global_ability_pool:
 		if ability.guaranteed_at == 0:
 			continue
@@ -86,7 +88,10 @@ func _init_pool():
 	initialized = true
 
 ## Picks a certain number of random weapons from the weapon pool.
-func _get_weapon_selection(count: int = 3) -> Array[AbilityInfo]:
+func get_weapon_selection(count: int = 3) -> Array[AbilityInfo]:
+	if !initialized:
+		_init_pool()
+
 	var weapon_pool = _get_weapon_pool()
 	var choices: Array[AbilityInfo] = []
 	for i in range(count):
@@ -98,6 +103,7 @@ func _get_weapon_selection(count: int = 3) -> Array[AbilityInfo]:
 func get_corrupted_abilities(count: int = 3) -> Array[AbilityInfo]:
 	if !initialized:
 		_init_pool()
+
 	var corrupted_pool = _get_corrupted_pool()
 	var choices: Array[AbilityInfo] = []
 	for i in range(count):
@@ -109,11 +115,11 @@ func get_corrupted_abilities(count: int = 3) -> Array[AbilityInfo]:
 func get_ability_selection(count: int = 3) -> Array[AbilityInfo]:
 	if !initialized:
 		_init_pool()
-	
+
 	var player_level = GameManager.get_player().experience.current_level
 	# If the player is at a weapon breakpoint, give them a weapon instead of a skill.
 	if player_level in weapon_guarantee_breakpoints:
-		return _get_weapon_selection(count)
+		return get_weapon_selection(count)
 
 	var ability_pool = _get_ability_pool()
 	var picked_abilities: Array[AbilityInfo] = []
@@ -139,13 +145,21 @@ func get_ability_selection(count: int = 3) -> Array[AbilityInfo]:
 	
 	return picked_abilities
 
-func add_ability_pick_count(ability: AbilityInfo):
-	## Corrupted abilities should always have a maximum of 1
-	if ability.rarity == ability.Rarity.CORRUPTED:
-		var ability_index: int = corrupted_abilities.find(ability)
-		corrupted_abilities.remove_at(ability_index)
-		return
+## Returns the ability pool associated with the provided ability.
+func get_pool(ability: AbilityInfo) -> Array[AbilityInfo]:
+	var pool: Array[AbilityInfo] = []
+	match ability.type:
+		AbilityInfo.AbilityType.WEAPON: pool = global_weapon_pool
+		AbilityInfo.AbilityType.PASSIVE: pool = global_ability_pool
+		AbilityInfo.AbilityType.CORRUPTED: pool = corrupted_abilities
+		_:
+			assert(false, "Invalid AbilityInfo.type")
+	return pool
 
+## Increments the counter for how many instances of a specific ability the player has.
+## If the player has reached the maximum number of instances, the ability is removed from
+## the global pool.
+func add_ability_pick_count(ability: AbilityInfo):
 	var pick_count = pick_counts.get(ability)
 	if pick_count == null:
 		pick_counts[ability] = 0
@@ -153,5 +167,6 @@ func add_ability_pick_count(ability: AbilityInfo):
 	pick_counts[ability] += 1
 	
 	if ability.max_amount > 0 and pick_counts[ability] >= ability.max_amount:
-		var ability_index: int = global_ability_pool.find(ability)
-		global_ability_pool.remove_at(ability_index)
+		var pool = get_pool(ability)
+		var ability_index: int = pool.find(ability)
+		pool.remove_at(ability_index)

@@ -10,6 +10,7 @@ ability_script = ExtResource("1_ramdr")
 name = "Homecooked Gunpowder"
 positive_effects = Array[String](["+5 explosive damage", "+20 explosive radius"])
 negative_effects = Array[String](["-10% max health"])
+type = 0
 tags = Array[String](["added_explosive_damage", "added_explosive_radius", "max_health", "max_health_mod"])
 flavor_text = "It's well-done!"
 max_amount = 0

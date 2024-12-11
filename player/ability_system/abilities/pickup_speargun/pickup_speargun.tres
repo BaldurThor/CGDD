@@ -10,6 +10,7 @@ ability_script = ExtResource("1_j6xw2")
 name = "Speargun"
 positive_effects = Array[String](["+1 Speargun"])
 negative_effects = Array[String]([])
+type = 2
 tags = Array[String](["speargun", "ranged"])
 flavor_text = "Launches a fast, penetrating spear"
 max_amount = 1

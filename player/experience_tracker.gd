@@ -6,7 +6,7 @@ var current_experience: int = 0
 var current_level : int = 0
 var required_for_level_up: int = xp_needed_form(0)
 
-signal gain_experience(amount: int)
+signal gain_experience(amount: int, multiply: bool)
 signal update_experience_bar(experience: int)
 signal level_up()
 
@@ -26,8 +26,11 @@ func xp_needed_form(level : int) -> int:
 
 	return (level ** 2) + (3 * level) + 10
 
-func _gain_experience(amount: int) -> void:
-	current_experience += int(amount * player_stats.experience_gain_mod)
+func _gain_experience(amount: int, multiply: bool = true) -> void:
+	var exp = amount
+	if multiply:
+		exp = int(exp * player_stats.experience_gain_mod)
+	current_experience += exp
 	pickup_sound_effect.pitch_scale = clamp(1.0 + (float(current_experience) / float(required_for_level_up)), 0.1, 2)
 	pickup_sound_effect.play()
 	update_experience_bar.emit(current_experience)

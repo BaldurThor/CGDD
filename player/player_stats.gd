@@ -4,6 +4,7 @@ class_name PlayerStats extends EntityStats
 
 signal player_ranged_range_changed()
 signal player_melee_range_changed()
+signal player_melee_strike_count_changed(added: int)
 signal experience_absorb_range_changed()
 
 @export_category("Stats")
@@ -12,7 +13,11 @@ signal experience_absorb_range_changed()
 ## A flat amount of bonus damage to each strike of a melee weapon
 @export_range(0, 10, 1, "or_greater") var added_melee_damage: int = 0
 ## The number of additional attacks triggered every melee attack
-@export_range(0, 3, 1, "or_greater") var added_melee_strikes: int = 0
+@export_range(0, 3, 1, "or_greater") var added_melee_strikes: int = 0:
+	set(value):
+		var added = value - added_melee_strikes
+		added_melee_strikes = value
+		player_melee_strike_count_changed.emit(added)
 ## An additional amount of knockback for melee weapons
 @export_range(0, 100, 1, "or_greater") var added_melee_knockback: int = 0
 

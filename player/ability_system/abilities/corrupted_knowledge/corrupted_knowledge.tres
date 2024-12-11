@@ -10,6 +10,7 @@ ability_script = ExtResource("1_jrgqm")
 name = "Corrupted Knowledge"
 positive_effects = Array[String](["+150% experience gained"])
 negative_effects = Array[String](["You cannot dodge", "Your armor is 0"])
+type = 1
 tags = Array[String]([])
 flavor_text = "Your newfound intellect weighs you down..."
 max_amount = 1
