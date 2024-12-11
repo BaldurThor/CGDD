@@ -13,7 +13,7 @@ class_name AbilityPool extends Resource
 ## The weight of a rare ability being chosen.
 @export var rate_rare: int = 0
 ## The levels at which the player is guaranteed to get a choice of weapons
-@export var weapon_guarantee_breakpoints: Array[int] = []
+@export var weapon_guarantee_breakpoint: int = 5
 
 var global_ability_pool: Array[AbilityInfo] = []
 var global_weapon_pool: Array[AbilityInfo] = []
@@ -118,7 +118,7 @@ func get_ability_selection(count: int = 3) -> Array[AbilityInfo]:
 
 	var player_level = GameManager.get_player().experience.current_level
 	# If the player is at a weapon breakpoint, give them a weapon instead of a skill.
-	if player_level in weapon_guarantee_breakpoints:
+	if player_level % weapon_guarantee_breakpoint == 0:
 		return get_weapon_selection(count)
 
 	var ability_pool = _get_ability_pool()

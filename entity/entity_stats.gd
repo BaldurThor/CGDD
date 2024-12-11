@@ -33,9 +33,10 @@ var is_invincible: bool = false
 			max_health = value
 			return
 		if value > max_health:
+			max_health = value
 			# If the entity's max health increased, heal it to keep the health : max health ratio
-			max_health = max(1, value)
-			health += get_real_max_health() - current_max
+			var delta = get_real_max_health() - current_max
+			health += delta
 		else:
 			# If the entity's max health decreased, clamp its current health to its max health.
 			max_health = max(1, value)

@@ -53,4 +53,4 @@ corrupted_abilities = Array[ExtResource("1_7pjxk")]([ExtResource("27_atmll"), Ex
 rate_common = 500
 rate_uncommon = 250
 rate_rare = 100
-weapon_guarantee_breakpoints = Array[int]([0, 3, 7, 12])
+weapon_guarantee_breakpoint = 5

@@ -8,8 +8,8 @@
 script = ExtResource("3_fyfcp")
 ability_script = ExtResource("1_0ivo3")
 name = "Corrupted Frenzy"
-positive_effects = Array[String](["+50% melee attack speed", "+50% ranged attack speed"])
-negative_effects = Array[String](["-40% movement speed", "-20% explosion size", "-40% melee range", "-40% ranged range"])
+positive_effects = Array[String](["+50% attack speed", "+20% movement speed"])
+negative_effects = Array[String](["-40% explosion size", "-40% melee range", "-40% ranged range"])
 type = 1
 tags = Array[String]([])
 flavor_text = "Rush ahead and slaughter your foes..."
