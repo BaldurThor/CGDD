@@ -5,7 +5,7 @@ class_name DynamiteExplosion extends Area2D
 @onready var damage_calculation: ExplosionDamageCalculation = $DamageCalculation
 @onready var explosion_radius: CollisionShape2D = $ExplosionRadius
 
-const CRATER = preload("res://player/projectile/crater.tscn")
+const CRATER = preload("res://player/weapons/projectile/crater.tscn")
 
 var weapon_type: WeaponType = null
 var player_stats: PlayerStats = null

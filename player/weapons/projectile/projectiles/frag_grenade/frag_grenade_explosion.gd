@@ -1,7 +1,7 @@
 class_name FragGrenadeExplosion extends Area2D
 
-const FRAG_GRENADE_SHRAPNEL = preload("res://player/projectile/projectiles/frag_grenade_shrapnel/frag_grenade_shrapnel.tscn")
-const CRATER = preload("res://player/projectile/crater.tscn")
+const FRAG_GRENADE_SHRAPNEL = preload("res://player/weapons/projectile/projectiles/frag_grenade_shrapnel/frag_grenade_shrapnel.tscn")
+const CRATER = preload("res://player/weapons/projectile/crater.tscn")
 
 var weapon_type: WeaponType = null
 var player_stats: PlayerStats = null
