@@ -4,12 +4,12 @@ class_name Player extends CharacterBody2D
 @onready var pick_up_sound_effect: AudioStreamPlayer2D = $PickUpSoundEffect
 @onready var sprite: EntitySprite = $PlayerSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var weapon_manager: WeaponManager = $WeaponManager
 @onready var experience: Experience = %Experience
 @onready var hud_modulate: CanvasModulate = %HUDModulate
 @onready var level_switcher: Node2D = %LevelSwitcher
 @onready var camera: PlayerCamera = $Camera2D
 @onready var ability_picker: AbilityPicker = %AbilityPicker
+@onready var weapon_group_manager: WeaponGroupManager = $WeaponGroupManager
 
 @export var freeze_player: bool = false
 @export var death_screen: PackedScene

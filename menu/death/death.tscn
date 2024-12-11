@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://menu/shared/quit.gd" id="2_xqsca"]
 [ext_resource type="Script" path="res://menu/death/mainmenu.gd" id="3_sg43a"]
 [ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="6_nflxa"]
-[ext_resource type="AudioStream" uid="uid://bnxrdba47kgob" path="res://player/gun/gun_types/shotgun/shotgun.wav" id="7_ace4u"]
+[ext_resource type="AudioStream" uid="uid://bnxrdba47kgob" path="res://player/weapons/gun/gun_types/shotgun/shotgun.wav" id="7_ace4u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40sva"]
 atlas = ExtResource("2_7xpmv")
