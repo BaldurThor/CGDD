@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c5ou3qmgqvokk"]
+[gd_scene load_steps=23 format=3 uid="uid://c5ou3qmgqvokk"]
 
 [ext_resource type="Script" path="res://entity/bosses/cthulhu/cthulhu.gd" id="1_h33uf"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_5ie44"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://entity/bosses/attacks/projectile/bullet_hell_logic.gd" id="12_yxkob"]
 [ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_43g7q"]
 [ext_resource type="Script" path="res://entity/bosses/attacks/bullet_spray/projectile_spray_logic.gd" id="14_dqi3c"]
+[ext_resource type="PackedScene" uid="uid://c0npu26f8hdit" path="res://entity/bosses/attacks/bullet_spray/cthulhu_bullet.tscn" id="15_22f3n"]
 [ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="15_t6vw7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
@@ -43,8 +44,8 @@ fill_to = Vector2(0.919658, 0)
 repeat = 2
 
 [node name="Cthulhu" type="RigidBody2D" groups=["level_clear"]]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 3
+collision_mask = 3
 lock_rotation = true
 freeze = true
 freeze_mode = 1
@@ -57,8 +58,8 @@ shape = SubResource("CircleShape2D_h238a")
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_5ie44")
-max_health = 6000
-health = 6000
+max_health = 4500
+health = 4500
 movement_speed = 1.0
 contact_damage = 20
 
@@ -157,18 +158,23 @@ wait_time = 12.3
 one_shot = true
 autostart = true
 
-[node name="BulletSpray" type="Node" parent="LogicTree"]
+[node name="BulletSpray" type="Node" parent="LogicTree" node_paths=PackedStringArray("enemy")]
 script = ExtResource("14_dqi3c")
+enemy = NodePath("../..")
+projectile_scene = ExtResource("15_22f3n")
+projectile_lifetime = 5.0
+projectile_initial_velocity = 300.0
 
 [node name="CooldownTimer" type="Timer" parent="LogicTree/BulletSpray"]
 process_mode = 1
-wait_time = 15.82
+wait_time = 5.0
 one_shot = true
 
 [node name="BurstLength" type="Timer" parent="LogicTree/BulletSpray"]
 process_mode = 1
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
+autostart = true
 
 [node name="AttackTimer" type="Timer" parent="LogicTree/BulletSpray"]
 process_mode = 1
@@ -196,5 +202,6 @@ region_rect = Rect2(-8.48051, 0, 72.4805, 29.612)
 
 [connection signal="timeout" from="LogicTree/BulletHell/CooldownTimer" to="LogicTree/BulletHell" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="LogicTree/TentacleAttack/CooldownTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]
-[connection signal="timeout" from="LogicTree/BulletSpray/BurstLength" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]
-[connection signal="timeout" from="LogicTree/BulletSpray/AttackTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="LogicTree/BulletSpray/CooldownTimer" to="LogicTree/BulletSpray" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="LogicTree/BulletSpray/BurstLength" to="LogicTree/BulletSpray" method="_on_burst_length_timeout"]
+[connection signal="timeout" from="LogicTree/BulletSpray/AttackTimer" to="LogicTree/BulletSpray" method="_on_attack_timer_timeout"]

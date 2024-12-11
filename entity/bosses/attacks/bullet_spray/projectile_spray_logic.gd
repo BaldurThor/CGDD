@@ -47,3 +47,4 @@ func _on_burst_length_timeout() -> void:
 func _on_cooldown_timer_timeout() -> void:
 	_cooldown = false
 	attack_timer.start()
+	burst_length.start()
