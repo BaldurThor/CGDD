@@ -16,10 +16,8 @@ enum ChoiceType {
 var backlog: Array[ChoiceType] = []
 
 func _ready() -> void:
-	visible = false
 	DebugCommands.connect("pick_ability",_on_DebugCommands_pick_ability)
-	#DebugCommands.connect("pick_corrubted_ability")
-	
+	visible = false
 
 func refresh() -> void:
 	for child in ability_selection.get_children():
@@ -34,24 +32,6 @@ func refresh() -> void:
 	skip_button.refresh_string(backlog[0])
 	skip_button.visible = GameManager.get_player().experience.current_level > 0
 	visible = true
-	while backlog != 0:
-		var choices = ability_system.loot_table.get_corrupted_abilities()
-		
-		for choice in choices:
-			add_corrupted_choice(choice)
-		backlog -= 1
-
-func refresh_normal() -> void:
-	_refresh_choices()
-	if backlog == 0:
-		visible = false
-		GameManager.unpause(self)
-		return
-	
-	GameManager.pause(self)
-	visible = true
-	
-	var choices = ability_system.loot_table.get_ability_selection()
 	
 	var choices = []
 	match backlog[0]:
@@ -83,10 +63,6 @@ func add_to_backlog(choice_type: ChoiceType) -> void:
 
 func _on_experience_level_up() -> void:
 	add_to_backlog(ChoiceType.NORMAL)
-		
-func _on_DebugCommands_pick_ability(_ammount : int) -> void:
-	backlog += 1
-	refresh_normal()
 
 ## TODO: Replace this signal connection with one that is emitted when a miniboss dies
 func _on_level_switcher_level_switched() -> void:
@@ -94,6 +70,9 @@ func _on_level_switcher_level_switched() -> void:
 
 func _on_game_start() -> void:
 	add_to_backlog(ChoiceType.WEAPONS)
+
+func _on_DebugCommands_pick_ability(_ammount : int) -> void:
+	add_to_backlog(ChoiceType.NORMAL)
 
 func _get_skip_experience_multiplier(type: AbilityInfo.AbilityType) -> float:
 	var exp_mult: float = 0.0
