@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://1in5byv3fld3"]
 
-[ext_resource type="Script" path="res://player/ability_system/ability_choice.gd" id="1_3i24v"]
+[ext_resource type="Script" uid="uid://cuv23d611tvd8" path="res://player/ability_system/ability_choice.gd" id="1_3i24v"]
 [ext_resource type="Texture2D" uid="uid://bokath3sdfbh4" path="res://player/hud/ability_choice/corrupted.png" id="2_cxy7q"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_ignr2"]
 [ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="3_b46p4"]
 [ext_resource type="Texture2D" uid="uid://b8v614jhpfw2i" path="res://player/hud/ability_choice/rare.png" id="3_ms0gk"]
-[ext_resource type="Script" path="res://player/hud/ability_choice/ability_details.gd" id="4_3aqbb"]
+[ext_resource type="Script" uid="uid://e11b6skt01gf" path="res://player/hud/ability_choice/ability_details.gd" id="4_3aqbb"]
 [ext_resource type="Texture2D" uid="uid://d3d27ckn838tf" path="res://player/hud/ability_choice/uncommon.png" id="4_5kwty"]
 [ext_resource type="Texture2D" uid="uid://dcjpo4hgc8j7y" path="res://player/hud/ability_choice/common.png" id="5_qswq6"]
 
