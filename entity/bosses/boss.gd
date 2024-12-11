@@ -4,6 +4,7 @@ class_name Boss extends Enemy
 @onready var shadow: Sprite2D = $Shadow
 
 func _ready() -> void:
+	super()
 	GameManager.add_boss(self)
 	enemy_base.destroy_object.connect(_on_death)
 

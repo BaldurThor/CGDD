@@ -17,11 +17,15 @@ var new_level_id: int = 1
 
 signal level_switched
 
+# Private signal for decoupling from the animation player
+signal _level_switch
+
 func _ready():
 	GameManager.new_world_level.connect(_on_new_world_level)
 	prev_level = levels[0]
 	new_level = levels[0]
 	levels[0].get_node("Music").play()
+	_level_switch.connect(_on_level_switch)
 
 func _on_new_world_level():
 	set_level(GameManager.world_level)
@@ -42,17 +46,28 @@ func set_level(level: int) -> void:
 	tween.tween_callback(prev_music.stop)
 
 func transition_next_level():
+	_level_switch.emit()
+
+func _on_level_switch():
+	GameManager.level_transitioning = false
+	
+	# Play new music
 	var music: AudioStreamPlayer = new_level.get_node("Music")
 	music.volume_db = 0
 	music.play()
+	
+	# Clear previous entities
 	var nodes_to_clear = get_tree().get_nodes_in_group("level_clear")
 	for node in nodes_to_clear:
 		node.queue_free()
-	GameManager.level_transitioning = false
+	
+	# Show correct level layer
 	for i in range(levels.size()):
 		var active = i == new_level_id - 1
 		levels[i].visible = active
+	
 	prev_level = new_level
+	
 	GameManager.new_world_level_active.emit()
 	level_switched.emit()
 	

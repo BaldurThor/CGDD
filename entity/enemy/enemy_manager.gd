@@ -21,6 +21,7 @@ func _ready():
 	GameManager.new_world_level.connect(_init_level)
 	GameManager.new_world_level_active.connect(_spawn_boss)
 	GameManager.enemy_died.connect(func(): enemy_count -= 1)
+	GameManager.game_timer_over.connect(_spawn_cthulhu)
 
 func _process(_delta: float):
 	if GameManager.level_transitioning:
@@ -31,6 +32,13 @@ func _process(_delta: float):
 	for enemy: EnemySpawnSettings in level_spawn.enemies:
 		var timer: Timer = timers[enemy]
 		timer.wait_time = lerpf(enemy.starting_spawn_rate, enemy.ending_spawn_rate, level_progress)
+
+func _spawn_cthulhu() -> void:
+	var cthulhu_scene = bosses[-1]
+	var cthulhu: Boss = cthulhu_scene.instantiate()
+	add_child(cthulhu)
+	cthulhu.global_position = GameManager.get_player().global_position + cthulhu.spawn_offset
+
 
 func _spawn_boss() -> void:
 	if GameManager.world_level > 1:

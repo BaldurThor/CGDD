@@ -16,6 +16,8 @@ var death: bool = false
 # Global game events
 signal enemy_take_damage(amount: int)
 signal enemy_died
+signal game_timer_over
+signal game_win
 signal player_take_damage(amount: int)
 signal explosion_occurred(intensity: float)
 signal pickup_ability(ability: AbilityInfo)
@@ -31,10 +33,13 @@ func _ready() -> void:
 	game_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_child(game_timer)
 	new_world_level_active.connect(_on_new_world_level_ready)
+	game_timer.timeout.connect(_on_game_timer_timeout)
 
 func _on_new_world_level_ready():
 	game_timer.paused = false
 
+func _on_game_timer_timeout():
+	game_timer_over.emit()
 
 func add_boss(boss: Boss) -> void:
 	if active_boss != null:
