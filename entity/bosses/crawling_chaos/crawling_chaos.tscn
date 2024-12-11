@@ -44,14 +44,13 @@ lock_rotation = true
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_flnhx")
-xp_drop_amount = 150
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_1bt2p")
 armor = 2
-max_health = 1000
-health = 1000
+max_health = 3000
+health = 3000
 movement_speed = 1.0
 contact_damage = 10
 
