@@ -35,7 +35,7 @@ var is_invincible: bool = false
 		if value > max_health:
 			# If the entity's max health increased, heal it to keep the health : max health ratio
 			max_health = max(1, value)
-			health += max_health - current_max
+			health += get_real_max_health() - current_max
 		else:
 			# If the entity's max health decreased, clamp its current health to its max health.
 			max_health = max(1, value)
@@ -93,7 +93,7 @@ func deal_damage(amount: int) -> void:
 	take_damage.emit(amount)
 	
 	var dmg_modified = get_damage_applied(amount)
-	health -= dmg_modified
+	health -= int(dmg_modified)
 	health_changed.emit()
 	
 	if invincibility_time > 0.0:

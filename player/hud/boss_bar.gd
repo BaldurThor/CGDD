@@ -8,7 +8,7 @@ func _ready() -> void:
 func _on_boss_spawned(boss: Boss) -> void:
 	_active_boss = boss
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	visible = _active_boss != null
 	
 	if _active_boss == null:

@@ -7,7 +7,7 @@ var player_stats: PlayerStats
 ## Standalone node which returns the damage that each projectile should deal.
 @onready var damage_calculation: Node = $DamageCalculation
 
-signal despawn()
+signal despawn
 
 func init(weapon: WeaponType, stats: PlayerStats, bullet_direction: Vector2) -> void:
 	weapon_type = weapon

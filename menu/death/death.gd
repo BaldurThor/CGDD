@@ -44,9 +44,9 @@ func reset_skulls() -> void:
 	skull_1_2.visible = false
 	skull_2_2.visible = false
 
-func initialize(enemy: Enemy) -> void:
-	self.enemy = enemy
-	self.enemy.enemy_base.sprite_2d.z_index = 2
+func initialize(killer: Enemy) -> void:
+	enemy = killer
+	enemy.enemy_base.sprite_2d.z_index = 2
 
 func _ready() -> void:
 	GameManager.pause(self)

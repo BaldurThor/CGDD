@@ -46,10 +46,14 @@ func refresh() -> void:
 func add_choice(ability: AbilityInfo, index: int) -> void:
 	var choice: AbilityChoice = ABILITY_CHOICE.instantiate()
 	choice.init(ability)
-	choice.pressed.connect(func(): pick_ability(ability))
+	#choice.pressed.connect(func(): pick_ability(ability))
+	choice.pressed.connect(_pick_ability)
 	ability_selection.add_child(choice)
 	if index == 0:
 		choice.grab_focus()
+
+func _pick_ability():
+	print("hello")
 
 func pick_ability(ability: AbilityInfo) -> void:
 	ability_system.add_ability(ability)
@@ -67,7 +71,7 @@ func add_to_backlog(choice_type: ChoiceType) -> void:
 func _on_experience_level_up() -> void:
 	add_to_backlog(ChoiceType.NORMAL)
 
-func _on_boss_killed(boss: Boss) -> void:
+func _on_boss_killed(_boss: Boss) -> void:
 	add_to_backlog(ChoiceType.CORRUPTED)
 
 func _on_game_start() -> void:

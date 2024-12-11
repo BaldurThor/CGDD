@@ -16,7 +16,7 @@ func _ready():
 	randomize()
 	noise.seed = randi()
 	
-	GameManager.enemy_take_damage.connect(func(amt: int=0.05): add_trauma(amt))
+	GameManager.enemy_take_damage.connect(func(amt: int=1): add_trauma(amt * 0.05))
 	GameManager.player_take_damage.connect(func(amt: int=1): add_trauma(amt))
 	GameManager.explosion_occurred.connect(func(intensity: float=0.5): add_trauma(intensity))
 

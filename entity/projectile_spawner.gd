@@ -66,7 +66,6 @@ class_name ProjectileSpawner extends Node2D
 @export var screenshake_amount: float = 0.0
 
 var audio_stream_player: AudioStreamPlayer2D
-var seed: int = 0
 var running: bool = true
 var timer: Timer = null
 

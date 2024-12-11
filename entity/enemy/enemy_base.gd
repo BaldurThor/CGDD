@@ -38,13 +38,13 @@ signal destroy_object
 @export var sprite_modulate: Color = Color.WHITE:
 	set(value):
 		sprite_modulate = value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() and sprite_2d != null:
 			sprite_2d.material.set_shader_parameter("modulate", value)
 
 @export var show_health_bar: bool = true:
 	set(value):
 		show_health_bar = value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() and health_bar != null:
 			health_bar.visible = value
 
 func _ready():

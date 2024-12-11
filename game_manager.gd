@@ -56,7 +56,7 @@ func start_game() -> void:
 	reset_pause()
 	
 	game_timer.stop()
-	game_timer.wait_time = 1200 / 2
+	game_timer.wait_time = 720
 	game_timer.one_shot = true
 	game_timer.start()
 	

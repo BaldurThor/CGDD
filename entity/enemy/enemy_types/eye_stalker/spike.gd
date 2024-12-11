@@ -8,7 +8,7 @@ var direction: Vector2
 var entity_stats: EntityStats
 var enemy: Enemy
 
-signal despawn()
+signal despawn
 
 func init(enemy_instance: Enemy, bullet_direction: Vector2) -> void:
 	enemy = enemy_instance
