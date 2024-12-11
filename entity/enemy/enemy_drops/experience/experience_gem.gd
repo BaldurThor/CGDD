@@ -2,6 +2,7 @@ class_name ExperienceGem extends PickupBase
 
 @onready var debug_label : Label = $debug_stuff
 @onready var sprite: Sprite2D = $Sprite
+@onready var glow: Sprite2D = $Glow
 
 var player_stats: PlayerStats = null
 var experience_value: int
@@ -19,8 +20,13 @@ func _physics_process(_delta: float) -> void:
 		sprite.frame = 1
 	elif experience_value < 31:
 		sprite.frame = 2
-	elif experience_value < 41:
+		glow.material.set_shader_parameter("glow_color", Color(1.,0.,0.,1.))
+	elif experience_value > 30:
 		sprite.frame = 3
+		glow.material.set_shader_parameter("glow_color", Color(1.,0.,0.,1.))
+	if should_track:
+		linear_velocity = (GameManager.get_player().global_position - global_position).normalized() * get_tracking_speed()
+	glow.material.set_shader_parameter("intensity", float(experience_value))
 	super(_delta)
 
 func _on_clump_range_body_entered(body: Node2D) -> void:
