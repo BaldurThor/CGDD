@@ -175,11 +175,14 @@ func add_ability_pick_count(ability: AbilityInfo):
 func _filter_unavailable_abilities(to_filter: Array[AbilityInfo]) -> Array[AbilityInfo]:
 	var available: Array[AbilityInfo] = []
 	for ability in to_filter:
-		var include: bool = true
-		for requirement in ability.requirements:
-			if requirement not in pick_counts.keys():
-				include = false
-				break
+		var include: bool = false
+		if len(ability.requirements) != 0:
+			for requirement in ability.requirements:
+				if requirement in pick_counts.keys():
+					include = true
+					break
+		else:
+			include = true
 		if include:
 			available.push_back(ability)
 	return available

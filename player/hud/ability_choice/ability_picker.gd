@@ -39,14 +39,16 @@ func refresh() -> void:
 		ChoiceType.CORRUPTED: choices = ability_system.loot_table.get_corrupted_abilities()
 		ChoiceType.WEAPONS: choices = ability_system.loot_table.get_weapon_selection()
 	
-	for choice in choices:
-		add_choice(choice)
+	for index in choices.size():
+		add_choice(choices[index], index)
 
-func add_choice(ability: AbilityInfo) -> void:
+func add_choice(ability: AbilityInfo, index: int) -> void:
 	var choice: AbilityChoice = ABILITY_CHOICE.instantiate()
 	choice.init(ability)
 	choice.pressed.connect(func(): pick_ability(ability))
 	ability_selection.add_child(choice)
+	if index == 0:
+		choice.grab_focus()
 
 func pick_ability(ability: AbilityInfo) -> void:
 	ability_system.add_ability(ability)
