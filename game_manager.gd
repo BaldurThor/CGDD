@@ -30,6 +30,11 @@ func _ready() -> void:
 	game_timer = Timer.new()
 	game_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_child(game_timer)
+	new_world_level_active.connect(_on_new_world_level_ready)
+
+func _on_new_world_level_ready():
+	game_timer.paused = false
+
 
 func add_boss(boss: Boss) -> void:
 	if active_boss != null:
@@ -62,6 +67,7 @@ func _process(_delta: float) -> void:
 		world_level = level
 		level_transitioning = true
 		new_world_level.emit()
+		game_timer.paused = true
 
 func main_menu() -> void:
 	get_tree().change_scene_to_file("res://menu/main/menu.tscn")
