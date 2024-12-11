@@ -46,14 +46,14 @@ freeze = true
 script = ExtResource("1_4fg77")
 item_drops = Array[PackedScene]([ExtResource("2_4arga"), ExtResource("3_tfoxj"), ExtResource("4_ma4bp")])
 item_drop_chances = Array[float]([1.0, 0.1, 0.007])
-item_drop_values = Array[int]([30, 8, 0])
+item_drop_values = Array[int]([75, 8, 0])
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_3o7dn")
 armor = 5
-max_health = 150
-health = 150
+max_health = 500
+health = 500
 contact_damage = 12
 self_knockback_mod = 0.0
 
