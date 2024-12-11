@@ -10,10 +10,16 @@ var enemy: Enemy
 
 signal despawn
 
+@onready var despawn_timer: Timer = $DespawnTimer
+
 func init(enemy_instance: Enemy, bullet_direction: Vector2) -> void:
 	enemy = enemy_instance
 	entity_stats = enemy.entity_stats
 	direction = bullet_direction.normalized()
+	despawn_timer.timeout.connect(func(): despawn.emit())
+
+func _ready() -> void:
+	despawn.connect(queue_free)
 
 func calculate_damage() -> int:
 	return damage_calculation.calculate_damage()

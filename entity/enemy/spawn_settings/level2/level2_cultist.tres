@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=3 format=3 uid="uid://dxt5r7qm4l6j"]
 
 [ext_resource type="Resource" uid="uid://c46dmrx2g0p7p" path="res://entity/enemy/enemy_types/cultist/cultist.tres" id="1_qvetk"]
-[ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_uf4d7"]
+[ext_resource type="Script" uid="uid://bpxgfprsipndc" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_uf4d7"]
 
 [resource]
 script = ExtResource("1_uf4d7")
