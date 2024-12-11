@@ -10,6 +10,7 @@ ability_script = ExtResource("1_bkcgj")
 name = "Recreational Nukes"
 positive_effects = Array[String](["+25% explosion size", "+25% explosion damage"])
 negative_effects = Array[String]([])
+type = 0
 tags = Array[String](["explosive_radius_mod", "explosive_damage_mod"])
 flavor_text = "Y'know... for home defense..."
 max_amount = 1

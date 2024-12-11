@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=92 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://player/player_camera.gd" id="15_n0ywd"]
 [ext_resource type="Script" path="res://player/hud/ability_display.gd" id="16_fr4t7"]
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
+[ext_resource type="Script" path="res://player/skip_button.gd" id="18_7xury"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
 [ext_resource type="Shader" path="res://player/hud/level_effect.gdshader" id="19_74cft"]
 [ext_resource type="Script" path="res://player/health_value.gd" id="19_ky1vu"]
@@ -66,6 +67,23 @@ fill_from = Vector2(0.516239, 0.494017)
 font_color = Color(1, 0, 0.792157, 1)
 outline_size = 10
 outline_color = Color(1, 0.27451, 0.54902, 0.262745)
+
+[sub_resource type="FontFile" id="FontFile_eovdj"]
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/9/0/ascent = 0.0
+cache/0/9/0/descent = 0.0
+cache/0/9/0/underline_position = 0.0
+cache/0/9/0/underline_thickness = 0.0
+cache/0/9/0/scale = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -731,6 +749,7 @@ layout_mode = 2
 stats = NodePath("../../../PlayerStats")
 
 [node name="PlayerHitIndicator" type="TextureRect" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -780,16 +799,34 @@ script = ExtResource("7_v6y57")
 layout_mode = 2
 alignment = 1
 
-[node name="PickAbilityLabel" type="Label" parent="HUD/AbilityPicker/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilityPicker/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PickAbilityLabel" type="Label" parent="HUD/AbilityPicker/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Pick Ability"
 horizontal_alignment = 1
 
-[node name="BacklogCount" type="Label" parent="HUD/AbilityPicker/HBoxContainer"]
+[node name="BacklogCount" type="Label" parent="HUD/AbilityPicker/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "1"
 label_settings = SubResource("LabelSettings_asjdf")
 horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="HUD/AbilityPicker/HBoxContainer"]
+layout_mode = 2
+
+[node name="SkipButton" type="Button" parent="HUD/AbilityPicker/HBoxContainer/Control"]
+layout_mode = 2
+offset_left = 28.0
+offset_right = 134.0
+offset_bottom = 23.0
+theme_override_fonts/font = SubResource("FontFile_eovdj")
+theme_override_font_sizes/font_size = 9
+text = "Skip (+100% experience)"
+script = ExtResource("18_7xury")
+base_string = "Skip(+%s experience)"
 
 [node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilityPicker"]
 layout_mode = 2
@@ -1060,6 +1097,8 @@ bus = &"Effects"
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
 [connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthValue" method="_on_health_bar_health_ratio_changed"]
 [connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
+[connection signal="button_up" from="HUD/AbilityPicker/HBoxContainer/Control/SkipButton" to="HUD/AbilityPicker" method="_on_skip_button_button_up"]
+[connection signal="level_switched" from="LevelSwitcher" to="HUD/AbilityPicker" method="_on_level_switcher_level_switched"]
 [connection signal="level_up" from="Experience" to="HUD/AbilityPicker" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]
