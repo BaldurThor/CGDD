@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @export var info_node: Node
 @export var options_node: Node
+@export var continue_node: Node
 
 
 
@@ -15,3 +16,8 @@ func _process(_delta: float) -> void:
 			
 			visible = not visible
 			GameManager.set_pause(self, visible)
+
+
+func _on_visibility_changed() -> void:
+	if self.visible:
+		continue_node.grab_focus()

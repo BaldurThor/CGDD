@@ -1,7 +1,7 @@
 extends Label
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton or event.is_action("ui_accept"):
+	if event.is_action_pressed("mouse_left") or event.is_action_pressed("ui_accept"):
 		GameManager.quit()
 
 func _on_mouse_entered() -> void:

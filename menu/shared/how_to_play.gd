@@ -1,10 +1,17 @@
 extends Label
 
-@export var info_node: Node
+@export var options: Node
+@export var info: Node
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton or event.is_action("ui_accept"):
-		info_node.show()
+	if event.is_action_pressed("mouse_left") or event.is_action_pressed("ui_accept"):
+		if options.visible:
+			options.hide()
+		
+		if info.visible:
+			info.hide()
+		else:
+			info.show()
 
 func _on_mouse_entered() -> void:
 	self.add_theme_color_override("font_color", Color(1,0,0))

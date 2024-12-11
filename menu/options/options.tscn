@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmvuvlfr0jg2p"]
+[gd_scene load_steps=7 format=3 uid="uid://bbcemibct0rey"]
 
+[ext_resource type="Script" path="res://menu/options/options.gd" id="1_3j1rf"]
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="1_fylp6"]
 [ext_resource type="Script" path="res://menu/options/back.gd" id="2_bcpgf"]
 [ext_resource type="Script" path="res://menu/options/master.gd" id="2_fn5qq"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3j1rf")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(370, 212)
@@ -49,15 +51,18 @@ layout_mode = 2
 
 [node name="Master" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Label"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Master"
 
 [node name="Effects" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Label"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Effects
 "
 
 [node name="Music" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Label"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Music
 "
 
@@ -73,6 +78,8 @@ size_flags_horizontal = 3
 [node name="Master" type="HSlider" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Button"]
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
+focus_neighbor_top = NodePath("../Back")
+focus_neighbor_bottom = NodePath("../Effects")
 max_value = 1.0
 step = 0.01
 script = ExtResource("2_fn5qq")
@@ -80,6 +87,8 @@ script = ExtResource("2_fn5qq")
 [node name="Effects" type="HSlider" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Button"]
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
+focus_neighbor_top = NodePath("../Master")
+focus_neighbor_bottom = NodePath("../Music")
 max_value = 1.0
 step = 0.01
 script = ExtResource("3_ohqc2")
@@ -87,14 +96,19 @@ script = ExtResource("3_ohqc2")
 [node name="Music" type="HSlider" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Button"]
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
+focus_neighbor_top = NodePath("../Effects")
+focus_neighbor_bottom = NodePath("../Back")
 max_value = 1.0
 step = 0.01
 script = ExtResource("4_n03l1")
 
-[node name="Back" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Button" node_paths=PackedStringArray("options_node")]
+[node name="Back" type="Label" parent="CenterContainer/OptionsMenu/VBoxContainer/Split/Button"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 10
+focus_neighbor_top = NodePath("../Music")
+focus_neighbor_bottom = NodePath("../Master")
+focus_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -102,7 +116,6 @@ text = "Back"
 horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("2_bcpgf")
-options_node = NodePath("../../../../../..")
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer"]
 custom_minimum_size = Vector2(370, 212)
@@ -110,6 +123,15 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="focus_entered" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Master" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Master" method="_on_focus_entered"]
+[connection signal="focus_exited" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Master" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Master" method="_on_focus_exited"]
+[connection signal="focus_entered" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Effects" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Effects" method="_on_focus_entered"]
+[connection signal="focus_exited" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Effects" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Effects" method="_on_focus_exited"]
+[connection signal="focus_entered" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Music" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Music" method="_on_focus_entered"]
+[connection signal="focus_exited" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Music" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Music" method="_on_focus_exited"]
+[connection signal="focus_entered" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" method="_on_focus_entered"]
+[connection signal="focus_exited" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" method="_on_focus_exited"]
 [connection signal="gui_input" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" method="_on_gui_input"]
 [connection signal="mouse_entered" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" to="CenterContainer/OptionsMenu/VBoxContainer/Split/Button/Back" method="_on_mouse_exited"]
