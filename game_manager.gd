@@ -19,7 +19,8 @@ signal enemy_died
 signal player_take_damage(amount: int)
 signal explosion_occurred(intensity: float)
 signal pickup_ability(ability: AbilityInfo)
-signal new_world_level(new_level: int)
+signal new_world_level
+signal new_world_level_active
 signal boss_spawned(boss: Boss)
 signal boss_killed(boss: Boss)
 
@@ -59,7 +60,8 @@ func _process(_delta: float) -> void:
 	var level = int(progress * LEVEL_COUNT) + 1
 	if level != world_level:
 		world_level = level
-		new_world_level.emit(level)
+		level_transitioning = true
+		new_world_level.emit()
 
 func main_menu() -> void:
 	get_tree().change_scene_to_file("res://menu/main/menu.tscn")

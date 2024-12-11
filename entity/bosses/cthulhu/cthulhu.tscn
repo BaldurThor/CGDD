@@ -1,16 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5ou3qmgqvokk"]
+[gd_scene load_steps=22 format=3 uid="uid://c5ou3qmgqvokk"]
 
 [ext_resource type="Script" path="res://entity/bosses/cthulhu/cthulhu.gd" id="1_h33uf"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_5ie44"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_1i3tb"]
 [ext_resource type="Texture2D" uid="uid://ds0d5q58yo8f3" path="res://entity/bosses/cthulhu/cthulhu.png" id="4_g8afb"]
 [ext_resource type="Script" path="res://entity/projectile_spawner.gd" id="5_gy1bw"]
-[ext_resource type="PackedScene" uid="uid://cn0k487ns2nh8" path="res://entity/bosses/cthulhu/projectile/cthulhu_projectile.tscn" id="6_l13aa"]
-[ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/cthulhu/projectile/cthulhu_shoot.wav" id="7_rvhvu"]
-[ext_resource type="PackedScene" uid="uid://ba23rxotlujhx" path="res://entity/bosses/cthulhu/tentacle/cthulhu_tentacle.tscn" id="8_774hl"]
+[ext_resource type="PackedScene" uid="uid://cn0k487ns2nh8" path="res://entity/bosses/attacks/projectile/cthulhu_projectile.tscn" id="6_l13aa"]
+[ext_resource type="PackedScene" uid="uid://ba23rxotlujhx" path="res://entity/bosses/cthulhu/cthulhu_tentacle.tscn" id="8_774hl"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="9_mi2f6"]
+[ext_resource type="Script" path="res://entity/bosses/cthulhu/cthulhu_slam.gd" id="10_3u1wb"]
+[ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="11_d3j54"]
+[ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="11_yiu6t"]
+[ext_resource type="Script" path="res://entity/bosses/attacks/projectile/bullet_hell_logic.gd" id="12_yxkob"]
+[ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_43g7q"]
+[ext_resource type="Script" path="res://entity/bosses/attacks/bullet_spray/projectile_spray_logic.gd" id="14_dqi3c"]
+[ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="15_t6vw7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
-radius = 161.003
+radius = 52.0096
 
 [sub_resource type="Gradient" id="Gradient_uyl6r"]
 offsets = PackedFloat32Array(0.496333, 0.713936)
@@ -21,10 +28,26 @@ gradient = SubResource("Gradient_uyl6r")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hreih"]
+resource_local_to_scene = true
+shader = ExtResource("11_d3j54")
+shader_parameter/transparency = 1.0
+shader_parameter/flash = false
+
+[sub_resource type="Gradient" id="Gradient_b8aj6"]
+colors = PackedColorArray(0.133333, 0, 0.25098, 1, 0.35736, 0.00118873, 0.566207, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kjnti"]
+gradient = SubResource("Gradient_b8aj6")
+fill_to = Vector2(0.919658, 0)
+repeat = 2
+
 [node name="Cthulhu" type="RigidBody2D" groups=["level_clear"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 lock_rotation = true
+freeze = true
+freeze_mode = 1
 linear_damp = 5.0
 script = ExtResource("1_h33uf")
 
@@ -34,7 +57,6 @@ shape = SubResource("CircleShape2D_h238a")
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_5ie44")
-armor = 10
 max_health = 6000
 health = 6000
 movement_speed = 1.0
@@ -46,42 +68,41 @@ autostart = true
 [node name="RegenTimer" type="Timer" parent="EntityStats"]
 
 [node name="Shadow" type="Sprite2D" parent="."]
-scale = Vector2(8.59375, 3.40002)
+scale = Vector2(3.71875, 1.47128)
 texture = SubResource("GradientTexture2D_x7pyl")
 
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_1i3tb")]
 y_sort_enabled = true
 sprite = ExtResource("4_g8afb")
 entity_stats = NodePath("../EntityStats")
-sprite_scale = 12.0
-sprite_offset = Vector2(0, -276.355)
+sprite_scale = 4.0
+sprite_offset = Vector2(0, -99.32)
 show_health_bar = false
 
 [node name="BulletHellSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
+visible = false
 script = ExtResource("5_gy1bw")
-autostart = true
-spawn_waves = 50
+spawn_waves = 20
 time_between_waves = 0.25
 offset_between_waves = -0.011
-minimum_range = 150.0
+minimum_range = 16.18
 projectile_count = 15
-initial_velocity = 150.0
-lifetime_multiplier = 2.0
+initial_velocity = 200.0
+final_velocity = 150.0
 projectile_to_spawn = ExtResource("6_l13aa")
 enemy = NodePath("..")
-spawn_sfx = ExtResource("7_rvhvu")
+spawn_sfx = ExtResource("15_t6vw7")
 sound_volume_db = 10.0
 screenshake_amount = 0.6
-autostart_delay = null
 
 [node name="TentacleSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
+visible = false
 script = ExtResource("5_gy1bw")
-autostart = true
-spawn_waves = 8
+spawn_waves = 15
 time_between_waves = 0.25
 offset_between_waves = 0.5
 wave_distance_offset = 50.0
-minimum_range = 150.0
+minimum_range = 16.18
 projectile_count = 30
 initial_velocity = 0.0
 final_velocity = 0.0
@@ -90,7 +111,86 @@ randomize_dist = 1.0
 lifetime_multiplier = 2.0
 projectile_to_spawn = ExtResource("8_774hl")
 enemy = NodePath("..")
-spawn_sfx = ExtResource("7_rvhvu")
+spawn_sfx = ExtResource("15_t6vw7")
 sound_volume_db = 10.0
 screenshake_amount = 0.6
-autostart_delay = 0.25
+
+[node name="LogicTree" type="Node" parent="."]
+script = ExtResource("9_mi2f6")
+
+[node name="CthulhuSlam" type="Node" parent="LogicTree" node_paths=PackedStringArray("slam_area", "enemy", "entity_stats", "sprite_2d")]
+script = ExtResource("10_3u1wb")
+slam_area = NodePath("../../CthulhuSlam")
+enemy = NodePath("../..")
+entity_stats = NodePath("../../EntityStats")
+rotation_speed = 0.3
+cooldown_time = 10.0
+windup_time = 6.0
+sprite_2d = NodePath("../../CthulhuSlam/Sprite2D")
+
+[node name="CooldownTimer" type="Timer" parent="LogicTree/CthulhuSlam"]
+process_mode = 1
+one_shot = true
+
+[node name="WindupTimer" type="Timer" parent="LogicTree/CthulhuSlam"]
+process_mode = 1
+one_shot = true
+
+[node name="SlamSFX" type="AudioStreamPlayer2D" parent="LogicTree/CthulhuSlam"]
+stream = ExtResource("11_yiu6t")
+
+[node name="BulletHell" type="Node" parent="LogicTree"]
+script = ExtResource("12_yxkob")
+
+[node name="CooldownTimer" type="Timer" parent="LogicTree/BulletHell"]
+process_mode = 1
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="TentacleAttack" type="Node" parent="LogicTree"]
+script = ExtResource("13_43g7q")
+
+[node name="CooldownTimer" type="Timer" parent="LogicTree/TentacleAttack"]
+process_mode = 1
+wait_time = 12.3
+one_shot = true
+autostart = true
+
+[node name="BulletSpray" type="Node" parent="LogicTree"]
+script = ExtResource("14_dqi3c")
+
+[node name="CooldownTimer" type="Timer" parent="LogicTree/BulletSpray"]
+process_mode = 1
+wait_time = 15.82
+one_shot = true
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="LogicTree/BulletSpray"]
+process_mode = 1
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[node name="FireSound" type="AudioStreamPlayer2D" parent="LogicTree/BulletSpray"]
+stream = ExtResource("15_t6vw7")
+
+[node name="CthulhuSlam" type="Area2D" parent="."]
+scale = Vector2(8, 8)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CthulhuSlam"]
+visible = false
+polygon = PackedVector2Array(100, 0, 92, -38, 70, -70, 0, 0, 70, 70, 92, 44)
+
+[node name="Sprite2D" type="Sprite2D" parent="CthulhuSlam"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_hreih")
+scale = Vector2(3.133, 3.133)
+texture = SubResource("GradientTexture2D_kjnti")
+region_rect = Rect2(-8.48051, 0, 72.4805, 29.612)
+
+[connection signal="timeout" from="LogicTree/BulletHell/CooldownTimer" to="LogicTree/BulletHell" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="LogicTree/TentacleAttack/CooldownTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="LogicTree/BulletSpray/CooldownTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="LogicTree/BulletSpray/AttackTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]

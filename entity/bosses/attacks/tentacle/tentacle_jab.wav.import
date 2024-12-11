@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bttjtystn45jb"
-path="res://.godot/imported/cthulhu_shoot.wav-a826fcbf637344f64f3228bed752c5d9.sample"
+path="res://.godot/imported/tentacle_jab.wav-20a317f6ba11e0816c07b485ba21e009.sample"
 
 [deps]
 
-source_file="res://entity/bosses/cthulhu/tentacle/cthulhu_shoot.wav"
-dest_files=["res://.godot/imported/cthulhu_shoot.wav-a826fcbf637344f64f3228bed752c5d9.sample"]
+source_file="res://entity/bosses/attacks/tentacle/tentacle_jab.wav"
+dest_files=["res://.godot/imported/tentacle_jab.wav-20a317f6ba11e0816c07b485ba21e009.sample"]
 
 [params]
 

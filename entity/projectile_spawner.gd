@@ -64,11 +64,11 @@ class_name ProjectileSpawner extends Node2D
 @export var spawn_sfx: AudioStream
 @export var sound_volume_db: float
 @export var screenshake_amount: float = 0.0
-@export var autostart_delay: float = 0.0
 
 var audio_stream_player: AudioStreamPlayer2D
 var seed: int = 0
 var running: bool = true
+var timer: Timer = null
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -78,8 +78,12 @@ func _ready() -> void:
 	audio_stream_player.stream = spawn_sfx
 	add_child(audio_stream_player)
 	
+	timer = Timer.new()
+	timer.wait_time = time_between_waves
+	timer.one_shot = true
+	timer.process_mode = Node.PROCESS_MODE_PAUSABLE
+	
 	if autostart:
-		await get_tree().create_timer(autostart_delay).timeout
 		spawn()
 
 func spawn() -> void:
@@ -134,5 +138,4 @@ func _get_projectile_spawn_position(idx: int, offset: float, wave: int) -> Vecto
 	var final = lerpf(theta, theta + offset_max, randf())
 	var dir = Vector2(cos(final), sin(final))
 	var dist_randomize_offset = wave_distance_offset * randomize_dist * randf()
-	print(dist_randomize_offset)
 	return dir * minimum_range + wave * wave_distance_offset * dir + dir * dist_randomize_offset

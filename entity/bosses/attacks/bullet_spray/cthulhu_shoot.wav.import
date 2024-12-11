@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ddt2s6nbke7wo"
-path="res://.godot/imported/cthulhu_shoot.wav-6a57f0c08f6eeb68ea185297c4314dff.sample"
+path="res://.godot/imported/cthulhu_shoot.wav-b0554f248c7cfbcd3d5ef019406f81a6.sample"
 
 [deps]
 
-source_file="res://entity/bosses/cthulhu/projectile/cthulhu_shoot.wav"
-dest_files=["res://.godot/imported/cthulhu_shoot.wav-6a57f0c08f6eeb68ea185297c4314dff.sample"]
+source_file="res://entity/bosses/attacks/bullet_spray/cthulhu_shoot.wav"
+dest_files=["res://.godot/imported/cthulhu_shoot.wav-b0554f248c7cfbcd3d5ef019406f81a6.sample"]
 
 [params]
 

@@ -1060,7 +1060,6 @@ bus = &"Effects"
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
 [connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthValue" method="_on_health_bar_health_ratio_changed"]
 [connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
-[connection signal="level_switched" from="LevelSwitcher" to="HUD/AbilityPicker" method="_on_level_switcher_level_switched"]
 [connection signal="level_up" from="Experience" to="HUD/AbilityPicker" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

@@ -7,6 +7,9 @@ class_name PlayerCamera extends Camera2D
 @export var trauma: float = 0.0
 @export var trauma_pwr: int = 2
 
+@export var starting_zoom: float = 1.25
+@export var ending_zoom: float = 0.8
+
 var noise_y = 0
 
 func _ready():
@@ -22,6 +25,8 @@ func add_trauma(amount: float):
 	trauma = min(trauma + amount, 1.0)
 
 func _process(delta):
+	var progress = 1 - GameManager.game_timer.time_left / GameManager.game_timer.wait_time
+	zoom = Vector2.ONE * lerpf(starting_zoom, ending_zoom, progress)
 	if trauma != 0.0:
 		trauma = max(trauma - decay * delta, 0.0)
 		_shake()

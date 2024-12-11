@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://ba23rxotlujhx"]
+
+[ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack.gd" id="1_882wb"]
+[ext_resource type="Texture2D" uid="uid://di3v2bu53gcgh" path="res://entity/bosses/cthulhu/cthulhu_tentacle.png" id="2_s6auc"]
+[ext_resource type="AudioStream" uid="uid://bttjtystn45jb" path="res://entity/bosses/attacks/tentacle/tentacle_jab.wav" id="3_i4eo8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73c8t"]
+size = Vector2(24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyrxl"]
+atlas = ExtResource("2_s6auc")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsy77"]
+atlas = ExtResource("2_s6auc")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lwxt"]
+atlas = ExtResource("2_s6auc")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4jo8"]
+atlas = ExtResource("2_s6auc")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sw13c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyrxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsy77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lwxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsy77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyrxl")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4jo8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CthulhuTentacle" type="Area2D"]
+script = ExtResource("1_882wb")
+damage = 20
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_73c8t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -42)
+scale = Vector2(2.0625, 2.0625)
+sprite_frames = SubResource("SpriteFrames_sw13c")
+animation = &"attack"
+frame = 4
+frame_progress = 1.0
+
+[node name="AttackDelay" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_i4eo8")

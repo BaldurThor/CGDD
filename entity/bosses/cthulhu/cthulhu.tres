@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://bj2ycrtyqi25e"]
-
-[ext_resource type="PackedScene" uid="uid://xw5n4dxry31f" path="res://entity/enemy/enemy_types/cultist/cultist.tscn" id="1_cwt5g"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="2_1qvom"]
-
-[resource]
-script = ExtResource("2_1qvom")
-name = "Cultist"
-enemy_scene = ExtResource("1_cwt5g")

@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://bplqid0wqhutk"]
+
+[ext_resource type="Script" path="res://entity/bosses/boss.gd" id="1_0ygwl"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_8417x"]
+[ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_ng2h4"]
+[ext_resource type="Texture2D" uid="uid://dphtgbysoogi" path="res://entity/bosses/horror_of_the_sea/horror_of_the_sea.png" id="4_hsrmb"]
+[ext_resource type="Script" path="res://entity/projectile_spawner.gd" id="5_2enaf"]
+[ext_resource type="PackedScene" uid="uid://24k2uymv0fse" path="res://entity/bosses/horror_of_the_sea/horror_tentacle.tscn" id="6_f0han"]
+[ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="7_ri54t"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="9_a78fb"]
+[ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_tdx3w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
+radius = 31.0644
+
+[sub_resource type="Gradient" id="Gradient_uyl6r"]
+offsets = PackedFloat32Array(0.496333, 0.713936)
+colors = PackedColorArray(0, 0, 0, 0.592157, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x7pyl"]
+gradient = SubResource("Gradient_uyl6r")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="HorrorOfTheSea" type="RigidBody2D" groups=["level_clear"]]
+collision_layer = 3
+collision_mask = 3
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+linear_damp = 5.0
+script = ExtResource("1_0ygwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+shape = SubResource("CircleShape2D_h238a")
+
+[node name="EntityStats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_8417x")
+max_health = 500
+health = 500
+contact_damage = 10
+
+[node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
+autostart = true
+
+[node name="RegenTimer" type="Timer" parent="EntityStats"]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 11)
+scale = Vector2(1.5625, 0.618185)
+texture = SubResource("GradientTexture2D_x7pyl")
+
+[node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_ng2h4")]
+y_sort_enabled = true
+sprite = ExtResource("4_hsrmb")
+entity_stats = NodePath("../EntityStats")
+sprite_scale = 2.0
+sprite_offset = Vector2(0, -20.52)
+show_health_bar = false
+
+[node name="TentacleSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_2enaf")
+spawn_waves = 15
+time_between_waves = 0.25
+offset_between_waves = 0.5
+wave_distance_offset = 50.0
+minimum_range = 16.18
+projectile_count = 30
+initial_velocity = 0.0
+final_velocity = 0.0
+randomize_shift = 1.0
+randomize_dist = 1.0
+lifetime_multiplier = 2.0
+projectile_to_spawn = ExtResource("6_f0han")
+enemy = NodePath("..")
+spawn_sfx = ExtResource("7_ri54t")
+sound_volume_db = 10.0
+screenshake_amount = 0.6
+
+[node name="LogicTree" type="Node" parent="."]
+script = ExtResource("9_a78fb")
+
+[node name="TentacleAttack" type="Node" parent="LogicTree"]
+script = ExtResource("13_tdx3w")
+
+[node name="CooldownTimer" type="Timer" parent="LogicTree/TentacleAttack"]
+process_mode = 1
+wait_time = 4.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LogicTree/TentacleAttack/CooldownTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]

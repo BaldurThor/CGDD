@@ -10,12 +10,12 @@ var enemy: Enemy
 
 func init(
 	_bullet_direction: Vector2,
-	_owning_enemy: Enemy,
+	owning_enemy: Enemy,
 	_despawn_time: float,
 	_starting_speed: float,
 	_final_speed: float,
 ) -> void:
-	pass
+	enemy = owning_enemy
 
 func _ready() -> void:
 	attack_delay.timeout.connect(_attack)

@@ -19,11 +19,11 @@ shader = ExtResource("5_056jx")
 shader_parameter/transparency = 1.0
 shader_parameter/flash = false
 
-[sub_resource type="Gradient" id="Gradient_b8aj6"]
+[sub_resource type="Gradient" id="Gradient_mdf0e"]
 colors = PackedColorArray(1, 0, 0, 1, 0.500741, 3.73013e-07, 1.92523e-07, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_38l5h"]
-gradient = SubResource("Gradient_b8aj6")
+gradient = SubResource("Gradient_mdf0e")
 fill_to = Vector2(0.919658, 0)
 repeat = 2
 

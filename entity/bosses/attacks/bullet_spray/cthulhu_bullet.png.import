@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cflkq50jky1cx"
-path="res://.godot/imported/cthulhu_projectile.png-61f024ddf5193627aa2b92e4ff1b4a30.ctex"
+uid="uid://v1s7yx75e0sr"
+path="res://.godot/imported/cthulhu_bullet.png-86801253dee5889a7697133e54fc52bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/bosses/cthulhu/projectile/cthulhu_projectile.png"
-dest_files=["res://.godot/imported/cthulhu_projectile.png-61f024ddf5193627aa2b92e4ff1b4a30.ctex"]
+source_file="res://entity/bosses/attacks/bullet_spray/cthulhu_bullet.png"
+dest_files=["res://.godot/imported/cthulhu_bullet.png-86801253dee5889a7697133e54fc52bf.ctex"]
 
 [params]
 

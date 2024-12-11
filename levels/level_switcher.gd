@@ -15,7 +15,7 @@ var prev_level: Node2D = null
 var new_level: Node2D = null
 var new_level_id: int = 1
 
-signal level_switched()
+signal level_switched
 
 func _ready():
 	GameManager.new_world_level.connect(_on_new_world_level)
@@ -23,8 +23,8 @@ func _ready():
 	new_level = levels[0]
 	levels[0].get_node("Music").play()
 
-func _on_new_world_level(level: int):
-	set_level(level)
+func _on_new_world_level():
+	set_level(GameManager.world_level)
 
 func set_level(level: int) -> void:
 	animation_player.play("level_transition")
@@ -33,7 +33,6 @@ func set_level(level: int) -> void:
 	var shockwave = SHOCKWAVE.instantiate()
 	add_child(shockwave)
 	shockwave.global_position = GameManager.get_player().global_position
-	GameManager.level_transitioning = true
 	
 	new_level = levels[level - 1]
 	
@@ -54,6 +53,7 @@ func transition_next_level():
 		var active = i == new_level_id - 1
 		levels[i].visible = active
 	prev_level = new_level
+	GameManager.new_world_level_active.emit()
 	level_switched.emit()
 	
 func stop_music() -> void:

@@ -9,6 +9,7 @@ const MAX_ENEMIES: int = 500
 @export var level_spawn_settings: Array[LevelSpawnSettings] = []
 @export var spawn_radius: float = 300
 @export var damage_numbers: Node
+@export var bosses: Array[PackedScene] = []
 
 @onready var enemies: Node = $Enemies
 
@@ -17,20 +18,31 @@ func _init() -> void:
 
 func _ready():
 	_init_level()
-	GameManager.new_world_level.connect(func(_level: int): _init_level())
+	GameManager.new_world_level.connect(_init_level)
+	GameManager.new_world_level_active.connect(_spawn_boss)
 	GameManager.enemy_died.connect(func(): enemy_count -= 1)
 
 func _process(_delta: float):
+	if GameManager.level_transitioning:
+		return
+	
 	var level_spawn: LevelSpawnSettings = level_spawn_settings[GameManager.world_level - 1]
 	var level_progress = GameManager.get_world_level_progress()
 	for enemy: EnemySpawnSettings in level_spawn.enemies:
 		var timer: Timer = timers[enemy]
 		timer.wait_time = lerpf(enemy.starting_spawn_rate, enemy.ending_spawn_rate, level_progress)
 
+func _spawn_boss() -> void:
+	if GameManager.world_level > 1:
+		var boss_scene = bosses[GameManager.world_level - 2]
+		var boss: Boss = boss_scene.instantiate()
+		add_child(boss)
+		boss.global_position = GameManager.get_player().global_position + boss.spawn_offset
+
 func _init_level() -> void:
 	enemy_count = 0
 	var level_spawn = level_spawn_settings[GameManager.world_level - 1]
-	
+
 	for elem in timers.values():
 		elem.queue_free()
 	
