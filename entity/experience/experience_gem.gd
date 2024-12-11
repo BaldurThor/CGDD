@@ -5,6 +5,7 @@ class_name ExperienceGem extends RigidBody2D
 @onready var debug_lable : Label = $debug_stuff
 @onready var sprite: Sprite2D = $Sprite
 @onready var experience_pickup_radius: Area2D = $ExperiencePickupRadius
+@onready var glow: Sprite2D = $Glow
 
 var player_stats: PlayerStats = null
 var experience_value: int
@@ -25,10 +26,14 @@ func _physics_process(delta: float) -> void:
 		sprite.frame = 1
 	elif experience_value < 31:
 		sprite.frame = 2
-	elif experience_value < 41:
+		glow.material.set_shader_parameter("glow_color", Color(1.,0.,0.,1.))
+	elif experience_value > 30:
 		sprite.frame = 3
+		glow.material.set_shader_parameter("glow_color", Color(1.,0.,0.,1.))
 	if should_track:
 		linear_velocity = (GameManager.get_player().global_position - global_position).normalized() * get_tracking_speed()
+		
+	glow.material.set_shader_parameter("intensity", float(experience_value))
 
 func get_tracking_speed() -> int:
 	return (base_tracking_speed + acceleration) * player_stats.experience_orb_absorb_speed_mod

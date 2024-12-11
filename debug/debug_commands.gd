@@ -1,7 +1,6 @@
 extends Node
 
 signal pick_ability(amount : int)
-signal pick_corrubted_ability(amount : int)
 
 func toggle_debug() -> String:
 	Debug.enable = not Debug.enable
@@ -14,4 +13,4 @@ func add_xp(amount: int) -> String:
 
 func get_ability_picker(type : int = 1) -> String:
 	pick_ability.emit(type)
-	return "uwu"
+	return "got an ability picker"

@@ -2,7 +2,7 @@ class_name hook extends StaticBody2D
 
 var player: Player = null
 var hook_sprite : Sprite2D = null
-var fist : bool = false
+var first : bool = false
 @onready var ability_picker: AbilityPicker = %AbilityPicker
 
 # the possision of the hook when it is cast
@@ -40,8 +40,8 @@ func _catch_catch() -> void:
 		
 func _stop_cast() -> void:
 	# do not question this code
-	if not fist:
-		fist = true
+	if not first:
+		first = true
 		return
 	pos = get_global_position()
 	is_cast = true
