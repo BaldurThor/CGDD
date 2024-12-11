@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba7pfw6be0oo0"
-path="res://.godot/imported/Empty.png-ec74f0190ef3a42755e4a5ce94f4db7d.ctex"
+uid="uid://cwl6e5mcoxjx5"
+path="res://.godot/imported/experience_gem.png-0c443274b8fac8be3b15580433d5d127.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/experience/Empty.png"
-dest_files=["res://.godot/imported/Empty.png-ec74f0190ef3a42755e4a5ce94f4db7d.ctex"]
+source_file="res://entity/enemy/enemy_drops/experience/experience_gem.png"
+dest_files=["res://.godot/imported/experience_gem.png-0c443274b8fac8be3b15580433d5d127.ctex"]
 
 [params]
 

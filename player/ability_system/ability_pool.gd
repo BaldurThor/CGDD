@@ -122,6 +122,7 @@ func get_ability_selection(count: int = 3) -> Array[AbilityInfo]:
 		return get_weapon_selection(count)
 
 	var ability_pool = _get_ability_pool()
+	ability_pool = _filter_unavailable_abilities(ability_pool)
 	var picked_abilities: Array[AbilityInfo] = []
 	var guaranteed_picks = guarantees.get(player_level)
 	
@@ -170,3 +171,15 @@ func add_ability_pick_count(ability: AbilityInfo):
 		var pool = get_pool(ability)
 		var ability_index: int = pool.find(ability)
 		pool.remove_at(ability_index)
+
+func _filter_unavailable_abilities(to_filter: Array[AbilityInfo]) -> Array[AbilityInfo]:
+	var available: Array[AbilityInfo] = []
+	for ability in to_filter:
+		var include: bool = true
+		for requirement in ability.requirements:
+			if requirement not in pick_counts.keys():
+				include = false
+				break
+		if include:
+			available.push_back(ability)
+	return available

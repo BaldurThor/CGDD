@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://se5nh604rqan"]
+[gd_scene load_steps=11 format=3 uid="uid://se5nh604rqan"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_kq2yi"]
+[ext_resource type="PackedScene" uid="uid://c0q6vx2i5hoaw" path="res://entity/enemy/enemy_drops/experience/experience_gem.tscn" id="2_evqcn"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_ht6xv"]
+[ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_m0rjy"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_y44kv"]
 [ext_resource type="Texture2D" uid="uid://bf2wcgvous0rr" path="res://entity/enemy/enemy_types/carptist/carptist.png" id="4_jtnca"]
+[ext_resource type="PackedScene" uid="uid://doryalypknx2c" path="res://entity/enemy/enemy_drops/magnet/magnet.tscn" id="4_ybpup"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_sj6pk"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="6_eqoi5"]
 
@@ -17,7 +20,9 @@ mass = 3.0
 lock_rotation = true
 linear_damp = 5.0
 script = ExtResource("1_kq2yi")
-xp_drop_amount = 15
+item_drops = Array[PackedScene]([ExtResource("2_evqcn"), ExtResource("3_m0rjy"), ExtResource("4_ybpup")])
+item_drop_chances = Array[float]([1.0, 0.15, 0.003])
+item_drop_values = Array[int]([15, 2, 0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")

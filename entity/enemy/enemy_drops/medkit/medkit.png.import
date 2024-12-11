@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwl6e5mcoxjx5"
-path="res://.godot/imported/experience_gem.png-5e6fbf5b95c2f0a8f99405245eb1e493.ctex"
+uid="uid://dywsbvklsvgco"
+path="res://.godot/imported/medkit.png-97333213b173a2328ab6ce6d9eec1cc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/experience/experience_gem.png"
-dest_files=["res://.godot/imported/experience_gem.png-5e6fbf5b95c2f0a8f99405245eb1e493.ctex"]
+source_file="res://entity/enemy/enemy_drops/medkit/medkit.png"
+dest_files=["res://.godot/imported/medkit.png-97333213b173a2328ab6ce6d9eec1cc7.ctex"]
 
 [params]
 
