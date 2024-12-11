@@ -176,10 +176,13 @@ func _filter_unavailable_abilities(to_filter: Array[AbilityInfo]) -> Array[Abili
 	var available: Array[AbilityInfo] = []
 	for ability in to_filter:
 		var include: bool = false
-		for requirement in ability.requirements:
-			if requirement in pick_counts.keys():
-				include = true
-				break
+		if len(ability.requirements) != 0:
+			for requirement in ability.requirements:
+				if requirement in pick_counts.keys():
+					include = true
+					break
+		else:
+			include = true
 		if include:
 			available.push_back(ability)
 	return available
