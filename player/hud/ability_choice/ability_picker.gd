@@ -16,7 +16,6 @@ enum ChoiceType {
 var backlog: Array[ChoiceType] = []
 
 func _ready() -> void:
-	DebugCommands.connect("pick_ability",_on_DebugCommands_pick_ability)
 	visible = false
 
 func refresh() -> void:
@@ -70,10 +69,6 @@ func _on_level_switcher_level_switched() -> void:
 
 func _on_game_start() -> void:
 	add_to_backlog(ChoiceType.WEAPONS)
-
-func _on_DebugCommands_pick_ability(type : int = 1) -> void:
-	type -= 1
-	add_to_backlog(type as ChoiceType)
 
 func _get_skip_experience_multiplier(type: AbilityInfo.AbilityType) -> float:
 	var exp_mult: float = 0.0

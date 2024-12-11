@@ -1,4 +1,5 @@
-class_name Fish extends RigidBody2D 
+extends Node2D
+class_name Fish
 
 var origin : Vector2
 @export var speed : float = .025

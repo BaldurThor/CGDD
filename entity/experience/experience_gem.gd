@@ -45,7 +45,11 @@ func _on_despawn_timer_timeout() -> void:
 
 func _on_clump_range_body_entered(body: Node2D) -> void:
 	if body is ExperienceGem:
-		if despawn_timer.time_left > body.despawn_timer.time_left:
+		if experience_value == body.experience_value:
+			if despawn_timer.time_left > body.despawn_timer.time_left:
+				experience_value += body.experience_value
+				body.queue_free()
+		elif experience_value > body.experience_value:
 			experience_value += body.experience_value
 			body.queue_free()
 
