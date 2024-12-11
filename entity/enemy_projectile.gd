@@ -37,6 +37,8 @@ func _ready() -> void:
 	timer.wait_time = despawn_timer
 	timer.timeout.connect(_on_timeout)
 	timer.start()
+	enemy.entity_stats.death.connect(queue_free)
+
 
 func _handle_impact(collided_with: Node2D) -> void:
 	if collided_with is Player:
