@@ -13,9 +13,9 @@ point_count = 2
 
 [resource]
 script = ExtResource("2_0fdgb")
-damage = 10
+damage = 14
 secondary_damage = 0
-damage_effectiveness = 0.6
+damage_effectiveness = 0.8
 secondary_damage_effectiveness = 0.0
 attack_speed = 3.96
 crit_chance = 0.0
@@ -28,7 +28,8 @@ projectile_count = 1
 projectile_spread = SubResource("Curve_65s3s")
 explosion_radius = 150.0
 attack_range = 200.0
-knockback = 5
+base_orbital_size = 10
+knockback = 5.0
 secondary_knockback = 0
 can_knockback = true
 melee_strike_count = 1
