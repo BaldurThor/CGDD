@@ -30,8 +30,8 @@ shape = SubResource("CircleShape2D_8q08c")
 unique_name_in_owner = true
 script = ExtResource("6_vl4gl")
 armor = 1
-max_health = 6
-health = 6
+max_health = 10
+health = 10
 movement_speed = 1.25
 contact_damage = 2
 

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="WeaponType" load_steps=7 format=3 uid="uid://bqs45ilkxalc2"]
+
+[ext_resource type="AudioStream" uid="uid://dfxpoj4vlhpwc" path="res://player/weapons/gun/sfx/throw.wav" id="1_ll6qq"]
+[ext_resource type="Script" path="res://player/weapons/gun/weapon_type.gd" id="2_0fdgb"]
+[ext_resource type="Texture2D" uid="uid://cipxgc5gp44mx" path="res://player/weapons/gun/crosshairs/G_Crosshair.png" id="2_8ag80"]
+[ext_resource type="PackedScene" uid="uid://k275wq28gev0" path="res://player/weapons/projectile/projectiles/dynamite/dynamite.tscn" id="2_ct31y"]
+[ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/weapons/projectile/projectiles/dynamite/dynamite.png" id="3_qf464"]
+
+[sub_resource type="Curve" id="Curve_65s3s"]
+max_value = 25.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 25), 35.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("2_0fdgb")
+damage = 14
+secondary_damage = 0
+damage_effectiveness = 0.8
+secondary_damage_effectiveness = 0.0
+attack_speed = 3.96
+crit_chance = 0.0
+crit_damage = 0.0
+burst = false
+delay_between_burst_projectiles = 0.0
+pierce_count = 0
+projectile_speed = 400.0
+projectile_count = 1
+projectile_spread = SubResource("Curve_65s3s")
+explosion_radius = 150.0
+attack_range = 200.0
+base_orbital_size = 10
+knockback = 5.0
+secondary_knockback = 0
+can_knockback = true
+melee_strike_count = 1
+melee_strike_delay = 0.33
+target_priority = 3
+sprite = ExtResource("3_qf464")
+attack_sfx = ExtResource("1_ll6qq")
+projectile = ExtResource("2_ct31y")
+crosshair = ExtResource("2_8ag80")
+attack_range_debug_color = Color(0.343537, 0, 0.120618, 0.364706)
