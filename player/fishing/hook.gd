@@ -2,18 +2,13 @@ class_name hook extends Area2D
 
 var player: Player = null
 var hook_sprite : Sprite2D = null
-var first : bool = false
 @onready var ability_picker: AbilityPicker = %AbilityPicker
 
 # the possision of the hook when it is cast
 var pos := Vector2(0,0)
 
-var is_cast : bool = false
-var catch : RigidBody2D = null
 var angle : float = -1
 var vec : Vector2 = Vector2(0,0)
-
-@export var button_id : MouseButton = 1
 
 @export_category("Hook power")
 @export var min_power : int = 50
@@ -29,7 +24,7 @@ func _ready() -> void:
 	hook_sprite = $hookSprite2D
 	
 # this needs a better name
-func _catch_catch() -> void:
+func _catch_catch(catch) -> void:
 	if catch == null:
 		return
 	elif catch is Fish:
@@ -42,14 +37,12 @@ func _catch_catch() -> void:
 	catch = null
 		
 func _stop_cast() -> void:
-	
-	# do not question this code
-	if not first:
-		first = true
-		return
 	pos = get_global_position()
-	is_cast = true
 	angle = -1
+	
+	hook_sprite.visible = false
+	pos = Vector2(0,0)
+	set_position(pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -59,7 +52,7 @@ func _process(_delta: float) -> void:
 	var dir = (get_global_mouse_position() - player.global_position).normalized()
 	
 	# makes sure that the hook does not move with the player when cast
-	if Input.is_action_pressed("fish_cast") and not is_cast:
+	if Input.is_action_pressed("fish_cast"):
 		if angle == -1:
 			angle = $"..".rotation
 			hook_sprite.visible = true
@@ -77,22 +70,9 @@ func _process(_delta: float) -> void:
 			
 	if Input.is_action_just_released("fish_cast"):
 		_stop_cast()
-		
-	if Input.is_action_just_pressed("fish_hook"):
-		if not is_cast:
-			return
-		is_cast = false
-		hook_sprite.visible = false
-		pos = Vector2(0,0)
-		set_position(pos)
 
-	
-	if is_cast:
-		set_global_position(pos)
-		
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is RigidBody2D:
-		catch = body
-		_catch_catch()
+		_catch_catch(body)
