@@ -10,11 +10,13 @@ const POSITIVE_STAT_INDICATOR = preload("res://player/hud/ability_choice/positiv
 const NEGATIVE_STAT_INDICATOR = preload("res://player/hud/ability_choice/negative_stat_indicator.tscn")
 
 var ability: AbilityInfo = null
+var color: Color
 
 func init(ability_info: AbilityInfo):
 	ability = ability_info
 
 func _ready():
+	self.modulate = Color("c8c8c8")
 	ability_icon.texture = ability.icon
 	ability_name.text = ability.name
 	flavor.text = ability.flavor_text
@@ -28,3 +30,9 @@ func _ready():
 		var indicator = NEGATIVE_STAT_INDICATOR.instantiate()
 		indicator.text = negative_effect
 		negative_stats.add_child(indicator)
+	
+func _on_focus_entered() -> void:
+	self.modulate = Color("ffffff")
+
+func _on_focus_exited() -> void:
+	self.modulate = Color("c8c8c8")

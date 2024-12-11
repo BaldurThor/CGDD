@@ -9,7 +9,7 @@
 resource_local_to_scene = true
 shader = ExtResource("2_2rmfd")
 shader_parameter/glow_color = Color(0, 0, 1, 1)
-shader_parameter/intensity = 64.0
+shader_parameter/intensity = 1.0
 shader_parameter/max_distance = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_erfk8"]
