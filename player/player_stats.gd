@@ -167,9 +167,6 @@ var non_crit_damage_multiplier: float = 1.0
 		item_absorb_range_mod = value
 		item_absorb_range_changed.emit()
 
-## A multiplier to the speed of item drops when they are drawn towards the player.
-@export var item_absorb_speed_mod: float = 1.0
-
 func damage_reduction() -> float:
 	return calculate_damage_reduction(clamp(armor, absolute_min_armor, absolute_max_armor))
 

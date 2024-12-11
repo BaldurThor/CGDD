@@ -1,21 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://6m7poj2r2pul"]
+[gd_scene load_steps=5 format=3 uid="uid://doryalypknx2c"]
 
-[ext_resource type="Script" path="res://entity/enemy/enemy_drops/medkit/medkit.gd" id="1_c7upa"]
-[ext_resource type="Texture2D" uid="uid://dywsbvklsvgco" path="res://entity/enemy/enemy_drops/medkit/medkit.png" id="2_dump0"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_drops/magnet/magnet.gd" id="1_j3mdt"]
+[ext_resource type="Texture2D" uid="uid://30xgxdq60ud8" path="res://entity/enemy/enemy_drops/magnet/magnet.png" id="2_yw3bl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ovwg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l40u8"]
 
-[node name="Medkit" type="RigidBody2D" groups=["level_clear"]]
+[node name="Magnet" type="RigidBody2D" groups=["level_clear"]]
 collision_layer = 8
 collision_mask = 0
 lock_rotation = true
-script = ExtResource("1_c7upa")
-base_tracking_speed = 600
+script = ExtResource("1_j3mdt")
+can_track_player = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dump0")
+texture = ExtResource("2_yw3bl")
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 30.0

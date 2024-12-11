@@ -4,13 +4,17 @@ class_name PickupBase extends RigidBody2D
 @onready var despawn_timer : Timer = $DespawnTimer
 @onready var pickup_radius: Area2D = $PickupRadius
 
+@export var can_track_player: bool = true
 @export var base_tracking_speed: int = 150
+@export var acceleration_per_tick: int = 2
 
 var acceleration: int = 0
 var should_track: bool = false
 var _player: Player = null
 
 func start_tracking_player() -> void:
+	if !can_track_player:
+		return
 	acceleration_timer.start()
 	should_track = true
 
@@ -31,10 +35,10 @@ func pickup() -> void:
 	queue_free.call_deferred()
 
 func get_tracking_speed() -> int:
-	return int((base_tracking_speed + acceleration) * _player.player_stats.item_absorb_speed_mod)
+	return int((base_tracking_speed + acceleration))
 
 func _on_acceleration_timer_timeout() -> void:
-	acceleration += 1
+	acceleration += acceleration_per_tick
 	
 func _on_despawn_timer_timeout() -> void:
 	queue_free.call_deferred()

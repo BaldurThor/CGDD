@@ -8,10 +8,10 @@
 script = ExtResource("1_lo2dt")
 ability_script = ExtResource("1_2dytu")
 name = "Homeschooling"
-positive_effects = Array[String](["+20% experience gained", "+50% item absorb range"])
+positive_effects = Array[String](["+25% experience gained"])
 negative_effects = Array[String]([])
 type = 0
-tags = Array[String](["exp", "item", "exp_mod", "item_absorb"])
+tags = Array[String](["exp", "exp_mod"])
 flavor_text = "Much better than those fancy-pants private schools"
 max_amount = 0
 rarity = 1

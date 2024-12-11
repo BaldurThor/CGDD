@@ -1,6 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://lekxiv8w7y4f"]
+[gd_scene load_steps=18 format=3 uid="uid://lekxiv8w7y4f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_5x0go"]
+[ext_resource type="PackedScene" uid="uid://c0q6vx2i5hoaw" path="res://entity/enemy/enemy_drops/experience/experience_gem.tscn" id="2_kovv8"]
+[ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_aukfl"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_l6rdd"]
 [ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_aaljs"]
 [ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_056jx"]
@@ -39,6 +41,9 @@ collision_mask = 3
 lock_rotation = true
 freeze = true
 script = ExtResource("1_5x0go")
+item_drops = Array[PackedScene]([ExtResource("2_kovv8"), ExtResource("3_aukfl")])
+item_drop_chances = Array[float]([1.0, 0.07])
+item_drop_values = Array[int]([9, 5])
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true

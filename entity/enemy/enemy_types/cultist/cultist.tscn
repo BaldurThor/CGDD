@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://df2qr1ni8rb1p"]
+[gd_scene load_steps=11 format=3 uid="uid://df2qr1ni8rb1p"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
 [ext_resource type="PackedScene" uid="uid://c0q6vx2i5hoaw" path="res://entity/enemy/enemy_drops/experience/experience_gem.tscn" id="2_0lsmm"]
 [ext_resource type="Texture2D" uid="uid://e0oabgkid27x" path="res://entity/enemy/enemy_types/cultist/cultist.png" id="2_cmsmt"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_b0c3y"]
 [ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_xwptn"]
+[ext_resource type="PackedScene" uid="uid://doryalypknx2c" path="res://entity/enemy/enemy_drops/magnet/magnet.tscn" id="4_4cw1u"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_kqoh1"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="6_b3v4b"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_vl4gl"]
@@ -18,9 +19,9 @@ collision_mask = 3
 lock_rotation = true
 linear_damp = 5.0
 script = ExtResource("1_mi8tq")
-item_drops = Array[PackedScene]([ExtResource("2_0lsmm"), ExtResource("3_xwptn")])
-item_drop_chances = Array[float]([1.0, 0.15])
-item_drop_values = Array[int]([2, 1])
+item_drops = Array[PackedScene]([ExtResource("2_0lsmm"), ExtResource("3_xwptn"), ExtResource("4_4cw1u")])
+item_drop_chances = Array[float]([1.0, 0.1, 0.001])
+item_drop_values = Array[int]([2, 1, 0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_8q08c")
