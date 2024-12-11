@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=87 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -7,13 +7,10 @@
 [ext_resource type="Script" path="res://player/player_stats.gd" id="2_s8nph"]
 [ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="5_tgkuv"]
 [ext_resource type="Script" path="res://player/hud/level_counter.gd" id="6_jtmi4"]
-[ext_resource type="Script" path="res://player/weapons/gun/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://player/ability_system/abilities/loot_table.tres" id="7_75cg3"]
-[ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://player/fishing/rod_placeholder.png" id="7_l7pv7"]
 [ext_resource type="Script" path="res://player/hud/ability_choice/ability_picker.gd" id="7_v6y57"]
 [ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="8_18no8"]
 [ext_resource type="Script" path="res://player/hud/hit_indicator.gd" id="8_lh3hs"]
-[ext_resource type="Script" path="res://player/fishing/hook.gd" id="8_qymma"]
 [ext_resource type="Theme" uid="uid://butlk6m3p6ywf" path="res://player/hud/experience_bar/experience_bar.tres" id="9_3kt64"]
 [ext_resource type="Script" path="res://player/hud/countdown_timer.gd" id="9_5x5lc"]
 [ext_resource type="Script" path="res://player/hud/experience_bar/experience_bar.gd" id="10_pxkv6"]
@@ -21,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://ckldvouneujm7" path="res://player/hud/stats_display/stats_display.tscn" id="11_g73cy"]
 [ext_resource type="Script" path="res://player/experience_value.gd" id="12_267ds"]
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://entity/enemy/enemy_drops/experience/xp.wav" id="12_ax3nw"]
-[ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://player/fishing/hook.png" id="12_tp034"]
 [ext_resource type="Script" path="res://player/pickup_radius.gd" id="12_yq8ij"]
 [ext_resource type="Texture2D" uid="uid://cs040aleyeibp" path="res://player/billy_bob.png" id="13_2cvpx"]
 [ext_resource type="Theme" uid="uid://hn44xjwjebxk" path="res://player/hud/health_bar/health_bar.tres" id="13_soul0"]
@@ -38,7 +34,6 @@
 [ext_resource type="Script" path="res://player/health_value.gd" id="19_ky1vu"]
 [ext_resource type="Script" path="res://levels/level_switcher.gd" id="22_ffm7r"]
 [ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://levels/level1/level1_background.png" id="23_77gle"]
-[ext_resource type="Script" path="res://player/weapon_manager.gd" id="24_jn8j2"]
 [ext_resource type="AudioStream" uid="uid://bylxksq47v5jc" path="res://levels/level1/rage-15292.mp3" id="26_dwusy"]
 [ext_resource type="Shader" path="res://levels/flashlight.gdshader" id="26_ybvvv"]
 [ext_resource type="AudioStream" uid="uid://c6lmy1o8c81rn" path="res://levels/level3/the-unkillable-155342.mp3" id="28_aow06"]
@@ -48,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://bhsi60iufrm2v" path="res://levels/transition/ground_break.png" id="31_atf6l"]
 [ext_resource type="AudioStream" uid="uid://nx61vvhfdu67" path="res://levels/transition/ground_crumble.wav" id="32_jv2t7"]
 [ext_resource type="AudioStream" uid="uid://dmxhxschy3e5w" path="res://levels/transition/ground_shake.wav" id="33_ty4v7"]
+[ext_resource type="Script" path="res://player/weapon_group_manager.gd" id="49_gll7c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4lj6"]
 font = ExtResource("5_tgkuv")
@@ -286,10 +282,6 @@ radius = 55.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cqtx"]
 radius = 25.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dv57t"]
-radius = 23.0
-height = 48.0
 
 [sub_resource type="Animation" id="Animation_tsxam"]
 length = 0.001
@@ -1044,31 +1036,6 @@ shape = SubResource("CircleShape2D_5cqtx")
 stream = ExtResource("12_ax3nw")
 bus = &"Effects"
 
-[node name="WeaponManager" type="Node2D" parent="."]
-script = ExtResource("24_jn8j2")
-
-[node name="RodSwivel" type="Node2D" parent="WeaponManager"]
-script = ExtResource("6_swhb5")
-
-[node name="Rod" type="Node2D" parent="WeaponManager/RodSwivel"]
-position = Vector2(30, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="WeaponManager/RodSwivel/Rod"]
-rotation = 0.785398
-texture = ExtResource("7_l7pv7")
-
-[node name="hook" type="StaticBody2D" parent="WeaponManager/RodSwivel"]
-collision_layer = 16
-collision_mask = 40
-script = ExtResource("8_qymma")
-
-[node name="hookSprite2D" type="Sprite2D" parent="WeaponManager/RodSwivel/hook"]
-position = Vector2(4, 0)
-texture = ExtResource("12_tp034")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponManager/RodSwivel/hook"]
-shape = SubResource("CapsuleShape2D_dv57t")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
 libraries = {
@@ -1079,6 +1046,11 @@ libraries = {
 stream = ExtResource("31_6phdh")
 volume_db = 15.0
 bus = &"Effects"
+
+[node name="WeaponGroupManager" type="Node2D" parent="."]
+script = ExtResource("49_gll7c")
+
+[node name="Groups" type="Node2D" parent="WeaponGroupManager"]
 
 [connection signal="death" from="PlayerStats" to="." method="_on_player_stats_death"]
 [connection signal="item_absorb_range_changed" from="PlayerStats" to="Experience/AbsorbRadius" method="_on_player_stats_item_absorb_range_changed"]

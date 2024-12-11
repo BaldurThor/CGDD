@@ -6,7 +6,6 @@ var weapon_type: WeaponType = null
 var player_stats: PlayerStats = null
 var enemy: Enemy = null
 
-@onready var _target_range: TargetRange = $"../TargetRange"
 @onready var firearm: Firearm = $".."
 @onready var crosshair: Sprite2D = $"../Crosshair"
 
@@ -15,7 +14,7 @@ func _ready() -> void:
 	self.player_stats = firearm.player_stats
 
 func _process(_delta: float) -> void:
-	enemy = _target_range.get_target()
+	enemy = firearm.weapon_group.request_target(firearm.index_in_group)
 	if enemy != null:
 		look_at(enemy.position)
 		target_acquired.emit()

@@ -7,7 +7,6 @@ var player_stats: PlayerStats = null
 var enemy: Enemy = null
 
 @onready var melee: Melee = $".."
-@onready var _melee_target_range: MeleeTargetRange = $MeleeWeapon/MeleeTargetRange
 @onready var crosshair: Sprite2D = $"../Crosshair"
 
 func _ready() -> void:
@@ -15,7 +14,7 @@ func _ready() -> void:
 	self.player_stats = melee.player_stats
 
 func _process(_delta: float) -> void:
-	enemy = _melee_target_range.get_target()
+	enemy = melee.weapon_group.request_target(melee.index_in_group)
 	if enemy != null:
 		look_at(enemy.position)
 		target_acquired.emit()

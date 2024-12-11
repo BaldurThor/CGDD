@@ -53,6 +53,5 @@ func _reevaluate_child_positions() -> void:
 		var pos = Vector2(cos(theta), sin(theta)) * radius
 		child.position = pos
 		var dir = Vector2(-sin(theta), cos(theta))
-		#child.look_at(dir)
 		child.rotation = atan2(dir.y, dir.x)
 	_reevaluate_child_radii()

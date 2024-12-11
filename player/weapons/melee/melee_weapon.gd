@@ -4,11 +4,10 @@ var _can_attack: bool = true
 
 @onready var attack_timer: Timer = $AttackTimer
 @onready var melee: Melee = $"../.."
-@onready var melee_target_range: MeleeTargetRange = $MeleeTargetRange
 @onready var melee_swivel: MeleeSwivel = $".."
 @onready var melee_damage_calculation: MeleeDamageCalculation = $"../../MeleeDamageCalculation"
 @onready var melee_sprite: Sprite2D = $MeleeSprite
-@onready var melee_strike_range: Area2D = $MeleeTargetRange/MeleeStrikeRange
+@onready var melee_strike_range: Area2D = $MeleeStrikeRange
 
 signal _attack_signal(enemy: Enemy)
 
@@ -19,6 +18,13 @@ func _ready() -> void:
 	attack_timer.wait_time = melee.weapon_type.attack_speed / (melee.player_stats.attack_speed_mod * melee.player_stats.melee_attack_speed_mod)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	attack_timer.start()
+	melee.weapon_group.range_updated.connect(_on_range_changed)
+	_on_range_changed()
+
+## Signal receiver which handles any changes to the weapon's accuracy.
+## NOTE: If weapon-specific scaling is ever added, this must be updated.
+func _on_range_changed() -> void:
+	scale = Vector2.ONE * (melee.weapon_type.attack_range + melee.player_stats.melee_range_mod) / 85.0
 
 func _on_attack_timer_timeout() -> void:
 	_can_attack = true

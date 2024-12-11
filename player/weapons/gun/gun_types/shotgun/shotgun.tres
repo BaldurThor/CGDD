@@ -28,6 +28,7 @@ projectile_count = 6
 projectile_spread = SubResource("Curve_65s3s")
 explosion_radius = 0.0
 attack_range = 100.0
+base_orbital_size = 10
 knockback = 0.3
 secondary_knockback = 0
 can_knockback = true
