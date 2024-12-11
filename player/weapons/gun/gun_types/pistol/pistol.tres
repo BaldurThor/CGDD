@@ -13,11 +13,11 @@ point_count = 2
 
 [resource]
 script = ExtResource("2_1gjob")
-damage = 3
+damage = 6
 secondary_damage = 0
 damage_effectiveness = 1.0
 secondary_damage_effectiveness = 0.0
-attack_speed = 1.0
+attack_speed = 0.75
 crit_chance = 0.02
 crit_damage = 2.0
 burst = true
