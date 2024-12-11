@@ -1,4 +1,4 @@
-extends LogicNode
+class_name ChaseLogic extends LogicNode
 
 @export var enemy: Enemy
 @onready var logic_tree: LogicTree = $".."

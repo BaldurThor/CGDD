@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bplqid0wqhutk"]
+[gd_scene load_steps=14 format=3 uid="uid://bplqid0wqhutk"]
 
 [ext_resource type="Script" path="res://entity/bosses/boss.gd" id="1_0ygwl"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_8417x"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://24k2uymv0fse" path="res://entity/bosses/horror_of_the_sea/horror_tentacle.tscn" id="6_f0han"]
 [ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="7_ri54t"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="9_a78fb"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="10_nsxm0"]
 [ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_tdx3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
@@ -39,6 +40,7 @@ unique_name_in_owner = true
 script = ExtResource("2_8417x")
 max_health = 500
 health = 500
+movement_speed = 0.15
 contact_damage = 10
 
 [node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
@@ -55,8 +57,8 @@ texture = SubResource("GradientTexture2D_x7pyl")
 y_sort_enabled = true
 sprite = ExtResource("4_hsrmb")
 entity_stats = NodePath("../EntityStats")
-sprite_scale = 2.0
-sprite_offset = Vector2(0, -20.52)
+sprite_scale = 3.0
+sprite_offset = Vector2(0, -43.035)
 show_health_bar = false
 
 [node name="TentacleSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
@@ -89,5 +91,10 @@ process_mode = 1
 wait_time = 4.5
 one_shot = true
 autostart = true
+
+[node name="ChaseLogic" type="Node" parent="LogicTree" node_paths=PackedStringArray("enemy")]
+script = ExtResource("10_nsxm0")
+enemy = NodePath("../..")
+always_chase = true
 
 [connection signal="timeout" from="LogicTree/TentacleAttack/CooldownTimer" to="LogicTree/TentacleAttack" method="_on_cooldown_timer_timeout"]

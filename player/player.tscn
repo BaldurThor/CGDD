@@ -69,6 +69,9 @@ outline_size = 10
 outline_color = Color(1, 0.27451, 0.54902, 0.262745)
 
 [sub_resource type="FontFile" id="FontFile_eovdj"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/18/0/ascent = 0.0
 cache/0/18/0/descent = 0.0
 cache/0/18/0/underline_position = 0.0
@@ -654,7 +657,6 @@ collision_mask = 2
 collision_priority = 2.0
 script = ExtResource("1_7xfc3")
 death_screen = ExtResource("2_4qn83")
-freeze_player = false
 
 [node name="PlayerStats" type="Node2D" parent="."]
 unique_name_in_owner = true
