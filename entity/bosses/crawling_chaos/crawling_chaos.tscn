@@ -44,6 +44,7 @@ lock_rotation = true
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_flnhx")
+spawn_offset = Vector2(0, -200)
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true

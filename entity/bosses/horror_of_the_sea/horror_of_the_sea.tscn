@@ -31,6 +31,7 @@ freeze = true
 freeze_mode = 1
 linear_damp = 5.0
 script = ExtResource("1_0ygwl")
+spawn_offset = Vector2(0, -200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
@@ -49,7 +50,7 @@ autostart = true
 [node name="RegenTimer" type="Timer" parent="EntityStats"]
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, 11)
+position = Vector2(0, 31)
 scale = Vector2(1.5625, 0.618185)
 texture = SubResource("GradientTexture2D_x7pyl")
 
@@ -58,7 +59,7 @@ y_sort_enabled = true
 sprite = ExtResource("4_hsrmb")
 entity_stats = NodePath("../EntityStats")
 sprite_scale = 3.0
-sprite_offset = Vector2(0, -43.035)
+sprite_offset = Vector2(0, -13)
 show_health_bar = false
 
 [node name="TentacleSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]

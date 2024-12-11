@@ -51,6 +51,7 @@ freeze = true
 freeze_mode = 1
 linear_damp = 5.0
 script = ExtResource("1_h33uf")
+spawn_offset = Vector2(0, -300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")
@@ -69,6 +70,7 @@ autostart = true
 [node name="RegenTimer" type="Timer" parent="EntityStats"]
 
 [node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 34)
 scale = Vector2(3.71875, 1.47128)
 texture = SubResource("GradientTexture2D_x7pyl")
 
@@ -77,7 +79,7 @@ y_sort_enabled = true
 sprite = ExtResource("4_g8afb")
 entity_stats = NodePath("../EntityStats")
 sprite_scale = 4.0
-sprite_offset = Vector2(0, -99.32)
+sprite_offset = Vector2(0, -59.935)
 show_health_bar = false
 
 [node name="BulletHellSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
