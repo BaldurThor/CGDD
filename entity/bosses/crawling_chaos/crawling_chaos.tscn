@@ -49,8 +49,8 @@ script = ExtResource("1_flnhx")
 unique_name_in_owner = true
 script = ExtResource("2_1bt2p")
 armor = 2
-max_health = 3000
-health = 3000
+max_health = 2000
+health = 2000
 movement_speed = 1.0
 contact_damage = 10
 

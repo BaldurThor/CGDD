@@ -38,8 +38,8 @@ shape = SubResource("CircleShape2D_h238a")
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_8417x")
-max_health = 1500
-health = 1500
+max_health = 750
+health = 750
 movement_speed = 0.15
 contact_damage = 10
 

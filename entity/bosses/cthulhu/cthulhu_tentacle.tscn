@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bttjtystn45jb" path="res://entity/bosses/attacks/tentacle/tentacle_jab.wav" id="3_i4eo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73c8t"]
-size = Vector2(24, 23)
+size = Vector2(24, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyrxl"]
 atlas = ExtResource("2_s6auc")
@@ -59,7 +59,7 @@ script = ExtResource("1_882wb")
 damage = 20
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6.5)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_73c8t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
