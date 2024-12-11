@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbcemibct0rey"]
+[gd_scene load_steps=6 format=3 uid="uid://bmvuvlfr0jg2p"]
 
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="1_fylp6"]
 [ext_resource type="Script" path="res://menu/options/back.gd" id="2_bcpgf"]
@@ -7,8 +7,11 @@
 [ext_resource type="Script" path="res://menu/options/music.gd" id="4_n03l1"]
 
 [node name="OptionsMenuWrapper" type="MarginContainer"]
-offset_right = 480.0
-offset_bottom = 270.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(370, 212)

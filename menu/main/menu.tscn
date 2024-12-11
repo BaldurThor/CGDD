@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://menu/shared/how_to_play.gd" id="3_fo3wn"]
 [ext_resource type="Script" path="res://menu/shared/options.gd" id="4_vktvh"]
 [ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="8_c5jhc"]
-[ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="10_b5mhb"]
+[ext_resource type="PackedScene" uid="uid://bmvuvlfr0jg2p" path="res://menu/options/options.tscn" id="10_b5mhb"]
 
 [node name="Menu" type="MarginContainer" node_paths=PackedStringArray("info_node", "options_node")]
 clip_contents = true
@@ -45,6 +45,9 @@ size_flags_vertical = 6
 
 [node name="NewGame" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../How_to_play")
+focus_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -54,6 +57,9 @@ script = ExtResource("3_f6fg1")
 
 [node name="How_to_play" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions" node_paths=PackedStringArray("info_node")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../NewGame")
+focus_neighbor_bottom = NodePath("../Options")
+focus_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -64,6 +70,9 @@ info_node = NodePath("../../../../Info")
 
 [node name="Options" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions" node_paths=PackedStringArray("options_node")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../How_to_play")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_mode = 2
 mouse_filter = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -74,6 +83,9 @@ options_node = NodePath("../../../../Options")
 
 [node name="Quit" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../NewGame")
+focus_mode = 2
 mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
@@ -100,15 +112,23 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_focus_exited"]
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_gui_input"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_mouse_exited"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" to="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" method="_on_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" to="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" method="_on_focus_exited"]
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" to="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" method="_on_gui_input"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" to="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" to="HBoxContainer/VBoxContainer/MenuOptions/How_to_play" method="_on_mouse_exited"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/MenuOptions/Options" to="HBoxContainer/VBoxContainer/MenuOptions/Options" method="_on_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/VBoxContainer/MenuOptions/Options" to="HBoxContainer/VBoxContainer/MenuOptions/Options" method="_on_focus_exited"]
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/Options" to="HBoxContainer/VBoxContainer/MenuOptions/Options" method="_on_gui_input"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/MenuOptions/Options" to="HBoxContainer/VBoxContainer/MenuOptions/Options" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/MenuOptions/Options" to="HBoxContainer/VBoxContainer/MenuOptions/Options" method="_on_mouse_exited"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/MenuOptions/Quit" to="HBoxContainer/VBoxContainer/MenuOptions/Quit" method="_on_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/VBoxContainer/MenuOptions/Quit" to="HBoxContainer/VBoxContainer/MenuOptions/Quit" method="_on_focus_exited"]
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/Quit" to="HBoxContainer/VBoxContainer/MenuOptions/Quit" method="_on_gui_input"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/MenuOptions/Quit" to="HBoxContainer/VBoxContainer/MenuOptions/Quit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/MenuOptions/Quit" to="HBoxContainer/VBoxContainer/MenuOptions/Quit" method="_on_mouse_exited"]
