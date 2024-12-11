@@ -1,18 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://5csrk60jew7b"]
+[gd_scene load_steps=21 format=3 uid="uid://5csrk60jew7b"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_4fg77"]
-[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_3o7dn"]
+[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_3o7dn"]
 [ext_resource type="PackedScene" uid="uid://c0q6vx2i5hoaw" path="res://entity/enemy/enemy_drops/experience/experience_gem.tscn" id="2_4arga"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_55w53"]
 [ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_tfoxj"]
 [ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_bbdcc"]
 [ext_resource type="PackedScene" uid="uid://doryalypknx2c" path="res://entity/enemy/enemy_drops/magnet/magnet.tscn" id="4_ma4bp"]
-[ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_nu2o0"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_1pmwj"]
+[ext_resource type="Shader" uid="uid://ii2rmljnst7c" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_nu2o0"]
+[ext_resource type="Script" uid="uid://cbpfg3frbhdad" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_1pmwj"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/check_for_targets.gd" id="7_3vl38"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gd" id="8_xwu5c"]
+[ext_resource type="Script" uid="uid://d2x55wmqdp2rq" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gd" id="8_xwu5c"]
 [ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="9_oob6v"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_types/greater_tentacle/contact_damage_radius.gd" id="9_yb2rw"]
+[ext_resource type="Script" uid="uid://drf4eqb6unqpn" path="res://entity/enemy/enemy_types/greater_tentacle/contact_damage_radius.gd" id="9_yb2rw"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/contact_damage_node.gd" id="11_fn2ta"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0adt"]
 resource_local_to_scene = true
@@ -35,6 +36,7 @@ radius = 350.0
 radius = 70.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_05b0x"]
+radius = 59.2115
 
 [node name="GreaterTentacle" type="RigidBody2D" groups=["level_clear"]]
 collision_layer = 2
@@ -83,6 +85,11 @@ region_rect = Rect2(-8.48051, 0, 72.4805, 29.612)
 
 [node name="LogicTree" type="Node" parent="."]
 script = ExtResource("6_1pmwj")
+
+[node name="ContactDamageNode" type="Node" parent="LogicTree" node_paths=PackedStringArray("enemy", "damage_zone")]
+script = ExtResource("11_fn2ta")
+enemy = NodePath("../..")
+damage_zone = NodePath("../../ContactDamageRadius")
 
 [node name="CheckForTargets" type="Node" parent="LogicTree" node_paths=PackedStringArray("area_2d")]
 script = ExtResource("7_3vl38")

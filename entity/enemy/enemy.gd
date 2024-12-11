@@ -20,7 +20,7 @@ const DAMAGE_LABEL = preload("res://entity/enemy/damage_label/damage_label.tscn"
 @export var damage_label_parent: Node
 
 var damage_label: Node = null
-var should_drop_xp: bool = true
+var should_drop_items: bool = true
 
 @onready var entity_stats: EntityStats = %EntityStats
 @onready var enemy_base: EnemyBase = $EnemyBase
@@ -37,8 +37,8 @@ func _ready() -> void:
 func initialize(start_position: Vector2) -> void:
 	position = start_position
 
-func take_damage(damage: int, knockback_amount: int, damage_origin: Vector2, drop_xp: bool = true) -> void:
-	should_drop_xp = drop_xp
+func take_damage(damage: int, knockback_amount: int, damage_origin: Vector2, drop_items: bool = true) -> void:
+	should_drop_items = drop_items
 	entity_stats.deal_damage(damage)
 	_add_knockback(knockback_amount, damage_origin)
 	GameManager.enemy_take_damage.emit(int(entity_stats.get_damage_applied(damage)))
@@ -62,7 +62,8 @@ func _spawn_drops() -> void:
 			GameManager.get_game_root().add_child.call_deferred(instance)
 
 func _on_death() -> void:
-	_spawn_drops()
+	if should_drop_items:
+		_spawn_drops()
 	
 	# Disable the rigidbody
 	collision_mask = 0
