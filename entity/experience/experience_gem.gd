@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	elif experience_value < 31:
 		sprite.frame = 2
 		glow.material.set_shader_parameter("glow_color", Color(1.,0.,0.,1.))
-	elif experience_value < 41:
+	elif experience_value > 30:
 		sprite.frame = 3
 		glow.material.set_shader_parameter("glow_color", Color(1.,0.,0.,1.))
 	if should_track:

@@ -9,8 +9,8 @@
 resource_local_to_scene = true
 shader = ExtResource("2_2rmfd")
 shader_parameter/glow_color = Color(0, 0, 1, 1)
-shader_parameter/intensity = 1.0
-shader_parameter/max_distance = 128.0
+shader_parameter/intensity = 64.0
+shader_parameter/max_distance = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_erfk8"]
 
@@ -44,12 +44,14 @@ wait_time = 0.1
 shape = SubResource("CircleShape2D_erfk8")
 
 [node name="ExperiencePickupRadius" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="ExperiencePickupShape" type="CollisionShape2D" parent="ExperiencePickupRadius"]
 shape = SubResource("CircleShape2D_mj7ql")
 
 [node name="ClumpRange" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
