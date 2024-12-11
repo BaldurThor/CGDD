@@ -285,8 +285,8 @@ radius = 55.0
 radius = 25.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dv57t"]
-radius = 23.0
-height = 48.0
+radius = 36.0
+height = 72.0
 
 [sub_resource type="Animation" id="Animation_tsxam"]
 length = 0.001
@@ -653,7 +653,6 @@ collision_mask = 2
 collision_priority = 2.0
 script = ExtResource("1_7xfc3")
 death_screen = ExtResource("2_4qn83")
-freeze_player = false
 
 [node name="PlayerStats" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -1056,7 +1055,7 @@ position = Vector2(30, 0)
 rotation = 0.785398
 texture = ExtResource("7_l7pv7")
 
-[node name="hook" type="StaticBody2D" parent="WeaponManager/RodSwivel"]
+[node name="hook" type="Area2D" parent="WeaponManager/RodSwivel"]
 collision_layer = 16
 collision_mask = 40
 script = ExtResource("8_qymma")
@@ -1091,3 +1090,4 @@ bus = &"Effects"
 [connection signal="level_up" from="Experience" to="HUD/AbilityPicker" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]
+[connection signal="body_entered" from="WeaponManager/RodSwivel/hook" to="WeaponManager/RodSwivel/hook" method="_on_body_entered"]

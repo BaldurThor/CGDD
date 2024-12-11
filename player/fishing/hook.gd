@@ -1,4 +1,4 @@
-class_name hook extends StaticBody2D
+class_name hook extends Area2D
 
 var player: Player = null
 var hook_sprite : Sprite2D = null
@@ -10,13 +10,16 @@ var pos := Vector2(0,0)
 
 var is_cast : bool = false
 var catch : RigidBody2D = null
+var angle : float = -1
+var vec : Vector2 = Vector2(0,0)
 
 @export var button_id : MouseButton = 1
 
 @export_category("Hook power")
 @export var min_power : int = 50
 @export var max_power : int = 150
-@export var speed : float = 2.5
+@export var speed : float = 10
+@export var max_dist : int = 400
 
 
 
@@ -39,29 +42,36 @@ func _catch_catch() -> void:
 	catch = null
 		
 func _stop_cast() -> void:
+	
 	# do not question this code
 	if not first:
 		first = true
 		return
 	pos = get_global_position()
 	is_cast = true
+	angle = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	# lock the hook rotation
 	global_rotation = 0.0
 	
-	var _tmp  = get_global_mouse_position() - player.global_position
-	var dir = _tmp.normalized()
-	var dist = sqrt(_tmp.dot(_tmp))
+	var dir = (get_global_mouse_position() - player.global_position).normalized()
 	
 	# makes sure that the hook does not move with the player when cast
 	if Input.is_action_pressed("fish_cast") and not is_cast:
-		hook_sprite.visible = true
-		var col : KinematicCollision2D = move_and_collide(dir*speed)
+		if angle == -1:
+			angle = $"..".rotation
+			hook_sprite.visible = true
+			pos = get_global_position()
+			vec = Vector2(cos(angle), sin(angle)) * speed
 		
-		if col:
-			catch = col.get_collider()
+		pos += vec
+		set_global_position(pos)
+		
+		var _tmp = pos - player.get_global_position()
+		var dist = sqrt(_tmp.dot(_tmp))
+		if dist > max_dist:
 			Input.action_release("fish_cast")
 			_stop_cast()
 			
@@ -71,7 +81,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("fish_hook"):
 		if not is_cast:
 			return
-		_catch_catch()
 		is_cast = false
 		hook_sprite.visible = false
 		pos = Vector2(0,0)
@@ -81,3 +90,9 @@ func _process(_delta: float) -> void:
 	if is_cast:
 		set_global_position(pos)
 		
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is RigidBody2D:
+		catch = body
+		_catch_catch()
