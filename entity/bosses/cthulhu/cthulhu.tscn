@@ -141,6 +141,7 @@ one_shot = true
 
 [node name="SlamSFX" type="AudioStreamPlayer2D" parent="LogicTree/CthulhuSlam"]
 stream = ExtResource("11_yiu6t")
+bus = &"Effects"
 
 [node name="BulletHell" type="Node" parent="LogicTree"]
 script = ExtResource("12_yxkob")
@@ -186,6 +187,7 @@ autostart = true
 
 [node name="FireSound" type="AudioStreamPlayer2D" parent="LogicTree/BulletSpray"]
 stream = ExtResource("15_t6vw7")
+bus = &"Effects"
 
 [node name="CthulhuSlam" type="Area2D" parent="."]
 scale = Vector2(8, 8)

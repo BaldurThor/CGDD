@@ -14,6 +14,10 @@ func init(weapon: WeaponType, stats: PlayerStats, bullet_direction: Vector2) -> 
 	player_stats = stats
 	direction = bullet_direction.normalized()
 
+func _ready() -> void:
+	await get_tree().create_timer(5.0).timeout
+	queue_free()
+
 func calculate_damage() -> int:
 	return damage_calculation.calculate_damage()
 

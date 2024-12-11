@@ -117,6 +117,7 @@ one_shot = true
 
 [node name="SlamSFX" type="AudioStreamPlayer2D" parent="LogicTree/CheckForTargets/TentacleSlam"]
 stream = ExtResource("9_qy6fs")
+bus = &"Effects"
 
 [node name="TentacleSlamSearchRadius" type="Area2D" parent="."]
 

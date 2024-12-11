@@ -23,6 +23,7 @@ one_shot = true
 [node name="BurstTimer" type="Timer" parent="GunSwivel/Gun"]
 
 [node name="AttackSoundEffect" type="AudioStreamPlayer2D" parent="GunSwivel/Gun"]
+bus = &"Effects"
 
 [node name="Crosshair" type="Sprite2D" parent="."]
 visible = false

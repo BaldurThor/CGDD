@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cciirpvfqn260"]
 
-[ext_resource type="Script" path="res://player/weapons/projectile/projectile_travel_behavior.gd" id="1_ewdc1"]
+[ext_resource type="Script" uid="uid://dd0cr2jfbngwa" path="res://player/weapons/projectile/projectile_travel_behavior.gd" id="1_ewdc1"]
 [ext_resource type="Script" path="res://player/weapons/projectile/projectile.gd" id="1_fntex"]
-[ext_resource type="Script" path="res://player/weapons/projectile/projectile_impact_behavior.gd" id="3_egbul"]
-[ext_resource type="Script" path="res://player/weapons/projectile/projectile_despawn_behavior.gd" id="4_b7fg7"]
+[ext_resource type="Script" uid="uid://ofclaatbp7u4" path="res://player/weapons/projectile/projectile_impact_behavior.gd" id="3_egbul"]
+[ext_resource type="Script" uid="uid://cntgucm5aydcb" path="res://player/weapons/projectile/projectile_despawn_behavior.gd" id="4_b7fg7"]
 [ext_resource type="Texture2D" uid="uid://dwrp7cq6ff34o" path="res://player/weapons/projectile/projectiles/bullet/bullet.png" id="5_pefcr"]
-[ext_resource type="Script" path="res://player/weapons/projectile/projectile_primary_damage_calculation.gd" id="6_2aow3"]
+[ext_resource type="Script" uid="uid://clrw7xrmig8k0" path="res://player/weapons/projectile/projectile_primary_damage_calculation.gd" id="6_2aow3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t0nq2"]
 

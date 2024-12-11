@@ -96,6 +96,7 @@ autostart = true
 
 [node name="FireSound" type="AudioStreamPlayer2D" parent="LogicTree/BulletSpray"]
 stream = ExtResource("8_6jh8j")
+bus = &"Effects"
 
 [connection signal="timeout" from="LogicTree/BulletSpray/CooldownTimer" to="LogicTree/BulletSpray" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="LogicTree/BulletSpray/BurstLength" to="LogicTree/BulletSpray" method="_on_burst_length_timeout"]
