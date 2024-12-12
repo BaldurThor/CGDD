@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://cs6u2skxckql7"]
 
-[ext_resource type="Script" path="res://player/ability_system/abilities/kleptomaniac/kleptomaniac.gd" id="1_wafft"]
+[ext_resource type="Script" uid="uid://dghlisn16ml7y" path="res://player/ability_system/abilities/kleptomaniac/kleptomaniac.gd" id="1_wafft"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_hngt5"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_8knk1"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_8knk1"]
 
 [resource]
 script = ExtResource("3_8knk1")
