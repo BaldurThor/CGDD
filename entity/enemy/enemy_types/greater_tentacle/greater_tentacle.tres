@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://beo8u85vo618v"]
 
 [ext_resource type="PackedScene" uid="uid://5csrk60jew7b" path="res://entity/enemy/enemy_types/greater_tentacle/greater_tentacle.tscn" id="1_7ry16"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_type.gd" id="2_271tl"]
+[ext_resource type="Script" uid="uid://uv686v6bwvk" path="res://entity/enemy/enemy_type.gd" id="2_271tl"]
 
 [resource]
 script = ExtResource("2_271tl")
