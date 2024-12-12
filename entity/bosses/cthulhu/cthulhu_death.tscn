@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bptsynp1ohnt8"]
+[gd_scene load_steps=8 format=3 uid="uid://ckwosl3d1eeca"]
 
 [ext_resource type="AudioStream" uid="uid://dfrmaq7gmpnxv" path="res://entity/bosses/cthulhu/death_sfx.wav" id="1_5seyf"]
 [ext_resource type="Script" path="res://entity/bosses/cthulhu/cthulhu_death.gd" id="1_hgre8"]
