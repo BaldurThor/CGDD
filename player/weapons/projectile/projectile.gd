@@ -16,6 +16,7 @@ func init(weapon: WeaponType, stats: PlayerStats, bullet_direction: Vector2) -> 
 	direction = bullet_direction.normalized()
 
 func _ready() -> void:
+	GameManager.made_projectile.emit()
 	timer = Timer.new()
 	timer.wait_time = 5.0
 	timer.process_mode = PROCESS_MODE_PAUSABLE
