@@ -1,4 +1,4 @@
-class_name stats_man extends Node
+class_name StatsMan extends Node
 
 @onready var player: Player = $"../Player"
 
