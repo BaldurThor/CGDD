@@ -94,7 +94,7 @@ func deal_damage(amount: int) -> void:
 	take_damage.emit(amount)
 	
 	var dmg_modified = get_damage_applied(amount)
-	health -= dmg_modified
+	health -= int(dmg_modified)
 	health_changed.emit()
 	
 	if invincibility_time > 0.0:

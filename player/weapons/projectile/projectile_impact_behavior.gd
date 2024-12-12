@@ -11,13 +11,19 @@ class_name ProjectileImpactBehavior extends Node
 
 var collision_count: int = 0
 var max_pierce_count: int = 0
+var timer: Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	max_pierce_count = projectile.weapon_type.pierce_count + projectile.player_stats.extra_projectile_pierce
 	projectile.body_entered.connect(_handle_impact)
 	if !despawn_on_hit and time_before_despawn > 0.0:
-		get_tree().create_timer(time_before_despawn).timeout.connect(_on_timeout)
+		timer = Timer.new()
+		timer.wait_time = time_before_despawn
+		timer.process_mode = PROCESS_MODE_PAUSABLE
+		add_child(timer)
+		timer.start()
+		timer.timeout.connect(_on_timeout)
 
 func _handle_impact(collided_with: Node2D) -> void:
 	if collided_with is Enemy:

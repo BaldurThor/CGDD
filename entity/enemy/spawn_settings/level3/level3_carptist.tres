@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=3 format=3 uid="uid://cu0srtsciabli"]
+[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=4 format=3 uid="uid://cu0srtsciabli"]
 
 [ext_resource type="Resource" uid="uid://m7u7qraek2rl" path="res://entity/enemy/enemy_types/carptist/carptist.tres" id="1_llnhl"]
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="2_1kj5u"]
+
+[sub_resource type="Curve" id="Curve_vaoij"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
 
 [resource]
 script = ExtResource("2_1kj5u")
@@ -9,3 +13,4 @@ enemy_type = ExtResource("1_llnhl")
 strength_multiplier = 3.0
 starting_spawn_rate = 1.0
 ending_spawn_rate = 0.5
+spawn_rate_curve = SubResource("Curve_vaoij")

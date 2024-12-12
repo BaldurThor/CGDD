@@ -18,6 +18,7 @@ var backlog: Array[ChoiceType] = []
 func _ready() -> void:
 	DebugCommands.connect("pick_ability",_on_DebugCommands_pick_ability)
 	visible = false
+	GameManager.boss_killed.connect(_on_boss_killed)
 
 func refresh() -> void:
 	for child in ability_selection.get_children():
@@ -66,8 +67,7 @@ func add_to_backlog(choice_type: ChoiceType) -> void:
 func _on_experience_level_up() -> void:
 	add_to_backlog(ChoiceType.NORMAL)
 
-## TODO: Replace this signal connection with one that is emitted when a miniboss dies
-func _on_level_switcher_level_switched() -> void:
+func _on_boss_killed(_boss: Boss) -> void:
 	add_to_backlog(ChoiceType.CORRUPTED)
 
 func _on_game_start() -> void:

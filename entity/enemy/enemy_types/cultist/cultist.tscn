@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://df2qr1ni8rb1p"]
+[gd_scene load_steps=11 format=3 uid="uid://xw5n4dxry31f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_mi8tq"]
 [ext_resource type="PackedScene" uid="uid://c0q6vx2i5hoaw" path="res://entity/enemy/enemy_drops/experience/experience_gem.tscn" id="2_0lsmm"]
@@ -20,7 +20,7 @@ lock_rotation = true
 linear_damp = 5.0
 script = ExtResource("1_mi8tq")
 item_drops = Array[PackedScene]([ExtResource("2_0lsmm"), ExtResource("3_xwptn"), ExtResource("4_4cw1u")])
-item_drop_chances = Array[float]([1.0, 0.1, 0.001])
+item_drop_chances = Array[float]([1.0, 0.25, 0.001])
 item_drop_values = Array[int]([2, 1, 0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]

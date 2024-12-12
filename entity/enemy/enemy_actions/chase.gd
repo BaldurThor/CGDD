@@ -1,4 +1,4 @@
-extends LogicNode
+class_name ChaseLogic extends LogicNode
 
 @export var enemy: Enemy
 @onready var logic_tree: LogicTree = $".."
@@ -24,6 +24,10 @@ func _physics_process(delta: float) -> void:
 	# Make sure a player is present
 	if !player:
 		return
+	
+	if GameManager.level_transitioning:
+		return
+	
 	var dir: Vector2 = player.global_position - enemy.global_position
 	enemy.distance_to_player = dir.length()
 	if always_chase or enemy.distance_to_player > max_distance_to_player:

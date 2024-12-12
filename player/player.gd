@@ -7,6 +7,7 @@ class_name Player extends CharacterBody2D
 @onready var experience: Experience = %Experience
 @onready var hud_modulate: CanvasModulate = %HUDModulate
 @onready var level_switcher: Node2D = %LevelSwitcher
+@onready var camera: PlayerCamera = $Camera2D
 @onready var ability_picker: AbilityPicker = %AbilityPicker
 @onready var weapon_group_manager: WeaponGroupManager = $WeaponGroupManager
 

@@ -30,7 +30,7 @@ func _on_attack_timer_timeout() -> void:
 	_can_attack = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _can_attack:
 		if melee_swivel.enemy != null:
 			_can_attack = false

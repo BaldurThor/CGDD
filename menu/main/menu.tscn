@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://db5yyodexjuf1"]
+[gd_scene load_steps=11 format=3 uid="uid://db5yyodexjuf1"]
 
 [ext_resource type="Texture2D" uid="uid://eb55mdcve1m0" path="res://menu/main/image0.jpg" id="1_m1u38"]
-[ext_resource type="Script" path="res://menu/main/menu.gd" id="1_wk1l7"]
+[ext_resource type="Script" uid="uid://kpsf4fee5q0o" path="res://menu/main/menu.gd" id="1_wk1l7"]
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="2_34m6s"]
-[ext_resource type="Script" path="res://menu/shared/quit.gd" id="2_ni7lo"]
-[ext_resource type="Script" path="res://menu/main/new_game.gd" id="3_f6fg1"]
-[ext_resource type="Script" path="res://menu/shared/how_to_play.gd" id="3_fo3wn"]
-[ext_resource type="Script" path="res://menu/shared/options.gd" id="4_vktvh"]
+[ext_resource type="Script" uid="uid://is4aq3bsxhnn" path="res://menu/shared/quit.gd" id="2_ni7lo"]
+[ext_resource type="Script" uid="uid://1oorjkbo6n0s" path="res://menu/main/new_game.gd" id="3_f6fg1"]
+[ext_resource type="Script" uid="uid://b8xt6044m278r" path="res://menu/shared/how_to_play.gd" id="3_fo3wn"]
+[ext_resource type="Script" uid="uid://ca6krj2sb1dhg" path="res://menu/shared/options.gd" id="4_vktvh"]
 [ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="8_c5jhc"]
 [ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="10_b5mhb"]
+[ext_resource type="AudioStream" uid="uid://bwyyr85im3ii5" path="res://menu/main/survival-metal-with-solo-109315.mp3" id="10_dbaeb"]
 
 [node name="Menu" type="MarginContainer" node_paths=PackedStringArray("info_node", "options_node")]
 clip_contents = true
@@ -115,6 +116,11 @@ how_to_play = NodePath("../HBoxContainer/VBoxContainer/MenuOptions/How_to_play")
 visible = false
 layout_mode = 2
 options = NodePath("../HBoxContainer/VBoxContainer/MenuOptions/Options")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_dbaeb")
+autoplay = true
+bus = &"Music"
 
 [connection signal="focus_entered" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_focus_entered"]
 [connection signal="focus_exited" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="HBoxContainer/VBoxContainer/MenuOptions/NewGame" method="_on_focus_exited"]

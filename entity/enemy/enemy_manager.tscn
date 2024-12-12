@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6rjnevhtac41"]
+[gd_scene load_steps=11 format=3 uid="uid://b6rjnevhtac41"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_manager.gd" id="1_vlxsp"]
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="2_c2fdu"]
@@ -6,12 +6,17 @@
 [ext_resource type="Resource" uid="uid://crjj48lkhqf1b" path="res://entity/enemy/spawn_settings/level2/level2_spawn.tres" id="4_ophjc"]
 [ext_resource type="Resource" uid="uid://bp0pc007highu" path="res://entity/enemy/spawn_settings/level3/level3_spawn.tres" id="5_mxgk0"]
 [ext_resource type="Resource" uid="uid://bal88yqws87j5" path="res://entity/enemy/spawn_settings/level4/level4_spawn.tres" id="6_q7de8"]
+[ext_resource type="PackedScene" uid="uid://c5ou3qmgqvokk" path="res://entity/bosses/cthulhu/cthulhu.tscn" id="7_eseey"]
+[ext_resource type="PackedScene" uid="uid://bplqid0wqhutk" path="res://entity/bosses/horror_of_the_sea/horror_of_the_sea.tscn" id="7_vf5uk"]
+[ext_resource type="PackedScene" uid="uid://dgo7yk13ulxrk" path="res://entity/bosses/crawling_chaos/crawling_chaos.tscn" id="8_e34pf"]
+[ext_resource type="PackedScene" uid="uid://cobhinc6pra1v" path="res://entity/bosses/unspeakable/unspeakable.tscn" id="9_ud7yj"]
 
 [node name="EnemyManager" type="Node" node_paths=PackedStringArray("damage_numbers")]
 script = ExtResource("1_vlxsp")
 level_spawn_settings = Array[ExtResource("2_c2fdu")]([ExtResource("3_11ap6"), ExtResource("4_ophjc"), ExtResource("5_mxgk0"), ExtResource("6_q7de8")])
 spawn_radius = 500.0
 damage_numbers = NodePath("DamageNumbers")
+bosses = Array[PackedScene]([ExtResource("7_vf5uk"), ExtResource("8_e34pf"), ExtResource("9_ud7yj"), ExtResource("7_eseey")])
 
 [node name="Enemies" type="Node" parent="."]
 

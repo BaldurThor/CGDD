@@ -11,7 +11,7 @@ var pos := Vector2(0,0)
 var is_cast : bool = false
 var catch : RigidBody2D = null
 
-@export var button_id : MouseButton = 1
+@export var button_id : MouseButton = MOUSE_BUTTON_LEFT
 
 @export_category("Hook power")
 @export var min_power : int = 50
@@ -53,7 +53,6 @@ func _process(_delta: float) -> void:
 	
 	var _tmp  = get_global_mouse_position() - player.global_position
 	var dir = _tmp.normalized()
-	var dist = sqrt(_tmp.dot(_tmp))
 	
 	# makes sure that the hook does not move with the player when cast
 	if Input.is_action_pressed("fish_cast") and not is_cast:

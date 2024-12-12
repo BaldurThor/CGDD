@@ -7,5 +7,5 @@ func pickup() -> void:
 	super()
 
 ## Magnet doesn't need any values.
-func assign_value(value: Variant) -> void:
+func assign_value(_value: Variant) -> void:
 	pass

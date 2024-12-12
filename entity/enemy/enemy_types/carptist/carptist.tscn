@@ -21,7 +21,7 @@ lock_rotation = true
 linear_damp = 5.0
 script = ExtResource("1_kq2yi")
 item_drops = Array[PackedScene]([ExtResource("2_evqcn"), ExtResource("3_m0rjy"), ExtResource("4_ybpup")])
-item_drop_chances = Array[float]([1.0, 0.15, 0.003])
+item_drop_chances = Array[float]([1.0, 0.3, 0.003])
 item_drop_values = Array[int]([15, 2, 0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
