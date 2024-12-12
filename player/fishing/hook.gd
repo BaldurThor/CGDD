@@ -1,4 +1,4 @@
-class_name hook extends Area2D
+class_name Hook extends Area2D
 
 var player: Player = null
 var hook_sprite : Sprite2D = null
