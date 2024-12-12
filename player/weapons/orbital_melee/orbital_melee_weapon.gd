@@ -10,4 +10,4 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
-		body.take_damage(damage_calculation.calculate_damage(), damage_calculation.calculate_knockback(), global_position)
+		body.take_damage(damage_calculation.calculate_damage(), damage_calculation.calculate_knockback(), _player.global_position)

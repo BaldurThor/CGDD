@@ -12,7 +12,11 @@ func _ready() -> void:
 		origin = global_position
 		
 	radius *= 10
+	GameManager.new_world_level.connect(_die)
 
+
+func _die() -> void:
+	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

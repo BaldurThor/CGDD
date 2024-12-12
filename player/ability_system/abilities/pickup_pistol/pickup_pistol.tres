@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://d3rowoeoo4vqm"]
 
-[ext_resource type="Script" uid="uid://bnoqisjrod15v" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.gd" id="1_8joa6"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_w54ps"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.gd" id="1_8joa6"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_w54ps"]
 [ext_resource type="Texture2D" uid="uid://2kw1cwck5jkk" path="res://player/weapons/gun/gun_types/pistol/gun_placeholder.png" id="2_mp27k"]
 
 [resource]

@@ -11,8 +11,8 @@
 [ext_resource type="Script" uid="uid://bhpxul68uy5m" path="res://entity/bosses/cthulhu/cthulhu_slam.gd" id="10_3u1wb"]
 [ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="11_d3j54"]
 [ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="11_yiu6t"]
-[ext_resource type="Script" uid="uid://bpi6tymq85nxi" path="res://entity/bosses/attacks/projectile/bullet_hell_logic.gd" id="12_yxkob"]
-[ext_resource type="Script" uid="uid://b2xu8wf018f6p" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_43g7q"]
+[ext_resource type="Script" path="res://entity/bosses/attacks/projectile/bullet_hell_logic.gd" id="12_yxkob"]
+[ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_43g7q"]
 [ext_resource type="Script" path="res://entity/bosses/attacks/bullet_spray/projectile_spray_logic.gd" id="14_dqi3c"]
 [ext_resource type="PackedScene" uid="uid://c0npu26f8hdit" path="res://entity/bosses/attacks/bullet_spray/cthulhu_bullet.tscn" id="15_22f3n"]
 [ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="15_t6vw7"]
@@ -52,6 +52,7 @@ freeze_mode = 1
 linear_damp = 5.0
 script = ExtResource("1_h33uf")
 spawn_offset = Vector2(0, -300)
+boss_title = "C'thulhu"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")

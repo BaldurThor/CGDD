@@ -21,7 +21,9 @@ signal game_win
 signal player_take_damage(amount: int)
 signal explosion_occurred(intensity: float)
 signal pickup_ability(ability: AbilityInfo)
+# when the level transision starts
 signal new_world_level
+# when the level transision is over
 signal new_world_level_active
 signal boss_spawned(boss: Boss)
 signal boss_killed(boss: Boss)
