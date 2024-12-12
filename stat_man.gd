@@ -57,7 +57,6 @@ func cheat() -> void:
 	is_valid = false
 	
 func _took_damage(amount : int) -> void:
-	print(_total_damage_taken)
 	_total_damage_taken += amount
 	
 func _did_damage(amount : int) -> void:
