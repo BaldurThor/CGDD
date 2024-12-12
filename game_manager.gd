@@ -5,13 +5,15 @@ var _enemy_manager: EnemyManager = null
 var game_timer: Timer
 
 var world_level: int = 1
-var level_transitioning: bool = false
+var freeze_enemies: bool = false
 
 var pause_count: int = 0
 var pause_tracker: Array[Node] = []
 var active_boss: Boss = null
 
 var death: bool = false
+
+var endless: bool = false
 
 # Global game events
 signal enemy_take_damage(amount: int)
@@ -66,6 +68,7 @@ func start_game() -> void:
 	game_timer.start()
 	
 	world_level = 1
+	freeze_enemies = false
 
 func _process(_delta: float) -> void:
 	if game_timer.is_stopped():
@@ -75,7 +78,7 @@ func _process(_delta: float) -> void:
 	var level = int(progress * LEVEL_COUNT) + 1
 	if level != world_level:
 		world_level = level
-		level_transitioning = true
+		freeze_enemies = true
 		new_world_level.emit()
 		game_timer.paused = true
 
@@ -149,3 +152,14 @@ func reset_pause() -> void:
 
 func is_paused() -> bool:
 	return pause_tracker.size() > 0
+
+func endless_mode() -> void:
+	self.freeze_enemies = false
+	self.get_player().freeze_player = false
+	self.endless = true
+
+func get_time_left() -> int:
+	if not self.endless:
+		return self.game_timer.time_left
+	else:
+		return 0 # return einars new fancy timer

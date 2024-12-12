@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_tfoxj"]
 [ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_bbdcc"]
 [ext_resource type="PackedScene" uid="uid://doryalypknx2c" path="res://entity/enemy/enemy_drops/magnet/magnet.tscn" id="4_ma4bp"]
-[ext_resource type="Shader" uid="uid://ii2rmljnst7c" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_nu2o0"]
+[ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_nu2o0"]
 [ext_resource type="Script" uid="uid://cbpfg3frbhdad" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_1pmwj"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/check_for_targets.gd" id="7_3vl38"]
 [ext_resource type="Script" uid="uid://d2x55wmqdp2rq" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gd" id="8_xwu5c"]

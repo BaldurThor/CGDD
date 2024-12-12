@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbesagqumwgtd"]
+[gd_scene load_steps=13 format=3 uid="uid://bbesagqumwgtd"]
 
 [ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://player/player.tscn" id="1_fbep7"]
 [ext_resource type="Script" path="res://player/fishing/fish_spawer.gd" id="2_oohfr"]
@@ -6,6 +6,197 @@
 [ext_resource type="PackedScene" uid="uid://b6rjnevhtac41" path="res://entity/enemy/enemy_manager.tscn" id="4_beey7"]
 [ext_resource type="PackedScene" uid="uid://b8h32mkkaisy6" path="res://menu/pause/pause.tscn" id="5_csob6"]
 [ext_resource type="Script" path="res://stat_man.gd" id="6_7poab"]
+[ext_resource type="Script" path="res://menu/win/win_screen.gd" id="6_jn2hb"]
+[ext_resource type="Texture2D" uid="uid://didthgbsm3qr0" path="res://menu/win/newspaper.png" id="8_p68n4"]
+
+[sub_resource type="Gradient" id="Gradient_7n0tg"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u5yeh"]
+gradient = SubResource("Gradient_7n0tg")
+width = 1
+
+[sub_resource type="Animation" id="Animation_dy8vh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Newspaper:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Newspaper:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(188, 189)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Newspaper:pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Newspaper:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(386, 175.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Newspaper:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Controls:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Controls:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_famk0"]
+resource_name = "death_screen_popup"
+length = 3.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Newspaper:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 50.2655, 50.2655]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Newspaper:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 2),
+"transitions": PackedFloat32Array(1, 1, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(512, 512), Vector2(512, 512)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Newspaper:pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(256, 256), Vector2(256, 256)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Newspaper:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 2, 3),
+"transitions": PackedFloat32Array(1, 1, -2, 1),
+"update": 0,
+"values": [Vector2(480, 270), Vector2(224, 14), Vector2(224, 14), Vector2(2, 14)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Newspaper:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Controls:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Controls:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6cjd8"]
+_data = {
+"RESET": SubResource("Animation_dy8vh"),
+"win_screen_popup": SubResource("Animation_famk0")
+}
 
 [node name="Game" type="Node2D"]
 process_mode = 1
@@ -16,12 +207,11 @@ y_sort_enabled = true
 [node name="Fish_spawner" type="Node2D" parent="."]
 script = ExtResource("2_oohfr")
 fish_scene = ExtResource("3_eyj4i")
-radius_max = 10000
-radius_min = 650
 
 [node name="EnemyManager" parent="." instance=ExtResource("4_beey7")]
 
 [node name="Pause" parent="." instance=ExtResource("5_csob6")]
+layer = 2
 visible = false
 
 [node name="end_stats" type="Node" parent="."]
@@ -31,3 +221,144 @@ script = ExtResource("6_7poab")
 autostart = true
 
 [connection signal="timeout" from="end_stats/Timer" to="end_stats" method="_on_timer_timeout"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WinScreen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_jn2hb")
+
+[node name="Fade" type="TextureRect" parent="CanvasLayer/WinScreen"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_u5yeh")
+
+[node name="Newspaper" type="TextureRect" parent="CanvasLayer/WinScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -94.5
+offset_right = 94.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_p68n4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/WinScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_6cjd8")
+}
+
+[node name="Controls" type="Control" parent="CanvasLayer/WinScreen"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndlessModeButton" type="Button" parent="CanvasLayer/WinScreen/Controls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 252.0
+offset_top = -92.0
+offset_right = 409.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Endless Mode"
+
+[node name="ReturnToMenuButton" type="Button" parent="CanvasLayer/WinScreen/Controls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = -92.0
+offset_right = 219.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Return to Menu"
+
+[node name="TempStatsPlsDeleteAndNotReuse" type="Control" parent="CanvasLayer/WinScreen/Controls"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 46.0
+offset_right = 909.0
+offset_bottom = 69.0
+text = "Deaths:                                                                          0"
+
+[node name="Label2" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 76.0
+offset_right = 909.0
+offset_bottom = 99.0
+text = "Kills:                                                                               0"
+
+[node name="Label3" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 107.0
+offset_right = 909.0
+offset_bottom = 130.0
+text = "Abilities:                                                                        0"
+
+[node name="Label4" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 137.0
+offset_right = 910.0
+offset_bottom = 160.0
+text = "Max Health:                                                                  0"
+
+[node name="Label5" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 168.0
+offset_right = 910.0
+offset_bottom = 191.0
+text = "Experience:                                                                   0"
+
+[node name="Label6" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 201.0
+offset_right = 911.0
+offset_bottom = 224.0
+text = "Level:                                                                              0"
+
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/EndlessModeButton" to="CanvasLayer/WinScreen" method="_on_endless_mode_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/ReturnToMenuButton" to="CanvasLayer/WinScreen" method="_on_return_to_menu_button_pressed"]

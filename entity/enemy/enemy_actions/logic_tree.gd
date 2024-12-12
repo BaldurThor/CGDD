@@ -5,6 +5,9 @@ class_name LogicTree extends Node
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
+	if GameManager.freeze_enemies:
+		return
+	
 	for child in get_children():
 		if child.evaluate():
 			child.execute_logic()

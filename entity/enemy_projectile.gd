@@ -48,6 +48,9 @@ func _handle_impact(collided_with: Node2D) -> void:
 		despawn.emit()
 
 func _physics_process(delta: float) -> void:
+	if GameManager.freeze_enemies:
+		return
+	
 	if look_in_travel_direction:
 		look_at(position + direction)
 	elif look_at_player:

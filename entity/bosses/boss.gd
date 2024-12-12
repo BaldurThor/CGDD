@@ -1,6 +1,7 @@
 class_name Boss extends Enemy
 
 @export var spawn_offset: Vector2 = Vector2(0.0, -100.0)
+@export var boss_title: String = ""
 @onready var shadow: Sprite2D = $Shadow
 
 func _ready() -> void:
