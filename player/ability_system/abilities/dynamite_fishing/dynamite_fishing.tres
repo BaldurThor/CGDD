@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=6 format=3 uid="uid://b4pghm3uh5gui"]
 
-[ext_resource type="Script" path="res://player/ability_system/abilities/dynamite_fishing/dynamite_fishing.gd" id="1_4wjoi"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_qxsbg"]
+[ext_resource type="Script" uid="uid://4pepxg1rjyeq" path="res://player/ability_system/abilities/dynamite_fishing/dynamite_fishing.gd" id="1_4wjoi"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_qxsbg"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_8boko"]
 [ext_resource type="Resource" uid="uid://gv6t82cmowrh" path="res://player/ability_system/abilities/pickup_dynamite/pickup_dynamite.tres" id="4_7oj03"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="5_hefml"]
