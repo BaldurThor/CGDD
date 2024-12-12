@@ -27,6 +27,9 @@ signal new_world_level
 signal new_world_level_active
 signal boss_spawned(boss: Boss)
 signal boss_killed(boss: Boss)
+signal caught_fish
+signal got_crit
+signal made_projectile
 
 const LEVEL_COUNT: int = 4
 

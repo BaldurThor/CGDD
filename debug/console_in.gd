@@ -20,8 +20,6 @@ func autocomplete() -> void:
 	var matches = []
 	var match_string = self.text
 	
-	print(last_input_was_autocomplete)
-	
 	# Run through matches for the last string if the user is stepping through autocomplete options
 	if last_input_was_autocomplete:
 		matches = prev_autocomplete_matches

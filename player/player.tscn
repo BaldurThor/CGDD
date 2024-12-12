@@ -1113,8 +1113,8 @@ shape = SubResource("CapsuleShape2D_dv57t")
 [node name="Groups" type="Node2D" parent="WeaponGroupManager"]
 
 [connection signal="death" from="PlayerStats" to="." method="_on_player_stats_death"]
+[connection signal="heal_player" from="PlayerStats" to="." method="heal"]
 [connection signal="item_absorb_range_changed" from="PlayerStats" to="Experience/AbsorbRadius" method="_on_player_stats_item_absorb_range_changed"]
-[connection signal="medkit_picked_up" from="PlayerStats" to="." method="heal"]
 [connection signal="regen_changed" from="PlayerStats" to="PlayerStats" method="_on_regen_changed"]
 [connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]

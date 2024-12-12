@@ -6,7 +6,7 @@ signal player_ranged_range_changed()
 signal player_melee_range_changed()
 signal player_melee_strike_count_changed(added: int)
 signal item_absorb_range_changed()
-signal medkit_picked_up(heal_amount: int)
+signal heal_player(heal_amount: int, regen : bool)
 
 @export_category("Stats")
 
@@ -177,10 +177,7 @@ func get_real_max_health() -> int:
 
 ## Handles regeneration for the player
 func _on_regen_timer_timeout() -> void:
-	var regen_amount = _get_regen_amount()
-	var real_max_health = get_real_max_health()
-	if regen_amount > 0.0 and health != real_max_health:
-		health = clamp(health + regen_amount, 0, real_max_health)
+	heal_player.emit(_get_regen_amount(), true)
 
 func _get_regen_amount() -> int:
 	var real_max_health = get_real_max_health()

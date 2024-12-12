@@ -46,5 +46,5 @@ func assign_value(value: int) -> void:
 	experience_value = value
 	
 func pickup() -> void:
-	_player.experience.gain_experience.emit(experience_value)
+	_player.experience.gain_experience.emit(experience_value, true)
 	super()
