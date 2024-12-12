@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://dgo7yk13ulxrk"]
 
-[ext_resource type="Script" uid="uid://b6pltl030ysv8" path="res://entity/bosses/boss.gd" id="1_flnhx"]
-[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_1bt2p"]
+[ext_resource type="Script" path="res://entity/bosses/boss.gd" id="1_flnhx"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_1bt2p"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_pobd5"]
 [ext_resource type="Texture2D" uid="uid://cwetiolt2186e" path="res://entity/bosses/crawling_chaos/crawling_chaos.png" id="4_kvoy8"]
-[ext_resource type="Script" uid="uid://cbpfg3frbhdad" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_luwcw"]
-[ext_resource type="Shader" uid="uid://ii2rmljnst7c" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_qbfga"]
-[ext_resource type="Script" uid="uid://c7t3wf0arj2h3" path="res://entity/enemy/enemy_actions/chase.gd" id="6_l1v24"]
-[ext_resource type="Script" uid="uid://bhpxul68uy5m" path="res://entity/bosses/cthulhu/cthulhu_slam.gd" id="8_jjenw"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_luwcw"]
+[ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_qbfga"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="6_l1v24"]
+[ext_resource type="Script" path="res://entity/bosses/cthulhu/cthulhu_slam.gd" id="8_jjenw"]
 [ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="9_o2rdp"]
 
 [sub_resource type="Gradient" id="Gradient_x0byq"]
@@ -45,6 +45,7 @@ freeze = true
 freeze_mode = 1
 script = ExtResource("1_flnhx")
 spawn_offset = Vector2(0, -200)
+boss_title = "Nyarlathotep, The Crawling Chaos"
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
