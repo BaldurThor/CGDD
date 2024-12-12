@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	if !player:
 		return
 	
-	if GameManager.level_transitioning:
+	if GameManager.freeze_enemies:
 		return
 	
 	var dir: Vector2 = player.global_position - enemy.global_position

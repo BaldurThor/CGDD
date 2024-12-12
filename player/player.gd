@@ -17,6 +17,8 @@ class_name Player extends CharacterBody2D
 
 var last_damage_from: Enemy
 
+signal healed_amount(amount : int, regen : bool)
+
 func _init() -> void:
 	# Make sure GameManager knows about this player instance.
 	# Called in _init() instead of _ready() to make sure it's
@@ -59,17 +61,22 @@ func take_damage(amount: int, enemy: Enemy) -> void:
 	if freeze_player:
 		return
 	
+	if player_stats.is_invincible:
+		return
+
 	if randf() < min(player_stats.absolute_max_dodge, player_stats.dodge_chance):
 		amount = 0
 	
-	GameManager.player_take_damage.emit(int(player_stats.get_damage_applied(amount)))
 	animation_player.play("take_damage")
-	if player_stats.is_invincible:
-		return
+	GameManager.player_take_damage.emit(int(player_stats.get_damage_applied(amount)))
 	player_stats.deal_damage(amount)
 	
-func heal(value) -> void:
+func heal(value : int, regen : bool) -> void:
+	var pref_health := player_stats.health
 	player_stats.health += value
+	var delta : int = player_stats.health - pref_health
+	if delta > 0:
+		healed_amount.emit(delta, regen)
 
 func _on_player_stats_death() -> void:
 	GameManager.death = true

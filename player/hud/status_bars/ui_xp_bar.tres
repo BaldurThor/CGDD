@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://deliwu0ihyd0j"]
+
+[ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="1_78c3i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcf10"]
+bg_color = Color(0.133333, 0.12549, 0.203922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0941176, 0.0156863, 0.12549, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aike2"]
+bg_color = Color(0.210958, 0.330714, 0.818863, 1)
+
+[resource]
+ProgressBar/constants/outline_size = 4
+ProgressBar/font_sizes/font_size = 9
+ProgressBar/fonts/font = ExtResource("1_78c3i")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_xcf10")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_aike2")

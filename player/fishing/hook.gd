@@ -18,6 +18,8 @@ var vec : Vector2 = Vector2(0,0)
 
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = GameManager.get_player()
@@ -31,6 +33,7 @@ func _catch_catch(catch) -> void:
 		#ability_picker
 		DebugCommands.get_ability_picker()
 		catch.queue_free()
+		GameManager.caught_fish.emit()
 	elif catch is PickupBase:
 		if catch.hookable:
 			catch.pickup()

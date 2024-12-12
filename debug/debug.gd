@@ -3,8 +3,10 @@ extends Node
 #Constants
 var CONSOLE_SCENE = preload("res://debug/console.tscn")
 
+signal run_command
+
 # FLags
-var enable: bool = false # ebable addisional debug info
+var enable: bool = false # enable addisional debug info
 var console_enabled : bool = false
 
 # Console Stuff
@@ -61,6 +63,7 @@ func _on_text_submitted(text) -> void:
 	history.push_front(text)
 	history_index = -1
 	console_in.clear()
+	run_command.emit()
 	
 	# code that runs if there is an error
 	if parse_err != OK:

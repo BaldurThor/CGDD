@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=9 format=3 uid="uid://silwd5kfqsj2"]
 
-[ext_resource type="Script" path="res://player/ability_system/abilities/like_spearfishing/like_spearfishing.gd" id="1_1m40t"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_f17gy"]
+[ext_resource type="Script" uid="uid://cicwe0t43gwi5" path="res://player/ability_system/abilities/like_spearfishing/like_spearfishing.gd" id="1_1m40t"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_f17gy"]
 [ext_resource type="Texture2D" uid="uid://bliab2ex61dn" path="res://player/ability_system/abilities/like_spearfishing/like_spearfishing.png" id="2_g1xbp"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="4_pkvsa"]
 [ext_resource type="Resource" uid="uid://d3rowoeoo4vqm" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.tres" id="5_6kbrm"]

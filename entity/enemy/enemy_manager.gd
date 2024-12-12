@@ -24,7 +24,7 @@ func _ready():
 	GameManager.game_timer_over.connect(_spawn_cthulhu)
 
 func _process(_delta: float):
-	if GameManager.level_transitioning:
+	if GameManager.freeze_enemies:
 		return
 	
 	var level_spawn: LevelSpawnSettings = level_spawn_settings[GameManager.world_level - 1]
@@ -69,7 +69,7 @@ func _on_enemy_timer_timeout(enemy_spawn: EnemySpawnSettings) -> void:
 	if player == null:
 		player = GameManager.get_player()
 	
-	if GameManager.level_transitioning:
+	if GameManager.freeze_enemies:
 		return
 	
 	if enemy_count >= MAX_ENEMIES:
