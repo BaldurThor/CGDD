@@ -34,6 +34,9 @@ func _physics_process(_delta: float) -> void:
 	var y_direction := Input.get_axis("move_up", "move_down")
 	var direction := Vector2(x_direction, y_direction).normalized()
 	
+	if direction != Vector2.ZERO:
+		animation_player.move_anim(player_stats.movement_speed)
+	
 	if x_direction != 0:
 		sprite.flip_h = x_direction < 0
 	
