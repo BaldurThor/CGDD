@@ -10,7 +10,7 @@ resource_local_to_scene = true
 shader = ExtResource("2_2rmfd")
 shader_parameter/glow_color = Color(0, 0, 1, 1)
 shader_parameter/intensity = 1.0
-shader_parameter/max_distance = 64.0
+shader_parameter/max_distance = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_erfk8"]
 
@@ -23,9 +23,7 @@ radius = 128.0
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_fxl5l")
-can_track_player = null
 base_tracking_speed = 600
-acceleration_per_tick = null
 
 [node name="Glow" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_odkdn")
@@ -33,7 +31,7 @@ texture = ExtResource("3_qtyjo")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_utpxc")
-hframes = 4
+hframes = 6
 region_rect = Rect2(0, 0, 32, 88)
 
 [node name="DespawnTimer" type="Timer" parent="."]
