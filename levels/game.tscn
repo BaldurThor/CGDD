@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbesagqumwgtd"]
+[gd_scene load_steps=14 format=3 uid="uid://bbesagqumwgtd"]
 
 [ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://player/player.tscn" id="1_fbep7"]
 [ext_resource type="Script" path="res://player/fishing/fish_spawer.gd" id="2_oohfr"]
-[ext_resource type="PackedScene" uid="uid://1vhuaixs8mqt" path="res://player/fishing/fish.tscn" id="3_eyj4i"]
+[ext_resource type="PackedScene" uid="uid://dalqgss5m03me" path="res://player/fishing/fish.tscn" id="3_eyj4i"]
 [ext_resource type="PackedScene" uid="uid://b6rjnevhtac41" path="res://entity/enemy/enemy_manager.tscn" id="4_beey7"]
 [ext_resource type="PackedScene" uid="uid://b8h32mkkaisy6" path="res://menu/pause/pause.tscn" id="5_csob6"]
 [ext_resource type="Script" path="res://stat_man.gd" id="6_7poab"]
@@ -207,6 +207,8 @@ y_sort_enabled = true
 [node name="Fish_spawner" type="Node2D" parent="."]
 script = ExtResource("2_oohfr")
 fish_scene = ExtResource("3_eyj4i")
+radius_max = 10000
+radius_min = 650
 
 [node name="EnemyManager" parent="." instance=ExtResource("4_beey7")]
 
@@ -220,7 +222,6 @@ script = ExtResource("6_7poab")
 [node name="Timer" type="Timer" parent="end_stats"]
 autostart = true
 
-[connection signal="timeout" from="end_stats/Timer" to="end_stats" method="_on_timer_timeout"]
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="WinScreen" type="Control" parent="CanvasLayer"]
@@ -360,5 +361,6 @@ offset_right = 911.0
 offset_bottom = 224.0
 text = "Level:                                                                              0"
 
+[connection signal="timeout" from="end_stats/Timer" to="end_stats" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/WinScreen/Controls/EndlessModeButton" to="CanvasLayer/WinScreen" method="_on_endless_mode_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/WinScreen/Controls/ReturnToMenuButton" to="CanvasLayer/WinScreen" method="_on_return_to_menu_button_pressed"]
