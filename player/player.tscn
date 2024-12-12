@@ -616,14 +616,11 @@ tracks/0/path = NodePath("PlayerSprite")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [true],
-"method": &"set_flash"
-}, {
-"args": [false],
-"method": &"set_flash"
+"args": [],
+"method": &"flash"
 }]
 }
 tracks/1/type = "method"
