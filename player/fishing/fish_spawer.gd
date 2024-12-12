@@ -42,6 +42,7 @@ func spawn_fish(cords : Vector2) -> void:
 func _ready() -> void:
 	# get the player
 	player = GameManager.get_player()
+	GameManager.new_world_level_active.connect(_spawn_all_fish)
 	#print(start_fish_ammount)
 	_spawn_all_fish()
 

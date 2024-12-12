@@ -31,9 +31,9 @@ func _catch_catch(catch) -> void:
 		#ability_picker
 		DebugCommands.get_ability_picker()
 		catch.queue_free()
-	elif catch is ExperienceGem:
-		GameManager.get_player().experience.gain_experience.emit(catch.experience_value)
-		catch.queue_free()
+	elif catch is PickupBase:
+		if catch.hookable:
+			catch.pickup()
 	catch = null
 		
 func _stop_cast() -> void:
