@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://entity/enemy/enemy_drops/experience/xp.wav" id="12_ax3nw"]
 [ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://player/fishing/hook.png" id="12_tp034"]
 [ext_resource type="Script" path="res://player/pickup_radius.gd" id="12_yq8ij"]
-[ext_resource type="Texture2D" uid="uid://cs040aleyeibp" path="res://player/billy_bob.png" id="13_2cvpx"]
+[ext_resource type="Texture2D" uid="uid://cuhbkpxoxd0dm" path="res://player/billy_bob.png" id="13_2cvpx"]
 [ext_resource type="Theme" uid="uid://hn44xjwjebxk" path="res://player/hud/health_bar/health_bar.tres" id="13_soul0"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="13_vcw5i"]
 [ext_resource type="Script" path="res://player/hud/health_bar/health_bar.gd" id="14_543rk"]
@@ -1000,7 +1000,9 @@ texture = SubResource("GradientTexture2D_magqx")
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
 material = SubResource("ShaderMaterial_qqrlv")
+scale = Vector2(0.83, 0.83)
 texture = ExtResource("13_2cvpx")
+offset = Vector2(-2.225, -8.815)
 script = ExtResource("15_ckibm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
