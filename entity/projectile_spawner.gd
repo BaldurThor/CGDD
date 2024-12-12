@@ -91,13 +91,13 @@ func spawn() -> void:
 		await get_tree().create_timer(time_between_waves).timeout
 
 func _spawn_wave(wave: int):
-		audio_stream_player.play()
-		audio_stream_player.volume_db = sound_volume_db
-		GameManager.get_player().camera.add_trauma(screenshake_amount)
-		var spawn_positions = _get_projectile_spawn_positions(wave * offset_between_waves, wave)
-		for spawn_position in spawn_positions:
-			var dir = spawn_position.normalized()
-			_spawn_single_projectile(spawn_position, dir)
+	audio_stream_player.play()
+	audio_stream_player.volume_db = sound_volume_db
+	GameManager.get_player().camera.add_trauma(screenshake_amount)
+	var spawn_positions = _get_projectile_spawn_positions(wave * offset_between_waves, wave)
+	for spawn_position in spawn_positions:
+		var dir = spawn_position.normalized()
+		_spawn_single_projectile(spawn_position, dir)
 
 func _spawn_single_projectile(pos: Vector2, dir: Vector2) -> void:
 	var projectile = projectile_to_spawn.instantiate()

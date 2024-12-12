@@ -5,7 +5,7 @@ var _enemy_manager: EnemyManager = null
 var game_timer: Timer
 
 var world_level: int = 1
-var level_transitioning: bool = false
+var freeze_enemies: bool = false
 
 var pause_count: int = 0
 var pause_tracker: Array[Node] = []
@@ -63,6 +63,7 @@ func start_game() -> void:
 	game_timer.start()
 	
 	world_level = 1
+	freeze_enemies = false
 
 func _process(_delta: float) -> void:
 	if game_timer.is_stopped():
@@ -72,7 +73,7 @@ func _process(_delta: float) -> void:
 	var level = int(progress * LEVEL_COUNT) + 1
 	if level != world_level:
 		world_level = level
-		level_transitioning = true
+		freeze_enemies = true
 		new_world_level.emit()
 		game_timer.paused = true
 

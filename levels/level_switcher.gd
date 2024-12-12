@@ -49,7 +49,7 @@ func transition_next_level():
 	_level_switch.emit()
 
 func _on_level_switch():
-	GameManager.level_transitioning = false
+	GameManager.freeze_enemies = false
 	
 	# Play new music
 	var music: AudioStreamPlayer = new_level.get_node("Music")
