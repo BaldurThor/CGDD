@@ -74,10 +74,11 @@ func _refresh() -> void:
 	_show_menu()
 	
 	var choices = []
-	match ability_queue.pop_front():
+	var type = ability_queue.pop_front()
+	match type:
 		ChoiceType.NORMAL: choices = ability_system.get_ability_selection()
 		ChoiceType.WEAPONS: choices = ability_system.get_weapon_selection()
-	
+	print(type)
 	for index in choices.size():
 		add_choice(choices[index], index)
 

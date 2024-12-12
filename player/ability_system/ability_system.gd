@@ -106,9 +106,6 @@ func get_corrupted_abilities(count: int = 3) -> Array[AbilityInfo]:
 
 func get_ability_selection(count: int = 3) -> Array[AbilityInfo]:
 	var player_level = GameManager.get_player().experience.current_level
-	# If the player is at a weapon breakpoint, give them a weapon instead of a skill.
-	if player_level % loot_table.weapon_guarantee_breakpoint == 0:
-		return get_weapon_selection(count)
 
 	var ability_pool = _get_ability_pool()
 	ability_pool = _filter_unavailable_abilities(ability_pool)
