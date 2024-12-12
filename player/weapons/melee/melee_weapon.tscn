@@ -32,13 +32,13 @@ script = ExtResource("1_w3cvk")
 script = ExtResource("2_8kw0m")
 
 [node name="MeleeWeapon" type="Node2D" parent="MeleeSwivel"]
+position = Vector2(30, 0)
 script = ExtResource("3_5ixea")
 
 [node name="MeleeSprite" type="Sprite2D" parent="MeleeSwivel/MeleeWeapon"]
 z_index = 1
 rotation = 0.418879
 texture = ExtResource("4_e0nyu")
-offset = Vector2(25, 0)
 
 [node name="AttackTimer" type="Timer" parent="MeleeSwivel/MeleeWeapon"]
 one_shot = true

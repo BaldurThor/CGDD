@@ -12,13 +12,14 @@ script = ExtResource("1_og432")
 script = ExtResource("1_e0va4")
 
 [node name="Gun" type="Node2D" parent="GunSwivel"]
-position = Vector2(20, 0)
+position = Vector2(30, 0)
 script = ExtResource("2_xqite")
 
 [node name="AttackTimer" type="Timer" parent="GunSwivel/Gun"]
 one_shot = true
 
 [node name="GunSprite" type="Sprite2D" parent="GunSwivel/Gun"]
+offset = Vector2(0, -15)
 
 [node name="BurstTimer" type="Timer" parent="GunSwivel/Gun"]
 
