@@ -13,6 +13,8 @@ var active_boss: Boss = null
 
 var death: bool = false
 
+var endless: bool = false
+
 # Global game events
 signal enemy_take_damage(amount: int)
 signal enemy_died
@@ -147,3 +149,14 @@ func reset_pause() -> void:
 
 func is_paused() -> bool:
 	return pause_tracker.size() > 0
+
+func endless_mode() -> void:
+	self.freeze_enemies = false
+	self.get_player().freeze_player = false
+	self.endless = true
+
+func get_time_left() -> int:
+	if not self.endless:
+		return self.game_timer.time_left
+	else:
+		return 0 # return einars new fancy timer

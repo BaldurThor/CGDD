@@ -19,8 +19,7 @@ func _show_newspaper() -> void:
 
 
 func _on_endless_mode_button_pressed() -> void:
-	GameManager.freeze_enemies = false
-	GameManager.get_player().freeze_player = false
+	GameManager.endless_mode()
 	visible = false
 
 func _on_return_to_menu_button_pressed() -> void:
