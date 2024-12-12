@@ -14,8 +14,10 @@ process_mode = 1
 [node name="Fish_spawner" type="Node2D" parent="."]
 script = ExtResource("2_oohfr")
 fish_scene = ExtResource("3_eyj4i")
-radius_max = 250
-radius_min = 50
+radius_max = 10000
+radius_min = 500
+maximum = 50
+minimum = 10
 
 [node name="EnemyManager" parent="." instance=ExtResource("4_beey7")]
 
