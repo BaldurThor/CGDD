@@ -39,7 +39,7 @@
 [ext_resource type="Script" uid="uid://dhmcfg7t4lsi0" path="res://player/hud/boss_bar.gd" id="19_xmm0l"]
 [ext_resource type="Texture2D" uid="uid://bb215q152ay7y" path="res://player/hud/boss_icon.png" id="20_sa7yf"]
 [ext_resource type="Theme" uid="uid://diw8oxnpmfjd0" path="res://player/hud/status_bars/ui_boss_bar.tres" id="21_4c7xe"]
-[ext_resource type="Script" uid="uid://c20km45rfxmhd" path="res://levels/level_switcher.gd" id="22_ffm7r"]
+[ext_resource type="Script" path="res://levels/level_switcher.gd" id="22_ffm7r"]
 [ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://levels/level1/level1_background.png" id="23_77gle"]
 [ext_resource type="AudioStream" uid="uid://bylxksq47v5jc" path="res://levels/level1/rage-15292.mp3" id="26_dwusy"]
 [ext_resource type="Shader" uid="uid://dlh4tfhwkgoyi" path="res://levels/flashlight.gdshader" id="26_ybvvv"]
@@ -539,10 +539,10 @@ tracks/7/path = NodePath("LevelSwitcher/ScreenTransitionIn:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 6.2, 6.86667),
+"times": PackedFloat32Array(0, 6.2, 7.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(0.1, 0.1), Vector2(2, 2)]
+"values": [Vector2(0.1, 0.1), Vector2(0.1, 0.1), Vector2(4, 4)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
