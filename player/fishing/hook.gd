@@ -2,7 +2,7 @@ class_name Hook extends Area2D
 
 var player: Player = null
 var hook_sprite : Sprite2D = null
-@onready var ability_picker: AbilityPicker = %AbilityPicker
+@onready var ability_selector: AbilitySelector = %AbilitySelector
 
 # the possision of the hook when it is cast
 var pos := Vector2(0,0)

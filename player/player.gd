@@ -8,8 +8,9 @@ class_name Player extends CharacterBody2D
 @onready var hud_modulate: CanvasModulate = %HUDModulate
 @onready var level_switcher: Node2D = %LevelSwitcher
 @onready var camera: PlayerCamera = $Camera2D
-@onready var ability_picker: AbilityPicker = %AbilityPicker
 @onready var weapon_group_manager: WeaponGroupManager = $WeaponGroupManager
+@onready var ability_system: AbilitySystem = %AbilitySystem
+@onready var ability_selector: AbilitySelector = %AbilitySelector
 
 @export var freeze_player: bool = false
 @export var death_screen: PackedScene
@@ -24,7 +25,11 @@ func _init() -> void:
 	GameManager.death = false
 	
 func _ready() -> void:
-	ability_picker.add_to_backlog(AbilityPicker.ChoiceType.WEAPONS)
+	ability_selector.request_weapon()
+	
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("level_up"):
+		ability_selector.request_menu()
 
 func _physics_process(_delta: float) -> void:
 	if freeze_player:

@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://player/weapons/gun/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://player/ability_system/abilities/loot_table.tres" id="7_75cg3"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://player/fishing/rod_placeholder.png" id="7_l7pv7"]
-[ext_resource type="Script" path="res://player/hud/ability_choice/ability_picker.gd" id="7_v6y57"]
 [ext_resource type="Script" path="res://player/hud/hit_indicator.gd" id="8_lh3hs"]
 [ext_resource type="Script" path="res://player/fishing/hook.gd" id="8_qymma"]
 [ext_resource type="Theme" uid="uid://butlk6m3p6ywf" path="res://player/hud/experience_bar/experience_bar.tres" id="9_3kt64"]
@@ -32,6 +31,7 @@
 [ext_resource type="Script" path="res://player/player_camera.gd" id="15_n0ywd"]
 [ext_resource type="Script" path="res://player/hud/ability_display.gd" id="16_fr4t7"]
 [ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
+[ext_resource type="Script" path="res://player/hud/ability_choice/ability_selector.gd" id="17_un6ir"]
 [ext_resource type="Script" path="res://player/skip_button.gd" id="18_7xury"]
 [ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
 [ext_resource type="Shader" path="res://player/hud/level_effect.gdshader" id="19_74cft"]
@@ -822,9 +822,9 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 28
 text = "00"
 
-[node name="AbilityPicker" type="VBoxContainer" parent="HUD"]
+[node name="AbilitySelector" type="VBoxContainer" parent="HUD"]
 unique_name_in_owner = true
-process_mode = 2
+process_mode = 3
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -837,31 +837,31 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 alignment = 1
-script = ExtResource("7_v6y57")
+script = ExtResource("17_un6ir")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilityPicker"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilitySelector"]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilityPicker/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilitySelector/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="PickAbilityLabel" type="Label" parent="HUD/AbilityPicker/HBoxContainer/HBoxContainer"]
+[node name="PickAbilityLabel" type="Label" parent="HUD/AbilitySelector/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Pick Ability"
 horizontal_alignment = 1
 
-[node name="BacklogCount" type="Label" parent="HUD/AbilityPicker/HBoxContainer/HBoxContainer"]
+[node name="BacklogCount" type="Label" parent="HUD/AbilitySelector/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "1"
 label_settings = SubResource("LabelSettings_asjdf")
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="HUD/AbilityPicker/HBoxContainer"]
+[node name="Control" type="Control" parent="HUD/AbilitySelector/HBoxContainer"]
 layout_mode = 2
 
-[node name="SkipButton" type="Button" parent="HUD/AbilityPicker/HBoxContainer/Control"]
+[node name="SkipButton" type="Button" parent="HUD/AbilitySelector/HBoxContainer/Control"]
 layout_mode = 2
 offset_left = 28.0
 offset_right = 134.0
@@ -872,7 +872,7 @@ text = "Skip (+100% experience)"
 script = ExtResource("18_7xury")
 base_string = "Skip(+%s experience)"
 
-[node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilityPicker"]
+[node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilitySelector"]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -1180,9 +1180,8 @@ shape = SubResource("CapsuleShape2D_dv57t")
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
 [connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthValue" method="_on_health_bar_health_ratio_changed"]
 [connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
-[connection signal="button_up" from="HUD/AbilityPicker/HBoxContainer/Control/SkipButton" to="HUD/AbilityPicker" method="_on_skip_button_button_up"]
-[connection signal="level_switched" from="LevelSwitcher" to="HUD/AbilityPicker" method="_on_level_switcher_level_switched"]
-[connection signal="level_up" from="Experience" to="HUD/AbilityPicker" method="_on_experience_level_up"]
+[connection signal="button_up" from="HUD/AbilitySelector/HBoxContainer/Control/SkipButton" to="HUD/AbilitySelector" method="_on_skip_button_button_up"]
+[connection signal="level_up" from="Experience" to="HUD/AbilitySelector" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="WeaponGroupManager/RodSwivel/Hook" to="WeaponGroupManager/RodSwivel/Hook" method="_on_body_entered"]

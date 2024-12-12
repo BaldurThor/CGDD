@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgo7yk13ulxrk"]
+[gd_scene load_steps=17 format=3 uid="uid://dgo7yk13ulxrk"]
 
 [ext_resource type="Script" path="res://entity/bosses/boss.gd" id="1_flnhx"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_1bt2p"]
+[ext_resource type="PackedScene" uid="uid://delsmh5kmqfkw" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn" id="2_cjeex"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_pobd5"]
 [ext_resource type="Texture2D" uid="uid://cwetiolt2186e" path="res://entity/bosses/crawling_chaos/crawling_chaos.png" id="4_kvoy8"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_luwcw"]
@@ -46,6 +47,9 @@ freeze_mode = 1
 script = ExtResource("1_flnhx")
 spawn_offset = Vector2(0, -200)
 boss_title = "Nyarlathotep, The Crawling Chaos"
+item_drops = Array[PackedScene]([ExtResource("2_cjeex")])
+item_drop_chances = Array[float]([1.0])
+item_drop_values = Array[int]([0])
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=4 format=3 uid="uid://u45f0p034rh4"]
+[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=4 format=3 uid="uid://eq274lgg6uv6"]
 
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_2m013"]
 [ext_resource type="Resource" uid="uid://00kex3w708tn" path="res://entity/enemy/enemy_types/eye_stalker/eye_stalker.tres" id="1_ljmkl"]
