@@ -1098,7 +1098,7 @@ position = Vector2(30, 0)
 rotation = 0.785398
 texture = ExtResource("7_l7pv7")
 
-[node name="hook" type="StaticBody2D" parent="WeaponGroupManager/RodSwivel"]
+[node name="hook" type="Area2D" parent="WeaponGroupManager/RodSwivel"]
 collision_layer = 16
 collision_mask = 40
 script = ExtResource("8_qymma")
@@ -1125,3 +1125,4 @@ shape = SubResource("CapsuleShape2D_dv57t")
 [connection signal="level_up" from="Experience" to="HUD/AbilityPicker" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]
+[connection signal="body_entered" from="WeaponGroupManager/RodSwivel/hook" to="WeaponGroupManager/RodSwivel/hook" method="_on_body_entered"]

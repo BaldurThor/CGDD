@@ -7,6 +7,7 @@ class_name PickupBase extends RigidBody2D
 @export var can_track_player: bool = true
 @export var base_tracking_speed: int = 150
 @export var acceleration_per_tick: int = 2
+@export var hookable : bool = true
 
 var acceleration: int = 0
 var should_track: bool = false

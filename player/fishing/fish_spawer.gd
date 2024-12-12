@@ -1,5 +1,5 @@
-extends Node
-class_name FishSpawner
+@tool
+class_name FishSpawner extends Node2D
 
 var player : Player
 
@@ -7,14 +7,17 @@ var player : Player
 @export var fish_scene : PackedScene
 
 @export_group("Spawn Range")
-@export var radius_max : int = 50
-@export var radius_min : int = 5
+@export var radius_max: int:
+	set(value):
+		radius_max = value
+		queue_redraw()
+		
+@export var radius_min: int:
+	set(value):
+		radius_min = value
+		queue_redraw()
 
-@export_group("Total amount of fish")
-# The maximun amount of fish on the level at any one time
-@export var maximum : int = 5
-# The minimum amount of fish on the level at any one time
-@export var minimum : int = 1
+@export_range(1,20,1,"or_greater") var amount_of_fish : int = 10
 
 var current_fish : int = 0
 
@@ -34,13 +37,25 @@ func spawn_fish(cords : Vector2) -> void:
 	fish.set_position(cords)
 	
 	add_child(fish)
-	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# get the player
 	player = GameManager.get_player()
-	var start_fish_ammount : int = randi_range(minimum, maximum)
-	for a in start_fish_ammount: 
+	GameManager.new_world_level_active.connect(_spawn_all_fish)
+	#print(start_fish_ammount)
+	_spawn_all_fish()
+
+func _spawn_all_fish() -> void:
+	for a in amount_of_fish: 
 		var cords = gen_cord() + player.position
 		spawn_fish(cords)
+		
+func _draw() -> void:
+	if Engine.is_editor_hint():
+		draw_circle($"../Player".position,radius_max,Color.DARK_SEA_GREEN,false,25)
+		draw_circle($"../Player".position,radius_min,Color.DARK_RED,true,5)
+	elif Debug.enable:
+		draw_circle(Vector2(0,0),radius_max,Color.DARK_SEA_GREEN,false,25)
+		draw_circle(Vector2(0,0),radius_min,Color.DARK_RED,false,5)
+		
