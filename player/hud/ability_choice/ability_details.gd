@@ -18,6 +18,9 @@ func _ready() -> void:
 			add_child(tag_obj)
 			_has_content = true
 
+func _process(delta: float) -> void:
+	panel_container
+
 func _on_ability_choice_mouse_entered() -> void:
 	if _has_content:
 		panel_container.show()

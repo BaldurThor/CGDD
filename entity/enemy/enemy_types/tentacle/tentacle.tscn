@@ -1,13 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://lekxiv8w7y4f"]
+[gd_scene load_steps=19 format=3 uid="uid://lekxiv8w7y4f"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_5x0go"]
+[ext_resource type="PackedScene" uid="uid://c0q6vx2i5hoaw" path="res://entity/enemy/enemy_drops/experience/experience_gem.tscn" id="2_kovv8"]
+[ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_aukfl"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_l6rdd"]
 [ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_aaljs"]
-[ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_056jx"]
-[ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_mnqrr"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_plk0o"]
+[ext_resource type="Shader" uid="uid://ii2rmljnst7c" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_056jx"]
+[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="6_mnqrr"]
+[ext_resource type="Script" uid="uid://cbpfg3frbhdad" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_plk0o"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/check_for_targets.gd" id="7_oh7c4"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gd" id="8_uim5p"]
+[ext_resource type="Script" uid="uid://d2x55wmqdp2rq" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gd" id="8_uim5p"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/contact_damage_node.gd" id="9_nq0ym"]
 [ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="9_qy6fs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vy7hj"]
@@ -19,16 +22,16 @@ shader = ExtResource("5_056jx")
 shader_parameter/transparency = 1.0
 shader_parameter/flash = false
 
-[sub_resource type="Gradient" id="Gradient_b8aj6"]
+[sub_resource type="Gradient" id="Gradient_mdf0e"]
 colors = PackedColorArray(1, 0, 0, 1, 0.500741, 3.73013e-07, 1.92523e-07, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_38l5h"]
-gradient = SubResource("Gradient_b8aj6")
+gradient = SubResource("Gradient_mdf0e")
 fill_to = Vector2(0.919658, 0)
 repeat = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5no7"]
-radius = 21.0
+radius = 40.1123
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8q0xh"]
 radius = 200.0
@@ -39,14 +42,16 @@ collision_mask = 3
 lock_rotation = true
 freeze = true
 script = ExtResource("1_5x0go")
-xp_drop_amount = 9
+item_drops = Array[PackedScene]([ExtResource("2_kovv8"), ExtResource("3_aukfl")])
+item_drop_chances = Array[float]([1.0, 0.07])
+item_drop_values = Array[int]([40, 5])
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_mnqrr")
 armor = 3
-max_health = 50
-health = 50
+max_health = 150
+health = 150
 contact_damage = 4
 self_knockback_mod = 0.0
 
@@ -86,6 +91,11 @@ shape = SubResource("CircleShape2D_g5no7")
 [node name="LogicTree" type="Node" parent="."]
 script = ExtResource("6_plk0o")
 
+[node name="ContactDamage" type="Node" parent="LogicTree" node_paths=PackedStringArray("enemy", "damage_zone")]
+script = ExtResource("9_nq0ym")
+enemy = NodePath("../..")
+damage_zone = NodePath("../../ContactDamage")
+
 [node name="CheckForTargets" type="Node" parent="LogicTree" node_paths=PackedStringArray("area_2d")]
 script = ExtResource("7_oh7c4")
 area_2d = NodePath("../../TentacleSlamSearchRadius")
@@ -107,6 +117,7 @@ one_shot = true
 
 [node name="SlamSFX" type="AudioStreamPlayer2D" parent="LogicTree/CheckForTargets/TentacleSlam"]
 stream = ExtResource("9_qy6fs")
+bus = &"Effects"
 
 [node name="TentacleSlamSearchRadius" type="Area2D" parent="."]
 

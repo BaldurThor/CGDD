@@ -9,16 +9,22 @@ var level_transitioning: bool = false
 
 var pause_count: int = 0
 var pause_tracker: Array[Node] = []
+var active_boss: Boss = null
 
 var death: bool = false
 
 # Global game events
 signal enemy_take_damage(amount: int)
 signal enemy_died
+signal game_timer_over
+signal game_win
 signal player_take_damage(amount: int)
 signal explosion_occurred(intensity: float)
 signal pickup_ability(ability: AbilityInfo)
-signal new_world_level(new_level: int)
+signal new_world_level
+signal new_world_level_active
+signal boss_spawned(boss: Boss)
+signal boss_killed(boss: Boss)
 
 const LEVEL_COUNT: int = 4
 
@@ -26,13 +32,31 @@ func _ready() -> void:
 	game_timer = Timer.new()
 	game_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_child(game_timer)
+	new_world_level_active.connect(_on_new_world_level_ready)
+	game_timer.timeout.connect(_on_game_timer_timeout)
+
+func _on_new_world_level_ready():
+	game_timer.paused = false
+
+func _on_game_timer_timeout():
+	game_timer_over.emit()
+
+func add_boss(boss: Boss) -> void:
+	if active_boss != null:
+		active_boss.queue_free()
+	
+	active_boss = boss
+	boss_spawned.emit(boss)
+
+func get_active_boss() -> Boss:
+	return active_boss
 
 func start_game() -> void:
 	get_tree().change_scene_to_file("res://levels/game.tscn")
 	reset_pause()
 	
 	game_timer.stop()
-	game_timer.wait_time = 1200 / 2
+	game_timer.wait_time = 720
 	game_timer.one_shot = true
 	game_timer.start()
 	
@@ -46,7 +70,9 @@ func _process(_delta: float) -> void:
 	var level = int(progress * LEVEL_COUNT) + 1
 	if level != world_level:
 		world_level = level
-		new_world_level.emit(level)
+		level_transitioning = true
+		new_world_level.emit()
+		game_timer.paused = true
 
 func main_menu() -> void:
 	get_tree().change_scene_to_file("res://menu/main/menu.tscn")
@@ -77,7 +103,7 @@ func quit() -> void:
 
 func _notification(type: int) -> void:
 	if type == NOTIFICATION_WM_CLOSE_REQUEST:
-		quit()
+		SaveManager.save_data()
 
 func get_world_level_progress() -> float:
 	var percentage = 1.0 - (game_timer.time_left / game_timer.wait_time)

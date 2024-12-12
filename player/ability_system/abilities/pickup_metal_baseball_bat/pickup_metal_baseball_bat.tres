@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://tyvey76efpb4"]
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/pickup_metal_baseball_bat/pickup_metal_baseball_bat.gd" id="1_ey284"]
-[ext_resource type="Texture2D" uid="uid://cikcypx4bhv8c" path="res://player/melee/metal_baseball_bat/metal_baseball_bat.png" id="2_ybmha"]
+[ext_resource type="Texture2D" uid="uid://cikcypx4bhv8c" path="res://player/weapons/melee/metal_baseball_bat/metal_baseball_bat.png" id="2_ybmha"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_wup6i"]
 
 [resource]

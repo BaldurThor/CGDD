@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=3 format=3 uid="uid://ccqx877w0kkov"]
+[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=4 format=3 uid="uid://ccqx877w0kkov"]
 
 [ext_resource type="Resource" uid="uid://c46dmrx2g0p7p" path="res://entity/enemy/enemy_types/cultist/cultist.tres" id="1_o6fe1"]
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_s3isd"]
+
+[sub_resource type="Curve" id="Curve_46iwy"]
+_data = [Vector2(0.119048, 0), 0.0, 0.694903, 0, 0, Vector2(0.12465, 0.507368), 0.0, 0.0, 0, 0, Vector2(0.502801, 0.950737), 1.95411, 1.95411, 0, 0, Vector2(0.589636, 0.458105), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0758874, 0.0, 0, 0]
+point_count = 5
 
 [resource]
 script = ExtResource("1_s3isd")
 enemy_type = ExtResource("1_o6fe1")
 strength_multiplier = 1.0
-starting_spawn_rate = 0.8
+starting_spawn_rate = 2.0
 ending_spawn_rate = 0.1
+spawn_rate_curve = SubResource("Curve_46iwy")

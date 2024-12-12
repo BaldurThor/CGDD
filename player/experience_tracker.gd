@@ -27,17 +27,15 @@ func xp_needed_form(level : int) -> int:
 	return (level ** 2) + (3 * level) + 10
 
 func _gain_experience(amount: int, multiply: bool = true) -> void:
-	var exp = amount
+	var xp = amount
 	if multiply:
-		exp = int(exp * player_stats.experience_gain_mod)
-	current_experience += exp
+		xp = int(xp * player_stats.experience_gain_mod)
+	current_experience += xp
 	pickup_sound_effect.pitch_scale = clamp(1.0 + (float(current_experience) / float(required_for_level_up)), 0.1, 2)
 	pickup_sound_effect.play()
 	update_experience_bar.emit(current_experience)
 	
-	var levelled_up = false
 	while current_experience >= required_for_level_up:
-		levelled_up = true
 		current_level += 1
 		current_experience -= required_for_level_up
 		update_experience_bar.emit(current_experience)

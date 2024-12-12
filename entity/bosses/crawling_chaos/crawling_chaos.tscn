@@ -1,0 +1,122 @@
+[gd_scene load_steps=16 format=3 uid="uid://dgo7yk13ulxrk"]
+
+[ext_resource type="Script" uid="uid://b6pltl030ysv8" path="res://entity/bosses/boss.gd" id="1_flnhx"]
+[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_1bt2p"]
+[ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_pobd5"]
+[ext_resource type="Texture2D" uid="uid://cwetiolt2186e" path="res://entity/bosses/crawling_chaos/crawling_chaos.png" id="4_kvoy8"]
+[ext_resource type="Script" uid="uid://cbpfg3frbhdad" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_luwcw"]
+[ext_resource type="Shader" uid="uid://ii2rmljnst7c" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_qbfga"]
+[ext_resource type="Script" uid="uid://c7t3wf0arj2h3" path="res://entity/enemy/enemy_actions/chase.gd" id="6_l1v24"]
+[ext_resource type="Script" uid="uid://bhpxul68uy5m" path="res://entity/bosses/cthulhu/cthulhu_slam.gd" id="8_jjenw"]
+[ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="9_o2rdp"]
+
+[sub_resource type="Gradient" id="Gradient_x0byq"]
+offsets = PackedFloat32Array(0.496333, 0.713936)
+colors = PackedColorArray(0, 0, 0, 0.592157, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g2bkt"]
+gradient = SubResource("Gradient_x0byq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iefsd"]
+radius = 29.0
+height = 64.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdanx"]
+resource_local_to_scene = true
+shader = ExtResource("5_qbfga")
+shader_parameter/transparency = 1.0
+shader_parameter/flash = false
+
+[sub_resource type="Gradient" id="Gradient_umx6t"]
+colors = PackedColorArray(0.389648, 0.175534, 2.88785e-07, 1, 0.190485, 0.054031, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_effqw"]
+gradient = SubResource("Gradient_umx6t")
+fill_to = Vector2(0.919658, 0)
+repeat = 2
+
+[node name="CrawlingChaos" type="RigidBody2D" groups=["level_clear"]]
+collision_layer = 3
+collision_mask = 3
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_flnhx")
+spawn_offset = Vector2(0, -200)
+
+[node name="EntityStats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_1bt2p")
+armor = 2
+max_health = 4000
+health = 4000
+movement_speed = 1.0
+contact_damage = 10
+
+[node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
+autostart = true
+
+[node name="RegenTimer" type="Timer" parent="EntityStats"]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(8, 11)
+scale = Vector2(1.6875, 0.66764)
+texture = SubResource("GradientTexture2D_g2bkt")
+
+[node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_pobd5")]
+sprite = ExtResource("4_kvoy8")
+entity_stats = NodePath("../EntityStats")
+sprite_scale = 3.0
+sprite_offset = Vector2(0, -77.255)
+show_health_bar = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -15)
+shape = SubResource("CapsuleShape2D_iefsd")
+
+[node name="SlamAttack" type="Area2D" parent="."]
+scale = Vector2(8, 8)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SlamAttack"]
+visible = false
+polygon = PackedVector2Array(100, 0, 92, -38, 70, -70, 0, 0, 70, 70, 92, 44)
+
+[node name="Sprite2D" type="Sprite2D" parent="SlamAttack"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_fdanx")
+scale = Vector2(3.133, 3.133)
+texture = SubResource("GradientTexture2D_effqw")
+region_rect = Rect2(-8.48051, 0, 72.4805, 29.612)
+
+[node name="LogicTree" type="Node" parent="."]
+script = ExtResource("5_luwcw")
+
+[node name="ChaseLogic" type="Node" parent="LogicTree" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_l1v24")
+enemy = NodePath("../..")
+always_chase = true
+
+[node name="SlamAttack" type="Node" parent="LogicTree" node_paths=PackedStringArray("slam_area", "enemy", "entity_stats", "sprite_2d")]
+script = ExtResource("8_jjenw")
+slam_area = NodePath("../../SlamAttack")
+enemy = NodePath("../..")
+entity_stats = NodePath("../../EntityStats")
+rotation_speed = 1.0
+cooldown_time = 3.0
+attack_damage = 10
+sprite_2d = NodePath("../../SlamAttack/Sprite2D")
+
+[node name="CooldownTimer" type="Timer" parent="LogicTree/SlamAttack"]
+process_mode = 1
+one_shot = true
+
+[node name="WindupTimer" type="Timer" parent="LogicTree/SlamAttack"]
+process_mode = 1
+one_shot = true
+
+[node name="SlamSFX" type="AudioStreamPlayer2D" parent="LogicTree/SlamAttack"]
+stream = ExtResource("9_o2rdp")
+bus = &"Effects"

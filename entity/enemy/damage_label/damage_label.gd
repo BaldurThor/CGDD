@@ -5,30 +5,30 @@ var drift: Vector2
 var damage = 0
 var max_health = 1
 
-func initialize(position: Vector2, damage: int, max_health: int) -> void:
-	self.damage = damage
-	self.max_health = max_health
-	self.update_helper(position)
+func initialize(pos: Vector2, dmg: int, maximum_health: int) -> void:
+	damage = dmg
+	max_health = maximum_health
+	update_helper(pos)
 	
-func update(position: Vector2, damage: int) -> void:
-	self.damage += damage
-	self.visibility = 1.0
-	self.update_helper(position)
+func update(pos: Vector2, dmg: int) -> void:
+	damage += dmg
+	visibility = 1.0
+	update_helper(pos)
 	
-func update_helper(position: Vector2) -> void:
-	self.position = position
-	self.position.x -= 5
-	self.position.y -= 40
+func update_helper(pos: Vector2) -> void:
+	position = pos
+	position.x -= 5
+	position.y -= 40
 	drift = Vector2(randf_range(-1.0, 1.0), -1.0)
 	# make it so lower numbers are white and high numbers are red, idk how though
-	self.modulate.g = remap(self.damage, 1, self.max_health, 1, 0)
-	self.modulate.b = remap(self.damage, 1, self.max_health, 1, 0)
+	modulate.g = remap(damage, 1, max_health, 1, 0)
+	modulate.b = remap(damage, 1, max_health, 1, 0)
 	
-	self.text = str(self.damage)
+	text = str(damage)
 
 func _process(delta: float) -> void:
 	#self.position += drift * delta * 25
 	if visibility <= 0.01:
-		self.queue_free()
+		queue_free()
 	visibility -= delta
-	self.self_modulate.a = visibility
+	self_modulate.a = visibility
