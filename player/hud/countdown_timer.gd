@@ -1,4 +1,4 @@
-class_name TimeRemainingUI extends HBoxContainer
+class_name TimeRemainingUI extends Control
 
 @onready var minutes: Label = $Minutes
 @onready var seconds: Label = $Seconds
