@@ -60,7 +60,7 @@ func _normal_attack() -> void:
 	var angle = _calculate_spread_vector()
 	var bullet = projectile_type.instantiate()
 	bullet.init(weapon_type, player_stats, angle)
-	get_tree().root.add_child(bullet)
+	GameManager.get_game_root().add_child(bullet)
 	bullet.position = global_position
 
 func _burst_attack() -> void:

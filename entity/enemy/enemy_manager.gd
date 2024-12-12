@@ -31,7 +31,8 @@ func _process(_delta: float):
 	var level_progress = GameManager.get_world_level_progress()
 	for enemy: EnemySpawnSettings in level_spawn.enemies:
 		var timer: Timer = timers[enemy]
-		timer.wait_time = lerpf(enemy.starting_spawn_rate, enemy.ending_spawn_rate, level_progress)
+		var adjusted = enemy.spawn_rate_curve.sample(level_progress)
+		timer.wait_time = lerpf(enemy.starting_spawn_rate, enemy.ending_spawn_rate, adjusted)
 
 func _spawn_cthulhu() -> void:
 	var cthulhu_scene = bosses[-1]

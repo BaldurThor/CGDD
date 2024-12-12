@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_53eob"]
 [ext_resource type="Resource" uid="uid://0m6d1hviptg7" path="res://entity/enemy/spawn_settings/level4/level4_carptist.tres" id="2_64r63"]
-[ext_resource type="Script" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="2_hs13f"]
+[ext_resource type="Script" uid="uid://joa8itqss2ka" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="2_hs13f"]
 [ext_resource type="Resource" uid="uid://ptjtiypdcyek" path="res://entity/enemy/spawn_settings/level4/level4_eye_stalker.tres" id="3_1mx5v"]
-[ext_resource type="Resource" path="res://entity/enemy/spawn_settings/level4/level4_greater_tentacle.tres" id="4_mygy8"]
+[ext_resource type="Resource" uid="uid://dhxeceheeojm0" path="res://entity/enemy/spawn_settings/level4/level4_greater_tentacle.tres" id="4_mygy8"]
 [ext_resource type="Resource" uid="uid://bqyfjv85wr6hl" path="res://entity/enemy/spawn_settings/level4/level4_tentacle.tres" id="5_2r7qt"]
 
 [resource]

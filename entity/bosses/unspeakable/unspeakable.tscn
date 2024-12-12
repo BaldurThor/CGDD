@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_yjw7m"]
 [ext_resource type="Texture2D" uid="uid://2jceb3mphfhn" path="res://entity/bosses/unspeakable/unspeakable.png" id="4_uh2np"]
 [ext_resource type="Script" uid="uid://cbpfg3frbhdad" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_lcdi2"]
-[ext_resource type="Script" uid="uid://l6g2285y36xg" path="res://entity/bosses/attacks/bullet_spray/projectile_spray_logic.gd" id="7_ojx6x"]
+[ext_resource type="Script" path="res://entity/bosses/attacks/bullet_spray/projectile_spray_logic.gd" id="7_ojx6x"]
 [ext_resource type="Script" uid="uid://c7t3wf0arj2h3" path="res://entity/enemy/enemy_actions/chase.gd" id="7_yd2k6"]
 [ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="8_6jh8j"]
 [ext_resource type="PackedScene" uid="uid://de4x0uj6k2go8" path="res://entity/bosses/attacks/bullet_spray/unspeakable_bullet.tscn" id="8_l6d8g"]

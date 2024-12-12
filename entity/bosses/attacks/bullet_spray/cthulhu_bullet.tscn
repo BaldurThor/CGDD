@@ -6,11 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ihrgw"]
 radius = 4.0
 
-[node name="CthulhuProjectile" type="Area2D"]
+[node name="CthulhuBullet" type="Area2D"]
 scale = Vector2(2.22969, 2.22969)
 script = ExtResource("1_fllrk")
 damage_on_hit = 10
-homing_strength = 0.1
+homing_strength = 1.0
 look_in_travel_direction = true
 despawn_timer = 20.0
 

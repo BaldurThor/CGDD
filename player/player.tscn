@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://k8stt4cn44ln" path="res://player/experience_value.gd" id="12_267ds"]
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://entity/enemy/enemy_drops/experience/xp.wav" id="12_ax3nw"]
 [ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://player/fishing/hook.png" id="12_tp034"]
-[ext_resource type="Script" path="res://player/pickup_radius.gd" id="12_yq8ij"]
+[ext_resource type="Script" uid="uid://bgp0gaowh5u5n" path="res://player/pickup_radius.gd" id="12_yq8ij"]
 [ext_resource type="Texture2D" uid="uid://cuhbkpxoxd0dm" path="res://player/billy_bob.png" id="13_2cvpx"]
 [ext_resource type="Theme" uid="uid://hn44xjwjebxk" path="res://player/hud/health_bar/health_bar.tres" id="13_soul0"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="13_vcw5i"]
@@ -92,7 +92,7 @@ cache/0/9/0/scale = 1.0
 shader = ExtResource("2_k5ka0")
 shader_parameter/scale = 4.0
 shader_parameter/power = 1.0
-shader_parameter/modulate = Color(1, 1, 0.843137, 1)
+shader_parameter/modulate = Color(0.213183, 0.832688, 0.724816, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_petf2"]
 noise_type = 2

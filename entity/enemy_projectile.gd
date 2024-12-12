@@ -55,7 +55,8 @@ func _physics_process(delta: float) -> void:
 	
 	var dir_to_player = GameManager.get_player().global_position - global_position
 	var angle_to_player = atan2(dir_to_player.y, dir_to_player.x)
-	var new_angle = lerp_angle(rotation, angle_to_player, homing_strength * delta)
+	var dir_angle = atan2(direction.y, direction.x)
+	var new_angle = lerp_angle(dir_angle, angle_to_player, homing_strength * delta)
 	direction = Vector2(cos(new_angle), sin(new_angle))
 	
 	var progress = 1 - timer.time_left / timer.wait_time

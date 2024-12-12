@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_5ie44"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_1i3tb"]
 [ext_resource type="Texture2D" uid="uid://c27pv2mdk26d7" path="res://entity/bosses/cthulhu/cthulhu.png" id="4_g8afb"]
-[ext_resource type="Script" uid="uid://jiuxietqgrok" path="res://entity/projectile_spawner.gd" id="5_gy1bw"]
+[ext_resource type="Script" path="res://entity/projectile_spawner.gd" id="5_gy1bw"]
 [ext_resource type="PackedScene" uid="uid://cn0k487ns2nh8" path="res://entity/bosses/attacks/projectile/cthulhu_projectile.tscn" id="6_l13aa"]
 [ext_resource type="PackedScene" uid="uid://ba23rxotlujhx" path="res://entity/bosses/cthulhu/cthulhu_tentacle.tscn" id="8_774hl"]
 [ext_resource type="Script" uid="uid://cbpfg3frbhdad" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="9_mi2f6"]
@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="11_yiu6t"]
 [ext_resource type="Script" uid="uid://bpi6tymq85nxi" path="res://entity/bosses/attacks/projectile/bullet_hell_logic.gd" id="12_yxkob"]
 [ext_resource type="Script" uid="uid://b2xu8wf018f6p" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_43g7q"]
-[ext_resource type="Script" uid="uid://l6g2285y36xg" path="res://entity/bosses/attacks/bullet_spray/projectile_spray_logic.gd" id="14_dqi3c"]
+[ext_resource type="Script" path="res://entity/bosses/attacks/bullet_spray/projectile_spray_logic.gd" id="14_dqi3c"]
 [ext_resource type="PackedScene" uid="uid://c0npu26f8hdit" path="res://entity/bosses/attacks/bullet_spray/cthulhu_bullet.tscn" id="15_22f3n"]
 [ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="15_t6vw7"]
 
@@ -78,12 +78,11 @@ texture = SubResource("GradientTexture2D_x7pyl")
 y_sort_enabled = true
 sprite = ExtResource("4_g8afb")
 entity_stats = NodePath("../EntityStats")
-sprite_scale = 4.0
-sprite_offset = Vector2(0, -59.935)
+sprite_scale = 6.0
+sprite_offset = Vector2(0, -112.765)
 show_health_bar = false
 
 [node name="BulletHellSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
-visible = false
 script = ExtResource("5_gy1bw")
 spawn_waves = 20
 time_between_waves = 0.25

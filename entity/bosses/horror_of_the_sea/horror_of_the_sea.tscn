@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_8417x"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_ng2h4"]
 [ext_resource type="Texture2D" uid="uid://dphtgbysoogi" path="res://entity/bosses/horror_of_the_sea/horror_of_the_sea.png" id="4_hsrmb"]
-[ext_resource type="Script" uid="uid://jiuxietqgrok" path="res://entity/projectile_spawner.gd" id="5_2enaf"]
+[ext_resource type="Script" path="res://entity/projectile_spawner.gd" id="5_2enaf"]
 [ext_resource type="PackedScene" uid="uid://24k2uymv0fse" path="res://entity/bosses/horror_of_the_sea/horror_tentacle.tscn" id="6_f0han"]
 [ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="7_ri54t"]
 [ext_resource type="Script" uid="uid://cbpfg3frbhdad" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="9_a78fb"]
