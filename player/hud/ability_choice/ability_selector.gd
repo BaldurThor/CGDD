@@ -9,12 +9,13 @@ class_name AbilitySelector extends VBoxContainer
 const ABILITY_CHOICE = preload("res://player/hud/ability_choice/ability_choice.tscn")
 
 var spent_skill_points: int = 0
-
 enum ChoiceType {
 	NORMAL,
 	CORRUPTED,
 	WEAPONS
 }
+
+var active_type: ChoiceType
 
 var ability_queue: Array[ChoiceType] = []
 
@@ -34,18 +35,12 @@ func _request() -> void:
 	_show_menu()
 	
 func request_weapon() -> void:
-	_request()
-	var weapons = ability_system.get_weapon_selection(3)
-	for i in weapons.size():
-		var weapon = weapons[i]
-		add_choice(weapon, i)
+	ability_queue.push_front(ChoiceType.WEAPONS)
+	_refresh()
 		
 func request_corrupted() -> void:
-	_request()
-	var abilities = ability_system.get_corrupted_abilities(3)
-	for i in abilities.size():
-		var ability = abilities[i]
-		add_choice(ability, i)
+	ability_queue.push_front(ChoiceType.CORRUPTED)
+	_refresh()
 
 func request_menu() -> void:
 	if ability_queue.size() > 0 and !visible:
@@ -74,11 +69,11 @@ func _refresh() -> void:
 	_show_menu()
 	
 	var choices = []
-	var type = ability_queue.pop_front()
-	match type:
+	active_type = ability_queue.pop_front()
+	match active_type:
 		ChoiceType.NORMAL: choices = ability_system.get_ability_selection()
 		ChoiceType.WEAPONS: choices = ability_system.get_weapon_selection()
-	print(type)
+		ChoiceType.CORRUPTED: choices = ability_system.get_corrupted_abilities()
 	for index in choices.size():
 		add_choice(choices[index], index)
 
@@ -117,6 +112,8 @@ func _on_skip_button_button_up() -> void:
 	var xp = _get_skip_xp()
 	player.experience.gain_experience.emit(xp, false)
 	spent_skill_points += 1
+	if active_type == ChoiceType.CORRUPTED:
+		_close_menu()
 	_refresh()
 
 func _on_DebugCommands_pick_ability(type : int = 0) -> void:

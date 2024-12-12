@@ -26,7 +26,7 @@ func _init() -> void:
 	
 func _ready() -> void:
 	ability_selector.request_weapon()
-	
+
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("level_up"):
 		ability_selector.request_menu()
