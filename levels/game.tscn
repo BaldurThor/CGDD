@@ -15,8 +15,8 @@ process_mode = 1
 script = ExtResource("2_oohfr")
 fish_scene = ExtResource("3_eyj4i")
 radius_max = 10000
-radius_min = 500
-maximum = 50
+radius_min = 650
+maximum = 10
 minimum = 10
 
 [node name="EnemyManager" parent="." instance=ExtResource("4_beey7")]

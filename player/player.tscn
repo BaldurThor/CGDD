@@ -1059,6 +1059,7 @@ texture = ExtResource("7_l7pv7")
 collision_layer = 16
 collision_mask = 40
 script = ExtResource("8_qymma")
+speed = 7.0
 
 [node name="hookSprite2D" type="Sprite2D" parent="WeaponManager/RodSwivel/hook"]
 position = Vector2(4, 0)

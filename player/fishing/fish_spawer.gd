@@ -17,11 +17,7 @@ var player : Player
 		radius_min = value
 		queue_redraw()
 
-@export_group("Total amount of fish")
-# The maximun amount of fish on the level at any one time
-@export var maximum : int = 5
-# The minimum amount of fish on the level at any one time
-@export var minimum : int = 1
+@export_range(1,20,1,"or_greater") var amount_of_fish : int = 10
 
 var current_fish : int = 0
 
@@ -46,13 +42,19 @@ func spawn_fish(cords : Vector2) -> void:
 func _ready() -> void:
 	# get the player
 	player = GameManager.get_player()
-	var start_fish_ammount : int = randi_range(minimum, maximum)
 	#print(start_fish_ammount)
-	for a in start_fish_ammount: 
+	_spawn_all_fish()
+
+func _spawn_all_fish() -> void:
+	for a in amount_of_fish: 
 		var cords = gen_cord() + player.position
 		spawn_fish(cords)
 		
 func _draw() -> void:
-	return
-	draw_circle($"../Player".position,radius_max,Color.DARK_SEA_GREEN,true,5)
-	draw_circle($"../Player".position,radius_min,Color.DARK_RED,true,5)
+	if Engine.is_editor_hint():
+		draw_circle($"../Player".position,radius_max,Color.DARK_SEA_GREEN,false,25)
+		draw_circle($"../Player".position,radius_min,Color.DARK_RED,true,5)
+	elif Debug.enable:
+		draw_circle(Vector2(0,0),radius_max,Color.DARK_SEA_GREEN,false,25)
+		draw_circle(Vector2(0,0),radius_min,Color.DARK_RED,false,5)
+		
