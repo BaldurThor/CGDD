@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://cuwn8ued6yhhs"]
 
-[ext_resource type="Script" path="res://entity/entity_stats.gd" id="1_7eu66"]
+[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="1_7eu66"]
 [ext_resource type="Script" path="res://entity/enemy/enemy.gd" id="1_uoggt"]
 [ext_resource type="PackedScene" uid="uid://c0q6vx2i5hoaw" path="res://entity/enemy/enemy_drops/experience/experience_gem.tscn" id="2_jxm08"]
 [ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_p0s12"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_psxsg"]
 [ext_resource type="Texture2D" uid="uid://cs4okt74tdsy8" path="res://entity/enemy/enemy_types/eye_stalker/eye_stalker.png" id="4_kpd4v"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_oxdwj"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="6_xpni3"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/fire_spike.gd" id="7_wpy5x"]
+[ext_resource type="Script" uid="uid://c7t3wf0arj2h3" path="res://entity/enemy/enemy_actions/chase.gd" id="6_xpni3"]
+[ext_resource type="Script" uid="uid://du4erd8qwxyco" path="res://entity/enemy/enemy_types/eye_stalker/fire_spike.gd" id="7_wpy5x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 resource_local_to_scene = true
