@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=9 format=3 uid="uid://yxe75l3vp40d"]
 
-[ext_resource type="Script" path="res://player/ability_system/abilities/biggest_patriot/biggest_patriot.gd" id="1_5mjmf"]
+[ext_resource type="Script" uid="uid://mes4hdiar5i" path="res://player/ability_system/abilities/biggest_patriot/biggest_patriot.gd" id="1_5mjmf"]
 [ext_resource type="Texture2D" uid="uid://lip8wj5qd5ik" path="res://player/ability_system/abilities/biggest_patriot/biggest_patriot.png" id="2_y77ba"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_fecp1"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_fecp1"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="4_tgy3v"]
 [ext_resource type="Resource" uid="uid://d3rowoeoo4vqm" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.tres" id="5_w03c3"]
 [ext_resource type="Resource" uid="uid://dufhryeihr3fe" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.tres" id="6_blkr3"]
