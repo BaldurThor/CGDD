@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var hook: Hook = $hook
-	
+@onready var hook: Hook = $Hook
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if hook.angle == -1:
