@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbesagqumwgtd"]
+[gd_scene load_steps=15 format=3 uid="uid://bbesagqumwgtd"]
 
 [ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://player/player.tscn" id="1_fbep7"]
-[ext_resource type="Script" path="res://player/fishing/fish_spawer.gd" id="2_oohfr"]
+[ext_resource type="Script" uid="uid://bn26gbnki7rxp" path="res://player/fishing/fish_spawer.gd" id="2_oohfr"]
 [ext_resource type="PackedScene" uid="uid://dalqgss5m03me" path="res://player/fishing/fish.tscn" id="3_eyj4i"]
 [ext_resource type="PackedScene" uid="uid://b6rjnevhtac41" path="res://entity/enemy/enemy_manager.tscn" id="4_beey7"]
 [ext_resource type="PackedScene" uid="uid://b8h32mkkaisy6" path="res://menu/pause/pause.tscn" id="5_csob6"]
 [ext_resource type="Script" path="res://stat_man.gd" id="6_7poab"]
 [ext_resource type="Script" path="res://menu/win/win_screen.gd" id="6_jn2hb"]
 [ext_resource type="Texture2D" uid="uid://didthgbsm3qr0" path="res://menu/win/newspaper.png" id="8_p68n4"]
+[ext_resource type="Script" path="res://menu/win/stats.gd" id="9_lrlrb"]
 
 [sub_resource type="Gradient" id="Gradient_7n0tg"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -216,10 +217,11 @@ radius_min = 650
 layer = 2
 visible = false
 
-[node name="end_stats" type="Node" parent="."]
+[node name="EndStats" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("6_7poab")
 
-[node name="Timer" type="Timer" parent="end_stats"]
+[node name="Timer" type="Timer" parent="EndStats"]
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -309,59 +311,14 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Return to Menu"
 
-[node name="TempStatsPlsDeleteAndNotReuse" type="Control" parent="CanvasLayer/WinScreen/Controls"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
+[node name="Stats" type="VBoxContainer" parent="CanvasLayer/WinScreen/Controls"]
 layout_mode = 0
-offset_left = 533.0
-offset_top = 46.0
-offset_right = 909.0
-offset_bottom = 69.0
-text = "Deaths:                                                                          0"
-
-[node name="Label2" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 76.0
-offset_right = 909.0
-offset_bottom = 99.0
-text = "Kills:                                                                               0"
-
-[node name="Label3" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 107.0
-offset_right = 909.0
-offset_bottom = 130.0
-text = "Abilities:                                                                        0"
-
-[node name="Label4" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 137.0
-offset_right = 910.0
-offset_bottom = 160.0
-text = "Max Health:                                                                  0"
-
-[node name="Label5" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 168.0
-offset_right = 910.0
-offset_bottom = 191.0
-text = "Experience:                                                                   0"
-
-[node name="Label6" type="Label" parent="CanvasLayer/WinScreen/Controls/TempStatsPlsDeleteAndNotReuse"]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 201.0
+offset_left = 535.0
+offset_top = 44.0
 offset_right = 911.0
-offset_bottom = 224.0
-text = "Level:                                                                              0"
+offset_bottom = 84.0
+script = ExtResource("9_lrlrb")
 
-[connection signal="timeout" from="end_stats/Timer" to="end_stats" method="_on_timer_timeout"]
+[connection signal="timeout" from="EndStats/Timer" to="EndStats" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/WinScreen/Controls/EndlessModeButton" to="CanvasLayer/WinScreen" method="_on_endless_mode_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/WinScreen/Controls/ReturnToMenuButton" to="CanvasLayer/WinScreen" method="_on_return_to_menu_button_pressed"]

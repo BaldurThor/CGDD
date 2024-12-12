@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=99 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" uid="uid://bheffjgmq05as" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" uid="uid://d303j5bd47raj" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://dtg8n1aywh6uw" path="res://player/hud/hit_indicator.gd" id="8_lh3hs"]
 [ext_resource type="Script" path="res://player/fishing/hook.gd" id="8_qymma"]
 [ext_resource type="Theme" uid="uid://ct4bo20cg6a2n" path="res://player/hud/status_bars/ui_health_bar.tres" id="8_rmgi5"]
-[ext_resource type="Script" uid="uid://djpltvcf6q2fg" path="res://player/hud/countdown_timer.gd" id="9_5x5lc"]
+[ext_resource type="Script" path="res://player/hud/countdown_timer.gd" id="9_5x5lc"]
 [ext_resource type="Script" uid="uid://dwg1y5osagoug" path="res://player/hud/experience_bar/experience_bar.gd" id="10_pxkv6"]
 [ext_resource type="Theme" uid="uid://deliwu0ihyd0j" path="res://player/hud/status_bars/ui_xp_bar.tres" id="11_3rc4d"]
 [ext_resource type="Script" uid="uid://6f5svym6ia6t" path="res://entity/enemy/enemy_drops/experience/pickup_radius.gd" id="11_fmot2"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://d2h0gg4kyvt51" path="res://player/hud/hud.gd" id="15_60owl"]
 [ext_resource type="Script" uid="uid://d3yvuj3nell8" path="res://entity/entity_sprite.gd" id="15_ckibm"]
 [ext_resource type="Script" uid="uid://bm1y51jhg7blg" path="res://player/player_camera.gd" id="15_n0ywd"]
+[ext_resource type="FontFile" uid="uid://bbdnbw2ukmfy1" path="res://player/hud/DSEG7Classic-Bold.ttf" id="16_40h03"]
 [ext_resource type="Script" uid="uid://c64611244esss" path="res://player/hud/ability_display.gd" id="16_fr4t7"]
 [ext_resource type="Script" uid="uid://bnctumspc1w6j" path="res://player/experience_tracker.gd" id="17_8q3by"]
 [ext_resource type="Script" uid="uid://ditaftwfssw0g" path="res://player/skip_button.gd" id="18_7xury"]
@@ -67,8 +68,8 @@ fill = 1
 fill_from = Vector2(0.516239, 0.494017)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1cyqd"]
-font = ExtResource("5_tgkuv")
-font_size = 36
+font = ExtResource("16_40h03")
+font_size = 21
 font_color = Color(0.963299, 0.000138905, 0.420848, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_asjdf"]
@@ -800,39 +801,35 @@ anchor_right = 1.0
 offset_left = -154.0
 offset_bottom = 66.0
 grow_horizontal = 0
-
-[node name="CountdownTimer" type="HBoxContainer" parent="HUD/CountdownTimerWrapper"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -53.0
-offset_top = -43.0
-offset_right = 53.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_constants/separation = 10
 script = ExtResource("9_5x5lc")
 
-[node name="Minutes" type="Label" parent="HUD/CountdownTimerWrapper/CountdownTimer"]
+[node name="Minutes" type="Label" parent="HUD/CountdownTimerWrapper"]
 layout_mode = 2
+offset_left = 16.0
+offset_top = 27.0
+offset_right = 60.0
+offset_bottom = 74.0
+scale = Vector2(1.3, 1.3)
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 28
 text = "00"
 label_settings = SubResource("LabelSettings_1cyqd")
+horizontal_alignment = 1
 
-[node name="Seconds" type="Label" parent="HUD/CountdownTimerWrapper/CountdownTimer"]
+[node name="Seconds" type="Label" parent="HUD/CountdownTimerWrapper"]
 layout_mode = 2
+offset_left = 76.0
+offset_top = 27.0
+offset_right = 120.0
+offset_bottom = 74.0
+scale = Vector2(1.3, 1.3)
 size_flags_horizontal = 10
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 28
 text = "00"
 label_settings = SubResource("LabelSettings_1cyqd")
+horizontal_alignment = 1
 
 [node name="AbilityPicker" type="VBoxContainer" parent="HUD"]
 unique_name_in_owner = true
