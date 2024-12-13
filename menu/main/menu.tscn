@@ -58,6 +58,7 @@ text = "Dive in"
 script = ExtResource("3_f6fg1")
 
 [node name="Endless" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+visible = false
 layout_mode = 2
 focus_mode = 2
 mouse_filter = 0
