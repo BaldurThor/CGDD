@@ -2,9 +2,9 @@ class_name AbilitySelector extends VBoxContainer
 
 @onready var ability_selection: HBoxContainer = $AbilitySelection
 @onready var ability_system: AbilitySystem = %AbilitySystem
-@onready var skip_button: SkipButton = $HBoxContainer/Control/SkipButton
-@onready var backlog_count: Label = $HBoxContainer/HBoxContainer/BacklogCount
+@onready var skip_button: SkipButton = $HBoxContainer/SkipButton
 @onready var player: Player = $"../.."
+@onready var skill_bullet: SkillBullet = $"../SkillBullet"
 
 const ABILITY_CHOICE = preload("res://player/hud/ability_choice/ability_choice.tscn")
 
@@ -100,7 +100,7 @@ func pick_ability(ability: AbilityInfo) -> void:
 
 ## Updates the text that indicates how many unspent skillpoints the player has
 func _update_backlog_text() -> void:
-	backlog_count.text = "%d" % [ability_queue.size()]
+	skill_bullet.set_skill_bullet_count(ability_queue.size())
 
 ## Adds a skill point for the player to use later
 func _on_experience_level_up() -> void:
