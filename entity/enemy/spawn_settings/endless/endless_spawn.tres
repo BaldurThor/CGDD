@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelSpawnSettings" load_steps=8 format=3 uid="uid://bjnhe3gr1mksb"]
+
+[ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_53eob"]
+[ext_resource type="Resource" uid="uid://4rfe7a4eku2d" path="res://entity/enemy/spawn_settings/endless/endless_cultist.tres" id="2_gu3h7"]
+[ext_resource type="Script" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="2_hs13f"]
+[ext_resource type="Resource" uid="uid://bhmv0001yvmcy" path="res://entity/enemy/spawn_settings/endless/endless_carptist.tres" id="3_h2udk"]
+[ext_resource type="Resource" uid="uid://cp5l0640ux0ib" path="res://entity/enemy/spawn_settings/endless/endless_eye_stalker.tres" id="4_kbdod"]
+[ext_resource type="Resource" uid="uid://dg7nfujoehyx3" path="res://entity/enemy/spawn_settings/endless/endless_tentacle.tres" id="5_wrfp6"]
+[ext_resource type="Resource" uid="uid://bstcyjhsxe7n5" path="res://entity/enemy/spawn_settings/endless/endless_greater_tentacle.tres" id="6_dem74"]
+
+[resource]
+script = ExtResource("2_hs13f")
+enemies = Array[ExtResource("1_53eob")]([ExtResource("2_gu3h7"), ExtResource("3_h2udk"), ExtResource("4_kbdod"), ExtResource("5_wrfp6"), ExtResource("6_dem74")])

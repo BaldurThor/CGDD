@@ -9,9 +9,6 @@ var _total_damage_done: int = 0
 var _kills: int = 0
 var _abilities_picked: int = 0 
 var _boss_kills: int = 0
-var _time_played: int = 0
-# the time when you win, ueed for endless mode
-var _time_when_done: int = 0
 var _total_xp: int = 0
 var _heal_amount_regen: int = 0
 var _heal_amount_medkit: int = 0
@@ -39,7 +36,7 @@ func _ready() -> void:
 	GameManager.get_player().healed_amount.connect(_heal)
 
 func _over() -> void:
-	_time_when_done = _time_played
+	GameManager._time_when_done = GameManager._time_played
 
 func cheat() -> void:
 	is_valid = false
@@ -61,10 +58,10 @@ func _killed_boss(_boss: Boss) -> void:
 	_kill()
 
 func get_time_played() -> int:
-	return _time_played
+	return GameManager._time_played
 
 func _on_timer_timeout() -> void:
-	_time_played += 1
+	GameManager._time_played += 1
 	
 func _get_xp(amount : int, _m : bool) -> void:
 	_total_xp += amount
@@ -100,7 +97,7 @@ func get_boss_kills() -> int:
 	return _boss_kills
 
 func get_time_when_done() -> int:
-	return _time_when_done
+	return GameManager._time_when_done
 
 func get_total_xp() -> int:
 	return _total_xp
