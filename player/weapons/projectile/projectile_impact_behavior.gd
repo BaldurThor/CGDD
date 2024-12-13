@@ -15,7 +15,7 @@ var timer: Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	max_pierce_count = projectile.weapon_type.pierce_count + projectile.player_stats.extra_projectile_pierce
+	max_pierce_count = projectile.weapon_group.calculate_total_pierce()
 	projectile.body_entered.connect(_handle_impact)
 	if !despawn_on_hit and time_before_despawn > 0.0:
 		timer = Timer.new()

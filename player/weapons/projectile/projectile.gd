@@ -4,16 +4,16 @@ var direction: Vector2
 var weapon_type: WeaponType
 var player_stats: PlayerStats
 var timer: Timer
+var weapon_group: WeaponGroup
 
 ## Standalone node which returns the damage that each projectile should deal.
 @onready var damage_calculation: Node = $DamageCalculation
 
 signal despawn
 
-func init(weapon: WeaponType, stats: PlayerStats, bullet_direction: Vector2) -> void:
-	weapon_type = weapon
-	player_stats = stats
+func init(group: WeaponGroup, bullet_direction: Vector2) -> void:
 	direction = bullet_direction.normalized()
+	weapon_group = group
 
 func _ready() -> void:
 	GameManager.made_projectile.emit()

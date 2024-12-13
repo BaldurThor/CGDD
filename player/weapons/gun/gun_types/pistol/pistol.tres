@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://player/weapons/gun/weapon_type.gd" id="2_1gjob"]
 [ext_resource type="Texture2D" uid="uid://dajsixywrui3b" path="res://player/weapons/gun/crosshairs/R_Crosshair.png" id="2_3svd1"]
 [ext_resource type="PackedScene" uid="uid://cciirpvfqn260" path="res://player/weapons/projectile/projectiles/bullet/bullet.tscn" id="2_s4e3a"]
-[ext_resource type="Texture2D" uid="uid://2kw1cwck5jkk" path="res://player/weapons/gun/gun_types/pistol/gun_placeholder.png" id="3_wukbx"]
+[ext_resource type="Texture2D" uid="uid://bfmksgqec50uq" path="res://player/weapons/gun/gun_types/pistol/pistol.png" id="5_3xl3i"]
 
 [sub_resource type="Curve" id="Curve_wnnwa"]
-max_value = 5.0
-_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+max_value = 12.0
+_data = [Vector2(0, 0), 0.0, 12.0, 0, 1, Vector2(1, 12), 12.0, 0.0, 1, 0]
 point_count = 2
 
 [resource]
@@ -35,8 +35,9 @@ can_knockback = true
 melee_strike_count = 1
 melee_strike_delay = 0.33
 target_priority = 0
-sprite = ExtResource("3_wukbx")
+sprite = ExtResource("5_3xl3i")
 attack_sfx = ExtResource("1_gc628")
 projectile = ExtResource("2_s4e3a")
 crosshair = ExtResource("2_3svd1")
+sprite_scale = Vector2(0.4, 0.4)
 attack_range_debug_color = Color(0.498039, 1, 0.831373, 0.294118)

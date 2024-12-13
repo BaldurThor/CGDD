@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="AbilityInfo" load_steps=12 format=3 uid="uid://4wvj8ypllmxd"]
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=14 format=3 uid="uid://4wvj8ypllmxd"]
 
-[ext_resource type="Script" uid="uid://cnejhf63m5rem" path="res://player/ability_system/abilities/sovereign_citizen/sovereign_citizen.gd" id="1_wybox"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/sovereign_citizen/sovereign_citizen.gd" id="1_wybox"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_lunlu"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_2v3x2"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_2v3x2"]
 [ext_resource type="Resource" uid="uid://gv6t82cmowrh" path="res://player/ability_system/abilities/pickup_dynamite/pickup_dynamite.tres" id="4_ej45a"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="5_e3xxc"]
 [ext_resource type="Resource" uid="uid://cxf0jwyvrhjb5" path="res://player/ability_system/abilities/pickup_friendly_fish/pickup_friendly_fish.tres" id="6_wl5bq"]
@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://dufhryeihr3fe" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.tres" id="9_0c3me"]
 [ext_resource type="Resource" uid="uid://xest1i6lv1da" path="res://player/ability_system/abilities/pickup_shotgun/pickup_shotgun.tres" id="10_8t50g"]
 [ext_resource type="Resource" uid="uid://de5tqvsoulypj" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.tres" id="11_0eef6"]
+[ext_resource type="Resource" uid="uid://xcpye6pbfqtb" path="res://player/ability_system/abilities/pickup_grenade_launcher/pickup_grenade_launcher.tres" id="12_kbfve"]
+[ext_resource type="Resource" uid="uid://cyakewo1cwoaj" path="res://player/ability_system/abilities/pickup_assault_rifle/pickup_assault_rifle.tres" id="13_vgc1i"]
 
 [resource]
 script = ExtResource("3_2v3x2")
@@ -27,4 +29,4 @@ icon = ExtResource("2_lunlu")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("3_2v3x2")]([])
-requirements = Array[ExtResource("3_2v3x2")]([ExtResource("4_ej45a"), ExtResource("5_e3xxc"), ExtResource("6_wl5bq"), ExtResource("7_k3xn4"), ExtResource("8_eyogm"), ExtResource("9_0c3me"), ExtResource("10_8t50g"), ExtResource("11_0eef6")])
+requirements = Array[ExtResource("3_2v3x2")]([ExtResource("4_ej45a"), ExtResource("5_e3xxc"), ExtResource("6_wl5bq"), ExtResource("7_k3xn4"), ExtResource("8_eyogm"), ExtResource("9_0c3me"), ExtResource("10_8t50g"), ExtResource("11_0eef6"), ExtResource("12_kbfve"), ExtResource("13_vgc1i")])

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://b844q4jy12l1q"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/beer_belly/beer_belly.gd" id="1_oosnk"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_dac3v"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_juouv"]
+
+[resource]
+script = ExtResource("3_juouv")
+ability_script = ExtResource("1_oosnk")
+name = "Beer Belly"
+positive_effects = Array[String](["+10% max health", "+3 armor"])
+negative_effects = Array[String](["-10% movement speed", "-5% dodge chance"])
+type = 0
+tags = Array[String](["max_health", "max_health_mod", "armor", "movement_speed_mod", "dodge"])
+flavor_text = "I can play the drums on it!"
+max_amount = 0
+rarity = 1
+icon = ExtResource("2_dac3v")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_juouv")]([])
+requirements = Array[ExtResource("3_juouv")]([])

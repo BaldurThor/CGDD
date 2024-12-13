@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bplqid0wqhutk"]
+[gd_scene load_steps=15 format=3 uid="uid://bplqid0wqhutk"]
 
 [ext_resource type="Script" path="res://entity/bosses/boss.gd" id="1_0ygwl"]
+[ext_resource type="PackedScene" uid="uid://delsmh5kmqfkw" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn" id="2_3gu8j"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_8417x"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_ng2h4"]
 [ext_resource type="Texture2D" uid="uid://dphtgbysoogi" path="res://entity/bosses/horror_of_the_sea/horror_of_the_sea.png" id="4_hsrmb"]
@@ -33,6 +34,9 @@ linear_damp = 5.0
 script = ExtResource("1_0ygwl")
 spawn_offset = Vector2(0, -200)
 boss_title = "Yog-Sothoth, The Horror of the Sea"
+item_drops = Array[PackedScene]([ExtResource("2_3gu8j")])
+item_drop_chances = Array[float]([1.0])
+item_drop_values = Array[int]([0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_h238a")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dalqgss5m03me"]
 
 [ext_resource type="Texture2D" uid="uid://dpdb2vy23mepu" path="res://player/fishing/fish.png" id="1_wtkh2"]
-[ext_resource type="Script" uid="uid://8laxx15jgplc" path="res://player/fishing/fish.gd" id="2_w8iju"]
+[ext_resource type="Script" path="res://player/fishing/fish.gd" id="2_w8iju"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twigf"]
 radius = 6.0

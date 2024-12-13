@@ -30,6 +30,11 @@ func _physics_process(delta: float) -> void:
 	
 	var dir: Vector2 = player.global_position - enemy.global_position
 	enemy.distance_to_player = dir.length()
+	
+	if enemy.distance_to_player > self.player.enemy_borders.radius_max:
+		enemy.global_position = self.player.enemy_borders.get_new_pos(dir)
+		return
+		
 	if always_chase or enemy.distance_to_player > max_distance_to_player:
 		# Move towards the player
 		var dir_norm: Vector2 = dir.normalized()
