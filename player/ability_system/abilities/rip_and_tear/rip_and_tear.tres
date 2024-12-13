@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=5 format=3 uid="uid://bfeg37nyv1fsh"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/rip_and_tear/rip_and_tear.gd" id="1_2qet7"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_rlv2t"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_uydc1"]
+[ext_resource type="Resource" uid="uid://xest1i6lv1da" path="res://player/ability_system/abilities/pickup_shotgun/pickup_shotgun.tres" id="4_up6c1"]
+
+[resource]
+script = ExtResource("3_uydc1")
+ability_script = ExtResource("1_2qet7")
+name = "Rip and Tear!"
+positive_effects = Array[String](["Shotgun only", "+5 projectiles", "+25% critical damage multiplier"])
+negative_effects = Array[String]([])
+type = 0
+tags = Array[String]([])
+flavor_text = "You've got huge guts!"
+max_amount = 1
+rarity = 2
+icon = ExtResource("2_rlv2t")
+guaranteed_at = 0
+required_level = 15
+incompatabilities = Array[ExtResource("3_uydc1")]([])
+requirements = Array[ExtResource("3_uydc1")]([ExtResource("4_up6c1")])

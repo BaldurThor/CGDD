@@ -24,8 +24,9 @@ func _ready() -> void:
 	projectile_type = firearm.weapon_type.projectile
 	player_stats = firearm.player_stats
 	attack_timer.timeout.connect(_permit_attacking)
-	attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod * player_stats.ranged_attack_speed_mod)
+	attack_timer.wait_time = firearm.weapon_group.calculate_total_attack_speed()
 	attack_timer.start()
+	firearm.weapon_group.attack_speed_updated.connect(_update_attack_speed)
 	gun_sprite.texture = weapon_type.sprite
 	gun_sprite.scale = weapon_type.sprite_scale
 	_burst_attack_signal.connect(_burst_attack)
@@ -38,7 +39,6 @@ func _permit_attacking() -> void:
 func _process(_delta: float) -> void:
 	if can_attack and swivel.enemy != null:
 		can_attack = false
-		attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod * player_stats.ranged_attack_speed_mod)
 		if weapon_type.burst == true:
 			_burst_attack_signal.emit()
 		else:
@@ -60,14 +60,14 @@ func _normal_attack() -> void:
 	var angle = _calculate_spread_vector()
 	var bullet = projectile_type.instantiate()
 	_play_attack_sfx()
-	bullet.init(weapon_type, player_stats, angle)
+	bullet.init(firearm.weapon_group, angle)
 	GameManager.get_game_root().add_child(bullet)
 	bullet.position = global_position
 
 func _burst_attack() -> void:
 	if weapon_type.delay_between_burst_projectiles > 0:
 		burst_timer.wait_time = weapon_type.delay_between_burst_projectiles
-	for i in range(weapon_type.projectile_count + player_stats.extra_projectiles):
+	for i in range(firearm.weapon_group.get_total_projectiles()):
 		_normal_attack()
 		if weapon_type.delay_between_burst_projectiles > 0:
 			burst_timer.start()
@@ -78,3 +78,8 @@ func _play_attack_sfx() -> void:
 	var pitch_modification = randf_range(0.5, 2)
 	attack_sound_effect.pitch_scale = pitch_modification
 	attack_sound_effect.play()
+
+## Requests the newly updated attack speed from the weapon group.
+func _update_attack_speed() -> void:
+	var attack_speed = firearm.weapon_group.calculate_total_attack_speed()
+	attack_timer.wait_time = attack_speed

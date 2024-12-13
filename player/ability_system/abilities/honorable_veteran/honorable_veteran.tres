@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=5 format=3 uid="uid://cbstv78e12qc2"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/honorable_veteran/honorable_veteran.gd" id="1_d7o16"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_pv1yw"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_ep5wr"]
+[ext_resource type="Resource" uid="uid://cyakewo1cwoaj" path="res://player/ability_system/abilities/pickup_assault_rifle/pickup_assault_rifle.tres" id="4_yeiwj"]
+
+[resource]
+script = ExtResource("3_ep5wr")
+ability_script = ExtResource("1_d7o16")
+name = "Honorable Veteran"
+positive_effects = Array[String](["Assault Rifle only", "+2 extra projectiles", "+4 added damage", "+15% critical damage multiplier"])
+negative_effects = Array[String]([])
+type = 0
+tags = Array[String]([])
+flavor_text = "I took bootcamp once. It's the same thing, right?"
+max_amount = 1
+rarity = 2
+icon = ExtResource("2_pv1yw")
+guaranteed_at = 0
+required_level = 15
+incompatabilities = Array[ExtResource("3_ep5wr")]([])
+requirements = Array[ExtResource("3_ep5wr")]([ExtResource("4_yeiwj")])

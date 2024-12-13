@@ -159,16 +159,18 @@ func _add_ability_pick_count(ability: AbilityInfo) -> void:
 		pool.remove_at(ability_index)
 
 func _filter_unavailable_abilities(to_filter: Array[AbilityInfo]) -> Array[AbilityInfo]:
+	var spent_points = GameManager.get_player().ability_selector.spent_skill_points
 	var available: Array[AbilityInfo] = []
 	for ability in to_filter:
 		var include: bool = false
-		if len(ability.requirements) != 0:
-			for requirement in ability.requirements:
-				if requirement in pick_counts.keys():
-					include = true
-					break
-		else:
-			include = true
+		if ability.required_level <= spent_points:
+			if len(ability.requirements) != 0:
+				for requirement in ability.requirements:
+					if requirement in pick_counts.keys():
+						include = true
+						break
+			else:
+				include = true
 		if include:
 			available.push_back(ability)
 	return available
