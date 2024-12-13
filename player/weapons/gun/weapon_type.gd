@@ -74,6 +74,8 @@ signal weapon_range_changed(new_radius: float)
 @export var projectile: PackedScene
 ## Crosshair that the weapon uses
 @export var crosshair: Texture2D
+## The scale for the weapon's sprite.
+@export var sprite_scale: Vector2 = Vector2.ONE
 
 @export_category("Debug")
 ## Debug utility which changes the color of the TargetRange's Shape.

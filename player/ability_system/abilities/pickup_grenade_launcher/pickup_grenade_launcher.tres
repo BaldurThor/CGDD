@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://xcpye6pbfqtb"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_grenade_launcher/pickup_grenade_launcher.gd" id="1_y0r5p"]
+[ext_resource type="Texture2D" uid="uid://dutmexk2byuk3" path="res://player/weapons/gun/gun_types/grenade_launcher/grenade_launcher.png" id="2_y5p2j"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_1vamq"]
+
+[resource]
+script = ExtResource("3_1vamq")
+ability_script = ExtResource("1_y0r5p")
+name = "Grenade Launcher"
+positive_effects = Array[String](["+1 Grenade Launcher"])
+negative_effects = Array[String]([])
+type = 2
+tags = Array[String](["grenade_launcher", "explosive"])
+flavor_text = "Fires an impact grenade at the weakest enemy in range."
+max_amount = 1
+rarity = 0
+icon = ExtResource("2_y5p2j")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_1vamq")]([])
+requirements = Array[ExtResource("3_1vamq")]([])

@@ -8,7 +8,7 @@ func toggle_debug() -> String:
 	return "Debug.enable : " + str(Debug.enable)
 
 func add_xp(amount: int) -> String:
-	GameManager.get_player().experience.gain_experience.emit(amount)
+	GameManager.get_player().experience.gain_experience.emit(amount, false)
 	return "Added %d XP" % [amount]
 
 func get_ability_picker(type: int = 1) -> String:

@@ -4,7 +4,7 @@ class_name Experience extends Node
 
 var current_experience: int = 0
 var current_level : int = 0
-var required_for_level_up: int = _xp_needed_form(0)
+var required_for_level_up: int = xp_needed_form(0)
 
 signal gain_experience(amount: int, multiply: bool)
 signal update_experience_bar(experience: int)
@@ -17,7 +17,7 @@ func _ready() -> void:
 	gain_experience.connect(_gain_experience)
 
 
-func _xp_needed_form(level : int) -> int:
+func xp_needed_form(level : int) -> int:
 	"""
 	does some funky math 
 	to find out how much xp is needed
@@ -39,5 +39,5 @@ func _gain_experience(amount: int, multiply: bool = true) -> void:
 		current_level += 1
 		current_experience -= required_for_level_up
 		update_experience_bar.emit(current_experience)
-		required_for_level_up = _xp_needed_form(current_level)
+		required_for_level_up = xp_needed_form(current_level)
 		level_up.emit()

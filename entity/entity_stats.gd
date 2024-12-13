@@ -12,6 +12,7 @@ signal max_health_changed(new_max_health: int, change: int)
 signal regen_changed()
 signal death()
 signal take_damage(raw_amount: int)
+signal attack_speed_updated()
 
 var is_invincible: bool = false
 
@@ -68,7 +69,10 @@ var is_invincible: bool = false
 @export_group("Offense")
 
 ## The entity's attack speed modifier.
-@export var attack_speed_mod: float = 1.0
+@export var attack_speed_mod: float = 1.0:
+	set(value):
+		attack_speed_mod = value
+		attack_speed_updated.emit()
 
 @export_group("Defense")
 ## A multiplier to the entity's regeneration speed. Increasing this value will make the regen tick faster.

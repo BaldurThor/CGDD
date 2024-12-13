@@ -56,7 +56,7 @@ func _kill() -> void:
 func _got_ability(_a : AbilityInfo) -> void:
 	_abilities_picked +=1
 	
-func _killed_boss() -> void:
+func _killed_boss(_boss: Boss) -> void:
 	_boss_kills += 1
 	_kill()
 

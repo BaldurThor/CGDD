@@ -4,10 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://bnxrdba47kgob" path="res://player/weapons/gun/gun_types/shotgun/shotgun.wav" id="1_v4dlo"]
 [ext_resource type="PackedScene" uid="uid://cciirpvfqn260" path="res://player/weapons/projectile/projectiles/bullet/bullet.tscn" id="2_i3gk2"]
 [ext_resource type="Texture2D" uid="uid://dajsixywrui3b" path="res://player/weapons/gun/crosshairs/R_Crosshair.png" id="2_kwpuy"]
-[ext_resource type="Texture2D" uid="uid://bwwuweuxkga87" path="res://player/weapons/gun/gun_types/shotgun/shotgun_placeholder.png" id="3_gpv5s"]
+[ext_resource type="Texture2D" uid="uid://c3iavh1uyqnue" path="res://player/weapons/gun/gun_types/shotgun/shotgun.png" id="5_hu3g7"]
 
 [sub_resource type="Curve" id="Curve_65s3s"]
-max_value = 25.0
+max_value = 35.0
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 25), 35.0, 0.0, 0, 0]
 point_count = 2
 
@@ -35,8 +35,9 @@ can_knockback = true
 melee_strike_count = 1
 melee_strike_delay = 0.33
 target_priority = 0
-sprite = ExtResource("3_gpv5s")
+sprite = ExtResource("5_hu3g7")
 attack_sfx = ExtResource("1_v4dlo")
 projectile = ExtResource("2_i3gk2")
 crosshair = ExtResource("2_kwpuy")
+sprite_scale = Vector2(1, 1)
 attack_range_debug_color = Color(0.341176, 0.92549, 0.45098, 0.227451)

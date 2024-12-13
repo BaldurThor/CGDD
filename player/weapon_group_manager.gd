@@ -4,6 +4,7 @@ enum WeaponArchetype {
 	FIREARM,
 	MELEE,
 	ORBITAL_MELEE,
+	EXPLOSIVE_RANGED,
 }
 
 @onready var groups: Node2D = $Groups
@@ -35,7 +36,14 @@ func _instantiate_group(group_identity: String, weapon_archetype: WeaponArchetyp
 
 func _get_related_scene(weapon_archetype: WeaponArchetype) -> PackedScene:
 	match weapon_archetype:
-		WeaponArchetype.FIREARM: return FIREARM
+		WeaponArchetype.FIREARM, WeaponArchetype.EXPLOSIVE_RANGED: return FIREARM
 		WeaponArchetype.MELEE: return MELEE_WEAPON
 		WeaponArchetype.ORBITAL_MELEE: return ORBITAL_MELEE_WEAPON
 		_: return null
+
+## Returns the WeaponGroup instance with the requested identity if it exists.
+func get_weapon_group(group_identity: String) -> WeaponGroup:
+	for group in groups.get_children():
+		if group.group_identity == group_identity:
+			return group
+	return null

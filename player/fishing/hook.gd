@@ -2,7 +2,7 @@ class_name Hook extends Area2D
 
 var player: Player = null
 var hook_sprite : Sprite2D = null
-@onready var ability_picker: AbilityPicker = %AbilityPicker
+@onready var ability_selector: AbilitySelector = %AbilitySelector
 
 # the possision of the hook when it is cast
 var pos := Vector2(0,0)
@@ -15,10 +15,6 @@ var vec : Vector2 = Vector2(0,0)
 @export var max_power : int = 150
 @export var speed : float = 10
 @export var max_dist : int = 400
-
-
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
