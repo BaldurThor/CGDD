@@ -14,6 +14,8 @@ class_name Player extends CharacterBody2D
 @export var freeze_player: bool = false
 @export var death_screen: PackedScene
 
+@onready var end_stats: StatsMan = %EndStats
+
 var last_damage_from: Enemy
 
 signal healed_amount(amount : int, regen : bool)
@@ -80,3 +82,6 @@ func _on_player_stats_death() -> void:
 	self.add_child(death_node)
 	death_node.fade_to_black.position.x = self.position.x - death_node.fade_to_black.size.x / 2
 	death_node.fade_to_black.position.y = self.position.y - death_node.fade_to_black.size.y / 2
+
+func get_time_left() -> int:
+	return end_stats.get_time_left()

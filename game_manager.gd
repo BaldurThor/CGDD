@@ -157,9 +157,7 @@ func endless_mode() -> void:
 	self.freeze_enemies = false
 	self.get_player().freeze_player = false
 	self.endless = true
+	game_timer.stop()
 
 func get_time_left() -> int:
-	if not self.endless:
-		return self.game_timer.time_left
-	else:
-		return 0 # return einars new fancy timer
+	return self.game_timer.time_left

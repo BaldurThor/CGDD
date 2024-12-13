@@ -119,3 +119,10 @@ func get_caught_fish() -> int:
 
 func get_shots_fired() -> int:
 	return _shots_fired
+
+#THIS IS A HORRIBLE PATTERN TO-DO! statman should have been a singleton with a reset function!
+func get_time_left() -> int:
+	if not GameManager.endless:
+		return GameManager.get_time_left()
+	else:
+		return _time_played - _time_when_done
