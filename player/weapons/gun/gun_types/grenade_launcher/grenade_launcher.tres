@@ -13,7 +13,7 @@ point_count = 2
 
 [resource]
 script = ExtResource("4_ds0t0")
-damage = 14
+damage = 15
 secondary_damage = 0
 damage_effectiveness = 0.7
 secondary_damage_effectiveness = 0.0

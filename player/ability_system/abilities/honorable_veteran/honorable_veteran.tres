@@ -9,7 +9,7 @@
 script = ExtResource("3_ep5wr")
 ability_script = ExtResource("1_d7o16")
 name = "Honorable Veteran"
-positive_effects = Array[String](["Assault Rifle only", "+2 extra projectiles", "+4 added damage", "+15% critical damage multiplier"])
+positive_effects = Array[String](["+2 assault rifle projectiles", "+4 assault rifle damage", "+15% assault rifle critical damage multiplier"])
 negative_effects = Array[String]([])
 type = 0
 tags = Array[String]([])

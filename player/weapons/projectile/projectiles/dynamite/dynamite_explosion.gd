@@ -7,15 +7,13 @@ class_name DynamiteExplosion extends Area2D
 
 const CRATER = preload("res://player/weapons/projectile/crater.tscn")
 
-var weapon_type: WeaponType = null
-var player_stats: PlayerStats = null
+var weapon_group: WeaponGroup = null
 
-func init(weapon: WeaponType, stats: PlayerStats, _damage: int) -> void:
-	weapon_type = weapon
-	player_stats = stats
+func init(group: WeaponGroup) -> void:
+	weapon_group = group
 
 func _ready() -> void:
-	explosion_radius.shape.radius = (weapon_type.explosion_radius + player_stats.added_explosive_radius) * player_stats.explosive_radius_mod
+	explosion_radius.shape.radius = weapon_group.get_explosion_radius()
 
 	# I hate this
 	await get_tree().create_timer(0.05).timeout
@@ -24,7 +22,7 @@ func _ready() -> void:
 	var crater = CRATER.instantiate()
 	GameManager.get_game_root().add_child(crater)
 	crater.global_position = global_position
-	crater.scale = Vector2.ONE * (weapon_type.explosion_radius + player_stats.added_explosive_radius) / 75.0
+	crater.scale = Vector2.ONE * (weapon_group.get_explosion_radius()) / 75.0
 
 func _explode() -> void:
 	var nearby_enemies = get_overlapping_bodies()

@@ -9,7 +9,7 @@
 script = ExtResource("3_uydc1")
 ability_script = ExtResource("1_2qet7")
 name = "Rip and Tear!"
-positive_effects = Array[String](["Shotgun only", "+5 projectiles", "+25% critical damage multiplier"])
+positive_effects = Array[String](["+5 shotgun projectiles", "+25% shotgun critical damage multiplier"])
 negative_effects = Array[String]([])
 type = 0
 tags = Array[String]([])

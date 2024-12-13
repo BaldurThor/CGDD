@@ -115,3 +115,6 @@ func get_crit_multiplier() -> float:
 
 func get_total_projectiles() -> int:
 	return weapon_type.projectile_count + player_stats.extra_projectiles + added_projectiles
+
+func get_explosion_radius() -> float:
+	return (weapon_type.explosion_radius + player_stats.added_explosive_radius) * player_stats.explosive_radius_mod

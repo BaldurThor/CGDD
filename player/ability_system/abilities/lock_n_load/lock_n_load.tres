@@ -9,7 +9,7 @@
 script = ExtResource("3_ecaa3")
 ability_script = ExtResource("1_t4ssy")
 name = "Lock n' Load"
-positive_effects = Array[String](["Pistol only", "+50% attack speed", "+8% critical strike chance", "+25% attack range"])
+positive_effects = Array[String](["+50% pistol attack speed", "+8% pistol critical strike chance", "+25% pistol attack range"])
 negative_effects = Array[String]([])
 type = 0
 tags = Array[String]([])
