@@ -1,49 +1,49 @@
-[gd_scene load_steps=99 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=100 format=3 uid="uid://33kwqbnxj6dq"]
 
-[ext_resource type="Script" uid="uid://bheffjgmq05as" path="res://player/player.gd" id="1_7xfc3"]
-[ext_resource type="Shader" uid="uid://d303j5bd47raj" path="res://entity/entity.gdshader" id="1_321ed"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
+[ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
 [ext_resource type="PackedScene" uid="uid://bjtxacd0qfbqj" path="res://menu/death/death.tscn" id="2_4qn83"]
-[ext_resource type="Shader" uid="uid://dnsea432cksne" path="res://player/ground.gdshader" id="2_k5ka0"]
-[ext_resource type="Script" uid="uid://dfbsj60gy5ajb" path="res://player/player_stats.gd" id="2_s8nph"]
+[ext_resource type="Shader" path="res://player/ground.gdshader" id="2_k5ka0"]
+[ext_resource type="Script" path="res://player/player_stats.gd" id="2_s8nph"]
 [ext_resource type="Texture2D" uid="uid://cytk5u5fqaxna" path="res://player/hud/hud.png" id="5_12snm"]
 [ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="5_tgkuv"]
-[ext_resource type="Script" uid="uid://wlufhnbpvnsd" path="res://player/hud/level_counter.gd" id="6_jtmi4"]
+[ext_resource type="Script" path="res://player/hud/level_counter.gd" id="6_jtmi4"]
 [ext_resource type="Script" path="res://player/weapons/gun/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://player/ability_system/abilities/loot_table.tres" id="7_75cg3"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://player/fishing/rod_placeholder.png" id="7_l7pv7"]
-[ext_resource type="Script" path="res://player/hud/ability_choice/ability_picker.gd" id="7_v6y57"]
-[ext_resource type="Script" uid="uid://dtg8n1aywh6uw" path="res://player/hud/hit_indicator.gd" id="8_lh3hs"]
+[ext_resource type="Script" path="res://player/hud/hit_indicator.gd" id="8_lh3hs"]
 [ext_resource type="Script" path="res://player/fishing/hook.gd" id="8_qymma"]
 [ext_resource type="Theme" uid="uid://ct4bo20cg6a2n" path="res://player/hud/status_bars/ui_health_bar.tres" id="8_rmgi5"]
 [ext_resource type="Script" path="res://player/hud/countdown_timer.gd" id="9_5x5lc"]
-[ext_resource type="Script" uid="uid://dwg1y5osagoug" path="res://player/hud/experience_bar/experience_bar.gd" id="10_pxkv6"]
+[ext_resource type="Script" path="res://player/hud/experience_bar/experience_bar.gd" id="10_pxkv6"]
 [ext_resource type="Theme" uid="uid://deliwu0ihyd0j" path="res://player/hud/status_bars/ui_xp_bar.tres" id="11_3rc4d"]
-[ext_resource type="Script" uid="uid://6f5svym6ia6t" path="res://entity/enemy/enemy_drops/experience/pickup_radius.gd" id="11_fmot2"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_drops/experience/pickup_radius.gd" id="11_fmot2"]
 [ext_resource type="PackedScene" uid="uid://ckldvouneujm7" path="res://player/hud/stats_display/stats_display.tscn" id="11_g73cy"]
-[ext_resource type="Script" uid="uid://k8stt4cn44ln" path="res://player/experience_value.gd" id="12_267ds"]
+[ext_resource type="Script" path="res://player/experience_value.gd" id="12_267ds"]
 [ext_resource type="AudioStream" uid="uid://i5mn37rth3s2" path="res://entity/enemy/enemy_drops/experience/xp.wav" id="12_ax3nw"]
 [ext_resource type="Texture2D" uid="uid://055te3n4jhal" path="res://player/fishing/hook.png" id="12_tp034"]
-[ext_resource type="Script" uid="uid://bgp0gaowh5u5n" path="res://player/pickup_radius.gd" id="12_yq8ij"]
+[ext_resource type="Script" path="res://player/pickup_radius.gd" id="12_yq8ij"]
 [ext_resource type="Texture2D" uid="uid://cuhbkpxoxd0dm" path="res://player/billy_bob.png" id="13_2cvpx"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="13_vcw5i"]
-[ext_resource type="Script" uid="uid://bo233kpo480yc" path="res://player/hud/health_bar/health_bar.gd" id="14_543rk"]
-[ext_resource type="Script" uid="uid://d2h0gg4kyvt51" path="res://player/hud/hud.gd" id="15_60owl"]
-[ext_resource type="Script" uid="uid://d3yvuj3nell8" path="res://entity/entity_sprite.gd" id="15_ckibm"]
-[ext_resource type="Script" uid="uid://bm1y51jhg7blg" path="res://player/player_camera.gd" id="15_n0ywd"]
+[ext_resource type="Script" path="res://player/hud/health_bar/health_bar.gd" id="14_543rk"]
+[ext_resource type="Script" path="res://player/hud/hud.gd" id="15_60owl"]
+[ext_resource type="Script" path="res://entity/entity_sprite.gd" id="15_ckibm"]
+[ext_resource type="Script" path="res://player/player_camera.gd" id="15_n0ywd"]
 [ext_resource type="FontFile" uid="uid://bbdnbw2ukmfy1" path="res://player/hud/DSEG7Classic-Bold.ttf" id="16_40h03"]
-[ext_resource type="Script" uid="uid://c64611244esss" path="res://player/hud/ability_display.gd" id="16_fr4t7"]
-[ext_resource type="Script" uid="uid://bnctumspc1w6j" path="res://player/experience_tracker.gd" id="17_8q3by"]
-[ext_resource type="Script" uid="uid://ditaftwfssw0g" path="res://player/skip_button.gd" id="18_7xury"]
-[ext_resource type="Script" uid="uid://cj6fu24vxoxkh" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
-[ext_resource type="Shader" uid="uid://2ind2clafsf" path="res://player/hud/level_effect.gdshader" id="19_74cft"]
-[ext_resource type="Script" uid="uid://bd7asqj6twddo" path="res://player/health_value.gd" id="19_ky1vu"]
-[ext_resource type="Script" uid="uid://dhmcfg7t4lsi0" path="res://player/hud/boss_bar.gd" id="19_xmm0l"]
+[ext_resource type="Script" path="res://player/hud/ability_display.gd" id="16_fr4t7"]
+[ext_resource type="Script" path="res://player/experience_tracker.gd" id="17_8q3by"]
+[ext_resource type="Script" path="res://player/hud/ability_choice/ability_selector.gd" id="17_un6ir"]
+[ext_resource type="Script" path="res://player/skip_button.gd" id="18_7xury"]
+[ext_resource type="Script" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
+[ext_resource type="Shader" path="res://player/hud/level_effect.gdshader" id="19_74cft"]
+[ext_resource type="Script" path="res://player/health_value.gd" id="19_ky1vu"]
+[ext_resource type="Script" path="res://player/hud/boss_bar.gd" id="19_xmm0l"]
 [ext_resource type="Texture2D" uid="uid://bb215q152ay7y" path="res://player/hud/boss_icon.png" id="20_sa7yf"]
 [ext_resource type="Theme" uid="uid://diw8oxnpmfjd0" path="res://player/hud/status_bars/ui_boss_bar.tres" id="21_4c7xe"]
-[ext_resource type="Script" uid="uid://c20km45rfxmhd" path="res://levels/level_switcher.gd" id="22_ffm7r"]
+[ext_resource type="Script" path="res://levels/level_switcher.gd" id="22_ffm7r"]
 [ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://levels/level1/level1_background.png" id="23_77gle"]
 [ext_resource type="AudioStream" uid="uid://bylxksq47v5jc" path="res://levels/level1/rage-15292.mp3" id="26_dwusy"]
-[ext_resource type="Shader" uid="uid://dlh4tfhwkgoyi" path="res://levels/flashlight.gdshader" id="26_ybvvv"]
+[ext_resource type="Shader" path="res://levels/flashlight.gdshader" id="26_ybvvv"]
 [ext_resource type="AudioStream" uid="uid://c6lmy1o8c81rn" path="res://levels/level3/the-unkillable-155342.mp3" id="28_aow06"]
 [ext_resource type="AudioStream" uid="uid://bxapg40fyu7qy" path="res://levels/level2/deadite-ash-vs-evil-dead-song-8688.mp3" id="29_7cluu"]
 [ext_resource type="AudioStream" uid="uid://bvfislwpk2aub" path="res://levels/level4/fury-253300.mp3" id="30_5weuf"]
@@ -52,7 +52,8 @@
 [ext_resource type="AudioStream" uid="uid://nx61vvhfdu67" path="res://levels/transition/ground_crumble.wav" id="32_jv2t7"]
 [ext_resource type="AudioStream" uid="uid://dmxhxschy3e5w" path="res://levels/transition/ground_shake.wav" id="33_ty4v7"]
 [ext_resource type="Script" path="res://player/animation_player.gd" id="44_nh4u1"]
-[ext_resource type="Script" uid="uid://10vwfjw0thji" path="res://player/weapon_group_manager.gd" id="49_gll7c"]
+[ext_resource type="Script" path="res://player/weapon_group_manager.gd" id="49_gll7c"]
+[ext_resource type="AudioStream" uid="uid://bav5isesp6idy" path="res://entity/enemy/enemy_drops/medkit/medkit.wav" id="54_krgfq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4lj6"]
 font = ExtResource("5_tgkuv")
@@ -831,9 +832,9 @@ text = "00"
 label_settings = SubResource("LabelSettings_1cyqd")
 horizontal_alignment = 1
 
-[node name="AbilityPicker" type="VBoxContainer" parent="HUD"]
+[node name="AbilitySelector" type="VBoxContainer" parent="HUD"]
 unique_name_in_owner = true
-process_mode = 2
+process_mode = 3
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -846,31 +847,31 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 alignment = 1
-script = ExtResource("7_v6y57")
+script = ExtResource("17_un6ir")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilityPicker"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilitySelector"]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilityPicker/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilitySelector/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="PickAbilityLabel" type="Label" parent="HUD/AbilityPicker/HBoxContainer/HBoxContainer"]
+[node name="PickAbilityLabel" type="Label" parent="HUD/AbilitySelector/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Pick Ability"
 horizontal_alignment = 1
 
-[node name="BacklogCount" type="Label" parent="HUD/AbilityPicker/HBoxContainer/HBoxContainer"]
+[node name="BacklogCount" type="Label" parent="HUD/AbilitySelector/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "1"
 label_settings = SubResource("LabelSettings_asjdf")
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="HUD/AbilityPicker/HBoxContainer"]
+[node name="Control" type="Control" parent="HUD/AbilitySelector/HBoxContainer"]
 layout_mode = 2
 
-[node name="SkipButton" type="Button" parent="HUD/AbilityPicker/HBoxContainer/Control"]
+[node name="SkipButton" type="Button" parent="HUD/AbilitySelector/HBoxContainer/Control"]
 layout_mode = 2
 offset_left = 28.0
 offset_right = 134.0
@@ -881,7 +882,7 @@ text = "Skip (+100% experience)"
 script = ExtResource("18_7xury")
 base_string = "Skip(+%s experience)"
 
-[node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilityPicker"]
+[node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilitySelector"]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -1185,6 +1186,9 @@ shape = SubResource("CapsuleShape2D_dv57t")
 
 [node name="Groups" type="Node2D" parent="WeaponGroupManager"]
 
+[node name="MedkitPickupSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("54_krgfq")
+
 [connection signal="death" from="PlayerStats" to="." method="_on_player_stats_death"]
 [connection signal="heal_player" from="PlayerStats" to="." method="heal"]
 [connection signal="item_absorb_range_changed" from="PlayerStats" to="Experience/AbsorbRadius" method="_on_player_stats_item_absorb_range_changed"]
@@ -1193,9 +1197,8 @@ shape = SubResource("CapsuleShape2D_dv57t")
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
 [connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthValue" method="_on_health_bar_health_ratio_changed"]
 [connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
-[connection signal="button_up" from="HUD/AbilityPicker/HBoxContainer/Control/SkipButton" to="HUD/AbilityPicker" method="_on_skip_button_button_up"]
-[connection signal="level_switched" from="LevelSwitcher" to="HUD/AbilityPicker" method="_on_level_switcher_level_switched"]
-[connection signal="level_up" from="Experience" to="HUD/AbilityPicker" method="_on_experience_level_up"]
+[connection signal="button_up" from="HUD/AbilitySelector/HBoxContainer/Control/SkipButton" to="HUD/AbilitySelector" method="_on_skip_button_button_up"]
+[connection signal="level_up" from="Experience" to="HUD/AbilitySelector" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="WeaponGroupManager/RodSwivel/Hook" to="WeaponGroupManager/RodSwivel/Hook" method="_on_body_entered"]

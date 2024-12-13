@@ -7,6 +7,8 @@ signal player_melee_range_changed()
 signal player_melee_strike_count_changed(added: int)
 signal item_absorb_range_changed()
 signal heal_player(heal_amount: int, regen : bool)
+signal melee_attack_speed_changed()
+signal ranged_attack_speed_changed()
 
 @export_category("Stats")
 
@@ -70,7 +72,10 @@ signal heal_player(heal_amount: int, regen : bool)
 		player_melee_range_changed.emit()
 
 ## A multiplier to the attack speed of all melee weapons.
-@export_range(0.5, 3.0, 0.01, "or_greater") var melee_attack_speed_mod: float = 1.0
+@export_range(0.5, 3.0, 0.01, "or_greater") var melee_attack_speed_mod: float = 1.0:
+	set(value):
+		melee_attack_speed_mod = value
+		melee_attack_speed_changed.emit()
 
 ## A multiplier to all melee weapon knockback.
 @export_range(0.0, 3.0, 0.01, "or_greater") var melee_knockback_mod: float = 1.0
@@ -88,7 +93,10 @@ signal heal_player(heal_amount: int, regen : bool)
 @export_range(0.0, 2.0, 0.01, "or_greater") var ranged_spread_mod: float = 0.0
 
 ## A multiplier to the attack speed of all ranged weapons.
-@export_range(0.5, 3.0, 0.01, "or_greater") var ranged_attack_speed_mod: float = 1.0
+@export_range(0.5, 3.0, 0.01, "or_greater") var ranged_attack_speed_mod: float = 1.0:
+	set(value):
+		ranged_attack_speed_mod = value
+		ranged_attack_speed_changed.emit()
 
 
 @export_group("Offense - Explosive")

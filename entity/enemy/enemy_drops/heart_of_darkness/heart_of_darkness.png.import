@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqr0arxmq3ons"
-path="res://.godot/imported/rifle_placeholder.png-538e5ee2eaa948d017f478264a17ce9d.ctex"
+uid="uid://cb6gronfdv4nv"
+path="res://.godot/imported/heart_of_darkness.png-f697e12da80e94772c2f3d95c5b3fb12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/weapons/gun/gun_types/rifle/rifle_placeholder.png"
-dest_files=["res://.godot/imported/rifle_placeholder.png-538e5ee2eaa948d017f478264a17ce9d.ctex"]
+source_file="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.png"
+dest_files=["res://.godot/imported/heart_of_darkness.png-f697e12da80e94772c2f3d95c5b3fb12.ctex"]
 
 [params]
 

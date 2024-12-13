@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2kw1cwck5jkk"
-path="res://.godot/imported/gun_placeholder.png-924df34280a3d402046ea95216bacfec.ctex"
+uid="uid://bufj7rfgk4piy"
+path="res://.godot/imported/assault_rifle.png-2053c998689b0d98de76d6d355d80115.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/weapons/gun/gun_types/pistol/gun_placeholder.png"
-dest_files=["res://.godot/imported/gun_placeholder.png-924df34280a3d402046ea95216bacfec.ctex"]
+source_file="res://player/weapons/gun/gun_types/assault_rifle/assault_rifle.png"
+dest_files=["res://.godot/imported/assault_rifle.png-2053c998689b0d98de76d6d355d80115.ctex"]
 
 [params]
 

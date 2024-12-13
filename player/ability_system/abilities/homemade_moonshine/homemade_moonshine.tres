@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://23ncruig76id"]
 
-[ext_resource type="Script" uid="uid://c7g0wmdk4t8c1" path="res://player/ability_system/abilities/homemade_moonshine/homemade_moonshine.gd" id="1_tc73u"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/homemade_moonshine/homemade_moonshine.gd" id="1_tc73u"]
 [ext_resource type="Texture2D" uid="uid://b6s0hlp4kqrkh" path="res://player/ability_system/abilities/homemade_moonshine/homemade_moonshine.png" id="2_iak1g"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_ulnvx"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_ulnvx"]
 
 [resource]
 script = ExtResource("3_ulnvx")
 ability_script = ExtResource("1_tc73u")
 name = "Homemade Moonshine"
 positive_effects = Array[String](["+1 health regen", "+8% faster health regen"])
-negative_effects = Array[String](["-60% max health"])
+negative_effects = Array[String](["-40% max health"])
 type = 0
 tags = Array[String](["regen_amount_flat", "regen_speed_mod", "max_health"])
 flavor_text = "Not as good as the lost bottle..."

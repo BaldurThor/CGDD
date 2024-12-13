@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://d3rowoeoo4vqm"]
 
-[ext_resource type="Script" uid="uid://bnoqisjrod15v" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.gd" id="1_8joa6"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_w54ps"]
-[ext_resource type="Texture2D" uid="uid://2kw1cwck5jkk" path="res://player/weapons/gun/gun_types/pistol/gun_placeholder.png" id="2_mp27k"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.gd" id="1_8joa6"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_w54ps"]
+[ext_resource type="Texture2D" uid="uid://bfmksgqec50uq" path="res://player/weapons/gun/gun_types/pistol/pistol.png" id="2_r4am0"]
 
 [resource]
 script = ExtResource("1_w54ps")
@@ -12,10 +12,10 @@ positive_effects = Array[String](["+1 Pistol"])
 negative_effects = Array[String]([])
 type = 2
 tags = Array[String](["pistol", "ranged"])
-flavor_text = "Reliable, but unremarkable"
+flavor_text = "A reliable and relatively quick gun which fires at the nearest enemy."
 max_amount = 0
 rarity = 0
-icon = ExtResource("2_mp27k")
+icon = ExtResource("2_r4am0")
 guaranteed_at = 1
 required_level = 0
 incompatabilities = Array[ExtResource("1_w54ps")]([])

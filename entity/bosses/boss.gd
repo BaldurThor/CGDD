@@ -12,4 +12,5 @@ func _ready() -> void:
 func _on_death() -> void:
 	GameManager.boss_killed.emit(self)
 	shadow.visible = false
+	_spawn_drops()
 	queue_free()

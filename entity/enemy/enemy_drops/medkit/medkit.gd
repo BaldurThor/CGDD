@@ -4,6 +4,7 @@ class_name Medkit extends PickupBase
 
 func pickup() -> void:
 	_player.player_stats.heal_player.emit(medkit_heal_amount, false)
+	_player.medkit_pickup_sfx.play()
 	super()
 
 func assign_value(value: int) -> void:
