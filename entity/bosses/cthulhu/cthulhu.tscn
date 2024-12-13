@@ -20,12 +20,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 radius = 52.0096
 
-[sub_resource type="Gradient" id="Gradient_uyl6r"]
+[sub_resource type="Gradient" id="Gradient_8gaac"]
 offsets = PackedFloat32Array(0.496333, 0.713936)
 colors = PackedColorArray(0, 0, 0, 0.592157, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_x7pyl"]
-gradient = SubResource("Gradient_uyl6r")
+gradient = SubResource("Gradient_8gaac")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -82,6 +82,9 @@ entity_stats = NodePath("../EntityStats")
 sprite_scale = 6.0
 sprite_offset = Vector2(0, -112.765)
 show_health_bar = false
+show_shadow = false
+shadow_size = 1.0
+shadow_offset = Vector2(0, 15)
 
 [node name="BulletHellSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_gy1bw")

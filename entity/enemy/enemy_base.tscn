@@ -1,11 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://xqbx4dgecmyu"]
+[gd_scene load_steps=19 format=3 uid="uid://xqbx4dgecmyu"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_base.gd" id="1_4tenj"]
 [ext_resource type="Shader" uid="uid://d303j5bd47raj" path="res://entity/entity.gdshader" id="1_x7jxo"]
 [ext_resource type="Script" uid="uid://d3yvuj3nell8" path="res://entity/entity_sprite.gd" id="3_8xh11"]
+[ext_resource type="Texture2D" uid="uid://e0oabgkid27x" path="res://entity/enemy/enemy_types/cultist/cultist.png" id="3_opew0"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="4_yxxgb"]
 [ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="5_t6voh"]
 [ext_resource type="AudioStream" uid="uid://bgqoinfvqwxl" path="res://entity/death.wav" id="6_e1p54"]
+
+[sub_resource type="Gradient" id="Gradient_magrh"]
+offsets = PackedFloat32Array(0.496333, 0.713936)
+colors = PackedColorArray(0, 0, 0, 0.254902, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4kfsh"]
+gradient = SubResource("Gradient_magrh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2yg0a"]
 resource_local_to_scene = true
@@ -109,9 +119,18 @@ turbulence_enabled = true
 
 [node name="EnemyBase" type="Node2D"]
 script = ExtResource("1_4tenj")
+show_shadow = null
+shadow_size = null
+shadow_offset = null
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 15)
+scale = Vector2(0.59375, 0.23491)
+texture = SubResource("GradientTexture2D_4kfsh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_2yg0a")
+texture = ExtResource("3_opew0")
 script = ExtResource("3_8xh11")
 
 [node name="HealthBar" parent="." instance=ExtResource("4_yxxgb")]

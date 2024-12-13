@@ -43,6 +43,9 @@ autostart = true
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_b0c3y")]
 sprite = ExtResource("2_cmsmt")
 entity_stats = NodePath("../EntityStats")
+show_shadow = true
+shadow_size = 1.0
+shadow_offset = Vector2(0, 15)
 
 [node name="LogicTree" type="Node" parent="."]
 script = ExtResource("5_kqoh1")
