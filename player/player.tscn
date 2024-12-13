@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=107 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://bhsi60iufrm2v" path="res://levels/transition/ground_break.png" id="31_atf6l"]
 [ext_resource type="AudioStream" uid="uid://nx61vvhfdu67" path="res://levels/transition/ground_crumble.wav" id="32_jv2t7"]
 [ext_resource type="AudioStream" uid="uid://dmxhxschy3e5w" path="res://levels/transition/ground_shake.wav" id="33_ty4v7"]
+[ext_resource type="AudioStream" uid="uid://dgemkajmxbslx" path="res://levels/endless/fury-253300.mp3" id="40_wmxng"]
 [ext_resource type="Script" path="res://player/animation_player.gd" id="44_nh4u1"]
 [ext_resource type="Script" path="res://player/weapon_group_manager.gd" id="49_gll7c"]
 [ext_resource type="AudioStream" uid="uid://bav5isesp6idy" path="res://entity/enemy/enemy_drops/medkit/medkit.wav" id="54_krgfq"]
@@ -196,6 +197,21 @@ shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
 shader = ExtResource("26_ybvvv")
 shader_parameter/modulate = Color(0.894118, 0.388235, 0.639216, 0.152941)
 shader_parameter/steps = 12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ud7kt"]
+shader = ExtResource("2_k5ka0")
+shader_parameter/scale = 4.0
+shader_parameter/power = 3.0
+shader_parameter/modulate = Color(0.356863, 0, 0.309804, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldacf"]
+shader = ExtResource("19_74cft")
+shader_parameter/scale = 1.0
+shader_parameter/speed = 32.0
+shader_parameter/color = Color(0.027451, 0, 0.929412, 0.239216)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/cutoff = 0.0
+shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rdw3d"]
 atlas = ExtResource("31_atf6l")
@@ -1078,6 +1094,36 @@ texture = SubResource("GradientTexture2D_ifgk3")
 [node name="Music" type="AudioStreamPlayer" parent="LevelSwitcher/Level4"]
 process_mode = 3
 stream = ExtResource("30_5weuf")
+bus = &"Music"
+
+[node name="Endless" type="Node2D" parent="LevelSwitcher"]
+visible = false
+
+[node name="BGSprite" type="Sprite2D" parent="LevelSwitcher/Endless"]
+z_index = -47
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ud7kt")
+scale = Vector2(15.78, 10.52)
+texture = ExtResource("23_77gle")
+
+[node name="LevelEffects" type="Sprite2D" parent="LevelSwitcher/Endless"]
+z_index = -47
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ldacf")
+scale = Vector2(15.78, 10.52)
+texture = ExtResource("23_77gle")
+
+[node name="Flashlight" type="Sprite2D" parent="LevelSwitcher/Endless"]
+z_index = -47
+material = SubResource("ShaderMaterial_f2wy2")
+scale = Vector2(1.33594, 1.33594)
+texture = SubResource("GradientTexture2D_ifgk3")
+
+[node name="Music" type="AudioStreamPlayer" parent="LevelSwitcher/Endless"]
+process_mode = 3
+stream = ExtResource("40_wmxng")
 bus = &"Music"
 
 [node name="GroundBreak" type="AnimatedSprite2D" parent="LevelSwitcher"]

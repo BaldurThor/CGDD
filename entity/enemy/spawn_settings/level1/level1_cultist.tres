@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_s3isd"]
 
 [sub_resource type="Curve" id="Curve_46iwy"]
-_data = [Vector2(0.119048, 0), 0.0, 0.694903, 0, 0, Vector2(0.12465, 0.507368), 0.0, 0.0, 0, 0, Vector2(0.502801, 0.950737), 1.95411, 1.95411, 0, 0, Vector2(0.589636, 0.458105), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0758874, 0.0, 0, 0]
-point_count = 5
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
 
 [resource]
 script = ExtResource("1_s3isd")

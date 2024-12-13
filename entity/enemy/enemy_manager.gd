@@ -22,6 +22,7 @@ func _ready():
 	GameManager.new_world_level_active.connect(_spawn_boss)
 	GameManager.enemy_died.connect(func(): enemy_count -= 1)
 	GameManager.game_timer_over.connect(_spawn_cthulhu)
+	GameManager.spawn_random_boss.connect(_spawn_random_boss)
 
 func _process(_delta: float):
 	if GameManager.freeze_enemies:
@@ -42,11 +43,17 @@ func _spawn_cthulhu() -> void:
 
 
 func _spawn_boss() -> void:
-	if GameManager.world_level > 1:
+	if GameManager.world_level > 1 and not GameManager.endless:
 		var boss_scene = bosses[GameManager.world_level - 2]
 		var boss: Boss = boss_scene.instantiate()
 		add_child(boss)
 		boss.global_position = GameManager.get_player().global_position + boss.spawn_offset
+
+func _spawn_random_boss() -> void:
+	var boss_scene: PackedScene = bosses.pick_random()
+	var boss: Boss = boss_scene.instantiate()
+	add_child(boss)
+	boss.global_position = GameManager.get_player().global_position + boss.spawn_offset
 
 func _init_level() -> void:
 	enemy_count = 0

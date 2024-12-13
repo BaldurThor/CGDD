@@ -6,7 +6,8 @@ const CTHULHU_DEATH = preload("res://entity/bosses/cthulhu/cthulhu_death.tscn")
 
 func _on_death() -> void:
 	super()
-	_spawn(MOONSHINE)
+	if not GameManager.endless:
+		_spawn(MOONSHINE)
 	_spawn(CTHULHU_DEATH)
 
 func _spawn(scene: PackedScene):

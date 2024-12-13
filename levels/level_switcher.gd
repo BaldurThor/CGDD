@@ -5,6 +5,7 @@ extends Node2D
 	$Level2,
 	$Level3,
 	$Level4,
+	$Endless
 ]
 
 @onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
@@ -26,6 +27,9 @@ func _ready():
 	new_level = levels[0]
 	levels[0].get_node("Music").play()
 	_level_switch.connect(_on_level_switch)
+	
+	#for debug
+	GameManager.level_switcher_ready = true
 
 func _on_new_world_level():
 	set_level(GameManager.world_level)
