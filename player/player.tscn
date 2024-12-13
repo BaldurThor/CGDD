@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=105 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -58,6 +58,7 @@
 [ext_resource type="Script" path="res://player/animation_player.gd" id="44_nh4u1"]
 [ext_resource type="Script" path="res://player/weapon_group_manager.gd" id="49_gll7c"]
 [ext_resource type="AudioStream" uid="uid://bav5isesp6idy" path="res://entity/enemy/enemy_drops/medkit/medkit.wav" id="54_krgfq"]
+[ext_resource type="Script" path="res://player/enemy_borders.gd" id="59_limxo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4lj6"]
 font = ExtResource("5_tgkuv")
@@ -1121,7 +1122,7 @@ shape = SubResource("CircleShape2D_sa55p")
 debug_color = Color(0.456537, 0.00266336, 0.919708, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.25, 1.25)
+zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 script = ExtResource("15_n0ywd")
 max_offset = Vector2(70, 70)
@@ -1198,6 +1199,9 @@ shape = SubResource("CapsuleShape2D_dv57t")
 
 [node name="MedkitPickupSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("54_krgfq")
+
+[node name="EnemyBorders" type="Node2D" parent="."]
+script = ExtResource("59_limxo")
 
 [connection signal="death" from="PlayerStats" to="." method="_on_player_stats_death"]
 [connection signal="heal_player" from="PlayerStats" to="." method="heal"]
