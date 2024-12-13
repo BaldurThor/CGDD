@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=104 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -43,7 +43,9 @@
 [ext_resource type="Script" path="res://levels/level_switcher.gd" id="22_ffm7r"]
 [ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://levels/level1/level1_background.png" id="23_77gle"]
 [ext_resource type="Texture2D" uid="uid://favo7mnhpc5b" path="res://player/hud/skill_bullet.png" id="24_uvcrf"]
-[ext_resource type="AudioStream" uid="uid://dg0naftshhirp" path="res://menu/bullet_popup.wav" id="25_55v83"]
+[ext_resource type="AudioStream" uid="uid://dg0naftshhirp" path="res://player/hud/bullet_popup.wav" id="25_55v83"]
+[ext_resource type="Script" path="res://player/hud/skill_bullet.gd" id="25_nt7k4"]
+[ext_resource type="AudioStream" uid="uid://ddm0e4hf4clwn" path="res://player/hud/new_level.wav" id="26_2tb1v"]
 [ext_resource type="AudioStream" uid="uid://bylxksq47v5jc" path="res://levels/level1/rage-15292.mp3" id="26_dwusy"]
 [ext_resource type="Shader" path="res://levels/flashlight.gdshader" id="26_ybvvv"]
 [ext_resource type="AudioStream" uid="uid://c6lmy1o8c81rn" path="res://levels/level3/the-unkillable-155342.mp3" id="28_aow06"]
@@ -74,11 +76,6 @@ fill_from = Vector2(0.516239, 0.494017)
 font = ExtResource("16_40h03")
 font_size = 21
 font_color = Color(0.963299, 0.000138905, 0.420848, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_asjdf"]
-font_color = Color(1, 0, 0.792157, 1)
-outline_size = 10
-outline_color = Color(1, 0.27451, 0.54902, 0.262745)
 
 [sub_resource type="FontFile" id="FontFile_eovdj"]
 subpixel_positioning = 0
@@ -860,29 +857,8 @@ script = ExtResource("17_un6ir")
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilitySelector/HBoxContainer"]
+[node name="SkipButton" type="Button" parent="HUD/AbilitySelector/HBoxContainer"]
 layout_mode = 2
-alignment = 1
-
-[node name="PickAbilityLabel" type="Label" parent="HUD/AbilitySelector/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Pick Ability"
-horizontal_alignment = 1
-
-[node name="BacklogCount" type="Label" parent="HUD/AbilitySelector/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "1"
-label_settings = SubResource("LabelSettings_asjdf")
-horizontal_alignment = 1
-
-[node name="Control" type="Control" parent="HUD/AbilitySelector/HBoxContainer"]
-layout_mode = 2
-
-[node name="SkipButton" type="Button" parent="HUD/AbilitySelector/HBoxContainer/Control"]
-layout_mode = 2
-offset_left = 28.0
-offset_right = 134.0
-offset_bottom = 23.0
 theme_override_fonts/font = SubResource("FontFile_eovdj")
 theme_override_font_sizes/font_size = 9
 text = "Skip (+100% experience)"
@@ -958,6 +934,7 @@ offset_right = -8.0
 offset_bottom = 125.0
 texture = ExtResource("24_uvcrf")
 stretch_mode = 3
+script = ExtResource("25_nt7k4")
 
 [node name="Label" type="Label" parent="HUD/SkillBullet"]
 layout_mode = 0
@@ -969,8 +946,12 @@ text = "9"
 label_settings = SubResource("LabelSettings_jl6o5")
 horizontal_alignment = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HUD"]
+[node name="SkillBulletSFX" type="AudioStreamPlayer" parent="HUD/SkillBullet"]
 stream = ExtResource("25_55v83")
+volume_db = 5.0
+
+[node name="NewLevelSFX" type="AudioStreamPlayer" parent="HUD/SkillBullet"]
+stream = ExtResource("26_2tb1v")
 volume_db = 5.0
 
 [node name="AbilitySystem" type="Node" parent="."]
@@ -1226,7 +1207,7 @@ stream = ExtResource("54_krgfq")
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
 [connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthValue" method="_on_health_bar_health_ratio_changed"]
 [connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
-[connection signal="button_up" from="HUD/AbilitySelector/HBoxContainer/Control/SkipButton" to="HUD/AbilitySelector" method="_on_skip_button_button_up"]
+[connection signal="button_up" from="HUD/AbilitySelector/HBoxContainer/SkipButton" to="HUD/AbilitySelector" method="_on_skip_button_button_up"]
 [connection signal="level_up" from="Experience" to="HUD/AbilitySelector" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

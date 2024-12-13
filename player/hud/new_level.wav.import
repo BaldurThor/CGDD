@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dg0naftshhirp"
-path="res://.godot/imported/bullet_popup.wav-1fac508abd871d781c3a1f0ba2e3fc24.sample"
+uid="uid://ddm0e4hf4clwn"
+path="res://.godot/imported/new_level.wav-12b867fb20194d57ee21817538a35a4f.sample"
 
 [deps]
 
-source_file="res://menu/bullet_popup.wav"
-dest_files=["res://.godot/imported/bullet_popup.wav-1fac508abd871d781c3a1f0ba2e3fc24.sample"]
+source_file="res://player/hud/new_level.wav"
+dest_files=["res://.godot/imported/new_level.wav-12b867fb20194d57ee21817538a35a4f.sample"]
 
 [params]
 
