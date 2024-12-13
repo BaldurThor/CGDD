@@ -110,7 +110,7 @@ script = ExtResource("5_6hme5")
 
 [node name="Version" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer"]
 layout_mode = 2
-text = "Version - 0.1.0"
+text = "Version - 0.2.0"
 
 [node name="Info" parent="." node_paths=PackedStringArray("how_to_play") instance=ExtResource("5_ugmh8")]
 process_mode = 2
