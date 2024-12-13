@@ -62,7 +62,7 @@ func _get_weapon_pool() -> Array[AbilityInfo]:
 	return weapon_pool
 	
 func _get_corrupted_pool() -> Array[AbilityInfo]:
-	var corrupted_pool = loot_table.corrupted_abilities.duplicate()
+	var corrupted_pool = global_corrupted_pool.duplicate()
 	corrupted_pool.shuffle()
 	return corrupted_pool
 	

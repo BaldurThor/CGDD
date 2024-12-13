@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="WeaponType" load_steps=7 format=3 uid="uid://bnriroue1au3k"]
+
+[ext_resource type="AudioStream" uid="uid://pp73ob4kf62x" path="res://player/weapons/gun/gun_types/grenade_launcher/grenade_launcher.wav" id="1_fbjwv"]
+[ext_resource type="Texture2D" uid="uid://dajsixywrui3b" path="res://player/weapons/gun/crosshairs/R_Crosshair.png" id="2_522ip"]
+[ext_resource type="PackedScene" uid="uid://dt723h0hih7ok" path="res://player/weapons/projectile/projectiles/impact_grenade/impact_grenade.tscn" id="3_ptx1h"]
+[ext_resource type="Script" path="res://player/weapons/gun/weapon_type.gd" id="4_ds0t0"]
+[ext_resource type="Texture2D" uid="uid://dutmexk2byuk3" path="res://player/weapons/gun/gun_types/grenade_launcher/grenade_launcher.png" id="5_xtr2v"]
+
+[sub_resource type="Curve" id="Curve_h1imp"]
+max_value = 22.0
+_data = [Vector2(0, 0), 0.0, 22.0, 0, 1, Vector2(1, 22), 22.0, 0.0, 1, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("4_ds0t0")
+damage = 14
+secondary_damage = 0
+damage_effectiveness = 0.7
+secondary_damage_effectiveness = 0.0
+attack_speed = 2.9
+crit_chance = 0.0
+crit_damage = 2.0
+burst = true
+delay_between_burst_projectiles = 0.4
+pierce_count = 0
+projectile_speed = 500.0
+projectile_count = 1
+projectile_spread = SubResource("Curve_h1imp")
+explosion_radius = 50.0
+attack_range = 180.0
+base_orbital_size = 10
+knockback = 0.8
+secondary_knockback = 0
+can_knockback = true
+melee_strike_count = 1
+melee_strike_delay = 0.33
+target_priority = 4
+sprite = ExtResource("5_xtr2v")
+attack_sfx = ExtResource("1_fbjwv")
+projectile = ExtResource("3_ptx1h")
+crosshair = ExtResource("2_522ip")
+sprite_scale = Vector2(0.8, 0.8)
+attack_range_debug_color = Color(0.811765, 0, 0.247059, 0.305882)

@@ -9,7 +9,7 @@ class_name Gun extends Node2D
 @onready var gun_swivel: GunSwivel = $".."
 @onready var firearm: Firearm = $"../.."
 
-var _can_attack: bool = true
+var can_attack: bool = true
 var weapon_type: WeaponType = null
 var projectile_type: PackedScene
 var player_stats: PlayerStats
@@ -27,22 +27,22 @@ func _ready() -> void:
 	attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod * player_stats.ranged_attack_speed_mod)
 	attack_timer.start()
 	gun_sprite.texture = weapon_type.sprite
+	gun_sprite.scale = weapon_type.sprite_scale
 	_burst_attack_signal.connect(_burst_attack)
 	_normal_attack_signal.connect(_normal_attack)
 	attack_sound_effect.stream = weapon_type.attack_sfx
 	
 func _permit_attacking() -> void:
-	_can_attack = true
+	can_attack = true
 
 func _process(_delta: float) -> void:
-	if _can_attack and swivel.enemy != null:
-		_can_attack = false
+	if can_attack and swivel.enemy != null:
+		can_attack = false
 		attack_timer.wait_time = float(weapon_type.attack_speed) / float(player_stats.attack_speed_mod * player_stats.ranged_attack_speed_mod)
 		if weapon_type.burst == true:
 			_burst_attack_signal.emit()
 		else:
 			_normal_attack_signal.emit()
-		_play_attack_sfx()
 		attack_timer.start()
 
 func _calculate_spread_vector() -> Vector2:
@@ -59,6 +59,7 @@ func _normal_attack() -> void:
 	# Create a bullet and face it in the same direction of the gun swivel
 	var angle = _calculate_spread_vector()
 	var bullet = projectile_type.instantiate()
+	_play_attack_sfx()
 	bullet.init(weapon_type, player_stats, angle)
 	GameManager.get_game_root().add_child(bullet)
 	bullet.position = global_position

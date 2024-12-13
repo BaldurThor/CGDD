@@ -16,10 +16,6 @@ var vec : Vector2 = Vector2(0,0)
 @export var speed : float = 10
 @export var max_dist : int = 400
 
-
-
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = GameManager.get_player()

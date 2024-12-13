@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="AbilityInfo" load_steps=9 format=3 uid="uid://cruh02v5cpqnc"]
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=10 format=3 uid="uid://cruh02v5cpqnc"]
 
-[ext_resource type="Script" uid="uid://iuea8r8ufyuf" path="res://player/ability_system/abilities/second_amendment/second_amendment.gd" id="1_aif1o"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/second_amendment/second_amendment.gd" id="1_aif1o"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_fbsu7"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_5aoi4"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="4_lvjfq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://dufhryeihr3fe" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.tres" id="6_bcjec"]
 [ext_resource type="Resource" uid="uid://xest1i6lv1da" path="res://player/ability_system/abilities/pickup_shotgun/pickup_shotgun.tres" id="7_6gkn0"]
 [ext_resource type="Resource" uid="uid://de5tqvsoulypj" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.tres" id="8_jvjiw"]
+[ext_resource type="Resource" uid="uid://cyakewo1cwoaj" path="res://player/ability_system/abilities/pickup_assault_rifle/pickup_assault_rifle.tres" id="9_x86wg"]
 
 [resource]
 script = ExtResource("3_5aoi4")
@@ -17,11 +18,11 @@ positive_effects = Array[String](["+3 ranged damage", "-5% ranged projectile spr
 negative_effects = Array[String]([])
 type = 0
 tags = Array[String](["added_ranged_damage", "ranged_spread_mod", "ranged_attack_speed_mod"])
-flavor_text = "Billy Bob's favorite!"
+flavor_text = "My favorite of the 27!"
 max_amount = 0
 rarity = 1
 icon = ExtResource("2_fbsu7")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("3_5aoi4")]([])
-requirements = Array[ExtResource("3_5aoi4")]([ExtResource("4_lvjfq"), ExtResource("5_j03sa"), ExtResource("6_bcjec"), ExtResource("7_6gkn0"), ExtResource("8_jvjiw")])
+requirements = Array[ExtResource("3_5aoi4")]([ExtResource("4_lvjfq"), ExtResource("5_j03sa"), ExtResource("6_bcjec"), ExtResource("7_6gkn0"), ExtResource("8_jvjiw"), ExtResource("9_x86wg")])

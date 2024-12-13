@@ -9,6 +9,7 @@ class_name AbilitySelector extends VBoxContainer
 const ABILITY_CHOICE = preload("res://player/hud/ability_choice/ability_choice.tscn")
 
 var spent_skill_points: int = 0
+
 enum ChoiceType {
 	NORMAL,
 	CORRUPTED,
@@ -24,9 +25,12 @@ func _ready() -> void:
 	visible = false
 	
 func _get_skip_xp() -> int:
-	if spent_skill_points == 0:
-		return 0
-	return player.experience.xp_needed_form(spent_skill_points)
+	var mul: float = 0.0
+	match active_type:
+		ChoiceType.CORRUPTED: mul = ability_system.loot_table.corrupted_skip_xp_multiplier
+		ChoiceType.WEAPONS: mul = ability_system.loot_table.weapon_skip_xp_multiplier
+		ChoiceType.NORMAL: mul = ability_system.loot_table.passive_skip_xp_multiplier
+	return int(player.experience.xp_needed_form(spent_skill_points) * mul)
 
 func _request() -> void:
 	var skip_xp: int = _get_skip_xp()
@@ -62,14 +66,13 @@ func _refresh() -> void:
 	if ability_queue.size() == 0:
 		_close_menu()
 		return
-	
+	_show_menu()
+	var choices = []
+	active_type = ability_queue.pop_front()
 	var skip_xp: int = _get_skip_xp()
 	skip_button.refresh_string(skip_xp)
 	skip_button.visible = player.experience.current_level > 0
-	_show_menu()
 	
-	var choices = []
-	active_type = ability_queue.pop_front()
 	match active_type:
 		ChoiceType.NORMAL: choices = ability_system.get_ability_selection()
 		ChoiceType.WEAPONS: choices = ability_system.get_weapon_selection()
@@ -93,7 +96,6 @@ func pick_ability(ability: AbilityInfo) -> void:
 	# Small hack to get the tracker not to count the first weapon pick as a skill point
 	if player.experience.current_level > 0:
 		spent_skill_points += 1
-	_update_backlog_text()
 	_refresh()
 
 ## Updates the text that indicates how many unspent skillpoints the player has
@@ -114,6 +116,7 @@ func _on_skip_button_button_up() -> void:
 	spent_skill_points += 1
 	if active_type == ChoiceType.CORRUPTED:
 		_close_menu()
+		return
 	_refresh()
 
 func _on_DebugCommands_pick_ability(type : int = 0) -> void:

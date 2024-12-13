@@ -11,6 +11,7 @@ class_name Player extends CharacterBody2D
 @onready var weapon_group_manager: WeaponGroupManager = $WeaponGroupManager
 @onready var ability_system: AbilitySystem = %AbilitySystem
 @onready var ability_selector: AbilitySelector = %AbilitySelector
+@onready var medkit_pickup_sfx: AudioStreamPlayer2D = $MedkitPickupSFX
 
 @export var freeze_player: bool = false
 @export var death_screen: PackedScene

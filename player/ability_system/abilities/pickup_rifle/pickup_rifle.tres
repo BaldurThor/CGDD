@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://dufhryeihr3fe"]
 
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_ahmqn"]
-[ext_resource type="Script" uid="uid://bbk5dcwqib1s4" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.gd" id="1_grxed"]
-[ext_resource type="Texture2D" uid="uid://dqr0arxmq3ons" path="res://player/weapons/gun/gun_types/rifle/rifle_placeholder.png" id="2_v1rul"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_ahmqn"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.gd" id="1_grxed"]
+[ext_resource type="Texture2D" uid="uid://08kl780u4w78" path="res://player/weapons/gun/gun_types/rifle/rifle.png" id="2_wfgec"]
 
 [resource]
 script = ExtResource("1_ahmqn")
@@ -15,7 +15,7 @@ tags = Array[String](["rifle", "ranged"])
 flavor_text = "High damage. Targets the farthest enemy"
 max_amount = 0
 rarity = 0
-icon = ExtResource("2_v1rul")
+icon = ExtResource("2_wfgec")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("1_ahmqn")]([])
