@@ -8,6 +8,8 @@ class_name PickupBase extends RigidBody2D
 @export var base_tracking_speed: int = 150
 @export var acceleration_per_tick: int = 2
 @export var hookable : bool = true
+@export var should_despawn: bool = true
+@export var should_accelerate: bool = true
 
 var acceleration: int = 0
 var should_track: bool = false
@@ -23,8 +25,10 @@ func _init() -> void:
 	_player = GameManager.get_player()
 	
 func _ready() -> void:
-	despawn_timer.timeout.connect(_on_despawn_timer_timeout)
-	acceleration_timer.timeout.connect(_on_acceleration_timer_timeout)
+	if should_despawn:
+		despawn_timer.timeout.connect(_on_despawn_timer_timeout)
+	if should_accelerate:
+		acceleration_timer.timeout.connect(_on_acceleration_timer_timeout)
 
 func _physics_process(_delta: float) -> void:
 	if should_track:

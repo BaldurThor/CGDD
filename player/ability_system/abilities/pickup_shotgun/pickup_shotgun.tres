@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://xest1i6lv1da"]
 
-[ext_resource type="Script" uid="uid://bwxo4vx68stx7" path="res://player/ability_system/abilities/pickup_shotgun/pickup_shotgun.gd" id="1_jiyuq"]
-[ext_resource type="Texture2D" uid="uid://bwwuweuxkga87" path="res://player/weapons/gun/gun_types/shotgun/shotgun_placeholder.png" id="2_yvenh"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_squy2"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_shotgun/pickup_shotgun.gd" id="1_jiyuq"]
+[ext_resource type="Texture2D" uid="uid://c3iavh1uyqnue" path="res://player/weapons/gun/gun_types/shotgun/shotgun.png" id="2_vj77b"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_squy2"]
 
 [resource]
 script = ExtResource("3_squy2")
@@ -15,7 +15,7 @@ tags = Array[String](["shotgun", "ranged"])
 flavor_text = "Fires a short-ranged blast at the nearest enemy"
 max_amount = 0
 rarity = 0
-icon = ExtResource("2_yvenh")
+icon = ExtResource("2_vj77b")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("3_squy2")]([])

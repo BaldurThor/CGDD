@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cobhinc6pra1v"]
+[gd_scene load_steps=14 format=3 uid="uid://cobhinc6pra1v"]
 
 [ext_resource type="Script" path="res://entity/bosses/boss.gd" id="1_6tvua"]
+[ext_resource type="PackedScene" uid="uid://delsmh5kmqfkw" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn" id="2_7h1y4"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_7uy41"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_yjw7m"]
 [ext_resource type="Texture2D" uid="uid://2jceb3mphfhn" path="res://entity/bosses/unspeakable/unspeakable.png" id="4_uh2np"]
@@ -32,6 +33,9 @@ freeze_mode = 1
 script = ExtResource("1_6tvua")
 spawn_offset = Vector2(0, -200)
 boss_title = "Hastur, The Unspeakable"
+item_drops = Array[PackedScene]([ExtResource("2_7h1y4")])
+item_drop_chances = Array[float]([1.0])
+item_drop_values = Array[int]([0])
 
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true

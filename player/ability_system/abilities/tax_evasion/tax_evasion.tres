@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://bcsmmjuiixuos"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/tax_evasion/tax_evasion.gd" id="1_olpxh"]
+[ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_xu7ty"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_s0von"]
+
+[resource]
+script = ExtResource("3_s0von")
+ability_script = ExtResource("1_olpxh")
+name = "Tax evasion"
+positive_effects = Array[String](["+10% movement speed", "+8% dodge chance"])
+negative_effects = Array[String]([])
+type = 0
+tags = Array[String](["movement_speed_mod", "dodge"])
+flavor_text = "It's my right!"
+max_amount = 0
+rarity = 1
+icon = ExtResource("2_xu7ty")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_s0von")]([])
+requirements = Array[ExtResource("3_s0von")]([])

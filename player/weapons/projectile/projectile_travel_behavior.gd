@@ -19,4 +19,4 @@ func _handle_impact(_collided_with: Node2D) -> void:
 func _physics_process(delta: float) -> void:
 	if stop_on_impact and _impacted:
 		return
-	projectile.position += projectile.direction * projectile.weapon_type.projectile_speed * delta
+	projectile.position += projectile.direction * projectile.weapon_group.weapon_type.projectile_speed * delta
