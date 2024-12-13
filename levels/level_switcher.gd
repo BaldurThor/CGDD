@@ -23,13 +23,9 @@ func _ready():
 	prev_level = levels[0]
 	new_level = levels[0]
 	levels[0].get_node("Music").play()
-<<<<<<< HEAD
-=======
-	_level_switch.connect(_on_level_switch)
 	
 	#for debug
 	GameManager.level_switcher_ready = true
->>>>>>> 8f1fd6c15fef34221bf0019e9e632a4fb66b6f3e
 
 func _on_new_world_level():
 	set_level(GameManager.world_level)

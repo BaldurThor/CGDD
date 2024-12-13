@@ -85,6 +85,7 @@ func _on_death():
 	animation_player.play("death")
 	sprite_2d.visible = false
 	health_bar.visible = false
+	shadow.visible = false
 	await animation_player.animation_finished
 	destroy_object.emit()
 
