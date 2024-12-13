@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://xqbx4dgecmyu"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_base.gd" id="1_4tenj"]
-[ext_resource type="Shader" path="res://entity/entity.gdshader" id="1_x7jxo"]
-[ext_resource type="Script" path="res://entity/entity_sprite.gd" id="3_8xh11"]
+[ext_resource type="Shader" uid="uid://d303j5bd47raj" path="res://entity/entity.gdshader" id="1_x7jxo"]
+[ext_resource type="Script" uid="uid://d3yvuj3nell8" path="res://entity/entity_sprite.gd" id="3_8xh11"]
 [ext_resource type="PackedScene" uid="uid://bjpfq2ef27wp4" path="res://player/hud/health_bar/health_bar.tscn" id="4_yxxgb"]
 [ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="5_t6voh"]
 [ext_resource type="AudioStream" uid="uid://bgqoinfvqwxl" path="res://entity/death.wav" id="6_e1p54"]
