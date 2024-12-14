@@ -1,0 +1,81 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://chmld5xy50mb7"]
+
+[ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="1_lb1tx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbrfa"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0989135, 0.0510184, 0.0371655, 1)
+
+[sub_resource type="Gradient" id="Gradient_35ogp"]
+offsets = PackedFloat32Array(0.5, 0.5)
+colors = PackedColorArray(0.572534, 0.529549, 0.529549, 1, 0.714629, 0.714629, 0.714629, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mblkw"]
+gradient = SubResource("Gradient_35ogp")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_y0a5p"]
+offsets = PackedFloat32Array(0.5, 0.5)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wt8yy"]
+gradient = SubResource("Gradient_y0a5p")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmmnr"]
+content_margin_left = 0.0
+content_margin_top = 5.0
+content_margin_right = 0.0
+content_margin_bottom = 5.0
+bg_color = Color(0.238869, 0.27981, 0.56093, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_saltq"]
+content_margin_left = 0.0
+content_margin_top = 5.0
+content_margin_right = 0.0
+content_margin_bottom = 5.0
+bg_color = Color(0.686419, 0.699856, 0.947655, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kfgg"]
+content_margin_left = 0.0
+content_margin_top = 5.0
+content_margin_right = 0.0
+content_margin_bottom = 5.0
+bg_color = Color(0.115821, 0.0567283, 0.0447671, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+anti_aliasing = false
+
+[resource]
+Button/font_sizes/font_size = 9
+Button/fonts/font = ExtResource("1_lb1tx")
+Button/styles/normal = SubResource("StyleBoxFlat_pbrfa")
+HSlider/icons/grabber = SubResource("GradientTexture2D_mblkw")
+HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_wt8yy")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_rmmnr")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_saltq")
+HSlider/styles/slider = SubResource("StyleBoxFlat_7kfgg")
+Label/font_sizes/font_size = 9
+Label/fonts/font = ExtResource("1_lb1tx")

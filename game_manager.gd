@@ -193,3 +193,13 @@ func get_time_left() -> int:
 		return self.game_timer.time_left
 	else:
 		return self._time_played - self._time_when_done
+
+func start_endless_mode() -> void:
+	_time_played = 0
+	_time_when_done = 0
+	reset_pause()
+	
+	world_level = 1
+	freeze_enemies = false
+	endless = true
+	load_scene("res://levels/game.tscn")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://db5yyodexjuf1"]
+[gd_scene load_steps=8 format=3 uid="uid://db5yyodexjuf1"]
 
 [ext_resource type="Script" path="res://menu/main/menu.gd" id="1_wk1l7"]
 [ext_resource type="Texture2D" uid="uid://cfmkebbfibavb" path="res://menu/main/main_menu.png" id="2_wtmgf"]
-[ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="8_c5jhc"]
+[ext_resource type="Texture2D" uid="uid://dbct82fm2nh1k" path="res://menu/plank.png" id="3_7fc0f"]
+[ext_resource type="Theme" uid="uid://chmld5xy50mb7" path="res://menu/menu_theme.tres" id="4_kosxn"]
+[ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/controls/controls.tscn" id="8_c5jhc"]
 [ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="10_b5mhb"]
 [ext_resource type="AudioStream" uid="uid://bwyyr85im3ii5" path="res://menu/main/survival-metal-with-solo-109315.mp3" id="10_dbaeb"]
 
@@ -15,10 +17,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wk1l7")
-info_node = NodePath("Info")
+info_node = NodePath("Controls")
 options_node = NodePath("Options")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 z_index = -1
 layout_mode = 2
 offset_right = 960.0
@@ -26,21 +28,37 @@ offset_bottom = 540.0
 texture = ExtResource("2_wtmgf")
 expand_mode = 1
 
+[node name="Plank" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 2
+offset_left = 63.0
+offset_top = 238.0
+offset_right = 343.0
+offset_bottom = 500.0
+texture = ExtResource("3_7fc0f")
+expand_mode = 1
+stretch_mode = 2
+
 [node name="MenuOptions" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 59.0
-offset_top = 279.0
-offset_right = 343.0
+offset_left = 99.0
+offset_top = 297.0
+offset_right = 303.0
 offset_bottom = 491.0
 size_flags_vertical = 6
+theme = ExtResource("4_kosxn")
 
 [node name="StartGameButton" type="Button" parent="MenuOptions"]
 layout_mode = 2
 text = "Dive in"
 
+[node name="EndlessModeButton" type="Button" parent="MenuOptions"]
+layout_mode = 2
+text = "Endless Mode"
+
 [node name="HowToPlayButton" type="Button" parent="MenuOptions"]
 layout_mode = 2
-text = "How to play"
+text = "Controls"
 
 [node name="OptionsButton" type="Button" parent="MenuOptions"]
 layout_mode = 2
@@ -50,26 +68,31 @@ text = "Options"
 layout_mode = 2
 text = "Quit"
 
-[node name="Info" parent="." node_paths=PackedStringArray("how_to_play") instance=ExtResource("8_c5jhc")]
+[node name="Controls" parent="." instance=ExtResource("8_c5jhc")]
 visible = false
 layout_mode = 2
-anchors_preset = 0
-how_to_play = NodePath("")
+offset_left = 63.0
+offset_top = 238.0
+offset_right = 339.0
+offset_bottom = 515.0
 
-[node name="Options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("10_b5mhb")]
+[node name="Options" parent="." instance=ExtResource("10_b5mhb")]
 visible = false
 layout_mode = 2
-anchors_preset = 0
-options = NodePath("")
+offset_left = 63.0
+offset_top = 238.0
+offset_right = 339.0
+offset_bottom = 515.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_dbaeb")
 autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="MenuOptions/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MenuOptions/EndlessModeButton" to="." method="_on_endless_mode_button_pressed"]
 [connection signal="pressed" from="MenuOptions/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="MenuOptions/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MenuOptions/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="hidden" from="Info" to="." method="_on_info_hidden"]
+[connection signal="hidden" from="Controls" to="." method="_on_info_hidden"]
 [connection signal="hidden" from="Options" to="." method="_on_options_hidden"]

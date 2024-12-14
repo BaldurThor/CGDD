@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://20vpyj2jbokl"]
+
+[ext_resource type="Script" path="res://menu/controls/controls.gd" id="1_e5yfn"]
+[ext_resource type="Texture2D" uid="uid://dbct82fm2nh1k" path="res://menu/plank.png" id="1_f883o"]
+[ext_resource type="Texture2D" uid="uid://dbahm6dih60a" path="res://menu/controls/controls_text.png" id="5_esw0e"]
+[ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="6_jk3rs"]
+[ext_resource type="Theme" uid="uid://chmld5xy50mb7" path="res://menu/menu_theme.tres" id="7_e45uk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_347yc"]
+line_spacing = 10.0
+font = ExtResource("6_jk3rs")
+font_size = 9
+font_color = Color(0.784531, 0.465373, 0.405674, 1)
+
+[node name="InfoMenu" type="TextureRect"]
+offset_right = 276.0
+offset_bottom = 277.0
+texture = ExtResource("1_f883o")
+script = ExtResource("1_e5yfn")
+
+[node name="PanelTitle" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 23.0
+offset_right = 239.0
+offset_bottom = 63.0
+texture = ExtResource("5_esw0e")
+stretch_mode = 4
+
+[node name="Controls" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 94.0
+offset_right = 248.0
+offset_bottom = 174.0
+text = "Use WASD to move
+You automatically shoot
+Hold left click to cast fishing hook
+Let go of left click to retrieve hook
+Press tab to open level up menu"
+label_settings = SubResource("LabelSettings_347yc")
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 208.0
+offset_right = 208.0
+offset_bottom = 236.0
+focus_neighbor_top = NodePath(".")
+theme = ExtResource("7_e45uk")
+text = "Back"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
