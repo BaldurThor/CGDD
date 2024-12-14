@@ -32,7 +32,6 @@ script = ExtResource("1_w3cvk")
 script = ExtResource("2_8kw0m")
 
 [node name="MeleeWeapon" type="Node2D" parent="MeleeSwivel"]
-position = Vector2(30, 0)
 script = ExtResource("3_5ixea")
 
 [node name="MeleeSprite" type="Sprite2D" parent="MeleeSwivel/MeleeWeapon"]
