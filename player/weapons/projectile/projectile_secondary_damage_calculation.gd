@@ -16,6 +16,4 @@ func calculate_damage() -> int:
 	return max(1, int(damage)) * group.player_stats.non_crit_damage_multiplier
 
 func calculate_knockback() -> int:
-	if projectile.weapon_group.weapon_type.can_knockback:
-		return projectile.weapon_group.weapon_type.secondary_knockback
-	return 0
+	return projectile.weapon_group.get_secondary_knockback()

@@ -69,7 +69,7 @@ scale = Vector2(0.5, 0.197819)
 texture = SubResource("GradientTexture2D_m6wvd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -3.18892)
+position = Vector2(0, -3.24222)
 texture = ExtResource("1_dcb47")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

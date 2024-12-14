@@ -15,6 +15,7 @@ var death: bool = false
 
 var _time_played: int = 0
 var _time_when_done: int = 0
+var _endless_time_start: int = 0
 
 var time_between_bosses_endless: int = 180
 var endless: bool = false
@@ -93,15 +94,16 @@ func _process(_delta: float) -> void:
 			world_level = 5
 			freeze_enemies = true
 			new_world_level.emit()
-		elif ((self._time_when_done - self._time_played) % self.time_between_bosses_endless) == 0 and self._time_played != 0 and self.last_time_boss_spawned_endless != self._time_played:
-			spawn_random_boss.emit()
+		elif ((self._endless_time_start - self._time_played) % self.time_between_bosses_endless) == 0 and self._time_played != 0 and self.last_time_boss_spawned_endless != self._time_played:
+			if self.active_boss != null:
+				spawn_random_boss.emit()
 			self.last_time_boss_spawned_endless = self._time_played
 		
 	if game_timer.is_stopped():
 		return
 		
 	var progress: float = 1 - game_timer.time_left / game_timer.wait_time
-	var level = int(progress * (LEVEL_COUNT - 1)) + 1
+	var level = int(progress * LEVEL_COUNT) + 1
 	if level != world_level:
 		world_level = level
 		freeze_enemies = true
@@ -145,7 +147,7 @@ func get_world_level_progress() -> float:
 		var segment = 1.0 / LEVEL_COUNT
 		return fmod(percentage, segment) * LEVEL_COUNT
 	else:
-		return remap(self._time_played, 0., 6000., 0., 1.)
+		return remap(self._endless_time_start - self._time_played, 0., 6000., 0., 1.)
 
 func set_pause(id: Node, paused: bool) -> void:
 	if paused:
@@ -187,12 +189,13 @@ func endless_mode() -> void:
 	game_timer.stop()
 	freeze_enemies = false
 	self.get_player().freeze_player = false
+	self._endless_time_start = self._time_played
 
 func get_time_left() -> int:
 	if not self.endless:
 		return self.game_timer.time_left
 	else:
-		return self._time_played - self._time_when_done
+		return self._time_played - self._endless_time_start
 
 func start_endless_mode() -> void:
 	_time_played = 0

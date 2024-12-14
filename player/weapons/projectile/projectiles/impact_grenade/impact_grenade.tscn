@@ -20,7 +20,6 @@ shape = SubResource("CircleShape2D_wstvw")
 
 [node name="TravelBehavior" type="Node" parent="."]
 script = ExtResource("2_5ei7x")
-stop_on_impact = true
 face_direction = true
 
 [node name="ImpactBehavior" type="Node" parent="."]
