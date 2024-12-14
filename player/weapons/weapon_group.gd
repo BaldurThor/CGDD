@@ -24,6 +24,8 @@ var extra_pierce_count: int = 0
 var added_crit_chance: float = 0.0
 var added_crit_multiplier: float = 0.0
 var added_projectiles: int = 0
+var added_melee_strikes: int = 0
+var added_knockback: int = 0
 
 signal range_updated()
 signal attack_speed_updated()
@@ -118,3 +120,26 @@ func get_total_projectiles() -> int:
 
 func get_explosion_radius() -> float:
 	return (weapon_type.explosion_radius + player_stats.added_explosive_radius) * player_stats.explosive_radius_mod
+
+func get_melee_strikes() -> int:
+	return weapon_type.melee_strike_count + player_stats.added_melee_strikes + added_melee_strikes
+
+func get_knockback() -> int:
+	if !weapon_type.can_knockback:
+		return 0
+	var knockback = weapon_type.knockback + added_knockback
+	match weapon_archetype:
+		WeaponGroupManager.WeaponArchetype.MELEE, WeaponGroupManager.WeaponArchetype.ORBITAL_MELEE:
+			knockback += player_stats.added_melee_knockback
+			knockback *= player_stats.melee_knockback_mod
+	return knockback
+
+func get_secondary_knockback() -> int:
+	if !weapon_type.can_knockback:
+		return 0
+	var knockback = weapon_type.secondary_knockback + added_knockback
+	match weapon_archetype:
+		WeaponGroupManager.WeaponArchetype.MELEE, WeaponGroupManager.WeaponArchetype.ORBITAL_MELEE:
+			knockback += player_stats.added_melee_knockback
+			knockback *= player_stats.melee_knockback_mod
+	return knockback

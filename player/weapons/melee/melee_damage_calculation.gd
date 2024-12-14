@@ -2,27 +2,17 @@ class_name MeleeDamageCalculation extends Node
 
 @onready var melee: Melee = $".."
 
-var _player_stats: PlayerStats = null
-var _weapon_type: WeaponType = null
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	_player_stats = melee.player_stats
-	_weapon_type = melee.weapon_type
-
 func calculate_damage() -> int:
-	var base_damage = (_weapon_type.damage + _player_stats.added_melee_damage) * _weapon_type.damage_effectiveness
-	var crit_chance = _weapon_type.crit_chance + _player_stats.crit_chance
-	var damage: float = float(base_damage) * _player_stats.damage_mod
+	var group = melee.weapon_group
+	var damage = group.get_base_damage()
+	var crit_chance = group.get_crit_chance()
 	var is_crit: bool = randf() < crit_chance
 	if is_crit:
-		if !_player_stats.crits_deal_damage:
+		if !group.player_stats.crits_deal_damage:
 			return 0
-		damage *= float(_weapon_type.crit_damage + _player_stats.crit_multiplier)
+		damage *= group.get_crit_multiplier()
 		return max(1, int(damage))
-	return max(1, int(damage)) * _player_stats.non_crit_damage_multiplier
+	return max(1, int(damage)) * group.player_stats.non_crit_damage_multiplier
 
 func calculate_knockback() -> int:
-	if _weapon_type.can_knockback:
-		return int((_weapon_type.knockback + _player_stats.added_melee_knockback) * _player_stats.melee_knockback_mod)
-	return 0
+	return melee.weapon_group.get_knockback()

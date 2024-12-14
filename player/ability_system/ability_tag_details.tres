@@ -8,7 +8,7 @@ _tags = {
 "added_damage": "Flat damage modifiers are applied before any damage multipliers.",
 "added_explosive_radius": "Flat modifiers to explosion radius are applied before multipliers.",
 "added_melee_strikes": "Melee weapons strike an additional time per attack based on the number of added strikes.",
-"armor": "Armor reduces all damage taken by a percentage based on its value.",
+"armor": "Armor reduces all damage taken by a percentage based on its value. Armor cannot be negative.",
 "assault_rifle": "The assault rifle inherently fires more projectiles in a burst with a fairly high base attack speed, but lower than normal damage.",
 "crit_chance": "Critical strikes deal extra damage (base 200% for most weapons). Explosions cannot deal critical strikes.",
 "crit_multiplier": "The critical strike multiplier is the damage multiplier for critical strikes. Increases are applied additively.",

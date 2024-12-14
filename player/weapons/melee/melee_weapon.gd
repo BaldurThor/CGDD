@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 			
 func _attack(enemy: Enemy) -> void:
 	melee_strike_range.look_at(enemy.global_position)
-	var strikes = melee.weapon_type.melee_strike_count + melee.player_stats.added_melee_strikes
+	var strikes = melee.weapon_group.get_melee_strikes()
 	for i in range(strikes):
 		var has_enemies = _strike()
 		if has_enemies:

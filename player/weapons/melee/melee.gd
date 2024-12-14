@@ -3,6 +3,7 @@ class_name Melee extends Node2D
 @export var weapon_type: WeaponType
 @export var player_stats: PlayerStats
 @export var melee_weapon_scene: PackedScene
+
 var weapon_group: WeaponGroup
 var index_in_group: int
 
