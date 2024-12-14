@@ -98,6 +98,7 @@ func get_weapon_selection(count: int = 3) -> Array[AbilityInfo]:
 func get_corrupted_abilities(count: int = 3) -> Array[AbilityInfo]:
 	var corrupted_pool = _get_corrupted_pool()
 	var choices: Array[AbilityInfo] = []
+	count = min(count, corrupted_pool.size())
 	for i in range(count):
 		var index = randi_range(0, corrupted_pool.size() - 1)
 		choices.push_back(corrupted_pool[index])

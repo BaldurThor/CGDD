@@ -8,6 +8,10 @@ func _on_death() -> void:
 	super()
 	if not GameManager.endless:
 		_spawn(MOONSHINE)
+	else:
+		self.item_drops = [preload("res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn")] #: Array[PackedScene]
+		self.item_drop_chances = [1.] #: Array[float]
+		self.item_drop_values = [1] #: Array[int]
 	_spawn(CTHULHU_DEATH)
 
 func _spawn(scene: PackedScene):

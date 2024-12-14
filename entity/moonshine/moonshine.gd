@@ -13,6 +13,9 @@ var timer: float = 0.0
 var velocity: Vector2 = Vector2.ZERO
 var gravity_active: bool = false
 
+func _enter_tree() -> void:
+	GameManager.freeze_enemies = true
+
 func _process(delta: float) -> void:
 	timer += delta
 	
