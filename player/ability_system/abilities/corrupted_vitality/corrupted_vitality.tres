@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://qb25rarw0n4"]
 
-[ext_resource type="Script" uid="uid://bb6spcu7jbc7u" path="res://player/ability_system/abilities/corrupted_vitality/corrupted_vitality.gd" id="1_0k6ll"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/corrupted_vitality/corrupted_vitality.gd" id="1_0k6ll"]
 [ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="2_88y4d"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_dvtsv"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_dvtsv"]
 
 [resource]
 script = ExtResource("3_dvtsv")
 ability_script = ExtResource("1_0k6ll")
 name = "Corrupted Vitality"
-positive_effects = Array[String](["+125% max health"])
-negative_effects = Array[String](["Cannot regenerate health"])
+positive_effects = Array[String](["+125% max health multiplier"])
+negative_effects = Array[String](["Cannot passively regenerate health"])
 type = 1
-tags = Array[String]([])
+tags = Array[String](["max_health_mod"])
 flavor_text = "An indescribable wave of strength flows through you..."
 max_amount = 1
 rarity = 3

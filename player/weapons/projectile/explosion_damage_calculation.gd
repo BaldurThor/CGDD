@@ -9,7 +9,4 @@ func calculate_damage() -> int:
 	return max(1, int(damage)) * explosion.weapon_group.player_stats.non_crit_damage_multiplier
 
 func calculate_knockback() -> int:
-	var weapon_type: WeaponType = explosion.weapon_group.weapon_type
-	if weapon_type.can_knockback:
-		return weapon_type.knockback
-	return 0
+	return explosion.weapon_group.get_knockback()

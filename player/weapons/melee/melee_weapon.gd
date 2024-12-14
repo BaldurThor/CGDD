@@ -15,6 +15,7 @@ signal _attack_signal(enemy: Enemy)
 func _ready() -> void:
 	_attack_signal.connect(_attack)
 	melee_sprite.texture = melee.weapon_type.sprite
+	melee_sprite.scale = melee.weapon_type.sprite_scale
 	attack_timer.wait_time = melee.weapon_type.attack_speed / (melee.player_stats.attack_speed_mod * melee.player_stats.melee_attack_speed_mod)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	attack_timer.start()
@@ -38,7 +39,7 @@ func _process(_delta: float) -> void:
 			
 func _attack(enemy: Enemy) -> void:
 	melee_strike_range.look_at(enemy.global_position)
-	var strikes = melee.weapon_type.melee_strike_count + melee.player_stats.added_melee_strikes
+	var strikes = melee.weapon_group.get_melee_strikes()
 	for i in range(strikes):
 		var has_enemies = _strike()
 		if has_enemies:
