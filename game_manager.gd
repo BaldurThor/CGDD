@@ -20,6 +20,7 @@ var time_between_bosses_endless: int = 180
 var endless: bool = false
 var level_switcher_ready: bool = false
 var last_time_boss_spawned_endless: int = 0
+var scene_to_load: String = ""
 
 # Global game events
 signal enemy_take_damage(amount: int)
@@ -40,6 +41,7 @@ signal caught_fish
 signal got_crit
 signal made_projectile
 
+const LOADING_SCREEN = preload("res://menu/loading_screen/loading_screen.tscn")
 const LEVEL_COUNT: int = 4
 
 func _ready() -> void:
@@ -68,7 +70,6 @@ func get_active_boss() -> Boss:
 func start_game() -> void:
 	self._time_played = 0
 	self._time_when_done = 0
-	get_tree().change_scene_to_file("res://levels/game.tscn")
 	reset_pause()
 	
 	game_timer.stop()
@@ -79,6 +80,11 @@ func start_game() -> void:
 	world_level = 1
 	freeze_enemies = false
 	endless = false
+	load_scene("res://levels/game.tscn")
+
+func load_scene(scene_path: String) -> void:
+	scene_to_load = scene_path
+	get_tree().change_scene_to_packed(LOADING_SCREEN)
 
 func _process(_delta: float) -> void:
 	#self.level_switcher_ready is a debug thing!
@@ -103,7 +109,7 @@ func _process(_delta: float) -> void:
 		game_timer.paused = true
 
 func main_menu() -> void:
-	get_tree().change_scene_to_file("res://menu/main/menu.tscn")
+	load_scene("res://menu/main/menu.tscn")
 	reset_pause()
 
 # Used by the player.gd script to tell the game manager where the player is.

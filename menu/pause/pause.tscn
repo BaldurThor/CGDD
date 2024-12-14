@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://b8h32mkkaisy6"]
 
-[ext_resource type="Script" path="res://menu/pause/pause.gd" id="1_lcdb4"]
+[ext_resource type="Script" uid="uid://csvp65rr0feln" path="res://menu/pause/pause.gd" id="1_lcdb4"]
 [ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="2_7tms3"]
-[ext_resource type="Script" path="res://menu/pause/continue.gd" id="3_3svv3"]
-[ext_resource type="Script" path="res://menu/shared/how_to_play.gd" id="4_2yxxt"]
-[ext_resource type="Script" path="res://menu/shared/options.gd" id="4_ltcbk"]
+[ext_resource type="Script" uid="uid://7komhm5s3xke" path="res://menu/pause/continue.gd" id="3_3svv3"]
+[ext_resource type="Script" uid="uid://b8xt6044m278r" path="res://menu/shared/how_to_play.gd" id="4_2yxxt"]
+[ext_resource type="Script" uid="uid://ca6krj2sb1dhg" path="res://menu/shared/options.gd" id="4_ltcbk"]
 [ext_resource type="Script" path="res://menu/shared/quit.gd" id="5_6hme5"]
 [ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="5_ugmh8"]
-[ext_resource type="Script" path="res://menu/pause/reset.gd" id="6_w46qb"]
+[ext_resource type="Script" uid="uid://dxbluoxpnm8d7" path="res://menu/pause/reset.gd" id="6_w46qb"]
 [ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="8_dglk4"]
 
 [node name="Pause" type="CanvasLayer" node_paths=PackedStringArray("info_node", "options_node", "continue_node")]
@@ -105,7 +105,7 @@ focus_neighbor_bottom = NodePath("../Continue")
 focus_mode = 2
 mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Quit"
+text = "Quit to Main Menu"
 script = ExtResource("5_6hme5")
 
 [node name="Version" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer"]
