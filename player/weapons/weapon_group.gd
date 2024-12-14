@@ -4,6 +4,10 @@ class_name WeaponGroup extends Node2D
 @onready var weapons: Node2D = $Weapons
 @onready var target_range: TargetRange = $TargetRange
 
+signal range_updated()
+signal attack_speed_updated()
+signal melee_strikes_updated()
+
 ## The identity of this weapon group (eg. "pistol", "shotgun"...)
 var group_identity: String
 var weapon_type: WeaponType = null
@@ -24,11 +28,12 @@ var extra_pierce_count: int = 0
 var added_crit_chance: float = 0.0
 var added_crit_multiplier: float = 0.0
 var added_projectiles: int = 0
-var added_melee_strikes: int = 0
+var added_melee_strikes: int = 0:
+	set(value):
+		var delta = value - added_melee_strikes
+		added_melee_strikes = value
+		melee_strikes_updated.emit(delta)
 var added_knockback: int = 0
-
-signal range_updated()
-signal attack_speed_updated()
 
 func init(
 	identity: String,

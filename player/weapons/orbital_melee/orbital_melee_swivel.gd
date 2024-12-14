@@ -10,6 +10,7 @@ var player_stats: PlayerStats = null
 func _ready() -> void:
 	self.weapon_type = melee.weapon_type
 	self.player_stats = melee.player_stats
+	orbital_melee.weapon_group.melee_strikes_updated.connect(_reevaluate_child_count)
 	orbital_melee.player_stats.player_melee_range_changed.connect(_reevaluate_child_positions)
 	orbital_melee.player_stats.player_melee_strike_count_changed.connect(_reevaluate_child_count)
 	var initial_count = orbital_melee.weapon_type.melee_strike_count + orbital_melee.player_stats.added_melee_strikes
