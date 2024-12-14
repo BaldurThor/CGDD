@@ -46,6 +46,10 @@ autostart = true
 sprite = ExtResource("4_kpd4v")
 entity_stats = NodePath("../EntityStats")
 sprite_scale = 1.8
+sprite_offset = Vector2(0, -10.215)
+show_shadow = true
+shadow_size = 1.0
+shadow_offset = Vector2(0, 15)
 
 [node name="LogicTree" type="Node" parent="."]
 script = ExtResource("5_oxdwj")

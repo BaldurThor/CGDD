@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://bplqid0wqhutk"]
 
-[ext_resource type="Script" path="res://entity/bosses/boss.gd" id="1_0ygwl"]
+[ext_resource type="Script" uid="uid://b6pltl030ysv8" path="res://entity/bosses/boss.gd" id="1_0ygwl"]
 [ext_resource type="PackedScene" uid="uid://delsmh5kmqfkw" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn" id="2_3gu8j"]
-[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_8417x"]
+[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_8417x"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_ng2h4"]
 [ext_resource type="Texture2D" uid="uid://dphtgbysoogi" path="res://entity/bosses/horror_of_the_sea/horror_of_the_sea.png" id="4_hsrmb"]
 [ext_resource type="Script" path="res://entity/projectile_spawner.gd" id="5_2enaf"]
 [ext_resource type="PackedScene" uid="uid://24k2uymv0fse" path="res://entity/bosses/horror_of_the_sea/horror_tentacle.tscn" id="6_f0han"]
 [ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="7_ri54t"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="9_a78fb"]
-[ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="10_nsxm0"]
-[ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_tdx3w"]
+[ext_resource type="Script" uid="uid://c7t3wf0arj2h3" path="res://entity/enemy/enemy_actions/chase.gd" id="10_nsxm0"]
+[ext_resource type="Script" uid="uid://b2xu8wf018f6p" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_tdx3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
 radius = 31.0644
@@ -66,6 +66,9 @@ entity_stats = NodePath("../EntityStats")
 sprite_scale = 3.0
 sprite_offset = Vector2(0, -13)
 show_health_bar = false
+show_shadow = false
+shadow_size = 1.0
+shadow_offset = Vector2(0, 15)
 
 [node name="TentacleSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_2enaf")

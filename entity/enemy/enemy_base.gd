@@ -9,6 +9,9 @@ signal destroy_object
 @onready var hit_sfx: AudioStreamPlayer2D = $HitSFX
 @onready var death_sfx: AudioStreamPlayer2D = $DeathSFX
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shadow: Sprite2D = $Shadow
+
+const DEFAULT_SHADOW_SIZE: Vector2 = Vector2(0.594, 0.235)
 
 @export var sprite: Texture2D:
 	set(value):
@@ -47,6 +50,24 @@ signal destroy_object
 		if Engine.is_editor_hint() and health_bar != null:
 			health_bar.visible = value
 
+@export var show_shadow: bool = true:
+	set(value):
+		show_shadow = value
+		if Engine.is_editor_hint() and shadow != null:
+			shadow.visible = show_shadow
+
+@export var shadow_size: float = 1.0:
+	set(value):
+		shadow_size = value
+		if Engine.is_editor_hint() and shadow != null:
+			shadow.scale = DEFAULT_SHADOW_SIZE * shadow_size
+
+@export var shadow_offset: Vector2 = Vector2(0, 15):
+	set(value):
+		shadow_offset = value
+		if Engine.is_editor_hint() and shadow != null:
+			shadow.position = shadow_offset
+
 func _ready():
 	sprite_2d.texture = sprite
 	health_bar.stats_node = entity_stats
@@ -56,11 +77,15 @@ func _ready():
 	sprite_2d.position = sprite_offset
 	sprite_2d.material.set_shader_parameter("modulate", sprite_modulate)
 	health_bar.visible = show_health_bar
+	shadow.visible = show_shadow
+	shadow.scale = DEFAULT_SHADOW_SIZE * shadow_size
+	shadow.position = shadow_offset
 
 func _on_death():
 	animation_player.play("death")
 	sprite_2d.visible = false
 	health_bar.visible = false
+	shadow.visible = false
 	await animation_player.animation_finished
 	destroy_object.emit()
 
