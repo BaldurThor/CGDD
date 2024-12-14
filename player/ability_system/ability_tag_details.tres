@@ -6,7 +6,7 @@
 script = ExtResource("1_mv0bg")
 _tags = {
 "added_damage": "Flat damage modifiers are applied before any damage multipliers.",
-"added_explosive_radius": "Flat modifiers to explosion range are applied before multipliers.",
+"added_explosive_radius": "Flat modifiers to explosion radius are applied before multipliers.",
 "added_melee_strikes": "Melee weapons strike an additional time per attack based on the number of added strikes.",
 "armor": "Armor reduces all damage taken by a percentage based on its value.",
 "assault_rifle": "The assault rifle inherently fires more projectiles in a burst with a fairly high base attack speed, but lower than normal damage.",
@@ -18,18 +18,18 @@ _tags = {
 "explosive": "Explosive weapons do not deal damage on impact, but rather after a short delay.",
 "explosive_radius_mod": "Multipliers to explosion radius are applied after flat increases.",
 "explosive_weapon": "This weapon scales with explosion modifiers.",
-"extra_projectiles": "+# extra projectiles: Ranged weapons fire an additional projectile based on the number of extra projectiles. Some weapons fire all projectiles at once.",
+"extra_projectiles": "Guns fire an additional projectile based on the number of extra projectiles. Some weapons fire all projectiles at once.",
 "friendly_fish": "The friendly fish gains an additional fish per melee strike, and scales with both range and attack speed.",
 "grenade": "Grenade explosions scale with explosive damage modifiers, but the shrapnel scales with gun modifiers.",
 "grenade_launcher": "The grenade launcher benefits from additional projectiles.",
 "gun": "This weapon scales with gun modifiers.",
-"item": "Enemies may drop pickups on death.",
+"item": "Enemies may drop pickups on death, such as experience orbs.",
 "item_absorb": "Most items that you walk up to will be absorbed, causing them to fly towards you.",
 "knockback": "Enemies are pushed back a certain distance on hit based on knockback.",
 "max_health": "Increases and decreases to maximum health are applied additively with each other.",
 "max_health_mod": "Multipliers to maximum health are applied to all flat increases and decreases to maximum health, and your base maximum health.",
 "melee_weapon": "This weapon scales with melee modifiers.",
-"orbital": "Orbital weapons rotate around your character and scale with melee modifiers.",
+"orbital_weapon": "Orbital weapons rotate around your character.",
 "pierce": "A gun projectile can pass through an enemy and hit an additional enemy per pierce.",
 "pistol": "The pistol scales with ranged weapon modifiers.",
 "ranged": "Guns and thrown explosives are considered ranged.",
@@ -38,6 +38,6 @@ _tags = {
 "regen_amount_flat": "+# health regen: A flat amount of health recovered per regeneration tick.",
 "regen_amount_percentile": "+#% health regen: A % of your maximum health regenerated per regen tick.",
 "regen_speed": "Regen speed: The speed at which you regenerate health. Default is every 2 seconds.",
-"regen_speed_mod": "+#% health regen speed: A multiplier to the speed at which you regenerate health. The default time between ticks is 2 seconds.",
+"regen_speed_mod": "Regen speed affects the rate at which you regenerate health. The default time between ticks is 2 seconds.",
 "speargun": "The speargun cannot knock back enemies, but always pierces."
 }

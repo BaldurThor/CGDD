@@ -38,6 +38,7 @@ script = ExtResource("3_5ixea")
 z_index = 1
 rotation = 0.418879
 texture = ExtResource("4_e0nyu")
+offset = Vector2(45, 0)
 
 [node name="AttackTimer" type="Timer" parent="MeleeSwivel/MeleeWeapon"]
 one_shot = true
