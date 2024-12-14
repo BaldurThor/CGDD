@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_aukfl"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_l6rdd"]
 [ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_aaljs"]
-[ext_resource type="Shader" uid="uid://ii2rmljnst7c" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_056jx"]
+[ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_056jx"]
 [ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="6_mnqrr"]
-[ext_resource type="Script" uid="uid://cbpfg3frbhdad" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_plk0o"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_plk0o"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/check_for_targets.gd" id="7_oh7c4"]
 [ext_resource type="Script" uid="uid://d2x55wmqdp2rq" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gd" id="8_uim5p"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/contact_damage_node.gd" id="9_nq0ym"]
@@ -65,6 +65,9 @@ sprite = ExtResource("4_aaljs")
 entity_stats = NodePath("../EntityStats")
 sprite_scale = 4.0
 sprite_offset = Vector2(0, -94.06)
+show_shadow = false
+shadow_size = 1.0
+shadow_offset = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_vy7hj")
