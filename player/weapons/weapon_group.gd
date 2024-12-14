@@ -83,7 +83,7 @@ func calculate_total_attack_speed() -> float:
 	var attack_speed = weapon_type.attack_speed
 	var archetype_speed_mod = 0.0
 	match weapon_archetype:
-		WeaponGroupManager.WeaponArchetype.FIREARM:
+		WeaponGroupManager.WeaponArchetype.FIREARM, WeaponGroupManager.WeaponArchetype.EXPLOSIVE_RANGED:
 			archetype_speed_mod = player_stats.ranged_attack_speed_mod
 		WeaponGroupManager.WeaponArchetype.MELEE, WeaponGroupManager.WeaponArchetype.ORBITAL_MELEE:
 			archetype_speed_mod = player_stats.melee_attack_speed_mod
