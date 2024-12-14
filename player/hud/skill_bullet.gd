@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 	
 	last_skill_point_count = current_skill_point
 
+# Shows the indicator of the amount of skill points the player currently has
 func fire_skill_bullet() -> void:
 	in_transition = true
 	var tween = get_tree().create_tween()
