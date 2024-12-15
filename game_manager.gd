@@ -52,6 +52,7 @@ func _ready() -> void:
 	add_child(game_timer)
 	new_world_level_active.connect(_on_new_world_level_ready)
 	game_timer.timeout.connect(_on_game_timer_timeout)
+	process_mode = PROCESS_MODE_ALWAYS
 
 func _on_new_world_level_ready():
 	game_timer.paused = false

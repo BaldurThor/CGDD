@@ -1,10 +1,16 @@
-class_name AbilitySelector extends VBoxContainer
+class_name AbilitySelector extends Control
 
-@onready var ability_selection: HBoxContainer = $AbilitySelection
+@onready var ability_selection: HBoxContainer = $AbilitySelectorMenu/AbilitySelection
 @onready var ability_system: AbilitySystem = %AbilitySystem
-@onready var skip_button: SkipButton = $HBoxContainer/SkipButton
+@onready var skip_button: SkipButton = $AbilitySelectorMenu/HBoxContainer/SkipButton
 @onready var player: Player = $"../.."
 @onready var skill_bullet: SkillBullet = $"../SkillBullet"
+@onready var select_label: Label = $AbilitySelectorMenu/Label
+
+@export var select_text_weapons: String = "Select Weapon"
+@export var select_text_fish: String = "Select Fish"
+@export var select_text_corrupted: String = "Select Corrupted"
+@export var select_text_normal: String = "Select Ability"
 
 const ABILITY_CHOICE = preload("res://player/hud/ability_choice/ability_choice.tscn")
 
@@ -66,6 +72,12 @@ func _refresh() -> void:
 	if ability_queue.size() == 0:
 		_close_menu()
 		return
+	
+	match active_type:
+		ChoiceType.WEAPONS: select_label.text = select_text_weapons
+		ChoiceType.CORRUPTED: select_label.text = select_text_corrupted
+		ChoiceType.NORMAL: select_label.text = select_text_normal
+	
 	_show_menu()
 	var choices = []
 	active_type = ability_queue.pop_front()

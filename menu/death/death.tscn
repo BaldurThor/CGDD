@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bjtxacd0qfbqj"]
 
 [ext_resource type="Script" path="res://menu/death/death.gd" id="1_jpsbo"]
-[ext_resource type="Texture2D" uid="uid://didthgbsm3qr0" path="res://menu/win/newspaper.png" id="2_ggy64"]
+[ext_resource type="Texture2D" uid="uid://c565hyv6j1tov" path="res://menu/death/newspaper_lose.png" id="2_rkdwk"]
 [ext_resource type="Script" path="res://menu/win/stats.gd" id="3_lcjw0"]
 [ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="4_qsq5r"]
 [ext_resource type="AudioStream" uid="uid://bnxrdba47kgob" path="res://player/weapons/gun/gun_types/shotgun/shotgun.wav" id="7_ace4u"]
@@ -159,7 +159,7 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_ggy64")
+texture = ExtResource("2_rkdwk")
 expand_mode = 1
 stretch_mode = 5
 

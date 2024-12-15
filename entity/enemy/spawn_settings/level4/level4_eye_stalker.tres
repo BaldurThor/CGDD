@@ -10,7 +10,7 @@ point_count = 2
 [resource]
 script = ExtResource("2_dqwoa")
 enemy_type = ExtResource("1_5ih6m")
-strength_multiplier = 1.0
+strength_multiplier = 3.0
 starting_spawn_rate = 2.0
 ending_spawn_rate = 1.0
 spawn_rate_curve = SubResource("Curve_3txn5")

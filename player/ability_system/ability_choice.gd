@@ -1,16 +1,16 @@
 class_name AbilityChoice extends Button
 
-@onready var ability_name: Label = $VBoxContainer/Titlebar/Name
-@onready var ability_icon: TextureRect = $VBoxContainer/Icon
-@onready var positive_stats: VBoxContainer = $VBoxContainer/PositiveStats
-@onready var negative_stats: VBoxContainer = $VBoxContainer/NegativeStats
-@onready var flavor: Label = $VBoxContainer/Flavor
-@onready var panel_container: PanelContainer = $PanelContainer
-@onready var ability_details: VBoxContainer = $PanelContainer/VBoxContainer2/AbilityDetails
+@onready var ability_name: Label = $Titlebar/Name
+@onready var ability_icon: TextureRect = $Icon
+@onready var positive_stats: VBoxContainer = $Stats/PositiveStats
+@onready var negative_stats: VBoxContainer = $Stats/NegativeStats
+@onready var flavor: Label = $Stats/Flavor
+@onready var ability_details: VBoxContainer = $Stats/AbilityDetails
+@onready var stats: VBoxContainer = $Stats
 
-@onready var corrupted: TextureRect = $VBoxContainer/Titlebar/Rarities/Corrupted
-@onready var rare: TextureRect = $VBoxContainer/Titlebar/Rarities/Rare
-@onready var uncommon: TextureRect = $VBoxContainer/Titlebar/Rarities/Uncommon
+@onready var corrupted: TextureRect = $Titlebar/Rarities/Corrupted
+@onready var rare: TextureRect = $Titlebar/Rarities/Rare
+@onready var uncommon: TextureRect = $Titlebar/Rarities/Uncommon
 
 const POSITIVE_STAT_INDICATOR = preload("res://player/hud/ability_choice/positive_stat_indicator.tscn")
 const NEGATIVE_STAT_INDICATOR = preload("res://player/hud/ability_choice/negative_stat_indicator.tscn")
@@ -55,7 +55,6 @@ func _on_focus_exited() -> void:
 	modulate = Color("c8c8c8")
 
 func _initialize_tags() -> void:
-	panel_container.hide()
 	for tag in ability.tags:
 		var description = AbilityTagManager.get_tag_description(tag)
 		if description != null:
@@ -66,7 +65,8 @@ func _initialize_tags() -> void:
 			_has_content = true
 
 func _process(delta: float) -> void:
-	panel_container.visible = _show_content
+	ability_details.visible = _show_content
+	flavor.visible = not _show_content
 
 func _on_mouse_entered() -> void:
 	if _has_content:

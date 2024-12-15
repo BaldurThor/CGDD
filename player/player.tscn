@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=111 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" uid="uid://d303j5bd47raj" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://player/weapons/gun/rod_swivel.gd" id="6_swhb5"]
 [ext_resource type="Resource" uid="uid://ci2k3ke86qm0e" path="res://player/ability_system/abilities/loot_table.tres" id="7_75cg3"]
 [ext_resource type="Texture2D" uid="uid://cfyf3iuyo4vwe" path="res://player/fishing/rod_placeholder.png" id="7_l7pv7"]
-[ext_resource type="Script" uid="uid://dtg8n1aywh6uw" path="res://player/hud/hit_indicator.gd" id="8_lh3hs"]
+[ext_resource type="Script" path="res://player/hud/hit_indicator.gd" id="8_lh3hs"]
 [ext_resource type="Script" path="res://player/fishing/hook.gd" id="8_qymma"]
 [ext_resource type="Theme" uid="uid://ct4bo20cg6a2n" path="res://player/hud/status_bars/ui_health_bar.tres" id="8_rmgi5"]
 [ext_resource type="Script" path="res://player/hud/countdown_timer.gd" id="9_5x5lc"]
@@ -35,10 +35,12 @@
 [ext_resource type="Script" path="res://player/hud/ability_choice/ability_selector.gd" id="17_un6ir"]
 [ext_resource type="Script" uid="uid://ditaftwfssw0g" path="res://player/skip_button.gd" id="18_7xury"]
 [ext_resource type="Script" uid="uid://cj6fu24vxoxkh" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
+[ext_resource type="Theme" uid="uid://chmld5xy50mb7" path="res://menu/menu_theme.tres" id="19_0an1a"]
 [ext_resource type="Shader" uid="uid://2ind2clafsf" path="res://player/hud/level_effect.gdshader" id="19_74cft"]
 [ext_resource type="Script" uid="uid://bd7asqj6twddo" path="res://player/health_value.gd" id="19_ky1vu"]
 [ext_resource type="Script" uid="uid://dhmcfg7t4lsi0" path="res://player/hud/boss_bar.gd" id="19_xmm0l"]
 [ext_resource type="Texture2D" uid="uid://bb215q152ay7y" path="res://player/hud/boss_icon.png" id="20_sa7yf"]
+[ext_resource type="PackedScene" uid="uid://1in5byv3fld3" path="res://player/hud/ability_choice/ability_choice.tscn" id="20_wf13m"]
 [ext_resource type="Theme" uid="uid://diw8oxnpmfjd0" path="res://player/hud/status_bars/ui_boss_bar.tres" id="21_4c7xe"]
 [ext_resource type="Script" path="res://levels/level_switcher.gd" id="22_ffm7r"]
 [ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://levels/level1/level1_background.png" id="23_77gle"]
@@ -80,25 +82,12 @@ font = ExtResource("16_40h03")
 font_size = 21
 font_color = Color(0.963299, 0.000138905, 0.420848, 1)
 
-[sub_resource type="FontFile" id="FontFile_eovdj"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/9/0/ascent = 0.0
-cache/0/9/0/descent = 0.0
-cache/0/9/0/underline_position = 0.0
-cache/0/9/0/underline_thickness = 0.0
-cache/0/9/0/scale = 1.0
-cache/0/18/0/ascent = 0.0
-cache/0/18/0/descent = 0.0
-cache/0/18/0/underline_position = 0.0
-cache/0/18/0/underline_thickness = 0.0
-cache/0/18/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
+[sub_resource type="LabelSettings" id="LabelSettings_k8bi8"]
+font = ExtResource("5_tgkuv")
+font_size = 27
+font_color = Color(0.805848, 0.815718, 0.806987, 1)
+outline_size = 8
+outline_color = Color(0.0439519, 0.0439519, 0.0439519, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jl6o5"]
 font = ExtResource("5_tgkuv")
@@ -855,38 +844,74 @@ text = "00"
 label_settings = SubResource("LabelSettings_1cyqd")
 horizontal_alignment = 1
 
-[node name="AbilitySelector" type="VBoxContainer" parent="HUD"]
+[node name="AbilitySelector" type="Control" parent="HUD"]
 unique_name_in_owner = true
 process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_un6ir")
+
+[node name="ColorRect" type="ColorRect" parent="HUD/AbilitySelector"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.537)
+
+[node name="AbilitySelectorMenu" type="VBoxContainer" parent="HUD/AbilitySelector"]
+process_mode = 3
+layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 28.0
-offset_top = -81.0
+offset_top = -122.0
 offset_right = -28.0
-offset_bottom = 123.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-alignment = 1
-script = ExtResource("17_un6ir")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AbilitySelector"]
-layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="SkipButton" type="Button" parent="HUD/AbilitySelector/HBoxContainer"]
+[node name="Label" type="Label" parent="HUD/AbilitySelector/AbilitySelectorMenu"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontFile_eovdj")
-theme_override_font_sizes/font_size = 9
+text = "Select Weapon"
+label_settings = SubResource("LabelSettings_k8bi8")
+horizontal_alignment = 1
+
+[node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilitySelector/AbilitySelectorMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="AbilityChoice" parent="HUD/AbilitySelector/AbilitySelectorMenu/AbilitySelection" instance=ExtResource("20_wf13m")]
+layout_mode = 2
+
+[node name="AbilityChoice2" parent="HUD/AbilitySelector/AbilitySelectorMenu/AbilitySelection" instance=ExtResource("20_wf13m")]
+layout_mode = 2
+
+[node name="AbilityChoice3" parent="HUD/AbilitySelector/AbilitySelectorMenu/AbilitySelection" instance=ExtResource("20_wf13m")]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/AbilitySelector/AbilitySelectorMenu"]
+layout_mode = 2
+
+[node name="SkipButton" type="Button" parent="HUD/AbilitySelector/AbilitySelectorMenu/CenterContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme = ExtResource("19_0an1a")
 text = "Skip (+100% experience)"
 script = ExtResource("18_7xury")
 base_string = "Skip(+%s experience)"
-
-[node name="AbilitySelection" type="HBoxContainer" parent="HUD/AbilitySelector"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="AbilityDisplay" type="VBoxContainer" parent="HUD"]
 visible = false
@@ -1294,7 +1319,7 @@ stream = ExtResource("61_nktpl")
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
 [connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthValue" method="_on_health_bar_health_ratio_changed"]
 [connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
-[connection signal="button_up" from="HUD/AbilitySelector/HBoxContainer/SkipButton" to="HUD/AbilitySelector" method="_on_skip_button_button_up"]
+[connection signal="button_up" from="HUD/AbilitySelector/AbilitySelectorMenu/CenterContainer/SkipButton" to="HUD/AbilitySelector/AbilitySelectorMenu" method="_on_skip_button_button_up"]
 [connection signal="level_up" from="Experience" to="HUD/AbilitySelector" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

@@ -90,7 +90,7 @@ func _on_enemy_timer_timeout(enemy_spawn: EnemySpawnSettings) -> void:
 	var spawn_theta = randf_range(0, 2 * PI)
 	var spawn_location = Vector2(cos(spawn_theta), sin(spawn_theta)) * spawn_radius + player.global_position
 	
-	enemy.initialize(spawn_location)
+	enemy.initialize(spawn_location, enemy_spawn.strength_multiplier)
 	
 	#inject the damage numbers node into the enemy so it knows where to place the damage numbers!
 	enemy.damage_label_parent = damage_numbers

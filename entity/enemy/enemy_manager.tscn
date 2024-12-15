@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://b6rjnevhtac41"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_manager.gd" id="1_vlxsp"]
-[ext_resource type="Script" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="2_c2fdu"]
+[ext_resource type="Script" uid="uid://joa8itqss2ka" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="2_c2fdu"]
 [ext_resource type="Resource" uid="uid://dspta8mn4mrna" path="res://entity/enemy/spawn_settings/level1/level1_spawn.tres" id="3_11ap6"]
 [ext_resource type="Resource" uid="uid://crjj48lkhqf1b" path="res://entity/enemy/spawn_settings/level2/level2_spawn.tres" id="4_ophjc"]
 [ext_resource type="Resource" uid="uid://bp0pc007highu" path="res://entity/enemy/spawn_settings/level3/level3_spawn.tres" id="5_mxgk0"]
