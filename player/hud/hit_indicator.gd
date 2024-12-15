@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _on_player_take_damage(amount: int):
 	var player = GameManager.get_player()
-	damage_indicator_state += float(amount) / player.player_stats.max_health
+	damage_indicator_state += (float(amount) * 4.0) / player.player_stats.max_health
 
 func _process(delta: float) -> void:
 	modulate.a = damage_indicator_state

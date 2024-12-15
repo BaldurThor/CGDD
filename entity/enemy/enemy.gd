@@ -28,14 +28,17 @@ var should_drop_items: bool = true
 
 var target_velocity: Vector2
 var current_velocity: Vector2
+var strength: float = 1.0
 
 func _ready() -> void:
 	player = GameManager.get_player()
 	entity_stats.death.connect(_on_death)
+	entity_stats.health *= strength
 	enemy_base.destroy_object.connect(queue_free)
 
-func initialize(start_position: Vector2) -> void:
+func initialize(start_position: Vector2, enemy_strength: float = 1.0) -> void:
 	position = start_position
+	strength = enemy_strength
 
 func take_damage(damage: int, knockback_amount: int, damage_origin: Vector2, drop_items: bool = true) -> void:
 	should_drop_items = drop_items

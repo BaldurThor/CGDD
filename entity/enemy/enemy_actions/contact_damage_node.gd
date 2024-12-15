@@ -7,6 +7,9 @@ func evaluate() -> bool:
 	return false
 
 func _physics_process(_delta: float) -> void:
+	if enemy.entity_stats.is_dead():
+		return
+	
 	for body in damage_zone.get_overlapping_bodies():
 		if body is Player:
 			body.take_damage(enemy.entity_stats.contact_damage, enemy)

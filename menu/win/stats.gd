@@ -2,7 +2,10 @@ extends VBoxContainer
 
 const STAT_VALUE = preload("res://menu/win/stat_value.tscn")
 
-@onready var end_stats: StatsMan = %EndStats
+var end_stats: StatsMan
+
+func _ready() -> void:
+	end_stats = GameManager.get_stats_man()
 
 func show_stats() -> void:
 	for child in get_children():
@@ -13,7 +16,7 @@ func show_stats() -> void:
 	_add_int_stat("Total kills", end_stats.get_kills())
 	_add_int_stat("Abilities picked", end_stats.get_abilities_picked())
 	_add_int_stat("Boss kills", end_stats.get_boss_kills())
-	_add_time_stat("Time played", end_stats.get_time_when_done())
+	_add_time_stat("Time played", end_stats.get_time_played())
 	_add_int_stat("Total XP", end_stats.get_total_xp())
 	_add_int_stat("Health regenerated", end_stats.get_heal_amount_regen())
 	_add_int_stat("Health picked up", end_stats.get_heal_amount_medkit())

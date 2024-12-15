@@ -1,20 +1,133 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjtxacd0qfbqj"]
+[gd_scene load_steps=9 format=3 uid="uid://bjtxacd0qfbqj"]
 
 [ext_resource type="Script" path="res://menu/death/death.gd" id="1_jpsbo"]
-[ext_resource type="Script" path="res://menu/death/restart.gd" id="2_2ty7x"]
-[ext_resource type="Texture2D" uid="uid://cg5phh3gjim0e" path="res://menu/death/rip.png" id="2_7xpmv"]
-[ext_resource type="Script" path="res://menu/shared/quit.gd" id="2_xqsca"]
-[ext_resource type="Script" path="res://menu/death/mainmenu.gd" id="3_sg43a"]
-[ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="6_nflxa"]
+[ext_resource type="Texture2D" uid="uid://c565hyv6j1tov" path="res://menu/death/newspaper_lose.png" id="2_rkdwk"]
+[ext_resource type="Script" path="res://menu/win/stats.gd" id="3_lcjw0"]
+[ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="4_qsq5r"]
 [ext_resource type="AudioStream" uid="uid://bnxrdba47kgob" path="res://player/weapons/gun/gun_types/shotgun/shotgun.wav" id="7_ace4u"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_40sva"]
-atlas = ExtResource("2_7xpmv")
-region = Rect2(0, 0, 64, 0)
+[sub_resource type="Animation" id="Animation_f62tt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyHighlightScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathMenu/Newspaper:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathMenu/Controls:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeathMenu/FadeToBlack:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sf45x"]
-atlas = ExtResource("2_7xpmv")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="Animation" id="Animation_ximmq"]
+resource_name = "death"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyHighlightScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathMenu/Newspaper:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.06667, 6.46667, 12.1, 13.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RevealSFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeathMenu/Controls:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 13.1, 14.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathMenu/FadeToBlack:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.56667, 4.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_70men"]
+_data = {
+"RESET": SubResource("Animation_f62tt"),
+"death": SubResource("Animation_ximmq")
+}
 
 [node name="Death" type="Node"]
 process_mode = 2
@@ -22,137 +135,118 @@ script = ExtResource("1_jpsbo")
 
 [node name="DeathMenu" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
+layer = 10
 
-[node name="PauseMenuWrapper" type="MarginContainer" parent="DeathMenu"]
+[node name="FadeToBlack" type="ColorRect" parent="DeathMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Newspaper" type="TextureRect" parent="DeathMenu"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_rkdwk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Controls" type="Control" parent="DeathMenu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stats" type="VBoxContainer" parent="DeathMenu/Controls"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -182.0
-offset_top = 20.0
-offset_right = 218.0
-offset_bottom = 266.0
+offset_left = -223.0
+offset_top = 25.0
+offset_right = 223.0
+offset_bottom = 417.0
 grow_horizontal = 2
+script = ExtResource("3_lcjw0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeathMenu/Controls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -226.0
+offset_top = -101.0
+offset_right = 226.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="QuitToMenuButton" type="Button" parent="DeathMenu/Controls/HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+focus_neighbor_right = NodePath("../SubmitScore")
+theme_override_fonts/font = ExtResource("4_qsq5r")
+theme_override_font_sizes/font_size = 9
+text = "Return to menu"
 
-[node name="ColorRect" type="ColorRect" parent="DeathMenu/PauseMenuWrapper"]
+[node name="SubmitScore" type="Button" parent="DeathMenu/Controls/HBoxContainer"]
 layout_mode = 2
-color = Color(0, 0, 0.572549, 0.588235)
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../QuitToMenuButton")
+focus_neighbor_right = NodePath("../RetryButton")
+theme_override_fonts/font = ExtResource("4_qsq5r")
+theme_override_font_sizes/font_size = 9
+text = "Submit Score"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeathMenu/PauseMenuWrapper"]
+[node name="RetryButton" type="Button" parent="DeathMenu/Controls/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../SubmitScore")
+theme_override_fonts/font = ExtResource("4_qsq5r")
+theme_override_font_sizes/font_size = 9
+text = "Retry run"
 
-[node name="Title" type="HBoxContainer" parent="DeathMenu/PauseMenuWrapper/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Skull1-1" type="TextureRect" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Title"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = SubResource("AtlasTexture_40sva")
-
-[node name="Skull1-2" type="TextureRect" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Title"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-texture = SubResource("AtlasTexture_sf45x")
-
-[node name="Label" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Title"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
-text = "The Deep claims another"
-
-[node name="Skull2-1" type="TextureRect" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Title"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_40sva")
-
-[node name="Skull2-2" type="TextureRect" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Title"]
-visible = false
-layout_mode = 2
-texture = SubResource("AtlasTexture_sf45x")
-
-[node name="DeathText" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-autowrap_mode = 2
-
-[node name="Buttons" type="VBoxContainer" parent="DeathMenu/PauseMenuWrapper/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_vertical = 10
-
-[node name="Restart" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons"]
-layout_mode = 2
-mouse_filter = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Try Again"
-script = ExtResource("2_2ty7x")
-
-[node name="Menu" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons"]
-layout_mode = 2
-mouse_filter = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Main Menu"
-script = ExtResource("3_sg43a")
-
-[node name="Quit" type="Label" parent="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons"]
-layout_mode = 2
-mouse_filter = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Quit"
-script = ExtResource("2_xqsca")
-
-[node name="FadeToBlack" type="ColorRect" parent="."]
+[node name="EnemyHighlightScreen" type="ColorRect" parent="."]
 unique_name_in_owner = true
 z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4507.0
-offset_top = -2535.0
-offset_right = 4507.0
-offset_bottom = 2535.0
+offset_left = -4465.0
+offset_top = -2480.0
+offset_right = 4549.0
+offset_bottom = 2590.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0, 0, 0, 0)
-
-[node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
-
-[node name="TypeSFX" type="AudioStreamPlayer2D" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("6_nflxa")
-volume_db = -8.0
-pitch_scale = 0.51
-attenuation = 3.605
-bus = &"Effects"
+color = Color(0, 0, 0, 1)
 
 [node name="RevealSFX" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_ace4u")
 bus = &"Effects"
 
-[connection signal="gui_input" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" method="_on_gui_input"]
-[connection signal="mouse_entered" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Restart" method="_on_mouse_exited"]
-[connection signal="gui_input" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" method="_on_gui_input"]
-[connection signal="mouse_entered" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Menu" method="_on_mouse_exited"]
-[connection signal="gui_input" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" method="_on_gui_input"]
-[connection signal="mouse_entered" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" to="DeathMenu/PauseMenuWrapper/VBoxContainer/Buttons/Quit" method="_on_mouse_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_sec_timer_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_70men")
+}
+
+[connection signal="pressed" from="DeathMenu/Controls/HBoxContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
+[connection signal="pressed" from="DeathMenu/Controls/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]

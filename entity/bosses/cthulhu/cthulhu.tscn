@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://cn0k487ns2nh8" path="res://entity/bosses/attacks/projectile/cthulhu_projectile.tscn" id="6_l13aa"]
 [ext_resource type="PackedScene" uid="uid://ba23rxotlujhx" path="res://entity/bosses/cthulhu/cthulhu_tentacle.tscn" id="8_774hl"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="9_mi2f6"]
-[ext_resource type="Script" path="res://entity/bosses/cthulhu/cthulhu_slam.gd" id="10_3u1wb"]
+[ext_resource type="Script" uid="uid://bhpxul68uy5m" path="res://entity/bosses/cthulhu/cthulhu_slam.gd" id="10_3u1wb"]
 [ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="11_d3j54"]
 [ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="11_yiu6t"]
-[ext_resource type="Script" path="res://entity/bosses/attacks/projectile/bullet_hell_logic.gd" id="12_yxkob"]
-[ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_43g7q"]
+[ext_resource type="Script" uid="uid://bpi6tymq85nxi" path="res://entity/bosses/attacks/projectile/bullet_hell_logic.gd" id="12_yxkob"]
+[ext_resource type="Script" uid="uid://b2xu8wf018f6p" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_43g7q"]
 [ext_resource type="Script" path="res://entity/bosses/attacks/bullet_spray/projectile_spray_logic.gd" id="14_dqi3c"]
 [ext_resource type="PackedScene" uid="uid://c0npu26f8hdit" path="res://entity/bosses/attacks/bullet_spray/cthulhu_bullet.tscn" id="15_22f3n"]
 [ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="15_t6vw7"]
@@ -32,8 +32,11 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hreih"]
 resource_local_to_scene = true
 shader = ExtResource("11_d3j54")
+shader_parameter/cone_angle = 1.0
 shader_parameter/transparency = 1.0
+shader_parameter/speed = 2.0
 shader_parameter/flash = false
+shader_parameter/cutoff_distance = 0.0
 
 [sub_resource type="Gradient" id="Gradient_wctl5"]
 colors = PackedColorArray(0.133333, 0, 0.25098, 1, 0.35736, 0.00118873, 0.566207, 1)
@@ -60,10 +63,11 @@ shape = SubResource("CircleShape2D_h238a")
 [node name="EntityStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_5ie44")
-max_health = 16000
-health = 16000
+max_health = 32000
+health = 32000
 movement_speed = 1.0
 contact_damage = 20
+self_knockback_mod = 0.0
 
 [node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
 autostart = true
@@ -87,6 +91,7 @@ shadow_size = 1.0
 shadow_offset = Vector2(0, 15)
 
 [node name="BulletHellSpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
+visible = false
 script = ExtResource("5_gy1bw")
 spawn_waves = 20
 time_between_waves = 0.25

@@ -1,10 +1,16 @@
-class_name AbilitySelector extends VBoxContainer
+class_name AbilitySelector extends Control
 
-@onready var ability_selection: HBoxContainer = $AbilitySelection
+@onready var ability_selection: HBoxContainer = $AbilitySelectorMenu/AbilitySelection
 @onready var ability_system: AbilitySystem = %AbilitySystem
-@onready var skip_button: SkipButton = $HBoxContainer/SkipButton
+@onready var skip_button: SkipButton = $AbilitySelectorMenu/CenterContainer/SkipButton
 @onready var player: Player = $"../.."
 @onready var skill_bullet: SkillBullet = $"../SkillBullet"
+@onready var select_label: Label = $AbilitySelectorMenu/Label
+
+@export var select_text_weapons: String = "Select Weapon"
+@export var select_text_fish: String = "Select Fish"
+@export var select_text_corrupted: String = "Select Corrupted"
+@export var select_text_normal: String = "Select Ability"
 
 const ABILITY_CHOICE = preload("res://player/hud/ability_choice/ability_choice.tscn")
 
@@ -72,18 +78,28 @@ func _refresh(can_skip: bool = true) -> void:
 	if ability_queue.size() == 0:
 		_close_menu()
 		return
+	
 	_show_menu()
 	var choices = []
 	active_type = ability_queue.pop_front()
 	var skip_xp: int = _get_skip_xp()
 	skip_button.refresh_string(skip_xp)
 	skip_button.visible = can_skip
-	
+
 	match active_type:
-		ChoiceType.NORMAL: choices = ability_system.get_ability_selection()
-		ChoiceType.FISH: choices = ability_system.get_ability_selection()
-		ChoiceType.WEAPONS: choices = ability_system.get_weapon_selection()
-		ChoiceType.CORRUPTED: choices = ability_system.get_corrupted_abilities()
+		ChoiceType.NORMAL:
+			choices = ability_system.get_ability_selection()
+			select_label.text = select_text_normal
+		ChoiceType.FISH:
+			choices = ability_system.get_ability_selection()
+			select_label.text = select_text_fish
+		ChoiceType.WEAPONS:
+			choices = ability_system.get_weapon_selection()
+			select_label.text = select_text_weapons
+		ChoiceType.CORRUPTED:
+			choices = ability_system.get_corrupted_abilities()
+			select_label.text = select_text_corrupted
+		
 	for index in choices.size():
 		add_choice(choices[index], index)
 
@@ -116,8 +132,14 @@ func _on_experience_level_up() -> void:
 	else:
 		ability_queue.push_back(ChoiceType.NORMAL)
 
-## Grants the player experience in exchange for one of their skill points
-func _on_skip_button_button_up() -> void:
+func _on_DebugCommands_pick_ability(type : int = 0) -> void:
+	match type:
+		0: ability_queue.push_back(ChoiceType.NORMAL)
+		1: request_corrupted()
+		2: ability_queue.push_back(ChoiceType.WEAPONS)
+
+
+func _on_skip_button_pressed() -> void:
 	var xp = _get_skip_xp()
 	player.experience.gain_experience.emit(xp, false)
 	if active_type == ChoiceType.CORRUPTED or active_type == ChoiceType.FISH:
@@ -125,9 +147,3 @@ func _on_skip_button_button_up() -> void:
 		return
 	spent_skill_points += 1
 	_refresh()
-
-func _on_DebugCommands_pick_ability(type : int = 0) -> void:
-	match type:
-		0: ability_queue.push_back(ChoiceType.NORMAL)
-		1: request_corrupted()
-		2: ability_queue.push_back(ChoiceType.WEAPONS)

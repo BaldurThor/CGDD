@@ -67,7 +67,7 @@ func take_damage(amount: int, enemy: Enemy) -> void:
 	if player_stats.is_invincible:
 		return
 
-	if randf() < min(player_stats.absolute_max_dodge, player_stats.dodge_chance):
+	if randf() + 0.00001 < min(player_stats.absolute_max_dodge, player_stats.dodge_chance):
 		amount = 0
 	
 	animation_player.play("take_damage")
@@ -86,5 +86,5 @@ func _on_player_stats_death() -> void:
 	var death_node = death_screen.instantiate()
 	death_node.initialize(last_damage_from)
 	self.add_child(death_node)
-	death_node.fade_to_black.position.x = self.position.x - death_node.fade_to_black.size.x / 2
-	death_node.fade_to_black.position.y = self.position.y - death_node.fade_to_black.size.y / 2
+	death_node.highlight_screen.position.x = self.position.x - death_node.highlight_screen.size.x / 2
+	death_node.highlight_screen.position.y = self.position.y - death_node.highlight_screen.size.y / 2

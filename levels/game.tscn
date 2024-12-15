@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bbesagqumwgtd"]
+[gd_scene load_steps=16 format=3 uid="uid://bbesagqumwgtd"]
 
 [ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://player/player.tscn" id="1_fbep7"]
 [ext_resource type="Script" path="res://player/fishing/fish_spawner.gd" id="2_oohfr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://menu/win/win_screen.gd" id="6_jn2hb"]
 [ext_resource type="Texture2D" uid="uid://didthgbsm3qr0" path="res://menu/win/newspaper.png" id="8_p68n4"]
 [ext_resource type="Script" path="res://menu/win/stats.gd" id="9_lrlrb"]
+[ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="9_wwdgm"]
 
 [sub_resource type="Gradient" id="Gradient_7n0tg"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -255,6 +256,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -478.0
+offset_top = -256.0
+offset_right = 34.0
+offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -277,44 +282,53 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EndlessModeButton" type="Button" parent="CanvasLayer/WinScreen/Controls"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/WinScreen/Controls"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 252.0
-offset_top = -92.0
-offset_right = 409.0
-offset_bottom = -42.0
-grow_horizontal = 2
+offset_left = -449.0
+offset_top = -71.0
+offset_right = -10.0
+offset_bottom = -40.0
+grow_horizontal = 0
 grow_vertical = 0
+
+[node name="EndlessModeButton" type="Button" parent="CanvasLayer/WinScreen/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../SubmitScoreButton")
+theme_override_fonts/font = ExtResource("9_wwdgm")
+theme_override_font_sizes/font_size = 9
 text = "Endless Mode"
 
-[node name="ReturnToMenuButton" type="Button" parent="CanvasLayer/WinScreen/Controls"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 62.0
-offset_top = -92.0
-offset_right = 219.0
-offset_bottom = -42.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="SubmitScoreButton" type="Button" parent="CanvasLayer/WinScreen/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../EndlessModeButton")
+focus_neighbor_right = NodePath("../ReturnToMenuButton")
+theme_override_fonts/font = ExtResource("9_wwdgm")
+theme_override_font_sizes/font_size = 9
+text = "Submit Score"
+
+[node name="ReturnToMenuButton" type="Button" parent="CanvasLayer/WinScreen/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../SubmitScoreButton")
+theme_override_fonts/font = ExtResource("9_wwdgm")
+theme_override_font_sizes/font_size = 9
 text = "Return to Menu"
 
 [node name="Stats" type="VBoxContainer" parent="CanvasLayer/WinScreen/Controls"]
 layout_mode = 0
-offset_left = 535.0
+offset_left = 511.0
 offset_top = 44.0
-offset_right = 911.0
-offset_bottom = 84.0
+offset_right = 949.0
+offset_bottom = 432.0
 script = ExtResource("9_lrlrb")
 
 [connection signal="timeout" from="EndStats/Timer" to="EndStats" method="_on_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/EndlessModeButton" to="CanvasLayer/WinScreen" method="_on_endless_mode_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/ReturnToMenuButton" to="CanvasLayer/WinScreen" method="_on_return_to_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/HBoxContainer/EndlessModeButton" to="CanvasLayer/WinScreen" method="_on_endless_mode_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/HBoxContainer/ReturnToMenuButton" to="CanvasLayer/WinScreen" method="_on_return_to_menu_button_pressed"]

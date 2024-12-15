@@ -13,6 +13,7 @@ signal regen_changed()
 signal death()
 signal take_damage(raw_amount: int)
 signal attack_speed_updated()
+signal armor_changed()
 
 var is_invincible: bool = false
 
@@ -23,7 +24,10 @@ var is_invincible: bool = false
 @export_group("Defense")
 
 ## The entity's armor (damage reduction)
-@export var armor: int
+@export var armor: int:
+	set(value):
+		armor = value
+		armor_changed.emit()
 
 ## The amount of damage this entity can take before dying.
 @export var max_health: int:
@@ -122,3 +126,6 @@ func calculate_damage_reduction(armor_value: int) -> float:
 	var a: float = (-1.0 + armor_value) / (4 * armor_value)
 	var b: float = (log(armor_value) / log(2)) / 10
 	return max(a + b, 1)
+
+func is_dead() -> bool:
+	return health <= 0

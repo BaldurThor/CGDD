@@ -1,150 +1,89 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8h32mkkaisy6"]
+[gd_scene load_steps=7 format=3 uid="uid://b8h32mkkaisy6"]
 
 [ext_resource type="Script" path="res://menu/pause/pause.gd" id="1_lcdb4"]
-[ext_resource type="Texture2D" uid="uid://5aahd84rcsov" path="res://menu/pause/backgroundcolor.png" id="2_7tms3"]
-[ext_resource type="Script" path="res://menu/pause/continue.gd" id="3_3svv3"]
-[ext_resource type="Script" path="res://menu/shared/how_to_play.gd" id="4_2yxxt"]
-[ext_resource type="Script" path="res://menu/shared/options.gd" id="4_ltcbk"]
-[ext_resource type="Script" path="res://menu/shared/quit.gd" id="5_6hme5"]
-[ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/how_to_play/info.tscn" id="5_ugmh8"]
-[ext_resource type="Script" path="res://menu/pause/reset.gd" id="6_w46qb"]
+[ext_resource type="Texture2D" uid="uid://iecbocd4moe1" path="res://menu/pause_screen.png" id="2_poufs"]
+[ext_resource type="Theme" uid="uid://chmld5xy50mb7" path="res://menu/menu_theme.tres" id="3_7hxv8"]
+[ext_resource type="PackedScene" uid="uid://20vpyj2jbokl" path="res://menu/controls/controls.tscn" id="5_ugmh8"]
+[ext_resource type="Script" path="res://menu/win/stats.gd" id="6_2uwwt"]
 [ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="8_dglk4"]
 
-[node name="Pause" type="CanvasLayer" node_paths=PackedStringArray("info_node", "options_node", "continue_node")]
+[node name="Pause" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_lcdb4")
-info_node = NodePath("Info")
-options_node = NodePath("Options")
-continue_node = NodePath("PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue")
 
-[node name="PauseMenuWrapper" type="MarginContainer" parent="."]
-process_mode = 2
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_poufs")
 
-[node name="PauseMenu" type="MarginContainer" parent="PauseMenuWrapper"]
-custom_minimum_size = Vector2(364, 206)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Background" type="TextureRect" parent="PauseMenuWrapper/PauseMenu"]
-modulate = Color(1, 1, 1, 0.784314)
-z_index = -1
-layout_mode = 2
-texture = ExtResource("2_7tms3")
-expand_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuWrapper/PauseMenu"]
-layout_mode = 2
-
-[node name="Name" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer"]
-layout_mode = 2
-text = "The Shotgun over Fishmouth"
-
-[node name="MenuOptions" type="VBoxContainer" parent="PauseMenuWrapper/PauseMenu/VBoxContainer"]
-layout_mode = 2
+[node name="MenuOptions" type="VBoxContainer" parent="."]
+offset_left = 106.0
+offset_top = 311.0
+offset_right = 309.0
+offset_bottom = 477.0
 size_flags_vertical = 6
+theme = ExtResource("3_7hxv8")
 
-[node name="Continue" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions" node_paths=PackedStringArray("pause_node")]
+[node name="ContinueButton" type="Button" parent="MenuOptions"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../How_to_play")
-focus_mode = 2
-mouse_filter = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Continue"
-script = ExtResource("3_3svv3")
-pause_node = NodePath("../../../../..")
+text = "Return to game"
 
-[node name="How_to_play" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions" node_paths=PackedStringArray("options", "info")]
+[node name="ControlsButton" type="Button" parent="MenuOptions"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Continue")
-focus_neighbor_bottom = NodePath("../Options")
-focus_mode = 2
-mouse_filter = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "How To Play"
-script = ExtResource("4_2yxxt")
-options = NodePath("../../../../../Options")
-info = NodePath("../../../../../Info")
+text = "Controls"
 
-[node name="Options" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions" node_paths=PackedStringArray("options", "info")]
+[node name="OptionsButton" type="Button" parent="MenuOptions"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../How_to_play")
-focus_neighbor_bottom = NodePath("../Reset")
-focus_mode = 2
-mouse_filter = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Options"
-script = ExtResource("4_ltcbk")
-options = NodePath("../../../../../Options")
-info = NodePath("../../../../../Info")
 
-[node name="Reset" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions"]
+[node name="ResetRunButton" type="Button" parent="MenuOptions"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Options")
-focus_neighbor_bottom = NodePath("../Quit")
-focus_mode = 2
-mouse_filter = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Reset Run"
-script = ExtResource("6_w46qb")
 
-[node name="Quit" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions"]
+[node name="QuitToMenuButton" type="Button" parent="MenuOptions"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Reset")
-focus_neighbor_bottom = NodePath("../Continue")
-focus_mode = 2
-mouse_filter = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Quit"
-script = ExtResource("5_6hme5")
+text = "Quit to menu"
 
-[node name="Version" type="Label" parent="PauseMenuWrapper/PauseMenu/VBoxContainer"]
-layout_mode = 2
-text = "Version - 0.2.0"
-
-[node name="Info" parent="." node_paths=PackedStringArray("how_to_play") instance=ExtResource("5_ugmh8")]
+[node name="Info" parent="." instance=ExtResource("5_ugmh8")]
 process_mode = 2
 visible = false
-how_to_play = NodePath("../PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = -311.0
+offset_right = 348.0
+offset_bottom = -34.0
+grow_vertical = 0
 
-[node name="Options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("8_dglk4")]
+[node name="Options" parent="." instance=ExtResource("8_dglk4")]
 process_mode = 2
 visible = false
-options = NodePath("../PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options")
+offset_left = 72.0
+offset_top = 229.0
+offset_right = 348.0
+offset_bottom = 506.0
+
+[node name="Stats" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -5.0
+offset_top = 82.0
+offset_right = 441.0
+offset_bottom = 474.0
+grow_horizontal = 2
+alignment = 1
+script = ExtResource("6_2uwwt")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="focus_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" method="_on_focus_entered"]
-[connection signal="focus_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" method="_on_focus_exited"]
-[connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Continue" method="_on_mouse_exited"]
-[connection signal="focus_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" method="_on_focus_entered"]
-[connection signal="focus_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" method="_on_focus_exited"]
-[connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/How_to_play" method="_on_mouse_exited"]
-[connection signal="focus_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" method="_on_focus_entered"]
-[connection signal="focus_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" method="_on_focus_exited"]
-[connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Options" method="_on_mouse_exited"]
-[connection signal="focus_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" method="_on_focus_entered"]
-[connection signal="focus_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" method="_on_focus_exited"]
-[connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Reset" method="_on_mouse_exited"]
-[connection signal="focus_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" method="_on_focus_entered"]
-[connection signal="focus_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" method="_on_focus_exited"]
-[connection signal="gui_input" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" method="_on_gui_input"]
-[connection signal="mouse_entered" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" to="PauseMenuWrapper/PauseMenu/VBoxContainer/MenuOptions/Quit" method="_on_mouse_exited"]
+[connection signal="pressed" from="MenuOptions/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MenuOptions/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MenuOptions/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuOptions/ResetRunButton" to="." method="_on_reset_run_button_pressed"]
+[connection signal="pressed" from="MenuOptions/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
+[connection signal="hidden" from="Info" to="." method="_on_info_hidden"]
+[connection signal="hidden" from="Options" to="." method="_on_options_hidden"]

@@ -2,6 +2,7 @@ extends Node
 
 var _player: Player = null
 var _enemy_manager: EnemyManager = null
+var _stats_man: StatsMan
 var game_timer: Timer
 
 var world_level: int = 1
@@ -21,6 +22,7 @@ var time_between_bosses_endless: int = 180
 var endless: bool = false
 var level_switcher_ready: bool = false
 var last_time_boss_spawned_endless: int = 0
+var scene_to_load: String = ""
 
 # Global game events
 signal enemy_take_damage(amount: int)
@@ -41,6 +43,7 @@ signal caught_fish
 signal got_crit
 signal made_projectile
 
+const LOADING_SCREEN = preload("res://menu/loading_screen/loading_screen.tscn")
 const LEVEL_COUNT: int = 4
 
 func _ready() -> void:
@@ -49,6 +52,7 @@ func _ready() -> void:
 	add_child(game_timer)
 	new_world_level_active.connect(_on_new_world_level_ready)
 	game_timer.timeout.connect(_on_game_timer_timeout)
+	process_mode = PROCESS_MODE_ALWAYS
 
 func _on_new_world_level_ready():
 	game_timer.paused = false
@@ -69,7 +73,6 @@ func get_active_boss() -> Boss:
 func start_game() -> void:
 	self._time_played = 0
 	self._time_when_done = 0
-	get_tree().change_scene_to_file("res://levels/game.tscn")
 	reset_pause()
 	
 	game_timer.stop()
@@ -80,8 +83,19 @@ func start_game() -> void:
 	world_level = 1
 	freeze_enemies = false
 	endless = false
+	level_switcher_ready = false
+	load_scene("res://levels/game.tscn")
+
+func load_scene(scene_path: String) -> void:
+	scene_to_load = scene_path
+	get_tree().change_scene_to_packed(LOADING_SCREEN)
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		match DisplayServer.window_get_mode():
+			DisplayServer.WindowMode.WINDOW_MODE_WINDOWED: DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
+			_: DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
+	
 	#self.level_switcher_ready is a debug thing!
 	if self.endless and self.level_switcher_ready:
 		if self.world_level != 5:
@@ -105,7 +119,7 @@ func _process(_delta: float) -> void:
 		game_timer.paused = true
 
 func main_menu() -> void:
-	get_tree().change_scene_to_file("res://menu/main/menu.tscn")
+	load_scene("res://menu/main/menu.tscn")
 	reset_pause()
 
 # Used by the player.gd script to tell the game manager where the player is.
@@ -113,10 +127,16 @@ func main_menu() -> void:
 func assign_player(player: Player):
 	_player = player
 
+func assign_stats_man(stats_man: StatsMan) -> void:
+	_stats_man = stats_man
+
 # Returns the currently assigned instance of the player. Returns null if no
 # player is assigned
 func get_player() -> Player:
 	return _player
+
+func get_stats_man() -> StatsMan:
+	return _stats_man
 
 func assign_enemy_manager(enemy_manager: EnemyManager) -> void:
 	_enemy_manager = enemy_manager
@@ -190,3 +210,13 @@ func get_time_left() -> int:
 		return self.game_timer.time_left
 	else:
 		return self._time_played - self._endless_time_start
+
+func start_endless_mode() -> void:
+	_time_played = 0
+	_time_when_done = 0
+	reset_pause()
+	
+	world_level = 1
+	freeze_enemies = false
+	endless = true
+	load_scene("res://levels/game.tscn")
