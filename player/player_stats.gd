@@ -27,7 +27,7 @@ signal ranged_attack_speed_changed()
 @export_group("Offense - Ranged")
 
 ## A flat amount of bonus damage to all projectiles fired by ranged weapons.
-@export_range(0, 10, 1, "or_greater") var added_ranged_damage: int = 0
+@export_range(0, 10, 1, "or_greater") var added_gun_damage: int = 0
 
 ## A flat bonus to the number of projectiles fired by the player's ranged weapons.
 @export_range(0, 2, 1, "or_greater") var extra_projectiles: int = 0 # linear additive

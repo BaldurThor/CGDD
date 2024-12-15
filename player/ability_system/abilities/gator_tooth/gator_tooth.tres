@@ -1,8 +1,16 @@
-[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://b5mv78hb7m7u5"]
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=12 format=3 uid="uid://b5mv78hb7m7u5"]
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/gator_tooth/gator_tooth.gd" id="1_3t3ty"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_rgf1g"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="2_wkyug"]
+[ext_resource type="Resource" uid="uid://cyakewo1cwoaj" path="res://player/ability_system/abilities/pickup_assault_rifle/pickup_assault_rifle.tres" id="4_fmuq3"]
+[ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="5_vja8f"]
+[ext_resource type="Resource" uid="uid://cxf0jwyvrhjb5" path="res://player/ability_system/abilities/pickup_friendly_fish/pickup_friendly_fish.tres" id="6_5npr3"]
+[ext_resource type="Resource" uid="uid://tyvey76efpb4" path="res://player/ability_system/abilities/pickup_metal_baseball_bat/pickup_metal_baseball_bat.tres" id="7_hhxnt"]
+[ext_resource type="Resource" uid="uid://d3rowoeoo4vqm" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.tres" id="8_25ewn"]
+[ext_resource type="Resource" uid="uid://dufhryeihr3fe" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.tres" id="9_1du2h"]
+[ext_resource type="Resource" uid="uid://xest1i6lv1da" path="res://player/ability_system/abilities/pickup_shotgun/pickup_shotgun.tres" id="10_jatnv"]
+[ext_resource type="Resource" uid="uid://de5tqvsoulypj" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.tres" id="11_d1ljm"]
 
 [resource]
 script = ExtResource("2_wkyug")
@@ -19,4 +27,4 @@ icon = ExtResource("2_rgf1g")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("2_wkyug")]([])
-requirements = Array[ExtResource("2_wkyug")]([])
+requirements = Array[ExtResource("2_wkyug")]([ExtResource("4_fmuq3"), ExtResource("5_vja8f"), ExtResource("6_5npr3"), ExtResource("7_hhxnt"), ExtResource("8_25ewn"), ExtResource("9_1du2h"), ExtResource("10_jatnv"), ExtResource("11_d1ljm")])

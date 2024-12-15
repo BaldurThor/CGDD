@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbilityInfo" load_steps=10 format=3 uid="uid://crm2dbnqci47u"]
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=11 format=3 uid="uid://crm2dbnqci47u"]
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/shades/shades.gd" id="1_d7i8t"]
 [ext_resource type="Texture2D" uid="uid://752wher5drxx" path="res://player/ability_system/abilities/shades/shades.png" id="2_7t08w"]
@@ -9,12 +9,13 @@
 [ext_resource type="Resource" uid="uid://d3rowoeoo4vqm" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.tres" id="7_x48oo"]
 [ext_resource type="Resource" uid="uid://de5tqvsoulypj" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.tres" id="8_0bdmg"]
 [ext_resource type="Resource" uid="uid://cyakewo1cwoaj" path="res://player/ability_system/abilities/pickup_assault_rifle/pickup_assault_rifle.tres" id="9_vxm2s"]
+[ext_resource type="Resource" uid="uid://xcpye6pbfqtb" path="res://player/ability_system/abilities/pickup_grenade_launcher/pickup_grenade_launcher.tres" id="10_1j8iu"]
 
 [resource]
 script = ExtResource("3_6nmjt")
 ability_script = ExtResource("1_d7i8t")
 name = "Shades"
-positive_effects = Array[String](["+1 ranged weapon projectile(s)"])
+positive_effects = Array[String](["+1 gun projectile(s)"])
 negative_effects = Array[String](["-15% ranged range", "+20% ranged projectile spread"])
 type = 0
 tags = Array[String](["extra_projectiles", "ranged_spread_mod"])
@@ -25,4 +26,4 @@ icon = ExtResource("2_7t08w")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("3_6nmjt")]([])
-requirements = Array[ExtResource("3_6nmjt")]([ExtResource("4_ca88p"), ExtResource("5_6srtt"), ExtResource("6_w0vgc"), ExtResource("7_x48oo"), ExtResource("8_0bdmg"), ExtResource("9_vxm2s")])
+requirements = Array[ExtResource("3_6nmjt")]([ExtResource("4_ca88p"), ExtResource("5_6srtt"), ExtResource("6_w0vgc"), ExtResource("7_x48oo"), ExtResource("8_0bdmg"), ExtResource("9_vxm2s"), ExtResource("10_1j8iu")])

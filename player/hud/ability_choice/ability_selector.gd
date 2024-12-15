@@ -13,7 +13,8 @@ var spent_skill_points: int = 0
 enum ChoiceType {
 	NORMAL,
 	CORRUPTED,
-	WEAPONS
+	WEAPONS,
+	FISH,
 }
 
 var active_type: ChoiceType
@@ -30,6 +31,7 @@ func _get_skip_xp() -> int:
 		ChoiceType.CORRUPTED: mul = ability_system.loot_table.corrupted_skip_xp_multiplier
 		ChoiceType.WEAPONS: mul = ability_system.loot_table.weapon_skip_xp_multiplier
 		ChoiceType.NORMAL: mul = ability_system.loot_table.passive_skip_xp_multiplier
+		ChoiceType.FISH: mul = ability_system.loot_table.fish_skip_xp_multiplier
 	return int(player.experience.xp_needed_form(spent_skill_points) * mul)
 
 func _request() -> void:
@@ -38,13 +40,17 @@ func _request() -> void:
 	skip_button.visible = player.experience.current_level > 0
 	_show_menu()
 	
-func request_weapon() -> void:
+func request_weapon(can_skip: bool = true) -> void:
 	ability_queue.push_front(ChoiceType.WEAPONS)
-	_refresh()
+	_refresh(can_skip)
 		
-func request_corrupted() -> void:
+func request_corrupted(can_skip: bool = true) -> void:
 	ability_queue.push_front(ChoiceType.CORRUPTED)
-	_refresh()
+	_refresh(can_skip)
+	
+func request_fish(can_skip: bool = true) -> void:
+	ability_queue.push_front(ChoiceType.FISH)
+	_refresh(can_skip)
 
 func request_menu() -> void:
 	if ability_queue.size() > 0 and !visible:
@@ -59,7 +65,7 @@ func _show_menu() -> void:
 	GameManager.pause(self)
 	_update_backlog_text()
 
-func _refresh() -> void:
+func _refresh(can_skip: bool = true) -> void:
 	for child in ability_selection.get_children():
 		child.queue_free()
 	
@@ -71,10 +77,11 @@ func _refresh() -> void:
 	active_type = ability_queue.pop_front()
 	var skip_xp: int = _get_skip_xp()
 	skip_button.refresh_string(skip_xp)
-	skip_button.visible = player.experience.current_level > 0
+	skip_button.visible = can_skip
 	
 	match active_type:
 		ChoiceType.NORMAL: choices = ability_system.get_ability_selection()
+		ChoiceType.FISH: choices = ability_system.get_ability_selection()
 		ChoiceType.WEAPONS: choices = ability_system.get_weapon_selection()
 		ChoiceType.CORRUPTED: choices = ability_system.get_corrupted_abilities()
 	for index in choices.size():
@@ -113,10 +120,10 @@ func _on_experience_level_up() -> void:
 func _on_skip_button_button_up() -> void:
 	var xp = _get_skip_xp()
 	player.experience.gain_experience.emit(xp, false)
-	spent_skill_points += 1
-	if active_type == ChoiceType.CORRUPTED:
+	if active_type == ChoiceType.CORRUPTED or active_type == ChoiceType.FISH:
 		_close_menu()
 		return
+	spent_skill_points += 1
 	_refresh()
 
 func _on_DebugCommands_pick_ability(type : int = 0) -> void:

@@ -78,6 +78,8 @@ func _create_ability_accumulator(pool: Array[AbilityInfo]) -> Array[int]:
 				this_weight = loot_table.rate_uncommon
 			AbilityInfo.Rarity.RARE:
 				this_weight = loot_table.rate_rare
+			AbilityInfo.Rarity.WEAPON_UNIQUE:
+				this_weight = loot_table.rate_weapon_unique
 			_:
 				print_debug("WARNING: An ability was found in loot_table that was of an invalid rarity. Ignoring...")
 				continue

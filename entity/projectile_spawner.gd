@@ -4,6 +4,9 @@ class_name ProjectileSpawner extends Node2D
 
 @export var autostart: bool = false
 
+## NOTE: This object handles the delay between the waves.
+var wave_delay_timer: Timer = null
+
 @export var spawn_waves: int = 1:
 	set(value):
 		spawn_waves = value
@@ -70,6 +73,9 @@ var running: bool = true
 var timer: Timer = null
 
 func _ready() -> void:
+	wave_delay_timer = Timer.new()
+	wave_delay_timer.wait_time = time_between_waves
+	add_child(wave_delay_timer)
 	if Engine.is_editor_hint():
 		return
 	
@@ -88,9 +94,10 @@ func _ready() -> void:
 func spawn() -> void:
 	for i in range(spawn_waves):
 		_spawn_wave(i)
-		await get_tree().create_timer(time_between_waves).timeout
+		wave_delay_timer.start()
+		await wave_delay_timer.timeout
 
-func _spawn_wave(wave: int):
+func _spawn_wave(wave: int) -> void:
 	audio_stream_player.play()
 	audio_stream_player.volume_db = sound_volume_db
 	GameManager.get_player().camera.add_trauma(screenshake_amount)
