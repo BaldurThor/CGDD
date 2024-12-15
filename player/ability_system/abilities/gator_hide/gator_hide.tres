@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://bbt18co7pmomp"]
 
-[ext_resource type="Script" path="res://player/ability_system/abilities/gator_hide/gator_hide.gd" id="1_qcqjh"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="2_h5hrw"]
+[ext_resource type="Script" uid="uid://c0jitwk8y4nw0" path="res://player/ability_system/abilities/gator_hide/gator_hide.gd" id="1_qcqjh"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="2_h5hrw"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_ltywq"]
 
 [resource]

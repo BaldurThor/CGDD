@@ -75,6 +75,25 @@ focus_neighbor_bottom = NodePath("../../../BackButton")
 max_value = 1.0
 step = 0.01
 
+[node name="Screenshake" type="HBoxContainer" parent="Label"]
+layout_mode = 2
+
+[node name="ScreenshakeLabel" type="Label" parent="Label/Screenshake"]
+custom_minimum_size = Vector2(68.37, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Camera
+Shake"
+
+[node name="ScreenshakeSlider" type="HSlider" parent="Label/Screenshake"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../Effects/EffectsSlider")
+focus_neighbor_bottom = NodePath("../../../BackButton")
+max_value = 1.0
+step = 0.01
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 68.0
@@ -98,4 +117,5 @@ text = "Back"
 [connection signal="value_changed" from="Label/Master/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="Label/Effects/EffectsSlider" to="." method="_on_effects_slider_value_changed"]
 [connection signal="value_changed" from="Label/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Label/Screenshake/ScreenshakeSlider" to="." method="_on_screenshake_slider_value_changed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
