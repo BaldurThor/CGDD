@@ -1,13 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://delsmh5kmqfkw"]
+[gd_scene load_steps=8 format=3 uid="uid://delsmh5kmqfkw"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.gd" id="1_k8jn3"]
 [ext_resource type="Texture2D" uid="uid://cb6gronfdv4nv" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.png" id="2_67nn1"]
+[ext_resource type="Texture2D" uid="uid://ba7pfw6be0oo0" path="res://entity/enemy/enemy_drops/experience/Empty.png" id="3_m6jwh"]
+
+[sub_resource type="Shader" id="Shader_wfkah"]
+code = "shader_type canvas_item;
+
+uniform vec4 glow_color : source_color;
+uniform float intensity;
+uniform float max_distance;
+
+varying vec2 my_vertex;
+
+float map(float x, float in_min, float in_max, float out_min, float out_max) {
+      return (clamp(x, in_min, in_max) - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+float my_formula(float inte, float max_dist, vec2 my_vert) {
+	float my_distance = distance(my_vert, vec2(0.,0.));
+	float my_x = sqrt((map(inte, 0., max_dist, 0., 1.) - (my_distance/max_dist)));
+	return pow(my_x * -1., 2);
+}
+
+void vertex() {
+	my_vertex = VERTEX;
+}
+
+void fragment() {
+	
+	COLOR = vec4(glow_color.rgb, my_formula(intensity, max_distance, my_vertex));
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p12mh"]
+resource_local_to_scene = true
+shader = SubResource("Shader_wfkah")
+shader_parameter/glow_color = Color(0.55497, 0.0780487, 0.669856, 1)
+shader_parameter/intensity = 150.0
+shader_parameter/max_distance = 92.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ovwg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l40u8"]
 
 [node name="HeartOfDarkness" type="RigidBody2D"]
+process_mode = 3
 collision_layer = 8
 collision_mask = 0
 lock_rotation = true
@@ -17,6 +54,11 @@ base_tracking_speed = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_67nn1")
+
+[node name="Glow" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_p12mh")
+texture = ExtResource("3_m6jwh")
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 30.0
