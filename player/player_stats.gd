@@ -90,7 +90,9 @@ signal ranged_attack_speed_changed()
 		player_ranged_range_changed.emit()
 
 ## Affects the spread of the player's ranged projectiles. A lower value means lower spread.
-@export_range(0.0, 2.0, 0.01, "or_greater") var ranged_spread_mod: float = 0.0
+@export_range(0.0, 2.0, 0.01, "or_greater") var ranged_spread_mod: float = 1.0:
+	set(value):
+		ranged_spread_mod = max(0, value)
 
 ## A multiplier to the attack speed of all ranged weapons.
 @export_range(0.5, 3.0, 0.01, "or_greater") var ranged_attack_speed_mod: float = 1.0:

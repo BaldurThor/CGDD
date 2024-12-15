@@ -122,3 +122,6 @@ func calculate_damage_reduction(armor_value: int) -> float:
 	var a: float = (-1.0 + armor_value) / (4 * armor_value)
 	var b: float = (log(armor_value) / log(2)) / 10
 	return max(a + b, 1)
+
+func is_dead() -> bool:
+	return health <= 0

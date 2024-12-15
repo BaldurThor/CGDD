@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6pltl030ysv8" path="res://entity/bosses/boss.gd" id="1_6tvua"]
 [ext_resource type="PackedScene" uid="uid://delsmh5kmqfkw" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn" id="2_7h1y4"]
-[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_7uy41"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_7uy41"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_yjw7m"]
 [ext_resource type="Texture2D" uid="uid://2jceb3mphfhn" path="res://entity/bosses/unspeakable/unspeakable.png" id="4_uh2np"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_lcdi2"]

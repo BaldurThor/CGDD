@@ -49,7 +49,7 @@ func _calculate_spread_vector() -> Vector2:
 	var degrees = weapon_type.projectile_spread.sample(randf()) / 2
 	# Give the projectile a 50% chance of having the angle inverted
 	var sign_multiplier = [-1, 1].pick_random()
-	var rad = deg_to_rad(degrees)
+	var rad = deg_to_rad(degrees) * player_stats.ranged_spread_mod
 	# Rotate the angle by rad or -rad
 	var angle = global_transform.x.rotated(rad * sign_multiplier)
 	return angle

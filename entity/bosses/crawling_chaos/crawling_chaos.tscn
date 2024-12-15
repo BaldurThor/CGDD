@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://dgo7yk13ulxrk"]
 
 [ext_resource type="Script" uid="uid://b6pltl030ysv8" path="res://entity/bosses/boss.gd" id="1_flnhx"]
-[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_1bt2p"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_1bt2p"]
 [ext_resource type="PackedScene" uid="uid://delsmh5kmqfkw" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn" id="2_cjeex"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_pobd5"]
 [ext_resource type="Texture2D" uid="uid://cwetiolt2186e" path="res://entity/bosses/crawling_chaos/crawling_chaos.png" id="4_kvoy8"]
@@ -27,8 +27,11 @@ height = 64.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdanx"]
 resource_local_to_scene = true
 shader = ExtResource("5_qbfga")
+shader_parameter/cone_angle = 1.0
 shader_parameter/transparency = 1.0
+shader_parameter/speed = 2.0
 shader_parameter/flash = false
+shader_parameter/cutoff_distance = 0.03
 
 [sub_resource type="Gradient" id="Gradient_umx6t"]
 colors = PackedColorArray(0.389648, 0.175534, 2.88785e-07, 1, 0.190485, 0.054031, 0, 1)
@@ -67,7 +70,7 @@ autostart = true
 [node name="RegenTimer" type="Timer" parent="EntityStats"]
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0.999998, 9)
+position = Vector2(0.999998, 17)
 scale = Vector2(2.1875, 0.865459)
 texture = SubResource("GradientTexture2D_g2bkt")
 
@@ -75,14 +78,13 @@ texture = SubResource("GradientTexture2D_g2bkt")
 sprite = ExtResource("4_kvoy8")
 entity_stats = NodePath("../EntityStats")
 sprite_scale = 3.5
-sprite_offset = Vector2(-9.5, -93.83)
+sprite_offset = Vector2(-9.5, -87.585)
 show_health_bar = false
 show_shadow = false
 shadow_size = 1.0
 shadow_offset = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, -15)
 shape = SubResource("CapsuleShape2D_iefsd")
 
 [node name="SlamAttack" type="Area2D" parent="."]

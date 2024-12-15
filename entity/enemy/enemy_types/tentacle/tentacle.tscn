@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_l6rdd"]
 [ext_resource type="Texture2D" uid="uid://cdmq6tgieoclb" path="res://entity/enemy/enemy_types/tentacle/tentacle.png" id="4_aaljs"]
 [ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="5_056jx"]
-[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="6_mnqrr"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_mnqrr"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_plk0o"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_types/tentacle/check_for_targets.gd" id="7_oh7c4"]
 [ext_resource type="Script" uid="uid://d2x55wmqdp2rq" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gd" id="8_uim5p"]
@@ -19,11 +19,14 @@ radius = 32.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0adt"]
 resource_local_to_scene = true
 shader = ExtResource("5_056jx")
+shader_parameter/cone_angle = 1.0
 shader_parameter/transparency = 1.0
+shader_parameter/speed = 2.0
 shader_parameter/flash = false
+shader_parameter/cutoff_distance = 0.135
 
 [sub_resource type="Gradient" id="Gradient_mdf0e"]
-colors = PackedColorArray(1, 0, 0, 1, 0.500741, 3.73013e-07, 1.92523e-07, 1)
+colors = PackedColorArray(0.537732, 0.000669788, 0.632437, 1, 0.349673, 0.000175364, 0.388853, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_38l5h"]
 gradient = SubResource("Gradient_mdf0e")
@@ -76,6 +79,7 @@ shape = SubResource("CircleShape2D_vy7hj")
 scale = Vector2(2, 2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TentacleSlam"]
+visible = false
 polygon = PackedVector2Array(100, 0, 92, -38, 70, -70, 0, 0, 70, 70, 92, 44)
 
 [node name="Sprite2D" type="Sprite2D" parent="TentacleSlam"]
@@ -123,6 +127,7 @@ stream = ExtResource("9_qy6fs")
 bus = &"Effects"
 
 [node name="TentacleSlamSearchRadius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleSlamSearchRadius"]
 shape = SubResource("CircleShape2D_8q0xh")

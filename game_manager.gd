@@ -82,6 +82,7 @@ func start_game() -> void:
 	world_level = 1
 	freeze_enemies = false
 	endless = false
+	level_switcher_ready = false
 	load_scene("res://levels/game.tscn")
 
 func load_scene(scene_path: String) -> void:

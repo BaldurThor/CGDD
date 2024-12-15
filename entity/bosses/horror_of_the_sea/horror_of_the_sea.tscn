@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6pltl030ysv8" path="res://entity/bosses/boss.gd" id="1_0ygwl"]
 [ext_resource type="PackedScene" uid="uid://delsmh5kmqfkw" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn" id="2_3gu8j"]
-[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_8417x"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_8417x"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_ng2h4"]
 [ext_resource type="Texture2D" uid="uid://dphtgbysoogi" path="res://entity/bosses/horror_of_the_sea/horror_of_the_sea.png" id="4_hsrmb"]
 [ext_resource type="Script" path="res://entity/projectile_spawner.gd" id="5_2enaf"]
