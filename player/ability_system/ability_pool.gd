@@ -12,6 +12,8 @@ class_name AbilityPool extends Resource
 @export var rate_uncommon: int = 0
 ## The weight of a rare ability being chosen.
 @export var rate_rare: int = 0
+## The weight of a weapon-specific ability being chosen.
+@export var rate_weapon_unique: int = 0
 ## The levels at which the player is guaranteed to get a choice of weapons
 @export var weapon_guarantee_breakpoint: int = 5
 ## The xp percentage of the player's level that they get for skipping a weapon

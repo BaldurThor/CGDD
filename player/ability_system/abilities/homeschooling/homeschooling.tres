@@ -8,12 +8,12 @@
 script = ExtResource("1_lo2dt")
 ability_script = ExtResource("1_2dytu")
 name = "Homeschooling"
-positive_effects = Array[String](["+25% experience gained"])
+positive_effects = Array[String](["+7 max health", "+1 armor", "+5% movement speed"])
 negative_effects = Array[String]([])
 type = 0
 tags = Array[String](["exp"])
-flavor_text = "Much better than those fancy-pants private schools"
-max_amount = 2
+flavor_text = "The school of hard knocks."
+max_amount = 0
 rarity = 1
 icon = ExtResource("2_qce6i")
 guaranteed_at = 0
