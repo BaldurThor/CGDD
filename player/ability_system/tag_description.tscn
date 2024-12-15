@@ -9,7 +9,6 @@ font_color = Color(0.772549, 0.560784, 0.396078, 1)
 
 [node name="TagDescription" type="Label"]
 size_flags_horizontal = 3
-size_flags_vertical = 6
 text = "This is a tag description"
 label_settings = SubResource("LabelSettings_wu4ed")
 horizontal_alignment = 1
