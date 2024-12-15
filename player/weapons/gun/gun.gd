@@ -37,6 +37,8 @@ func _permit_attacking() -> void:
 	can_attack = true
 
 func _process(_delta: float) -> void:
+	var swivel_rotation = abs(fmod(rad_to_deg(gun_swivel.rotation), 360.0))
+	gun_sprite.flip_v = swivel_rotation > 90.0 and swivel_rotation < 270.0
 	if can_attack and swivel.enemy != null:
 		can_attack = false
 		if weapon_type.burst == true:

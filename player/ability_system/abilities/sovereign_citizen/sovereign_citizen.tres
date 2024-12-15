@@ -18,7 +18,7 @@
 script = ExtResource("3_2v3x2")
 ability_script = ExtResource("1_wybox")
 name = "Sovereign Citizen"
-positive_effects = Array[String](["+3 melee damage", "+3 ranged projectile damage", "+3 explosion damage"])
+positive_effects = Array[String](["+3 melee damage", "+3 gun damage", "+3 explosion damage"])
 negative_effects = Array[String]([])
 type = 0
 tags = Array[String](["added_damage"])

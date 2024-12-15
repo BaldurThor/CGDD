@@ -1,14 +1,22 @@
-[gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://dpersa8y2pkib"]
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=12 format=3 uid="uid://dpersa8y2pkib"]
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/drunken_brawler/drunken_brawler.gd" id="1_xbxob"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_kn4qn"]
 [ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_x8i3k"]
+[ext_resource type="Resource" uid="uid://cyakewo1cwoaj" path="res://player/ability_system/abilities/pickup_assault_rifle/pickup_assault_rifle.tres" id="4_uaenm"]
+[ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="5_fsk1f"]
+[ext_resource type="Resource" uid="uid://cxf0jwyvrhjb5" path="res://player/ability_system/abilities/pickup_friendly_fish/pickup_friendly_fish.tres" id="6_ogx6p"]
+[ext_resource type="Resource" uid="uid://tyvey76efpb4" path="res://player/ability_system/abilities/pickup_metal_baseball_bat/pickup_metal_baseball_bat.tres" id="7_4uab3"]
+[ext_resource type="Resource" uid="uid://d3rowoeoo4vqm" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.tres" id="8_mnn7p"]
+[ext_resource type="Resource" uid="uid://dufhryeihr3fe" path="res://player/ability_system/abilities/pickup_rifle/pickup_rifle.tres" id="9_neh37"]
+[ext_resource type="Resource" uid="uid://xest1i6lv1da" path="res://player/ability_system/abilities/pickup_shotgun/pickup_shotgun.tres" id="10_qjt7x"]
+[ext_resource type="Resource" uid="uid://de5tqvsoulypj" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.tres" id="11_0341f"]
 
 [resource]
 script = ExtResource("3_x8i3k")
 ability_script = ExtResource("1_xbxob")
 name = "Drunken Brawler"
-positive_effects = Array[String](["+5% crit chance", "+10% crit multiplier"])
+positive_effects = Array[String](["+5% crit chance", "+20% crit multiplier"])
 negative_effects = Array[String](["+15% ranged projectile spread"])
 type = 0
 tags = Array[String](["crit_chance", "crit_multiplier", "ranged_spread_mod"])
@@ -19,4 +27,4 @@ icon = ExtResource("2_kn4qn")
 guaranteed_at = 0
 required_level = 0
 incompatabilities = Array[ExtResource("3_x8i3k")]([])
-requirements = Array[ExtResource("3_x8i3k")]([])
+requirements = Array[ExtResource("3_x8i3k")]([ExtResource("4_uaenm"), ExtResource("5_fsk1f"), ExtResource("6_ogx6p"), ExtResource("7_4uab3"), ExtResource("8_mnn7p"), ExtResource("9_neh37"), ExtResource("10_qjt7x"), ExtResource("11_0341f")])

@@ -696,6 +696,8 @@ death_screen = ExtResource("2_4qn83")
 [node name="PlayerStats" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_s8nph")
+added_gun_damage = null
+ranged_spread_mod = 1.0
 crit_multiplier = 1.0
 armor = 1
 max_health = 20

@@ -27,7 +27,7 @@ func _catch_catch(catch) -> void:
 		return
 	elif catch is Fish:
 		#ability_picker
-		DebugCommands.get_ability_picker()
+		player.ability_selector.request_fish()
 		catch.queue_free()
 		GameManager.caught_fish.emit()
 	elif catch is PickupBase:

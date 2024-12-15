@@ -30,7 +30,7 @@ func _init() -> void:
 	GameManager.death = false
 	
 func _ready() -> void:
-	ability_selector.request_weapon()
+	ability_selector.request_weapon(false)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("level_up"):

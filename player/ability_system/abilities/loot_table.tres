@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbilityPool" load_steps=53 format=3 uid="uid://ci2k3ke86qm0e"]
+[gd_resource type="Resource" script_class="AbilityPool" load_steps=52 format=3 uid="uid://ci2k3ke86qm0e"]
 
 [ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_7pjxk"]
 [ext_resource type="Resource" uid="uid://bbt18co7pmomp" path="res://player/ability_system/abilities/gator_hide/gator_hide.tres" id="2_eei0h"]
@@ -25,7 +25,6 @@
 [ext_resource type="Resource" uid="uid://cqu7abllwpk3j" path="res://player/ability_system/abilities/castle_doctrine/castle_doctrine.tres" id="19_xdb4j"]
 [ext_resource type="Resource" uid="uid://b2ftepp71awho" path="res://player/ability_system/abilities/homecooked_gunpowder/homecooked_gunpowder.tres" id="20_8mgyf"]
 [ext_resource type="Resource" uid="uid://cs6u2skxckql7" path="res://player/ability_system/abilities/kleptomaniac/kleptomaniac.tres" id="20_bh6b7"]
-[ext_resource type="Resource" uid="uid://cg8prhhkck5hn" path="res://player/ability_system/abilities/corrupted_knowledge/corrupted_knowledge.tres" id="20_m4jje"]
 [ext_resource type="Resource" uid="uid://dus86bmoltxlc" path="res://player/ability_system/abilities/corrupted_might/corrupted_might.tres" id="21_o5dip"]
 [ext_resource type="Resource" uid="uid://nsy35oky4yii" path="res://player/ability_system/abilities/soot/soot.tres" id="21_qiwpt"]
 [ext_resource type="Resource" uid="uid://btoeraqbjia54" path="res://player/ability_system/abilities/lumberjack_at_heart/lumberjack_at_heart.tres" id="21_x8mja"]
@@ -57,10 +56,11 @@
 script = ExtResource("3_bjtgc")
 abilities = Array[ExtResource("1_7pjxk")]([ExtResource("2_eei0h"), ExtResource("3_dlt83"), ExtResource("4_iwhf5"), ExtResource("5_vwjob"), ExtResource("6_pwsg8"), ExtResource("7_d6n8r"), ExtResource("13_jw80q"), ExtResource("14_lqc7f"), ExtResource("15_rp87o"), ExtResource("16_5pu36"), ExtResource("17_8t3e7"), ExtResource("18_7ngye"), ExtResource("19_5o4ex"), ExtResource("20_8mgyf"), ExtResource("21_qiwpt"), ExtResource("22_h33gp"), ExtResource("23_3n38m"), ExtResource("19_xdb4j"), ExtResource("20_bh6b7"), ExtResource("21_x8mja"), ExtResource("22_wa6tj"), ExtResource("23_yuokq"), ExtResource("24_k8a0x"), ExtResource("25_ioq5q"), ExtResource("26_ddapv"), ExtResource("27_s0cox"), ExtResource("28_cmgxi"), ExtResource("29_m14l5"), ExtResource("30_76mb3"), ExtResource("31_ga7w8"), ExtResource("32_bmm40"), ExtResource("33_30m2n"), ExtResource("34_qucve")])
 weapons = Array[ExtResource("1_7pjxk")]([ExtResource("9_20rmb"), ExtResource("10_0ve1b"), ExtResource("7_ibt0c"), ExtResource("8_7q2sg"), ExtResource("11_2k0vh"), ExtResource("12_da51d"), ExtResource("26_a7jlc"), ExtResource("43_tpcqa"), ExtResource("45_ar775"), ExtResource("46_adu4u")])
-corrupted_abilities = Array[ExtResource("1_7pjxk")]([ExtResource("27_atmll"), ExtResource("19_lkikw"), ExtResource("20_m4jje"), ExtResource("21_o5dip"), ExtResource("31_nq2k2"), ExtResource("22_sgjve"), ExtResource("35_73rew")])
+corrupted_abilities = Array[ExtResource("1_7pjxk")]([ExtResource("27_atmll"), ExtResource("19_lkikw"), ExtResource("21_o5dip"), ExtResource("31_nq2k2"), ExtResource("22_sgjve"), ExtResource("35_73rew")])
 rate_common = 500
 rate_uncommon = 250
 rate_rare = 100
+rate_weapon_unique = 25
 weapon_guarantee_breakpoint = 5
 weapon_skip_xp_multiplier = 0.5
 passive_skip_xp_multiplier = 0.5

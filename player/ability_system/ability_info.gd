@@ -5,6 +5,7 @@ enum Rarity {
 	UNCOMMON,
 	RARE,
 	CORRUPTED,
+	WEAPON_UNIQUE,
 }
 
 enum AbilityType {
