@@ -1,6 +1,7 @@
 extends Node
 
 signal pick_ability(amount : int)
+signal test
 
 func toggle_debug() -> String:
 	Debug.enable = not Debug.enable
@@ -18,3 +19,6 @@ func get_ability_picker(type: int = 1) -> String:
 func set_timescale(timescale: float) -> String:
 	Engine.time_scale = timescale
 	return "Set timescale to %f" % [timescale]
+	
+func a_test():
+	test.emit()

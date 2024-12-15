@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bbesagqumwgtd"]
+[gd_scene load_steps=16 format=3 uid="uid://bbesagqumwgtd"]
 
 [ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://player/player.tscn" id="1_fbep7"]
 [ext_resource type="Script" path="res://player/fishing/fish_spawer.gd" id="2_oohfr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b8h32mkkaisy6" path="res://menu/pause/pause.tscn" id="5_csob6"]
 [ext_resource type="Script" path="res://stat_man.gd" id="6_7poab"]
 [ext_resource type="Script" path="res://menu/win/win_screen.gd" id="6_jn2hb"]
+[ext_resource type="Script" path="res://levels/submit.gd" id="7_2f4hn"]
 [ext_resource type="Texture2D" uid="uid://didthgbsm3qr0" path="res://menu/win/newspaper.png" id="8_p68n4"]
 [ext_resource type="Script" path="res://menu/win/stats.gd" id="9_lrlrb"]
 
@@ -224,6 +225,10 @@ script = ExtResource("6_7poab")
 [node name="Timer" type="Timer" parent="EndStats"]
 autostart = true
 
+[node name="HTTPRequest" type="HTTPRequest" parent="EndStats"]
+process_mode = 3
+script = ExtResource("7_2f4hn")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="WinScreen" type="Control" parent="CanvasLayer"]
@@ -255,6 +260,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -94.5
+offset_right = 94.0
+offset_bottom = 94.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
