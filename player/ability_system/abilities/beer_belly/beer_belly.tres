@@ -8,10 +8,10 @@
 script = ExtResource("3_juouv")
 ability_script = ExtResource("1_oosnk")
 name = "Beer Belly"
-positive_effects = Array[String](["+10% max health", "+3 armor"])
+positive_effects = Array[String](["+10% max health multiplier", "+3 armor"])
 negative_effects = Array[String](["-10% movement speed", "-5% dodge chance"])
 type = 0
-tags = Array[String](["max_health", "max_health_mod", "armor", "movement_speed_mod", "dodge"])
+tags = Array[String](["max_health_mod", "armor", "dodge"])
 flavor_text = "I can play the drums on it!"
 max_amount = 0
 rarity = 1

@@ -3,12 +3,14 @@ extends Control
 @onready var fade: TextureRect = $Fade
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var stats: VBoxContainer = $Controls/Stats
+@onready var endless_mode_button: Button = $Controls/HBoxContainer/EndlessModeButton
 
 const SHOCKWAVE = preload("res://levels/transition/shockwave.tscn")
 
 func _ready() -> void:
 	GameManager.game_win.connect(_show_win_menu)
 	visible = false
+	endless_mode_button.grab_focus()
 
 func _show_win_menu() -> void:
 	GameManager.freeze_enemies = true

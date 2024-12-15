@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_kmsvg")
-damage = 8
+damage = 14
 secondary_damage = 0
 damage_effectiveness = 0.9
 secondary_damage_effectiveness = 0.0
@@ -31,4 +31,5 @@ target_priority = 0
 sprite = ExtResource("3_3yr2f")
 attack_sfx = ExtResource("1_mpn1m")
 crosshair = ExtResource("2_f307d")
+sprite_scale = Vector2(0.8, 0.8)
 attack_range_debug_color = Color(0.498039, 1, 0.831373, 0.333333)

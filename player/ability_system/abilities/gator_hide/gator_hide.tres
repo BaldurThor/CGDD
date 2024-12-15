@@ -8,11 +8,11 @@
 script = ExtResource("2_h5hrw")
 ability_script = ExtResource("1_qcqjh")
 name = "Gator Hide"
-positive_effects = Array[String](["+5 maximum health", "+3% maximum health"])
+positive_effects = Array[String](["+12% max health multiplier"])
 negative_effects = Array[String]([])
 type = 0
-tags = Array[String](["max_health", "max_health_mod"])
-flavor_text = "Good for patching your torn clothing"
+tags = Array[String](["max_health_mod"])
+flavor_text = "Much better than crocodile hide."
 max_amount = 0
 rarity = 0
 icon = ExtResource("2_ltywq")

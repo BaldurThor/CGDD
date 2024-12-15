@@ -37,6 +37,8 @@ func _permit_attacking() -> void:
 	can_attack = true
 
 func _process(_delta: float) -> void:
+	var swivel_rotation = abs(fmod(rad_to_deg(gun_swivel.rotation), 360.0))
+	gun_sprite.flip_v = swivel_rotation > 90.0 and swivel_rotation < 270.0
 	if can_attack and swivel.enemy != null:
 		can_attack = false
 		if weapon_type.burst == true:
@@ -49,7 +51,7 @@ func _calculate_spread_vector() -> Vector2:
 	var degrees = weapon_type.projectile_spread.sample(randf()) / 2
 	# Give the projectile a 50% chance of having the angle inverted
 	var sign_multiplier = [-1, 1].pick_random()
-	var rad = deg_to_rad(degrees)
+	var rad = deg_to_rad(degrees) * player_stats.ranged_spread_mod
 	# Rotate the angle by rad or -rad
 	var angle = global_transform.x.rotated(rad * sign_multiplier)
 	return angle

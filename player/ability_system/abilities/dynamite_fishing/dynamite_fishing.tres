@@ -11,10 +11,10 @@
 script = ExtResource("1_qxsbg")
 ability_script = ExtResource("1_4wjoi")
 name = "Dynamite Fishing"
-positive_effects = Array[String](["+10% explosive weapon radius", "+5% explosive weapon damage"])
+positive_effects = Array[String](["+10% explosion radius", "+5% explosion damage"])
 negative_effects = Array[String](["-5% attack speed"])
 type = 0
-tags = Array[String](["explosive_radius_mod", "explosive_damage_mod", "attack_speed_mod"])
+tags = Array[String](["damage_mod", "explosive_radius_mod"])
 flavor_text = "What do you mean it's not fair?"
 max_amount = 0
 rarity = 0

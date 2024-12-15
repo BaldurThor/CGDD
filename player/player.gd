@@ -12,6 +12,7 @@ class_name Player extends CharacterBody2D
 @onready var ability_system: AbilitySystem = %AbilitySystem
 @onready var ability_selector: AbilitySelector = %AbilitySelector
 @onready var medkit_pickup_sfx: AudioStreamPlayer2D = $MedkitPickupSFX
+@onready var heart_pickup_sfx: AudioStreamPlayer2D = $HeartPickupSFX
 @onready var enemy_borders: Node2D = $EnemyBorders
 
 @export var freeze_player: bool = false
@@ -29,7 +30,7 @@ func _init() -> void:
 	GameManager.death = false
 	
 func _ready() -> void:
-	ability_selector.request_weapon()
+	ability_selector.request_weapon(false)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("level_up"):
@@ -66,7 +67,7 @@ func take_damage(amount: int, enemy: Enemy) -> void:
 	if player_stats.is_invincible:
 		return
 
-	if randf() < min(player_stats.absolute_max_dodge, player_stats.dodge_chance):
+	if randf() + 0.00001 < min(player_stats.absolute_max_dodge, player_stats.dodge_chance):
 		amount = 0
 	
 	animation_player.play("take_damage")
@@ -85,5 +86,5 @@ func _on_player_stats_death() -> void:
 	var death_node = death_screen.instantiate()
 	death_node.initialize(last_damage_from)
 	self.add_child(death_node)
-	death_node.fade_to_black.position.x = self.position.x - death_node.fade_to_black.size.x / 2
-	death_node.fade_to_black.position.y = self.position.y - death_node.fade_to_black.size.y / 2
+	death_node.highlight_screen.position.x = self.position.x - death_node.highlight_screen.size.x / 2
+	death_node.highlight_screen.position.y = self.position.y - death_node.highlight_screen.size.y / 2

@@ -11,10 +11,10 @@
 script = ExtResource("1_ceb8b")
 ability_script = ExtResource("1_t0hey")
 name = "Soot"
-positive_effects = Array[String](["+10% explosive damage", "+5 explosive damage"])
+positive_effects = Array[String](["+10% explosion damage", "+5 explosion damage"])
 negative_effects = Array[String]([])
 type = 0
-tags = Array[String](["explosive_damage_mod", "added_explosive_damage"])
+tags = Array[String](["damage_mod", "added_damage"])
 flavor_text = "Covered head-to-toe"
 max_amount = 0
 rarity = 0

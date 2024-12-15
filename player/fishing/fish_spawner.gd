@@ -54,7 +54,7 @@ func _spawn_all_fish() -> void:
 func _draw() -> void:
 	if Engine.is_editor_hint():
 		draw_circle($"../Player".position,radius_max,Color.DARK_SEA_GREEN,false,25)
-		draw_circle($"../Player".position,radius_min,Color.DARK_RED,true,5)
+		draw_circle($"../Player".position,radius_min,Color.DARK_RED,false,5)
 	elif Debug.enable:
 		draw_circle(Vector2(0,0),radius_max,Color.DARK_SEA_GREEN,false,25)
 		draw_circle(Vector2(0,0),radius_min,Color.DARK_RED,false,5)

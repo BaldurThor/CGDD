@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6wyushe5ghx3"]
+
+[ext_resource type="Script" path="res://menu/loading_screen/loading_screen.gd" id="1_vmlng"]
+[ext_resource type="Texture2D" uid="uid://7plv2vtd8fhv" path="res://menu/loading_screen/loading_screen.png" id="2_hfvkt"]
+[ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="3_0xapo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uleum"]
+bg_color = Color(0.0607619, 0.0488988, 0.0729646, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dimaj"]
+bg_color = Color(0.786873, 0.377863, 1, 1)
+
+[sub_resource type="Theme" id="Theme_quyl8"]
+ProgressBar/font_sizes/font_size = 9
+ProgressBar/fonts/font = ExtResource("3_0xapo")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_uleum")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_dimaj")
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vmlng")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hfvkt")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -179.0
+offset_right = 143.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_quyl8")
+max_value = 1.0
+value = 0.39

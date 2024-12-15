@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://buaumm63bgqre" path="res://player/weapons/gun/gun_types/assault_rifle/assault_rifle.wav" id="1_fd0hb"]
 [ext_resource type="Texture2D" uid="uid://dajsixywrui3b" path="res://player/weapons/gun/crosshairs/R_Crosshair.png" id="2_y8lrh"]
 [ext_resource type="PackedScene" uid="uid://cciirpvfqn260" path="res://player/weapons/projectile/projectiles/bullet/bullet.tscn" id="3_5ita6"]
-[ext_resource type="Script" path="res://player/weapons/gun/weapon_type.gd" id="4_wtfqs"]
+[ext_resource type="Script" uid="uid://d1v80ou5ewbvr" path="res://player/weapons/gun/weapon_type.gd" id="4_wtfqs"]
 [ext_resource type="Texture2D" uid="uid://bufj7rfgk4piy" path="res://player/weapons/gun/gun_types/assault_rifle/assault_rifle.png" id="5_0ypro"]
 
 [sub_resource type="Curve" id="Curve_wnnwa"]

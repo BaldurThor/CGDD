@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6pltl030ysv8" path="res://entity/bosses/boss.gd" id="1_6tvua"]
 [ext_resource type="PackedScene" uid="uid://delsmh5kmqfkw" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn" id="2_7h1y4"]
-[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="2_7uy41"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_7uy41"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_yjw7m"]
 [ext_resource type="Texture2D" uid="uid://2jceb3mphfhn" path="res://entity/bosses/unspeakable/unspeakable.png" id="4_uh2np"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="6_lcdi2"]
@@ -45,6 +45,7 @@ max_health = 8000
 health = 8000
 movement_speed = 0.5
 contact_damage = 10
+self_knockback_mod = 0.0
 
 [node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
 autostart = true
@@ -59,8 +60,8 @@ texture = SubResource("GradientTexture2D_t8idm")
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_yjw7m")]
 sprite = ExtResource("4_uh2np")
 entity_stats = NodePath("../EntityStats")
-sprite_scale = 3.0
-sprite_offset = Vector2(-2.535, -78.98)
+sprite_scale = 4.0
+sprite_offset = Vector2(-2.535, -112.48)
 show_health_bar = false
 show_shadow = false
 shadow_size = 1.0

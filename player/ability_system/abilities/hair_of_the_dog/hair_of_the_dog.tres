@@ -10,10 +10,10 @@
 script = ExtResource("3_3giug")
 ability_script = ExtResource("1_sfgoc")
 name = "Hair of the Dog"
-positive_effects = Array[String](["+5% crit chance", "+3 melee damage", "+5% melee attack speed"])
+positive_effects = Array[String](["+5% critical chance", "+3 melee damage", "+5% melee attack speed"])
 negative_effects = Array[String](["-3 armor"])
 type = 0
-tags = Array[String](["crit_chance", "added_melee_damage", "melee_attack_speed_mod", "armor"])
+tags = Array[String](["crit_chance", "added_damage", "armor"])
 flavor_text = "My second-favorite drink"
 max_amount = 0
 rarity = 0

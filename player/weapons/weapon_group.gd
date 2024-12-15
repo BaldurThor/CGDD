@@ -4,6 +4,10 @@ class_name WeaponGroup extends Node2D
 @onready var weapons: Node2D = $Weapons
 @onready var target_range: TargetRange = $TargetRange
 
+signal range_updated()
+signal attack_speed_updated()
+signal melee_strikes_updated()
+
 ## The identity of this weapon group (eg. "pistol", "shotgun"...)
 var group_identity: String
 var weapon_type: WeaponType = null
@@ -24,9 +28,12 @@ var extra_pierce_count: int = 0
 var added_crit_chance: float = 0.0
 var added_crit_multiplier: float = 0.0
 var added_projectiles: int = 0
-
-signal range_updated()
-signal attack_speed_updated()
+var added_melee_strikes: int = 0:
+	set(value):
+		var delta = value - added_melee_strikes
+		added_melee_strikes = value
+		melee_strikes_updated.emit(delta)
+var added_knockback: int = 0
 
 func init(
 	identity: String,
@@ -83,7 +90,7 @@ func calculate_total_attack_speed() -> float:
 	var attack_speed = weapon_type.attack_speed
 	var archetype_speed_mod = 0.0
 	match weapon_archetype:
-		WeaponGroupManager.WeaponArchetype.FIREARM:
+		WeaponGroupManager.WeaponArchetype.FIREARM, WeaponGroupManager.WeaponArchetype.EXPLOSIVE_RANGED:
 			archetype_speed_mod = player_stats.ranged_attack_speed_mod
 		WeaponGroupManager.WeaponArchetype.MELEE, WeaponGroupManager.WeaponArchetype.ORBITAL_MELEE:
 			archetype_speed_mod = player_stats.melee_attack_speed_mod
@@ -101,7 +108,7 @@ func get_base_damage() -> int:
 		WeaponGroupManager.WeaponArchetype.MELEE, WeaponGroupManager.WeaponArchetype.ORBITAL_MELEE:
 			damage += player_stats.added_melee_damage
 		WeaponGroupManager.WeaponArchetype.FIREARM:
-			damage += player_stats.added_ranged_damage
+			damage += player_stats.added_gun_damage
 		WeaponGroupManager.WeaponArchetype.EXPLOSIVE_RANGED:
 			damage += player_stats.added_explosive_damage
 			damage_mod = player_stats.explosive_damage_mod
@@ -118,3 +125,26 @@ func get_total_projectiles() -> int:
 
 func get_explosion_radius() -> float:
 	return (weapon_type.explosion_radius + player_stats.added_explosive_radius) * player_stats.explosive_radius_mod
+
+func get_melee_strikes() -> int:
+	return weapon_type.melee_strike_count + player_stats.added_melee_strikes + added_melee_strikes
+
+func get_knockback() -> int:
+	if !weapon_type.can_knockback:
+		return 0
+	var knockback = weapon_type.knockback + added_knockback
+	match weapon_archetype:
+		WeaponGroupManager.WeaponArchetype.MELEE, WeaponGroupManager.WeaponArchetype.ORBITAL_MELEE:
+			knockback += player_stats.added_melee_knockback
+			knockback *= player_stats.melee_knockback_mod
+	return knockback
+
+func get_secondary_knockback() -> int:
+	if !weapon_type.can_knockback:
+		return 0
+	var knockback = weapon_type.secondary_knockback + added_knockback
+	match weapon_archetype:
+		WeaponGroupManager.WeaponArchetype.MELEE, WeaponGroupManager.WeaponArchetype.ORBITAL_MELEE:
+			knockback += player_stats.added_melee_knockback
+			knockback *= player_stats.melee_knockback_mod
+	return knockback

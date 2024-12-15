@@ -14,10 +14,10 @@
 script = ExtResource("1_ojnrv")
 ability_script = ExtResource("1_utfct")
 name = "Skeet Shootin'"
-positive_effects = Array[String](["+15% ranged range", "-5% ranged projectile spread"])
+positive_effects = Array[String](["+15% ranged range", "-5% gun projectile spread"])
 negative_effects = Array[String]([])
 type = 0
-tags = Array[String](["ranged_range_mod", "ranged_spread_mod"])
+tags = Array[String](["ranged_spread_mod"])
 flavor_text = "This is way more fun than shootin' clay doves!"
 max_amount = 0
 rarity = 0

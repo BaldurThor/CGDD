@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityInfo" load_steps=5 format=3 uid="uid://76nktu4k5hjp"]
+
+[ext_resource type="Script" path="res://player/ability_system/abilities/catch_n_release/catch_n_release.gd" id="1_r0bw8"]
+[ext_resource type="Texture2D" uid="uid://ije604mp8f46" path="res://player/ability_system/abilities/catch_n_release/catch_n_release.png" id="2_jr528"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_g2nhm"]
+[ext_resource type="Resource" uid="uid://cxf0jwyvrhjb5" path="res://player/ability_system/abilities/pickup_friendly_fish/pickup_friendly_fish.tres" id="4_5mcsi"]
+
+[resource]
+script = ExtResource("3_g2nhm")
+ability_script = ExtResource("1_r0bw8")
+name = "Catch n' Release"
+positive_effects = Array[String](["+4 friendly fish melee strikes", "+5 friendly fish melee damage"])
+negative_effects = Array[String]([])
+type = 0
+tags = Array[String](["added_melee_strikes", "added_damage"])
+flavor_text = "I've made some friends over the years."
+max_amount = 1
+rarity = 4
+icon = ExtResource("2_jr528")
+guaranteed_at = 0
+required_level = 0
+incompatabilities = Array[ExtResource("3_g2nhm")]([])
+requirements = Array[ExtResource("3_g2nhm")]([ExtResource("4_5mcsi")])
