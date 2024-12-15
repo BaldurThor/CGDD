@@ -45,15 +45,14 @@ def create_user() -> Response:
 
 	ref = db.collection("fishing").document()
 
-	ref.set({"test":1234})
+	ref.set(body)
 
 	# Return success message
 	rep = jsonify(
 		{
-			"msg": "aw man"
+			"msg": "data submitted"
 		}
 	)
-	print("Got request")
 	rep.status_code = 201
 	return rep
 
@@ -61,15 +60,17 @@ def create_user() -> Response:
 @bp.get("/")
 def get_data() -> Response:
 
+	data = []
+
 	ref = db.collection("fishing").stream()
 	for doc in ref:
-		print(doc.to_dict())
+		data.append(doc.to_dict())
 
 
 	# Return success message
 	rep = jsonify(
 		{
-			"msg": "aw man"
+			"data": data
 		}
 	)
 	print("Got request")
