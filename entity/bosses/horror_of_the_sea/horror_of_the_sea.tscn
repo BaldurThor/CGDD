@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://delsmh5kmqfkw" path="res://entity/enemy/enemy_drops/heart_of_darkness/heart_of_darkness.tscn" id="2_3gu8j"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_8417x"]
 [ext_resource type="PackedScene" uid="uid://xqbx4dgecmyu" path="res://entity/enemy/enemy_base.tscn" id="3_ng2h4"]
-[ext_resource type="Texture2D" uid="uid://dphtgbysoogi" path="res://entity/bosses/horror_of_the_sea/horror_of_the_sea.png" id="4_hsrmb"]
 [ext_resource type="Script" path="res://entity/projectile_spawner.gd" id="5_2enaf"]
+[ext_resource type="Texture2D" uid="uid://pfqosup4styo" path="res://entity/bosses/horror_of_the_sea/Yog-Sothoth.png" id="5_53drh"]
 [ext_resource type="PackedScene" uid="uid://24k2uymv0fse" path="res://entity/bosses/horror_of_the_sea/horror_tentacle.tscn" id="6_f0han"]
 [ext_resource type="AudioStream" uid="uid://ddt2s6nbke7wo" path="res://entity/bosses/attacks/projectile/cthulhu_shoot.wav" id="7_ri54t"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="9_a78fb"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack_logic.gd" id="13_tdx3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h238a"]
-radius = 31.0644
+radius = 40.0
 
 [sub_resource type="Gradient" id="Gradient_c6c52"]
 offsets = PackedFloat32Array(0.496333, 0.713936)
@@ -61,10 +61,10 @@ texture = SubResource("GradientTexture2D_x7pyl")
 
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_ng2h4")]
 y_sort_enabled = true
-sprite = ExtResource("4_hsrmb")
+sprite = ExtResource("5_53drh")
 entity_stats = NodePath("../EntityStats")
 sprite_scale = 3.0
-sprite_offset = Vector2(0, -13)
+sprite_offset = Vector2(0, -60)
 show_health_bar = false
 show_shadow = false
 shadow_size = 1.0
