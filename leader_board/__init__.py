@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_cors import CORS
 from collections.abc import Mapping
 from dotenv import load_dotenv
 
@@ -23,6 +24,7 @@ def create_app(test_config: Mapping[str, object] | None = None) -> Flask:
 		LOAD_FROM_FILE=True,
 	)
 	
+	CORS(app)
 
 	# Register blueprints (e.g., user, group)
 	

@@ -6,7 +6,7 @@ const getData = async () => {
     //Perform a GET request to the url
     try {
         const response = await fetch(url, {"Content-Type":"application/json"})
-        return response.data
+        return await response.json()
 
     }
     catch (error) {
