@@ -8,3 +8,4 @@ release/
 # for leader board
 .env
 __pycache__
+firbase_cred.json
