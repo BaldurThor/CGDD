@@ -45,6 +45,7 @@ max_health = 8000
 health = 8000
 movement_speed = 0.5
 contact_damage = 10
+self_knockback_mod = 0.0
 
 [node name="InvincibilityTimer" type="Timer" parent="EntityStats"]
 autostart = true
