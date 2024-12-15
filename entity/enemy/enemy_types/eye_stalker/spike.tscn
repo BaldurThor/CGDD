@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brsqyn4weordx"]
+[gd_scene load_steps=11 format=3 uid="uid://brsqyn4weordx"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_types/eye_stalker/spike.gd" id="1_q11k6"]
 [ext_resource type="Script" uid="uid://dvakpy54nrwe" path="res://entity/enemy/enemy_types/eye_stalker/spike_travel_behavior.gd" id="2_cig0s"]
@@ -6,8 +6,17 @@
 [ext_resource type="Script" uid="uid://c1rn5a7ovna5t" path="res://entity/enemy/enemy_types/eye_stalker/spike_despawn_behavior.gd" id="4_0gokc"]
 [ext_resource type="Texture2D" uid="uid://dwrp7cq6ff34o" path="res://player/weapons/projectile/projectiles/bullet/bullet.png" id="5_1q7il"]
 [ext_resource type="Script" uid="uid://dbumdg4odpdgk" path="res://entity/enemy/enemy_types/eye_stalker/spike_damage_calculation.gd" id="6_2gm1t"]
+[ext_resource type="Shader" path="res://entity/enemy/enemy_drops/experience/experience_gem.gdshader" id="7_14cnx"]
+[ext_resource type="Texture2D" uid="uid://ba7pfw6be0oo0" path="res://entity/enemy/enemy_drops/experience/Empty.png" id="8_qk5wc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ihrgw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uy3ty"]
+resource_local_to_scene = true
+shader = ExtResource("7_14cnx")
+shader_parameter/glow_color = Color(0.96073, 0.00020831, 0.820889, 1)
+shader_parameter/intensity = 39.685
+shader_parameter/max_distance = 128.0
 
 [node name="Spike" type="Area2D"]
 script = ExtResource("1_q11k6")
@@ -27,7 +36,7 @@ script = ExtResource("3_exnxv")
 script = ExtResource("4_0gokc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(0.905871, 0.269738, 0.457111, 1)
+modulate = Color(0.994364, 0.894698, 0.90966, 1)
 texture = ExtResource("5_1q7il")
 
 [node name="DamageCalculation" type="Node" parent="."]
@@ -36,3 +45,7 @@ script = ExtResource("6_2gm1t")
 [node name="DespawnTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Glow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uy3ty")
+texture = ExtResource("8_qk5wc")
