@@ -20,5 +20,7 @@ class_name AbilityPool extends Resource
 @export var weapon_skip_xp_multiplier: float = 0.50
 ## The xp percentage of the player's level that they get for skipping a normal ability
 @export var passive_skip_xp_multiplier: float = 0.50
+## The xp percentage of the player's level that they get for skipping a fish ability
+@export var fish_skip_xp_multiplier: float = 0.50
 ## The xp percentage of the player's level that they get for skipping a corrupted passive
 @export var corrupted_skip_xp_multiplier: float = 1.00

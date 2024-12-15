@@ -15,7 +15,7 @@
 script = ExtResource("3_6nmjt")
 ability_script = ExtResource("1_d7i8t")
 name = "Shades"
-positive_effects = Array[String](["+1 ranged weapon projectile(s)"])
+positive_effects = Array[String](["+1 gun projectile(s)"])
 negative_effects = Array[String](["-15% ranged range", "+20% ranged projectile spread"])
 type = 0
 tags = Array[String](["extra_projectiles", "ranged_spread_mod"])

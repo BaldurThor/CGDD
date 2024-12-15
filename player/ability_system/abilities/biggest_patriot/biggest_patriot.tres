@@ -15,7 +15,7 @@
 script = ExtResource("3_fecp1")
 ability_script = ExtResource("1_5mjmf")
 name = "Biggest Patriot"
-positive_effects = Array[String](["+2 ranged projectiles", "+15% critical strike multiplier"])
+positive_effects = Array[String](["+2 ranged projectile(s)", "+15% critical strike multiplier"])
 negative_effects = Array[String](["-20% ranged weapon attack speed", "-5% critical strike chance"])
 type = 0
 tags = Array[String](["extra_projectiles", "crit_chance", "crit_multiplier"])

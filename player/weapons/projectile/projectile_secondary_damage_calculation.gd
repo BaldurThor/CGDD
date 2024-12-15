@@ -4,7 +4,7 @@ class_name ProjectileSecondaryDamageCalculation extends Node
 
 func calculate_damage() -> int:
 	var group = projectile.weapon_group
-	var base_damage = (group.weapon_type.secondary_damage + group.player_stats.added_ranged_damage + group.secondary_added_damage) * group.weapon_type.secondary_damage_effectiveness
+	var base_damage = (group.weapon_type.secondary_damage + group.player_stats.added_gun_damage + group.secondary_added_damage) * group.weapon_type.secondary_damage_effectiveness
 	var crit_chance = projectile.weapon_group.get_crit_chance()
 	var damage: float = float(base_damage) * group.player_stats.damage_mod
 	var is_crit: bool = randf() < crit_chance

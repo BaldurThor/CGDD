@@ -108,7 +108,7 @@ func get_base_damage() -> int:
 		WeaponGroupManager.WeaponArchetype.MELEE, WeaponGroupManager.WeaponArchetype.ORBITAL_MELEE:
 			damage += player_stats.added_melee_damage
 		WeaponGroupManager.WeaponArchetype.FIREARM:
-			damage += player_stats.added_ranged_damage
+			damage += player_stats.added_gun_damage
 		WeaponGroupManager.WeaponArchetype.EXPLOSIVE_RANGED:
 			damage += player_stats.added_explosive_damage
 			damage_mod = player_stats.explosive_damage_mod
