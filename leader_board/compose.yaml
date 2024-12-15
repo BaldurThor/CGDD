@@ -1,9 +1,0 @@
-services:
-  server:
-    build:
-      context: .
-    ports:
-      - 5000:5000
-    network_mode: "host"
-    environment:
-      - FIREBASE_DB_URL=https://the-shotgun-over-fishmouth.eur3.firebasedatabase.app
