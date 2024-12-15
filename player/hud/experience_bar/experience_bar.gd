@@ -6,6 +6,7 @@ signal experience_bar_value_changed(current: int, max: int)
 
 func _ready() -> void:
 	experience.update_experience_bar.connect(_update_experience_bar)
+	experience.level_up.connect(func(): _update_experience_bar(experience.current_experience))
 	value = experience.current_experience
 	max_value = experience.required_for_level_up
 	step = 1

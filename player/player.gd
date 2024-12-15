@@ -67,7 +67,7 @@ func take_damage(amount: int, enemy: Enemy) -> void:
 	if player_stats.is_invincible:
 		return
 
-	if randf() < min(player_stats.absolute_max_dodge, player_stats.dodge_chance):
+	if randf() + 0.00001 < min(player_stats.absolute_max_dodge, player_stats.dodge_chance):
 		amount = 0
 	
 	animation_player.play("take_damage")

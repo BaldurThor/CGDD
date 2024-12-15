@@ -9,6 +9,10 @@ signal item_absorb_range_changed()
 signal heal_player(heal_amount: int, regen : bool)
 signal melee_attack_speed_changed()
 signal ranged_attack_speed_changed()
+signal dodge_chance_changed()
+signal max_dodge_chance_changed()
+signal max_armor_changed()
+signal max_health_mod_changed()
 
 @export_category("Stats")
 
@@ -56,7 +60,10 @@ signal ranged_attack_speed_changed()
 @export_range(0.0, 100.0, 0.1) var regen_amount_percentile: float = 0.0
 
 ## The chance of the player completely ignoring damage from a single attack. Grants invincibility frames.
-@export_range(0.0, 0.75, 0.01) var dodge_chance: float = 0.0 # linear
+@export_range(0.0, 0.75, 0.01) var dodge_chance: float = 0.0: # linear
+	set(value):
+		dodge_chance = value
+		dodge_chance_changed.emit()
 
 ## The number of seconds it takes for each regen tick.
 @export_range(0.1, 100.0, 0.1, "or_greater") var regen_speed: float = 2.0
@@ -127,11 +134,19 @@ var absolute_max_health: int = (1 << 63) - 1
 ## The absolute maximum amount the player can regenerate per tick. Defaults to max int.
 var absolute_max_health_regen: int = (1 << 63) - 1
 ## The absolute maximum amount of armor the player can have. Defaults to max int.
-var absolute_max_armor: int = (1 << 63) - 1
+var absolute_max_armor: int = (1 << 63) - 1:
+	set(value):
+		absolute_max_armor = value
+		max_armor_changed.emit()
+
 ## The absolute minimum amount of armor the player can have. Defaults to 1.
 var absolute_min_armor: int = 1
 ## The absolute maximum chance for the player to dodge. Defaults to 75%.
-var absolute_max_dodge: float = 0.75
+var absolute_max_dodge: float = 0.75:
+	set(value):
+		absolute_max_dodge = value
+		max_dodge_chance_changed.emit()
+
 ## The absolute maximum chance for the player to critically strike.
 var absolute_max_crit_chance: float = 1.0
 ## A modifier to non-critical strikes.
@@ -147,6 +162,7 @@ var non_crit_damage_multiplier: float = 1.0
 		else:
 			max_health_mod = value
 			health = clamp(health, 1, get_real_max_health())
+		max_health_mod_changed.emit()
 
 
 @export_category("Other")

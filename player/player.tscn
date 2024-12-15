@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=119 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" uid="uid://d303j5bd47raj" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -15,7 +15,8 @@
 [ext_resource type="Script" path="res://player/fishing/hook.gd" id="8_qymma"]
 [ext_resource type="Theme" uid="uid://ct4bo20cg6a2n" path="res://player/hud/status_bars/ui_health_bar.tres" id="8_rmgi5"]
 [ext_resource type="Script" path="res://player/hud/countdown_timer.gd" id="9_5x5lc"]
-[ext_resource type="Script" uid="uid://dwg1y5osagoug" path="res://player/hud/experience_bar/experience_bar.gd" id="10_pxkv6"]
+[ext_resource type="Script" path="res://player/hud/player_health_indicator.gd" id="10_65wky"]
+[ext_resource type="Script" path="res://player/hud/experience_bar/experience_bar.gd" id="10_pxkv6"]
 [ext_resource type="Theme" uid="uid://deliwu0ihyd0j" path="res://player/hud/status_bars/ui_xp_bar.tres" id="11_3rc4d"]
 [ext_resource type="Script" uid="uid://6f5svym6ia6t" path="res://entity/enemy/enemy_drops/experience/pickup_radius.gd" id="11_fmot2"]
 [ext_resource type="PackedScene" uid="uid://ckldvouneujm7" path="res://player/hud/stats_display/stats_display.tscn" id="11_g73cy"]
@@ -37,7 +38,6 @@
 [ext_resource type="Script" uid="uid://cj6fu24vxoxkh" path="res://player/ability_system/ability_system.gd" id="18_wo8qc"]
 [ext_resource type="Theme" uid="uid://chmld5xy50mb7" path="res://menu/menu_theme.tres" id="19_0an1a"]
 [ext_resource type="Shader" uid="uid://2ind2clafsf" path="res://player/hud/level_effect.gdshader" id="19_74cft"]
-[ext_resource type="Script" uid="uid://bd7asqj6twddo" path="res://player/health_value.gd" id="19_ky1vu"]
 [ext_resource type="Script" uid="uid://dhmcfg7t4lsi0" path="res://player/hud/boss_bar.gd" id="19_xmm0l"]
 [ext_resource type="Texture2D" uid="uid://bb215q152ay7y" path="res://player/hud/boss_icon.png" id="20_sa7yf"]
 [ext_resource type="Theme" uid="uid://diw8oxnpmfjd0" path="res://player/hud/status_bars/ui_boss_bar.tres" id="21_4c7xe"]
@@ -51,7 +51,9 @@
 [ext_resource type="Shader" uid="uid://dlh4tfhwkgoyi" path="res://levels/flashlight.gdshader" id="26_ybvvv"]
 [ext_resource type="AudioStream" uid="uid://c6lmy1o8c81rn" path="res://levels/level3/the-unkillable-155342.mp3" id="28_aow06"]
 [ext_resource type="AudioStream" uid="uid://bxapg40fyu7qy" path="res://levels/level2/deadite-ash-vs-evil-dead-song-8688.mp3" id="29_7cluu"]
+[ext_resource type="Texture2D" uid="uid://cvqe66jt2ccsh" path="res://player/hud/armor_icon.png" id="29_8mx4h"]
 [ext_resource type="AudioStream" uid="uid://bvfislwpk2aub" path="res://levels/level4/fury-253300.mp3" id="30_5weuf"]
+[ext_resource type="Texture2D" uid="uid://m0eexm3li0sy" path="res://player/hud/dodge_icon.png" id="30_v4kco"]
 [ext_resource type="AudioStream" uid="uid://sbfxhklb55v6" path="res://entity/hit.wav" id="31_6phdh"]
 [ext_resource type="Texture2D" uid="uid://bhsi60iufrm2v" path="res://levels/transition/ground_break.png" id="31_atf6l"]
 [ext_resource type="AudioStream" uid="uid://nx61vvhfdu67" path="res://levels/transition/ground_crumble.wav" id="32_jv2t7"]
@@ -66,6 +68,32 @@
 [sub_resource type="LabelSettings" id="LabelSettings_e4lj6"]
 font = ExtResource("5_tgkuv")
 font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_dsyq6"]
+font = ExtResource("5_tgkuv")
+font_size = 9
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qqvj0"]
+font = ExtResource("5_tgkuv")
+font_size = 9
+font_color = Color(0, 0.745098, 0.293084, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3pegt"]
+font = ExtResource("5_tgkuv")
+font_size = 9
+font_color = Color(0.98436, 0, 0.27454, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ckd5"]
+font = ExtResource("5_tgkuv")
+font_size = 9
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_1aqu2"]
 offsets = PackedFloat32Array(0.559902, 1)
@@ -92,6 +120,26 @@ outline_color = Color(0.0439519, 0.0439519, 0.0439519, 1)
 font = ExtResource("5_tgkuv")
 font_size = 18
 font_color = Color(1, 0.52549, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rb458"]
+font = ExtResource("5_tgkuv")
+font_size = 9
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kb3yo"]
+font = ExtResource("5_tgkuv")
+font_size = 9
+font_color = Color(0.984903, 0, 0.273563, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bmp8a"]
+font = ExtResource("5_tgkuv")
+font_size = 9
+font_color = Color(0.870264, 0.653373, 0, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upf5s"]
 shader = ExtResource("2_k5ka0")
@@ -694,6 +742,7 @@ death_screen = ExtResource("2_4qn83")
 
 [node name="PlayerStats" type="Node2D" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 script = ExtResource("2_s8nph")
 crit_multiplier = 1.0
 armor = 1
@@ -750,21 +799,45 @@ show_percentage = false
 script = ExtResource("14_543rk")
 stats_node = NodePath("../../../../../PlayerStats")
 
-[node name="HealthValue" type="Label" parent="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar"]
+[node name="HealthBarIndicators" type="HBoxContainer" parent="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+script = ExtResource("10_65wky")
+
+[node name="HealthValue" type="Label" parent="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthBarIndicators"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("5_tgkuv")
 theme_override_font_sizes/font_size = 9
 text = "20/20"
+label_settings = SubResource("LabelSettings_dsyq6")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("19_ky1vu")
+
+[node name="HealthMultiPositive" type="Label" parent="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthBarIndicators"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_tgkuv")
+theme_override_font_sizes/font_size = 9
+text = "(+50%)"
+label_settings = SubResource("LabelSettings_qqvj0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthMultiNegative" type="Label" parent="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthBarIndicators"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_tgkuv")
+theme_override_font_sizes/font_size = 9
+text = "(+50%)"
+label_settings = SubResource("LabelSettings_3pegt")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ExperienceBar" type="ProgressBar" parent="HUD/VBoxContainer/HBoxContainer/TopLeft"]
+process_mode = 3
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("11_3rc4d")
@@ -782,6 +855,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_tgkuv")
 theme_override_font_sizes/font_size = 9
 text = "5/10"
+label_settings = SubResource("LabelSettings_8ckd5")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("12_267ds")
@@ -846,6 +920,7 @@ horizontal_alignment = 1
 [node name="AbilitySelector" type="Control" parent="HUD"]
 unique_name_in_owner = true
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -988,6 +1063,59 @@ volume_db = 5.0
 [node name="NewLevelSFX" type="AudioStreamPlayer" parent="HUD/SkillBullet"]
 stream = ExtResource("26_2tb1v")
 volume_db = 5.0
+
+[node name="Indicators" type="HBoxContainer" parent="HUD"]
+offset_left = 72.0
+offset_top = 65.0
+offset_right = 152.0
+offset_bottom = 81.0
+theme_override_constants/separation = 10
+
+[node name="ArmorIndicator" type="HBoxContainer" parent="HUD/Indicators"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Indicators/ArmorIndicator"]
+layout_mode = 2
+texture = ExtResource("29_8mx4h")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="HUD/Indicators/ArmorIndicator"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_rb458")
+
+[node name="LabelNegative" type="Label" parent="HUD/Indicators/ArmorIndicator"]
+layout_mode = 2
+text = "(-5)"
+label_settings = SubResource("LabelSettings_kb3yo")
+
+[node name="LabelPositive" type="Label" parent="HUD/Indicators/ArmorIndicator"]
+layout_mode = 2
+text = "(+5)"
+label_settings = SubResource("LabelSettings_bmp8a")
+
+[node name="DodgeIndicator" type="HBoxContainer" parent="HUD/Indicators"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Indicators/DodgeIndicator"]
+layout_mode = 2
+texture = ExtResource("30_v4kco")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="HUD/Indicators/DodgeIndicator"]
+layout_mode = 2
+text = "0%"
+label_settings = SubResource("LabelSettings_rb458")
+
+[node name="LabelNegative" type="Label" parent="HUD/Indicators/DodgeIndicator"]
+layout_mode = 2
+text = "(-13%)"
+label_settings = SubResource("LabelSettings_kb3yo")
+
+[node name="LabelPositive" type="Label" parent="HUD/Indicators/DodgeIndicator"]
+layout_mode = 2
+text = "(+5%)"
+label_settings = SubResource("LabelSettings_bmp8a")
 
 [node name="AbilitySystem" type="Node" parent="."]
 unique_name_in_owner = true
@@ -1230,6 +1358,7 @@ bus = &"Effects"
 
 [node name="Experience" type="Node2D" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 script = ExtResource("17_8q3by")
 
 [node name="AbsorbRadius" type="Area2D" parent="Experience"]
@@ -1307,9 +1436,10 @@ stream = ExtResource("61_nktpl")
 [connection signal="regen_changed" from="PlayerStats" to="PlayerStats" method="_on_regen_changed"]
 [connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
-[connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthValue" method="_on_health_bar_health_ratio_changed"]
+[connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthBarIndicators/HealthValue" method="_on_health_bar_health_ratio_changed"]
+[connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthBarIndicators" method="_on_health_bar_health_ratio_changed"]
 [connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
-[connection signal="button_up" from="HUD/AbilitySelector/AbilitySelectorMenu/CenterContainer/SkipButton" to="HUD/AbilitySelector/AbilitySelectorMenu" method="_on_skip_button_button_up"]
+[connection signal="pressed" from="HUD/AbilitySelector/AbilitySelectorMenu/CenterContainer/SkipButton" to="HUD/AbilitySelector" method="_on_skip_button_pressed"]
 [connection signal="level_up" from="Experience" to="HUD/AbilitySelector" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]

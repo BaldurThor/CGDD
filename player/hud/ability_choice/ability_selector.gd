@@ -132,8 +132,14 @@ func _on_experience_level_up() -> void:
 	else:
 		ability_queue.push_back(ChoiceType.NORMAL)
 
-## Grants the player experience in exchange for one of their skill points
-func _on_skip_button_button_up() -> void:
+func _on_DebugCommands_pick_ability(type : int = 0) -> void:
+	match type:
+		0: ability_queue.push_back(ChoiceType.NORMAL)
+		1: request_corrupted()
+		2: ability_queue.push_back(ChoiceType.WEAPONS)
+
+
+func _on_skip_button_pressed() -> void:
 	var xp = _get_skip_xp()
 	player.experience.gain_experience.emit(xp, false)
 	if active_type == ChoiceType.CORRUPTED or active_type == ChoiceType.FISH:
@@ -141,9 +147,3 @@ func _on_skip_button_button_up() -> void:
 		return
 	spent_skill_points += 1
 	_refresh()
-
-func _on_DebugCommands_pick_ability(type : int = 0) -> void:
-	match type:
-		0: ability_queue.push_back(ChoiceType.NORMAL)
-		1: request_corrupted()
-		2: ability_queue.push_back(ChoiceType.WEAPONS)
