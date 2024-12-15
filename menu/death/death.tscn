@@ -193,24 +193,33 @@ anchor_bottom = 1.0
 offset_left = -226.0
 offset_top = -101.0
 offset_right = 226.0
-offset_bottom = -36.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="QuitToMenuButton" type="Button" parent="DeathMenu/Controls/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../SubmitScore")
+theme_override_fonts/font = ExtResource("4_qsq5r")
+theme_override_font_sizes/font_size = 9
+text = "Return to menu"
+
+[node name="SubmitScore" type="Button" parent="DeathMenu/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../QuitToMenuButton")
 focus_neighbor_right = NodePath("../RetryButton")
 theme_override_fonts/font = ExtResource("4_qsq5r")
-theme_override_font_sizes/font_size = 18
-text = "Return to menu"
+theme_override_font_sizes/font_size = 9
+text = "Submit Score"
 
 [node name="RetryButton" type="Button" parent="DeathMenu/Controls/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../QuitToMenuButton")
+focus_neighbor_left = NodePath("../SubmitScore")
 theme_override_fonts/font = ExtResource("4_qsq5r")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 9
 text = "Retry run"
 
 [node name="EnemyHighlightScreen" type="ColorRect" parent="."]

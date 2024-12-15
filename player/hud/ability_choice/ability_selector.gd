@@ -2,7 +2,7 @@ class_name AbilitySelector extends Control
 
 @onready var ability_selection: HBoxContainer = $AbilitySelectorMenu/AbilitySelection
 @onready var ability_system: AbilitySystem = %AbilitySystem
-@onready var skip_button: SkipButton = $AbilitySelectorMenu/HBoxContainer/SkipButton
+@onready var skip_button: SkipButton = $AbilitySelectorMenu/CenterContainer/SkipButton
 @onready var player: Player = $"../.."
 @onready var skill_bullet: SkillBullet = $"../SkillBullet"
 @onready var select_label: Label = $AbilitySelectorMenu/Label
@@ -79,23 +79,27 @@ func _refresh(can_skip: bool = true) -> void:
 		_close_menu()
 		return
 	
-	match active_type:
-		ChoiceType.WEAPONS: select_label.text = select_text_weapons
-		ChoiceType.CORRUPTED: select_label.text = select_text_corrupted
-		ChoiceType.NORMAL: select_label.text = select_text_normal
-	
 	_show_menu()
 	var choices = []
 	active_type = ability_queue.pop_front()
 	var skip_xp: int = _get_skip_xp()
 	skip_button.refresh_string(skip_xp)
 	skip_button.visible = can_skip
-	
+
 	match active_type:
-		ChoiceType.NORMAL: choices = ability_system.get_ability_selection()
-		ChoiceType.FISH: choices = ability_system.get_ability_selection()
-		ChoiceType.WEAPONS: choices = ability_system.get_weapon_selection()
-		ChoiceType.CORRUPTED: choices = ability_system.get_corrupted_abilities()
+		ChoiceType.NORMAL:
+			choices = ability_system.get_ability_selection()
+			select_label.text = select_text_normal
+		ChoiceType.FISH:
+			choices = ability_system.get_ability_selection()
+			select_label.text = select_text_fish
+		ChoiceType.WEAPONS:
+			choices = ability_system.get_weapon_selection()
+			select_label.text = select_text_weapons
+		ChoiceType.CORRUPTED:
+			choices = ability_system.get_corrupted_abilities()
+			select_label.text = select_text_corrupted
+		
 	for index in choices.size():
 		add_choice(choices[index], index)
 

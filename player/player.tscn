@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=110 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" uid="uid://d303j5bd47raj" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -40,7 +40,6 @@
 [ext_resource type="Script" uid="uid://bd7asqj6twddo" path="res://player/health_value.gd" id="19_ky1vu"]
 [ext_resource type="Script" uid="uid://dhmcfg7t4lsi0" path="res://player/hud/boss_bar.gd" id="19_xmm0l"]
 [ext_resource type="Texture2D" uid="uid://bb215q152ay7y" path="res://player/hud/boss_icon.png" id="20_sa7yf"]
-[ext_resource type="PackedScene" uid="uid://1in5byv3fld3" path="res://player/hud/ability_choice/ability_choice.tscn" id="20_wf13m"]
 [ext_resource type="Theme" uid="uid://diw8oxnpmfjd0" path="res://player/hud/status_bars/ui_boss_bar.tres" id="21_4c7xe"]
 [ext_resource type="Script" path="res://levels/level_switcher.gd" id="22_ffm7r"]
 [ext_resource type="Texture2D" uid="uid://c3hsluo3v6hr1" path="res://levels/level1/level1_background.png" id="23_77gle"]
@@ -696,8 +695,6 @@ death_screen = ExtResource("2_4qn83")
 [node name="PlayerStats" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_s8nph")
-added_gun_damage = null
-ranged_spread_mod = 1.0
 crit_multiplier = 1.0
 armor = 1
 max_health = 20
@@ -895,15 +892,6 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="AbilityChoice" parent="HUD/AbilitySelector/AbilitySelectorMenu/AbilitySelection" instance=ExtResource("20_wf13m")]
-layout_mode = 2
-
-[node name="AbilityChoice2" parent="HUD/AbilitySelector/AbilitySelectorMenu/AbilitySelection" instance=ExtResource("20_wf13m")]
-layout_mode = 2
-
-[node name="AbilityChoice3" parent="HUD/AbilitySelector/AbilitySelectorMenu/AbilitySelection" instance=ExtResource("20_wf13m")]
-layout_mode = 2
-
 [node name="CenterContainer" type="CenterContainer" parent="HUD/AbilitySelector/AbilitySelectorMenu"]
 layout_mode = 2
 
@@ -911,7 +899,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme = ExtResource("19_0an1a")
-text = "Skip (+100% experience)"
+text = "Skip  (+100% experience)"
 script = ExtResource("18_7xury")
 base_string = "Skip(+%s experience)"
 

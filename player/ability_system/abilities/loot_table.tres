@@ -64,4 +64,5 @@ rate_weapon_unique = 25
 weapon_guarantee_breakpoint = 5
 weapon_skip_xp_multiplier = 0.5
 passive_skip_xp_multiplier = 0.5
+fish_skip_xp_multiplier = 0.5
 corrupted_skip_xp_multiplier = 1.0
