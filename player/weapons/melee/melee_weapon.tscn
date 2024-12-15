@@ -46,6 +46,7 @@ one_shot = true
 [node name="MultistrikeTimer" type="Timer" parent="MeleeSwivel/MeleeWeapon"]
 
 [node name="MeleeStrikeRange" type="Area2D" parent="MeleeSwivel/MeleeWeapon"]
+z_index = -1
 collision_layer = 2
 collision_mask = 2
 

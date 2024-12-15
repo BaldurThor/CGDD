@@ -7,11 +7,11 @@
 
 [resource]
 script = ExtResource("3_kst1v")
-damage = 4
+damage = 6
 secondary_damage = 0
 damage_effectiveness = 1.3
 secondary_damage_effectiveness = 0.0
-attack_speed = 0.8
+attack_speed = 1.0
 crit_chance = 0.04
 crit_damage = 2.0
 burst = true
@@ -21,7 +21,7 @@ projectile_speed = 0.0
 projectile_count = 0
 explosion_radius = 0.0
 attack_range = 100.0
-base_orbital_size = 10
+base_orbital_size = 14
 knockback = 3.0
 secondary_knockback = 0
 can_knockback = true
@@ -31,4 +31,5 @@ target_priority = 0
 sprite = ExtResource("4_f8hgs")
 attack_sfx = ExtResource("1_l0o18")
 crosshair = ExtResource("2_ae6m1")
+sprite_scale = Vector2(1, 1)
 attack_range_debug_color = Color(0.498039, 1, 0.831373, 0.333333)
