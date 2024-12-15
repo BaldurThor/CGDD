@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_kmsvg")
-damage = 8
+damage = 14
 secondary_damage = 0
 damage_effectiveness = 0.9
 secondary_damage_effectiveness = 0.0
