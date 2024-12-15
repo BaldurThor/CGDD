@@ -67,15 +67,15 @@ autostart = true
 [node name="RegenTimer" type="Timer" parent="EntityStats"]
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(8, 11)
-scale = Vector2(1.6875, 0.66764)
+position = Vector2(0.999998, 9)
+scale = Vector2(2.1875, 0.865459)
 texture = SubResource("GradientTexture2D_g2bkt")
 
 [node name="EnemyBase" parent="." node_paths=PackedStringArray("entity_stats") instance=ExtResource("3_pobd5")]
 sprite = ExtResource("4_kvoy8")
 entity_stats = NodePath("../EntityStats")
-sprite_scale = 3.0
-sprite_offset = Vector2(0, -77.255)
+sprite_scale = 3.5
+sprite_offset = Vector2(-9.5, -93.83)
 show_health_bar = false
 show_shadow = false
 shadow_size = 1.0
