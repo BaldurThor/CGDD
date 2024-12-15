@@ -2,6 +2,7 @@ extends Node
 
 var _player: Player = null
 var _enemy_manager: EnemyManager = null
+var _stats_man: StatsMan
 var game_timer: Timer
 
 var world_level: int = 1
@@ -119,10 +120,16 @@ func main_menu() -> void:
 func assign_player(player: Player):
 	_player = player
 
+func assign_stats_man(stats_man: StatsMan) -> void:
+	_stats_man = stats_man
+
 # Returns the currently assigned instance of the player. Returns null if no
 # player is assigned
 func get_player() -> Player:
 	return _player
+
+func get_stats_man() -> StatsMan:
+	return _stats_man
 
 func assign_enemy_manager(enemy_manager: EnemyManager) -> void:
 	_enemy_manager = enemy_manager

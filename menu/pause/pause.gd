@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var options_button: Button = $MenuOptions/OptionsButton
 @onready var controls_button: Button = $MenuOptions/ControlsButton
 @onready var continue_button: Button = $MenuOptions/ContinueButton
+@onready var stats: VBoxContainer = $Stats
 
 func _process(_delta: float) -> void:
 	if not GameManager.death:
@@ -22,6 +23,7 @@ func _process(_delta: float) -> void:
 func _on_visibility_changed() -> void:
 	if self.visible:
 		continue_button.grab_focus()
+		stats.show_stats()
 
 
 func _on_continue_button_pressed() -> void:

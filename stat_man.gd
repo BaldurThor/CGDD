@@ -16,6 +16,9 @@ var _crits: int = 0
 var _caught_fish: int = 0
 var _shots_fired: int = 0
 
+func _enter_tree() -> void:
+	GameManager.assign_stats_man(self)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# do not count cheaters
