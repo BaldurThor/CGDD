@@ -4,4 +4,6 @@
 .vscode
 *.tmp
 release/
+
+# for leader board
 .env
