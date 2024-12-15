@@ -90,6 +90,11 @@ func load_scene(scene_path: String) -> void:
 	get_tree().change_scene_to_packed(LOADING_SCREEN)
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		match DisplayServer.window_get_mode():
+			DisplayServer.WindowMode.WINDOW_MODE_WINDOWED: DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
+			_: DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
+	
 	#self.level_switcher_ready is a debug thing!
 	if self.endless and self.level_switcher_ready:
 		if self.world_level != 5:
