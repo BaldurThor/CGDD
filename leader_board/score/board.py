@@ -3,6 +3,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 from dotenv import load_dotenv
 from os import getenv
+from datetime import datetime
 
 from flask import (
 	Blueprint,
@@ -41,7 +42,7 @@ def create_user() -> Response:
 	"""
 	body: dict[str, str] = request.get_json()
 
-	print(body)
+	body["time"] = str(datetime.now())
 
 	ref = db.collection("fishing").document()
 
@@ -73,7 +74,7 @@ def get_data() -> Response:
 			"data": data
 		}
 	)
-	print("Got request")
+
 	rep.status_code = 201
 	return rep
 
