@@ -5,8 +5,12 @@ extends Node
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var stats: VBoxContainer = $DeathMenu/Controls/Stats
 @onready var retry_button: Button = $DeathMenu/Controls/HBoxContainer/RetryButton
+@onready var submit_menu: ColorRect = $DeathMenu/SubmitMenu
+@onready var submit_score: Button = $DeathMenu/Controls/HBoxContainer/SubmitScore
+@onready var submit_score_button: Button = $DeathMenu/SubmitMenu/HBoxContainer/SubmitScoreButton
 
 var enemy: Enemy
+var player_name: String = ""
 
 func initialize(killer: Enemy) -> void:
 	enemy = killer
@@ -31,5 +35,18 @@ func _on_quit_to_menu_button_pressed() -> void:
 	GameManager.main_menu()
 
 
-func _on_submit_score_pressed() -> void:
-	GameManager.get_stats_man().submit.emit()
+func _on_submit_score_button_pressed() -> void:
+	if player_name == "":
+		return
+	
+	GameManager.get_stats_man().submit.emit(player_name)
+	submit_menu.hide()
+	retry_button.grab_focus()
+	submit_score.disabled = true
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	player_name = new_text
+	submit_score_button.grab_focus()
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	player_name = new_text

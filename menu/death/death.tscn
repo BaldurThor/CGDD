@@ -222,6 +222,66 @@ theme_override_fonts/font = ExtResource("4_qsq5r")
 theme_override_font_sizes/font_size = 9
 text = "Retry run"
 
+[node name="SubmitMenu" type="ColorRect" parent="DeathMenu"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.824)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeathMenu/SubmitMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = 36.0
+offset_right = 156.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReturnToMenuButton" type="Button" parent="DeathMenu/SubmitMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../SubmitScoreButton")
+focus_neighbor_top = NodePath("../../LineEdit")
+theme_override_fonts/font = ExtResource("4_qsq5r")
+theme_override_font_sizes/font_size = 9
+text = "Cancel"
+
+[node name="SubmitScoreButton" type="Button" parent="DeathMenu/SubmitMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ReturnToMenuButton")
+focus_neighbor_top = NodePath("../../LineEdit")
+theme_override_fonts/font = ExtResource("4_qsq5r")
+theme_override_font_sizes/font_size = 9
+text = "Submit Score"
+
+[node name="LineEdit" type="LineEdit" parent="DeathMenu/SubmitMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -15.0
+offset_right = 155.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../HBoxContainer/SubmitScoreButton")
+theme_override_fonts/font = ExtResource("4_qsq5r")
+theme_override_font_sizes/font_size = 9
+placeholder_text = "Enter your name"
+alignment = 1
+
 [node name="EnemyHighlightScreen" type="ColorRect" parent="."]
 unique_name_in_owner = true
 z_index = 1
@@ -249,5 +309,11 @@ libraries = {
 }
 
 [connection signal="pressed" from="DeathMenu/Controls/HBoxContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
-[connection signal="pressed" from="DeathMenu/Controls/HBoxContainer/SubmitScore" to="." method="_on_submit_score_pressed"]
+[connection signal="pressed" from="DeathMenu/Controls/HBoxContainer/SubmitScore" to="DeathMenu/SubmitMenu" method="show"]
+[connection signal="pressed" from="DeathMenu/Controls/HBoxContainer/SubmitScore" to="DeathMenu/SubmitMenu/LineEdit" method="grab_focus"]
 [connection signal="pressed" from="DeathMenu/Controls/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="DeathMenu/SubmitMenu/HBoxContainer/ReturnToMenuButton" to="DeathMenu/Controls/HBoxContainer/SubmitScore" method="grab_focus"]
+[connection signal="pressed" from="DeathMenu/SubmitMenu/HBoxContainer/ReturnToMenuButton" to="DeathMenu/SubmitMenu" method="hide"]
+[connection signal="pressed" from="DeathMenu/SubmitMenu/HBoxContainer/SubmitScoreButton" to="." method="_on_submit_score_button_pressed"]
+[connection signal="text_changed" from="DeathMenu/SubmitMenu/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="DeathMenu/SubmitMenu/LineEdit" to="." method="_on_line_edit_text_submitted"]
