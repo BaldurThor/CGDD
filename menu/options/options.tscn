@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://menu/options/options.gd" id="1_3j1rf"]
 [ext_resource type="Texture2D" uid="uid://dbct82fm2nh1k" path="res://menu/plank.png" id="1_sm1yo"]
 [ext_resource type="Texture2D" uid="uid://b0837eiuthnql" path="res://menu/options/options.png" id="7_cc7ny"]
-[ext_resource type="Theme" uid="uid://chmld5xy50mb7" path="res://menu/menu_theme.tres" id="8_u4jin"]
+[ext_resource type="Theme" uid="uid://yn6mmw0mi7ti" path="res://menu/menu_theme.tres" id="8_u4jin"]
 
 [node name="OptionsMenuWrapper" type="TextureRect"]
 offset_right = 276.0
@@ -71,7 +71,7 @@ custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_top = NodePath("../../Effects/EffectsSlider")
-focus_neighbor_bottom = NodePath("../../../BackButton")
+focus_neighbor_bottom = NodePath("../../Screenshake/ScreenshakeSlider")
 max_value = 1.0
 step = 0.01
 
@@ -89,7 +89,7 @@ Shake"
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_top = NodePath("../../Effects/EffectsSlider")
+focus_neighbor_top = NodePath("../../Music/MusicSlider")
 focus_neighbor_bottom = NodePath("../../../BackButton")
 max_value = 1.0
 step = 0.01
@@ -109,7 +109,7 @@ offset_left = 71.0
 offset_top = 208.0
 offset_right = 208.0
 offset_bottom = 236.0
-focus_neighbor_top = NodePath("../Label/Music/MusicSlider")
+focus_neighbor_top = NodePath("../Label/Screenshake/ScreenshakeSlider")
 theme = ExtResource("8_u4jin")
 text = "Back"
 
