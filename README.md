@@ -6,7 +6,7 @@ Start the game and check out the controls section
 
 https://einardarri.itch.io/the-shotgun-over-fishmouth
 
-## Credits
+## External resources used
 
 Sound effects:
 *   Made with JSFXR
