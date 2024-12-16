@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://33kwqbnxj6dq"]
+[gd_scene load_steps=121 format=3 uid="uid://33kwqbnxj6dq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7xfc3"]
 [ext_resource type="Shader" uid="uid://d303j5bd47raj" path="res://entity/entity.gdshader" id="1_321ed"]
@@ -59,6 +59,7 @@
 [ext_resource type="AudioStream" uid="uid://nx61vvhfdu67" path="res://levels/transition/ground_crumble.wav" id="32_jv2t7"]
 [ext_resource type="AudioStream" uid="uid://dmxhxschy3e5w" path="res://levels/transition/ground_shake.wav" id="33_ty4v7"]
 [ext_resource type="AudioStream" uid="uid://dgemkajmxbslx" path="res://levels/endless/fury-253300.mp3" id="40_wmxng"]
+[ext_resource type="AudioStream" uid="uid://cv5rhsepaaegh" path="res://levels/level5/metal-dark-matter-111451.mp3" id="43_rgl2a"]
 [ext_resource type="Script" path="res://player/animation_player.gd" id="44_nh4u1"]
 [ext_resource type="Script" uid="uid://10vwfjw0thji" path="res://player/weapon_group_manager.gd" id="49_gll7c"]
 [ext_resource type="AudioStream" uid="uid://bav5isesp6idy" path="res://entity/enemy/enemy_drops/medkit/medkit.wav" id="54_krgfq"]
@@ -220,7 +221,7 @@ shader_parameter/steps = 12
 shader = ExtResource("2_k5ka0")
 shader_parameter/scale = 4.0
 shader_parameter/power = 3.0
-shader_parameter/modulate = Color(0.516634, 1.39579e-06, 0.310591, 1)
+shader_parameter/modulate = Color(0.359539, 3.97079e-07, 0.21012, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pg48r"]
 shader = ExtResource("19_74cft")
@@ -235,6 +236,15 @@ shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
 shader = ExtResource("26_ybvvv")
 shader_parameter/modulate = Color(0.894118, 0.388235, 0.639216, 0.152941)
 shader_parameter/steps = 12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5taab"]
+shader = ExtResource("19_74cft")
+shader_parameter/scale = 0.23
+shader_parameter/speed = 16.0
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/cutoff = 0.0
+shader_parameter/caustic_noise = SubResource("NoiseTexture2D_qc4lt")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ud7kt"]
 shader = ExtResource("2_k5ka0")
@@ -1065,9 +1075,9 @@ stream = ExtResource("26_2tb1v")
 volume_db = 5.0
 
 [node name="Indicators" type="HBoxContainer" parent="HUD"]
-offset_left = 72.0
+offset_left = 81.0
 offset_top = 65.0
-offset_right = 152.0
+offset_right = 267.0
 offset_bottom = 81.0
 theme_override_constants/separation = 10
 
@@ -1258,7 +1268,7 @@ texture = ExtResource("23_77gle")
 z_index = -47
 texture_filter = 1
 texture_repeat = 2
-material = SubResource("ShaderMaterial_pg48r")
+material = SubResource("ShaderMaterial_5taab")
 scale = Vector2(15.78, 10.52)
 texture = ExtResource("23_77gle")
 
@@ -1270,7 +1280,7 @@ texture = SubResource("GradientTexture2D_ifgk3")
 
 [node name="Music" type="AudioStreamPlayer" parent="LevelSwitcher/Level5"]
 process_mode = 3
-stream = ExtResource("30_5weuf")
+stream = ExtResource("43_rgl2a")
 bus = &"Music"
 
 [node name="Endless" type="Node2D" parent="LevelSwitcher"]
@@ -1436,8 +1446,8 @@ stream = ExtResource("61_nktpl")
 [connection signal="regen_changed" from="PlayerStats" to="PlayerStats" method="_on_regen_changed"]
 [connection signal="timeout" from="PlayerStats/InvincibilityTimer" to="PlayerStats" method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="PlayerStats/RegenTimer" to="PlayerStats" method="_on_regen_timer_timeout"]
-[connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthBarIndicators/HealthValue" method="_on_health_bar_health_ratio_changed"]
 [connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthBarIndicators" method="_on_health_bar_health_ratio_changed"]
+[connection signal="health_ratio_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/HealthBar/HealthBarIndicators/HealthValue" method="_on_health_bar_health_ratio_changed"]
 [connection signal="experience_bar_value_changed" from="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar" to="HUD/VBoxContainer/HBoxContainer/TopLeft/ExperienceBar/ExperienceValue" method="_on_experience_bar_experience_bar_value_changed"]
 [connection signal="pressed" from="HUD/AbilitySelector/AbilitySelectorMenu/CenterContainer/SkipButton" to="HUD/AbilitySelector" method="_on_skip_button_pressed"]
 [connection signal="level_up" from="Experience" to="HUD/AbilitySelector" method="_on_experience_level_up"]

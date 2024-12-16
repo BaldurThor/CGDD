@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/honorable_veteran/honorable_veteran.gd" id="1_d7o16"]
 [ext_resource type="Texture2D" uid="uid://cbmcqrj75j1q1" path="res://player/ability_system/abilities/assault_rifle_ability.png" id="2_7rm6w"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_ep5wr"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_ep5wr"]
 [ext_resource type="Resource" uid="uid://cyakewo1cwoaj" path="res://player/ability_system/abilities/pickup_assault_rifle/pickup_assault_rifle.tres" id="4_yeiwj"]
 
 [resource]

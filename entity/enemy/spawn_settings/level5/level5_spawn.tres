@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelSpawnSettings" load_steps=8 format=3 uid="uid://34lugx42kk3d"]
+
+[ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="1_bux4j"]
+[ext_resource type="Resource" uid="uid://b54o2cx1v1uip" path="res://entity/enemy/spawn_settings/level5/level5_carptist.tres" id="2_hbhp8"]
+[ext_resource type="Resource" uid="uid://dmdy54wwuqpvc" path="res://entity/enemy/spawn_settings/level5/level5_cultist.tres" id="3_sjwhf"]
+[ext_resource type="Resource" uid="uid://cmgy3nkfi3np2" path="res://entity/enemy/spawn_settings/level5/level5_eye_stalker.tres" id="4_dqhmn"]
+[ext_resource type="Resource" uid="uid://blv3jeq0yuw8h" path="res://entity/enemy/spawn_settings/level5/level5_greater_tentacle.tres" id="5_ueek3"]
+[ext_resource type="Script" uid="uid://joa8itqss2ka" path="res://entity/enemy/spawn_settings/level_spawn_settings.gd" id="6_esndj"]
+[ext_resource type="Resource" uid="uid://b0nqcuotcm401" path="res://entity/enemy/spawn_settings/level5/level5_tentacle.tres" id="6_jinq2"]
+
+[resource]
+script = ExtResource("6_esndj")
+enemies = Array[ExtResource("1_bux4j")]([ExtResource("2_hbhp8"), ExtResource("3_sjwhf"), ExtResource("4_dqhmn"), ExtResource("5_ueek3"), ExtResource("6_jinq2")])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemySpawnSettings" load_steps=4 format=3 uid="uid://cmgy3nkfi3np2"]
+
+[ext_resource type="Resource" uid="uid://00kex3w708tn" path="res://entity/enemy/enemy_types/eye_stalker/eye_stalker.tres" id="1_1fyyq"]
+[ext_resource type="Script" path="res://entity/enemy/spawn_settings/enemy_spawn_settings.gd" id="2_v08di"]
+
+[sub_resource type="Curve" id="Curve_3txn5"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("2_v08di")
+enemy_type = ExtResource("1_1fyyq")
+strength_multiplier = 3.0
+starting_spawn_rate = 1.5
+ending_spawn_rate = 0.75
+spawn_rate_curve = SubResource("Curve_3txn5")

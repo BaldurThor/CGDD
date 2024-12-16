@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/lock_n_load/lock_n_load.gd" id="1_t4ssy"]
 [ext_resource type="Texture2D" uid="uid://cc0tccf4opdem" path="res://player/ability_system/abilities/pistol_ability.png" id="2_8yxh5"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_ecaa3"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_ecaa3"]
 [ext_resource type="Resource" uid="uid://d3rowoeoo4vqm" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.tres" id="4_yhb7k"]
 
 [resource]

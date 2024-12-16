@@ -12,14 +12,14 @@ void fragment() {
 	bool outside_cone = (1.0 - UV.x + abs(uv_centered.y) * cone_angle) > 0.5;
 	vec2 final_uvs = vec2(UV.x - TIME * speed, UV.y);
 	vec4 tex = texture(TEXTURE, final_uvs);
-	
+
 	vec4 out_col = vec4(tex.rgb, transparency);
-	
+
 	if (flash)
 		out_col = vec4(1.0);
-	
+
 	if (outside_cone || dist_from_center > 0.5 || dist_from_center < cutoff_distance)
 		out_col = vec4(0.0);
-	
+
 	COLOR = out_col;
 }

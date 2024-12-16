@@ -5,6 +5,7 @@ extends Node2D
 	$Level2,
 	$Level3,
 	$Level4,
+	$Level5,
 	$Endless
 ]
 
@@ -20,9 +21,14 @@ signal level_switched
 
 func _ready():
 	GameManager.new_world_level.connect(_on_new_world_level)
-	prev_level = levels[0]
-	new_level = levels[0]
-	levels[0].get_node("Music").play()
+	new_level_id = GameManager.world_level
+	prev_level = levels[new_level_id - 1]
+	new_level = levels[new_level_id - 1]
+	levels[new_level_id - 1].get_node("Music").play()
+	
+	for i in range(levels.size()):
+		var active = i == new_level_id - 1
+		levels[i].visible = active
 	
 	#for debug
 	GameManager.level_switcher_ready = true
@@ -44,6 +50,9 @@ func set_level(level: int) -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(prev_music, "volume_db", -100, 30).set_trans(Tween.TRANS_LINEAR)
 	tween.tween_callback(prev_music.stop)
+	
+	await animation_player.animation_finished
+	animation_player.play("RESET")
 
 func transition_next_level():
 	_on_level_switch.call_deferred()

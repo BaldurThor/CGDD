@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://c8b5ccymhda4a"]
 
-[ext_resource type="Script" path="res://player/ability_system/abilities/corrupted_brutality/corrupted_brutality.gd" id="1_trjys"]
+[ext_resource type="Script" uid="uid://m8h505i7ejo7" path="res://player/ability_system/abilities/corrupted_brutality/corrupted_brutality.gd" id="1_trjys"]
 [ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="2_m5gxb"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_8jytq"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_8jytq"]
 
 [resource]
 script = ExtResource("3_8jytq")

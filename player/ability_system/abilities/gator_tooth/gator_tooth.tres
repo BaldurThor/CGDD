@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=12 format=3 uid="uid://b5mv78hb7m7u5"]
 
-[ext_resource type="Script" path="res://player/ability_system/abilities/gator_tooth/gator_tooth.gd" id="1_3t3ty"]
+[ext_resource type="Script" uid="uid://udqswmi70las" path="res://player/ability_system/abilities/gator_tooth/gator_tooth.gd" id="1_3t3ty"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_rgf1g"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="2_wkyug"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="2_wkyug"]
 [ext_resource type="Resource" uid="uid://cyakewo1cwoaj" path="res://player/ability_system/abilities/pickup_assault_rifle/pickup_assault_rifle.tres" id="4_fmuq3"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="5_vja8f"]
 [ext_resource type="Resource" uid="uid://cxf0jwyvrhjb5" path="res://player/ability_system/abilities/pickup_friendly_fish/pickup_friendly_fish.tres" id="6_5npr3"]

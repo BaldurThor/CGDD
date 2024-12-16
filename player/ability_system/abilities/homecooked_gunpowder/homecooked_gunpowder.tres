@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=7 format=3 uid="uid://b2ftepp71awho"]
 
-[ext_resource type="Script" path="res://player/ability_system/abilities/homecooked_gunpowder/homecooked_gunpowder.gd" id="1_ramdr"]
+[ext_resource type="Script" uid="uid://dpm0f8kn5wewl" path="res://player/ability_system/abilities/homecooked_gunpowder/homecooked_gunpowder.gd" id="1_ramdr"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_1day0"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_qo4cp"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_qo4cp"]
 [ext_resource type="Resource" uid="uid://gv6t82cmowrh" path="res://player/ability_system/abilities/pickup_dynamite/pickup_dynamite.tres" id="4_50emf"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="5_ifeyr"]
 [ext_resource type="Resource" uid="uid://xcpye6pbfqtb" path="res://player/ability_system/abilities/pickup_grenade_launcher/pickup_grenade_launcher.tres" id="6_nlbfn"]
