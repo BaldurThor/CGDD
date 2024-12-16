@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://24k2uymv0fse"]
 
-[ext_resource type="Script" path="res://entity/bosses/attacks/tentacle/tentacle_attack.gd" id="1_mqt85"]
+[ext_resource type="Script" uid="uid://dayf7vqxcta0u" path="res://entity/bosses/attacks/tentacle/tentacle_attack.gd" id="1_mqt85"]
 [ext_resource type="Texture2D" uid="uid://di3v2bu53gcgh" path="res://entity/bosses/cthulhu/cthulhu_tentacle.png" id="2_u6ixu"]
 [ext_resource type="AudioStream" uid="uid://bttjtystn45jb" path="res://entity/bosses/attacks/tentacle/tentacle_jab.wav" id="3_g33jr"]
 
@@ -75,4 +75,5 @@ autostart = true
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_g33jr")
+volume_db = -5.0
 bus = &"Effects"
