@@ -16,7 +16,7 @@
 script = ExtResource("3_x8i3k")
 ability_script = ExtResource("1_xbxob")
 name = "Drunken Brawler"
-positive_effects = Array[String](["+5% crit chance", "+20% crit multiplier"])
+positive_effects = Array[String](["+5% crit chance", "+30% crit multiplier"])
 negative_effects = Array[String](["+15% ranged projectile spread"])
 type = 0
 tags = Array[String](["crit_chance", "crit_multiplier", "ranged_spread_mod"])

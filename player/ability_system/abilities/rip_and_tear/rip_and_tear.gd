@@ -7,4 +7,4 @@ func apply_effects(_player_stats: PlayerStats) -> void:
 		return
 	
 	group.added_projectiles += 5
-	group.added_crit_multiplier += 0.25
+	group.added_crit_multiplier += 0.50
