@@ -83,3 +83,7 @@ func _on_level_switch():
 func stop_music() -> void:
 	var music: AudioStreamPlayer = new_level.get_node("Music")
 	music.stop()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	$ScreenTransitionIn.hide()
