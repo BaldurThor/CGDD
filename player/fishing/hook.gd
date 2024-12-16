@@ -7,6 +7,8 @@ var hook_sprite : Sprite2D = null
 # the possision of the hook when it is cast
 var pos := Vector2(0,0)
 
+var _head_home : bool = false
+
 var angle : float = -1
 var vec : Vector2 = Vector2(0,0)
 
@@ -42,6 +44,21 @@ func _stop_cast() -> void:
 	hook_sprite.visible = false
 	pos = Vector2(0,0)
 	set_position(pos)
+	_head_home = false
+	
+func homeing() -> void:
+	var tmp := (pos - player.global_position)
+	var dir := tmp.normalized() * speed
+	var dist = sqrt(tmp.dot(tmp))
+	
+	if dist <= 5:
+		_stop_cast()
+		return
+	
+	pos -= dir
+	set_global_position(pos)
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -49,7 +66,9 @@ func _process(_delta: float) -> void:
 	global_rotation = 0.0
 	
 	var dir = (get_global_mouse_position() - player.global_position).normalized()
-	
+	if _head_home:
+		homeing()
+		return
 	# makes sure that the hook does not move with the player when cast
 	if Input.is_action_pressed("fish_cast"):
 		if angle == -1:
@@ -65,10 +84,10 @@ func _process(_delta: float) -> void:
 		var dist = sqrt(_tmp.dot(_tmp))
 		if dist > max_dist:
 			Input.action_release("fish_cast")
-			_stop_cast()
+			_head_home = true
 			
 	if Input.is_action_just_released("fish_cast"):
-		_stop_cast()
+		_head_home = true
 
 
 
