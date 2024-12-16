@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=10 format=3 uid="uid://carn1bwqjorbr"]
 
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="1_7c60d"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_ojnrv"]
-[ext_resource type="Script" uid="uid://kmltm6n5gql7" path="res://player/ability_system/abilities/skeet_shooting/skeet_shooting.gd" id="1_utfct"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_ojnrv"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/skeet_shooting/skeet_shooting.gd" id="1_utfct"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="4_p51wy"]
 [ext_resource type="Resource" uid="uid://d3rowoeoo4vqm" path="res://player/ability_system/abilities/pickup_pistol/pickup_pistol.tres" id="5_4xp02"]
 [ext_resource type="Resource" uid="uid://xest1i6lv1da" path="res://player/ability_system/abilities/pickup_shotgun/pickup_shotgun.tres" id="6_gddsl"]

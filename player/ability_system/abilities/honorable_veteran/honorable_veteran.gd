@@ -8,4 +8,4 @@ func apply_effects(_player_stats: PlayerStats) -> void:
 	
 	group.primary_added_damage += 4
 	group.added_projectiles += 2
-	group.added_crit_multiplier += 0.15
+	group.added_crit_multiplier += 0.35

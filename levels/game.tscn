@@ -216,6 +216,7 @@ radius_min = 650
 [node name="EnemyManager" parent="." instance=ExtResource("4_beey7")]
 
 [node name="Pause" parent="." instance=ExtResource("5_csob6")]
+unique_name_in_owner = true
 layer = 2
 visible = false
 

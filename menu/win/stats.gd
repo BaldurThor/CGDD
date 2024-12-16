@@ -8,8 +8,7 @@ func _ready() -> void:
 	end_stats = GameManager.get_stats_man()
 
 func show_stats() -> void:
-	for child in get_children():
-		child.queue_free()
+	clear()
 	
 	_add_int_stat("Total damage taken", end_stats.get_total_damage_taken())
 	_add_int_stat("Total damage done", end_stats.get_total_damage_done())
@@ -23,6 +22,10 @@ func show_stats() -> void:
 	_add_int_stat("Number of crits", end_stats.get_crits())
 	_add_int_stat("Fish caught", end_stats.get_caught_fish())
 	_add_int_stat("Number of shots fired", end_stats.get_shots_fired())
+
+func clear() -> void:
+	for child in get_children():
+		child.queue_free()
 
 func _add_stat(label: String, value: String) -> void:
 	var stat = STAT_VALUE.instantiate()

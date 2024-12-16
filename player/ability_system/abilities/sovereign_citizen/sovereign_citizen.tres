@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=14 format=3 uid="uid://4wvj8ypllmxd"]
 
-[ext_resource type="Script" uid="uid://cnejhf63m5rem" path="res://player/ability_system/abilities/sovereign_citizen/sovereign_citizen.gd" id="1_wybox"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/sovereign_citizen/sovereign_citizen.gd" id="1_wybox"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_lunlu"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_2v3x2"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_2v3x2"]
 [ext_resource type="Resource" uid="uid://gv6t82cmowrh" path="res://player/ability_system/abilities/pickup_dynamite/pickup_dynamite.tres" id="4_ej45a"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="5_e3xxc"]
 [ext_resource type="Resource" uid="uid://cxf0jwyvrhjb5" path="res://player/ability_system/abilities/pickup_friendly_fish/pickup_friendly_fish.tres" id="6_wl5bq"]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://gv6t82cmowrh"]
 
-[ext_resource type="Script" uid="uid://b6h3waaefbj3j" path="res://player/ability_system/abilities/pickup_dynamite/pickup_dynamite.gd" id="1_4t2vr"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_jtd0s"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_dynamite/pickup_dynamite.gd" id="1_4t2vr"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_jtd0s"]
 [ext_resource type="Texture2D" uid="uid://fb1msiylgjtc" path="res://player/weapons/projectile/projectiles/dynamite/dynamite.png" id="2_qinel"]
 
 [resource]

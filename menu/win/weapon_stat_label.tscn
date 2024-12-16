@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqy0eqm3xhgte"]
+
+[ext_resource type="Theme" uid="uid://b22iff8gck7on" path="res://menu/menu_theme.tres" id="1_mhed4"]
+
+[node name="WeaponStatLabel" type="Label"]
+theme = ExtResource("1_mhed4")

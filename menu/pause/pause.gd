@@ -1,11 +1,11 @@
-extends CanvasLayer
+class_name PauseUI extends CanvasLayer
 
 @onready var info_node: TextureRect = $Info
 @onready var options_node: TextureRect = $Options
 @onready var options_button: Button = $MenuOptions/OptionsButton
 @onready var controls_button: Button = $MenuOptions/ControlsButton
 @onready var continue_button: Button = $MenuOptions/ContinueButton
-@onready var stats: VBoxContainer = $Stats
+@onready var stats: StatsUI = $Stats
 
 func _process(_delta: float) -> void:
 	if not GameManager.death:

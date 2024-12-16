@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://de5tqvsoulypj"]
 
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_6q6lc"]
-[ext_resource type="Script" uid="uid://ol8rydck8f08" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.gd" id="1_j6xw2"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_6q6lc"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/pickup_speargun/pickup_speargun.gd" id="1_j6xw2"]
 [ext_resource type="Texture2D" uid="uid://2cnkquntr1en" path="res://player/weapons/gun/gun_types/spear_gun/spear_gun.png" id="2_j3odx"]
 
 [resource]
