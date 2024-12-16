@@ -12,6 +12,8 @@ float map(float x, float in_min, float in_max, float out_min, float out_max) {
 
 float my_formula(float inte, float max_dist, vec2 my_vert) {
 	float my_distance = distance(my_vert, vec2(0.,0.));
+	if (my_distance >= max_dist)
+		return 0.0;
 	float my_x = sqrt((map(inte, 0., max_dist, 0., 1.) - (my_distance/max_dist)));
 	return pow(my_x * -1., 2);
 }
@@ -21,6 +23,6 @@ void vertex() {
 }
 
 void fragment() {
-	
+
 	COLOR = vec4(glow_color.rgb, my_formula(intensity, max_distance, my_vertex));
 }

@@ -1,16 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0q6vx2i5hoaw"]
+[gd_scene load_steps=8 format=3 uid="uid://c0q6vx2i5hoaw"]
 
 [ext_resource type="Script" path="res://entity/enemy/enemy_drops/experience/experience_gem.gd" id="1_fxl5l"]
-[ext_resource type="Shader" path="res://entity/enemy/enemy_drops/experience/experience_gem.gdshader" id="2_2rmfd"]
 [ext_resource type="Texture2D" uid="uid://dcxnv20br32tg" path="res://entity/enemy/enemy_drops/experience/cans.png" id="2_utpxc"]
-[ext_resource type="Texture2D" uid="uid://ba7pfw6be0oo0" path="res://entity/enemy/enemy_drops/experience/Empty.png" id="3_qtyjo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_odkdn"]
-resource_local_to_scene = true
-shader = ExtResource("2_2rmfd")
-shader_parameter/glow_color = Color(0, 0, 1, 1)
-shader_parameter/intensity = 1.0
-shader_parameter/max_distance = 128.0
+[sub_resource type="Gradient" id="Gradient_hm71d"]
+offsets = PackedFloat32Array(0, 0.653992)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jrmmo"]
+gradient = SubResource("Gradient_hm71d")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_erfk8"]
 
@@ -26,8 +26,7 @@ script = ExtResource("1_fxl5l")
 base_tracking_speed = 600
 
 [node name="Glow" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_odkdn")
-texture = ExtResource("3_qtyjo")
+texture = SubResource("GradientTexture2D_jrmmo")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_utpxc")

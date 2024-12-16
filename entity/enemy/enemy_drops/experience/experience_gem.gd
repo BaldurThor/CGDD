@@ -37,23 +37,24 @@ func assign_value(value: int) -> void:
 	experience_value = value
 
 func _update_glow() -> void:
+	glow.modulate = Color(0.,0.,0.,0.)
 	if experience_value < 26:
 		sprite.frame = 0
 	elif experience_value < 51:
 		sprite.frame = 1
 	elif experience_value < 76:
 		sprite.frame = 2
-		glow.material.set_shader_parameter("glow_color", Color(0.,1.,0.,1.))
+		glow.modulate = Color(0.,1.,0.,1.)
 	elif experience_value < 101:
 		sprite.frame = 3
-		glow.material.set_shader_parameter("glow_color", Color(0.,1.,0.,1.))
+		glow.modulate = Color(0.,1.,0.,1.)
 	elif experience_value < 151:
 		sprite.frame = 4
-		glow.material.set_shader_parameter("glow_color", Color(1.,0.,0.,1.))
+		glow.modulate = Color(1.,0.,0.,1.)
 	elif experience_value > 150:
 		sprite.frame = 5
-		glow.material.set_shader_parameter("glow_color", Color(1.,0.,0.,1.))
-	glow.material.set_shader_parameter("intensity", float(experience_value))
+		glow.modulate = Color(1.,0.,0.,1.)
+	# glow.material.set_shader_parameter("intensity", float(experience_value))
 
 func pickup() -> void:
 	_player.experience.gain_experience.emit(experience_value, true)
