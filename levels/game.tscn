@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bbesagqumwgtd"]
+[gd_scene load_steps=16 format=3 uid="uid://bbesagqumwgtd"]
 
 [ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://player/player.tscn" id="1_fbep7"]
-[ext_resource type="PackedScene" uid="uid://cobhinc6pra1v" path="res://entity/bosses/unspeakable/unspeakable.tscn" id="2_30k5q"]
 [ext_resource type="Script" path="res://player/fishing/fish_spawner.gd" id="2_oohfr"]
 [ext_resource type="PackedScene" uid="uid://dalqgss5m03me" path="res://player/fishing/fish.tscn" id="3_eyj4i"]
 [ext_resource type="PackedScene" uid="uid://b6rjnevhtac41" path="res://entity/enemy/enemy_manager.tscn" id="4_beey7"]
@@ -206,9 +205,6 @@ process_mode = 1
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_fbep7")]
-
-[node name="Unspeakable" parent="." instance=ExtResource("2_30k5q")]
-position = Vector2(-251, -62)
 
 [node name="Fish_spawner" type="Node2D" parent="."]
 script = ExtResource("2_oohfr")
