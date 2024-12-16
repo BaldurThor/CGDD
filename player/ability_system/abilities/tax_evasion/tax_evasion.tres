@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/tax_evasion/tax_evasion.gd" id="1_olpxh"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_xu7ty"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_s0von"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_s0von"]
 
 [resource]
 script = ExtResource("3_s0von")

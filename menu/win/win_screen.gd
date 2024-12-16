@@ -10,7 +10,6 @@ const SHOCKWAVE = preload("res://levels/transition/shockwave.tscn")
 func _ready() -> void:
 	GameManager.game_win.connect(_show_win_menu)
 	visible = false
-	endless_mode_button.grab_focus()
 
 func _show_win_menu() -> void:
 	GameManager.freeze_enemies = true
@@ -19,6 +18,7 @@ func _show_win_menu() -> void:
 	tween.tween_property(fade, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 	tween.tween_callback(_show_newspaper)
 	stats.show_stats()
+	endless_mode_button.grab_focus()
 
 func _show_newspaper() -> void:
 	animation_player.play("win_screen_popup")

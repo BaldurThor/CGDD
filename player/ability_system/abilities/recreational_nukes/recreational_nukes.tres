@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=7 format=3 uid="uid://dryvod1ct2gd3"]
 
-[ext_resource type="Script" path="res://player/ability_system/abilities/recreational_nukes/recreational_nukes.gd" id="1_bkcgj"]
+[ext_resource type="Script" uid="uid://dcp0fmq0ru41l" path="res://player/ability_system/abilities/recreational_nukes/recreational_nukes.gd" id="1_bkcgj"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_u6ga2"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_w81k2"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_w81k2"]
 [ext_resource type="Resource" uid="uid://chvfuoesc5piw" path="res://player/ability_system/abilities/pickup_fraggrenade/pickup_fraggrenade.tres" id="4_j5mtn"]
 [ext_resource type="Resource" uid="uid://gv6t82cmowrh" path="res://player/ability_system/abilities/pickup_dynamite/pickup_dynamite.tres" id="5_gf88i"]
 [ext_resource type="Resource" uid="uid://xcpye6pbfqtb" path="res://player/ability_system/abilities/pickup_grenade_launcher/pickup_grenade_launcher.tres" id="6_v5cd0"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/rip_and_tear/rip_and_tear.gd" id="1_2qet7"]
 [ext_resource type="Texture2D" uid="uid://uqkrraa4v3nb" path="res://player/ability_system/abilities/shotgun_ability.png" id="2_0igri"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_uydc1"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_uydc1"]
 [ext_resource type="Resource" uid="uid://xest1i6lv1da" path="res://player/ability_system/abilities/pickup_shotgun/pickup_shotgun.tres" id="4_up6c1"]
 
 [resource]
