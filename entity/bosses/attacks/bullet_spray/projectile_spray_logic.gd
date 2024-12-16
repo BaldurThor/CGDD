@@ -21,7 +21,6 @@ func evaluate() -> bool:
 
 func execute_logic():
 	_can_attack = false
-	fire_sound.play()
 	var dir = (GameManager.get_player().global_position - enemy.global_position).normalized()
 	dir = dir.rotated(randf() * spread * PI * 2)
 	var projectile = projectile_scene.instantiate()
@@ -35,6 +34,7 @@ func execute_logic():
 	GameManager.get_game_root().add_child.call_deferred(projectile)
 	projectile.position = enemy.global_position + dir * initial_distance
 	attack_timer.start()
+	fire_sound.play()
 
 func _on_attack_timer_timeout() -> void:
 	_can_attack = true
