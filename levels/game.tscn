@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbesagqumwgtd"]
+[gd_scene load_steps=17 format=3 uid="uid://bbesagqumwgtd"]
 
 [ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://player/player.tscn" id="1_fbep7"]
 [ext_resource type="Script" path="res://player/fishing/fish_spawner.gd" id="2_oohfr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b8h32mkkaisy6" path="res://menu/pause/pause.tscn" id="5_csob6"]
 [ext_resource type="Script" path="res://stat_man.gd" id="6_7poab"]
 [ext_resource type="Script" path="res://menu/win/win_screen.gd" id="6_jn2hb"]
+[ext_resource type="Script" path="res://levels/submit.gd" id="7_2f4hn"]
 [ext_resource type="Texture2D" uid="uid://didthgbsm3qr0" path="res://menu/win/newspaper.png" id="8_p68n4"]
 [ext_resource type="Script" path="res://menu/win/stats.gd" id="9_lrlrb"]
 [ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="9_wwdgm"]
@@ -225,6 +226,10 @@ script = ExtResource("6_7poab")
 [node name="Timer" type="Timer" parent="EndStats"]
 autostart = true
 
+[node name="HTTPRequest" type="HTTPRequest" parent="EndStats"]
+process_mode = 3
+script = ExtResource("7_2f4hn")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="WinScreen" type="Control" parent="CanvasLayer"]
@@ -329,6 +334,74 @@ offset_right = 949.0
 offset_bottom = 432.0
 script = ExtResource("9_lrlrb")
 
+[node name="SubmitMenu" type="ColorRect" parent="CanvasLayer/WinScreen/Controls"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.824)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/WinScreen/Controls/SubmitMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = 36.0
+offset_right = 156.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReturnToMenuButton" type="Button" parent="CanvasLayer/WinScreen/Controls/SubmitMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../SubmitScoreButton")
+focus_neighbor_top = NodePath("../../LineEdit")
+theme_override_fonts/font = ExtResource("9_wwdgm")
+theme_override_font_sizes/font_size = 9
+text = "Cancel"
+
+[node name="SubmitScoreButton" type="Button" parent="CanvasLayer/WinScreen/Controls/SubmitMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ReturnToMenuButton")
+focus_neighbor_top = NodePath("../../LineEdit")
+theme_override_fonts/font = ExtResource("9_wwdgm")
+theme_override_font_sizes/font_size = 9
+text = "Submit Score"
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/WinScreen/Controls/SubmitMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -15.0
+offset_right = 155.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../HBoxContainer/SubmitScoreButton")
+theme_override_fonts/font = ExtResource("9_wwdgm")
+theme_override_font_sizes/font_size = 9
+placeholder_text = "Enter your name"
+alignment = 1
+
 [connection signal="timeout" from="EndStats/Timer" to="EndStats" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/WinScreen/Controls/HBoxContainer/EndlessModeButton" to="CanvasLayer/WinScreen" method="_on_endless_mode_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/HBoxContainer/SubmitScoreButton" to="CanvasLayer/WinScreen/Controls/SubmitMenu" method="show"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/HBoxContainer/SubmitScoreButton" to="CanvasLayer/WinScreen/Controls/SubmitMenu/LineEdit" method="grab_focus"]
 [connection signal="pressed" from="CanvasLayer/WinScreen/Controls/HBoxContainer/ReturnToMenuButton" to="CanvasLayer/WinScreen" method="_on_return_to_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/SubmitMenu/HBoxContainer/ReturnToMenuButton" to="CanvasLayer/WinScreen/Controls/HBoxContainer/SubmitScoreButton" method="grab_focus"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/SubmitMenu/HBoxContainer/ReturnToMenuButton" to="CanvasLayer/WinScreen/Controls/SubmitMenu" method="hide"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/SubmitMenu/HBoxContainer/SubmitScoreButton" to="CanvasLayer/WinScreen" method="_on_submit_score_button_pressed"]
+[connection signal="text_changed" from="CanvasLayer/WinScreen/Controls/SubmitMenu/LineEdit" to="CanvasLayer/WinScreen" method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="CanvasLayer/WinScreen/Controls/SubmitMenu/LineEdit" to="CanvasLayer/WinScreen" method="_on_line_edit_text_submitted"]

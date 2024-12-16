@@ -4,3 +4,8 @@
 .vscode
 *.tmp
 release/
+
+# for leader board
+.env
+__pycache__
+firebase_cred.json
