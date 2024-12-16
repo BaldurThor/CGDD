@@ -121,8 +121,8 @@ signal max_health_mod_changed()
 ## A multiplier to a melee attack or a single explosion or projectile's damage.
 @export var damage_mod: float = 1.0 # linear
 
-## A multiplier to attacks that crit.
-@export_range(1.0, 3.0, 0.01) var crit_multiplier: float = 2.0
+## A bonus to critical damage. This is additive with other bonuses.
+@export_range(0.0, 3.0, 0.01) var crit_multiplier: float = 0.0
 
 @export_group("Defense")
 

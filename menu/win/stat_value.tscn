@@ -1,13 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://6g3yu8fc6s8"]
+[gd_scene load_steps=6 format=3 uid="uid://6g3yu8fc6s8"]
 
 [ext_resource type="FontFile" uid="uid://due1hf7ysjp84" path="res://menu/PixelatedEleganceRegular-ovyAA.ttf" id="1_c8g2r"]
+[ext_resource type="Script" path="res://menu/win/stat_value.gd" id="1_nj8hr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2frcy"]
 font = ExtResource("1_c8g2r")
 font_size = 18
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mija4"]
+bg_color = Color(0.172833, 0.172833, 0.172833, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_6lfsk"]
+font = ExtResource("1_c8g2r")
+font_size = 9
+
 [node name="StatValue" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 27.015)
+script = ExtResource("1_nj8hr")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -19,3 +32,30 @@ label_settings = SubResource("LabelSettings_2frcy")
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_2frcy")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+top_level = true
+custom_minimum_size = Vector2(450, 45)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mija4")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HoverText" type="Label" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+text = "Here is some hover info detailing the effects of one of the player's stats in the video game called The Shotgun over Fishmouth where the player is Billy Bob, a redneck fighting Lovecraftian horrors."
+label_settings = SubResource("LabelSettings_6lfsk")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

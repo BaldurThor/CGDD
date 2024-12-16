@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/pickup_grenade_launcher/pickup_grenade_launcher.gd" id="1_y0r5p"]
 [ext_resource type="Texture2D" uid="uid://dutmexk2byuk3" path="res://player/weapons/gun/gun_types/grenade_launcher/grenade_launcher.png" id="2_y5p2j"]
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_1vamq"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_1vamq"]
 
 [resource]
 script = ExtResource("3_1vamq")

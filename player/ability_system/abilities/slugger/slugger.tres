@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=6 format=3 uid="uid://knax4pryl0p6"]
 
-[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="1_13aqb"]
-[ext_resource type="Script" uid="uid://bjpv7g3men0a7" path="res://player/ability_system/abilities/slugger/slugger.gd" id="1_j1a0g"]
+[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="1_13aqb"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/slugger/slugger.gd" id="1_j1a0g"]
 [ext_resource type="Texture2D" uid="uid://du6ek5mghfb1k" path="res://player/ability_system/placeholder_ability_icon.png" id="2_c5see"]
 [ext_resource type="Resource" uid="uid://tyvey76efpb4" path="res://player/ability_system/abilities/pickup_metal_baseball_bat/pickup_metal_baseball_bat.tres" id="4_vh0k2"]
 [ext_resource type="Resource" uid="uid://cxf0jwyvrhjb5" path="res://player/ability_system/abilities/pickup_friendly_fish/pickup_friendly_fish.tres" id="5_xfcec"]

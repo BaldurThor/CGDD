@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8h32mkkaisy6"]
+[gd_scene load_steps=10 format=3 uid="uid://b8h32mkkaisy6"]
 
 [ext_resource type="Script" path="res://menu/pause/pause.gd" id="1_lcdb4"]
 [ext_resource type="Texture2D" uid="uid://iecbocd4moe1" path="res://menu/pause_screen.png" id="2_poufs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://menu/pause/stats.gd" id="6_1ute4"]
 [ext_resource type="Script" path="res://menu/win/stats.gd" id="6_2uwwt"]
 [ext_resource type="Script" path="res://menu/pause/player_stat_info.gd" id="6_ngi4i"]
+[ext_resource type="Script" path="res://menu/pause/weapon_stats.gd" id="8_6q1vc"]
 [ext_resource type="PackedScene" uid="uid://bbcemibct0rey" path="res://menu/options/options.tscn" id="8_dglk4"]
 
 [node name="Pause" type="CanvasLayer"]
@@ -81,6 +82,26 @@ grow_horizontal = 2
 alignment = 1
 script = ExtResource("6_1ute4")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats"]
+layout_mode = 2
+theme = ExtResource("3_7hxv8")
+theme_override_constants/separation = 30
+
+[node name="PlayerStatsButton" type="Button" parent="Stats/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Player Stats"
+
+[node name="WeaponStatsButton" type="Button" parent="Stats/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Weapon Stats"
+
+[node name="RunStatsButton" type="Button" parent="Stats/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Run Stats"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Stats"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -92,26 +113,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("6_ngi4i")
 
+[node name="WeaponStats" type="VBoxContainer" parent="Stats/ScrollContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("8_6q1vc")
+
 [node name="RunStats" type="VBoxContainer" parent="Stats/ScrollContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("6_2uwwt")
-
-[node name="PlayerStatsButton" type="Button" parent="."]
-offset_left = 500.0
-offset_top = 44.0
-offset_right = 629.0
-offset_bottom = 75.0
-text = "Player Stats"
-
-[node name="RunStatsButton" type="Button" parent="."]
-offset_left = 770.0
-offset_top = 45.0
-offset_right = 899.0
-offset_bottom = 76.0
-text = "Run Stats"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MenuOptions/ContinueButton" to="." method="_on_continue_button_pressed"]
@@ -121,5 +135,6 @@ text = "Run Stats"
 [connection signal="pressed" from="MenuOptions/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
 [connection signal="hidden" from="Info" to="." method="_on_info_hidden"]
 [connection signal="hidden" from="Options" to="." method="_on_options_hidden"]
-[connection signal="button_up" from="PlayerStatsButton" to="Stats" method="_on_player_stats_button_button_up"]
-[connection signal="button_up" from="RunStatsButton" to="Stats" method="_on_run_stats_button_button_up"]
+[connection signal="button_up" from="Stats/HBoxContainer/PlayerStatsButton" to="Stats" method="_on_player_stats_button_button_up"]
+[connection signal="button_up" from="Stats/HBoxContainer/WeaponStatsButton" to="Stats" method="_on_weapon_stats_button_button_up"]
+[connection signal="button_up" from="Stats/HBoxContainer/RunStatsButton" to="Stats" method="_on_run_stats_button_button_up"]

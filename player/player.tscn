@@ -754,7 +754,6 @@ death_screen = ExtResource("2_4qn83")
 unique_name_in_owner = true
 process_mode = 3
 script = ExtResource("2_s8nph")
-crit_multiplier = 1.0
 armor = 1
 max_health = 20
 health = 20

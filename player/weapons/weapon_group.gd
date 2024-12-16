@@ -114,6 +114,11 @@ func get_base_damage() -> int:
 			damage_mod = player_stats.explosive_damage_mod
 	return damage * (weapon_type.damage_effectiveness * damage_mod * player_stats.damage_mod)
 
+func get_secondary_damage() -> int:
+	var base_damage = (weapon_type.secondary_damage + player_stats.added_gun_damage + secondary_added_damage) * weapon_type.secondary_damage_effectiveness
+	var damage: float = float(base_damage) * player_stats.damage_mod
+	return int(damage)
+
 func get_crit_chance() -> float:
 	return weapon_type.crit_chance + player_stats.crit_chance + added_crit_chance
 
@@ -148,3 +153,11 @@ func get_secondary_knockback() -> int:
 			knockback += player_stats.added_melee_knockback
 			knockback *= player_stats.melee_knockback_mod
 	return knockback
+
+func get_attack_range() -> float:
+	match weapon_archetype:
+		WeaponGroupManager.WeaponArchetype.MELEE, WeaponGroupManager.WeaponArchetype.ORBITAL_MELEE:
+			return weapon_type.attack_range * player_stats.melee_range_mod * added_range_mod
+		WeaponGroupManager.WeaponArchetype.FIREARM, WeaponGroupManager.WeaponArchetype.EXPLOSIVE_RANGED:
+			return weapon_type.attack_range * player_stats.ranged_range_mod * added_range_mod
+	return 0.0

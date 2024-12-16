@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://25wnlteu7n1b"]
+
+[ext_resource type="Script" path="res://menu/win/weapon_stat.gd" id="1_8vjga"]
+[ext_resource type="Theme" uid="uid://b22iff8gck7on" path="res://menu/menu_theme.tres" id="3_tpeyp"]
+[ext_resource type="Texture2D" uid="uid://bufj7rfgk4piy" path="res://player/weapons/gun/gun_types/assault_rifle/assault_rifle.png" id="4_6uy37"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mija4"]
+bg_color = Color(0.172833, 0.172833, 0.172833, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="WeaponStat" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 27.015)
+script = ExtResource("1_8vjga")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+top_level = true
+custom_minimum_size = Vector2(150, 45)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mija4")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme = ExtResource("3_tpeyp")
+
+[node name="TextureRect" type="TextureRect" parent="Button"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("4_6uy37")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
