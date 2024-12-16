@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://6m7poj2r2pul" path="res://entity/enemy/enemy_drops/medkit/medkit.tscn" id="3_xwptn"]
 [ext_resource type="PackedScene" uid="uid://doryalypknx2c" path="res://entity/enemy/enemy_drops/magnet/magnet.tscn" id="4_4cw1u"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="5_kqoh1"]
-[ext_resource type="Script" uid="uid://c7t3wf0arj2h3" path="res://entity/enemy/enemy_actions/chase.gd" id="6_b3v4b"]
-[ext_resource type="Script" uid="uid://dj8khl4qehwit" path="res://entity/entity_stats.gd" id="6_vl4gl"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_actions/chase.gd" id="6_b3v4b"]
+[ext_resource type="Script" path="res://entity/entity_stats.gd" id="6_vl4gl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8q08c"]
 radius = 16.0

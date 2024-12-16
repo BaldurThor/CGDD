@@ -88,3 +88,7 @@ func _on_player_stats_death() -> void:
 	self.add_child(death_node)
 	death_node.highlight_screen.position.x = self.position.x - death_node.highlight_screen.size.x / 2
 	death_node.highlight_screen.position.y = self.position.y - death_node.highlight_screen.size.y / 2
+
+
+func _on_submit_score_button_pressed() -> void:
+	GameManager.get_stats_man().submit.emit()

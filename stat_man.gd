@@ -1,6 +1,7 @@
 class_name StatsMan extends Node
 
 @onready var player: Player = $"../Player"
+@onready var http_request: HTTPRequest = $HTTPRequest
 
 var is_valid : bool = true
 
@@ -15,6 +16,10 @@ var _heal_amount_medkit: int = 0
 var _crits: int = 0
 var _caught_fish: int = 0
 var _shots_fired: int = 0
+
+var _kill_cthulhu : bool = false
+
+signal submit(username : String)
 
 func _enter_tree() -> void:
 	GameManager.assign_stats_man(self)
@@ -31,7 +36,7 @@ func _ready() -> void:
 	GameManager.boss_killed.connect(_killed_boss)
 	GameManager.caught_fish.connect(_fish)
 	GameManager.made_projectile.connect(_made_projectile)
-	GameManager.game_win.connect(_over)
+	GameManager.game_win.connect(_win)
 	GameManager.got_crit.connect(_got_crit)
 	
 	GameManager.get_player().player_stats.death.connect(_over)
@@ -40,6 +45,10 @@ func _ready() -> void:
 
 func _over() -> void:
 	GameManager._time_when_done = GameManager._time_played
+
+func _win() -> void:
+	_kill_cthulhu = true
+	_over()
 
 func cheat() -> void:
 	is_valid = false
@@ -119,3 +128,25 @@ func get_caught_fish() -> int:
 
 func get_shots_fired() -> int:
 	return _shots_fired
+
+
+func get_dict() -> Dictionary:
+	
+	var level = GameManager.get_player().experience.current_level
+	
+	var dict : Dictionary = {
+	"total_damage_taken" : _total_damage_taken,
+	"total_damage_done" : _total_damage_done,
+	"kills" : _kills,
+	"abilities_picked" : _abilities_picked, 
+	"boss_kills" : _boss_kills,
+	"total_xp" : _total_xp,
+	"heal_amount_regen" : _heal_amount_regen,
+	"heal_amount_medkit" : _heal_amount_medkit,
+	"crits" : _crits,
+	"caught_fish" : _caught_fish,
+	"shots_fired" : _shots_fired,
+	"level" : level,
+	"finished" : _kill_cthulhu
+	}
+	return dict

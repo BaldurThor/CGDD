@@ -29,3 +29,7 @@ func _on_retry_button_pressed() -> void:
 
 func _on_quit_to_menu_button_pressed() -> void:
 	GameManager.main_menu()
+
+
+func _on_submit_score_pressed() -> void:
+	GameManager.get_stats_man().submit.emit()

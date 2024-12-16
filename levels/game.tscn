@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbesagqumwgtd"]
+[gd_scene load_steps=17 format=3 uid="uid://bbesagqumwgtd"]
 
 [ext_resource type="PackedScene" uid="uid://33kwqbnxj6dq" path="res://player/player.tscn" id="1_fbep7"]
 [ext_resource type="Script" path="res://player/fishing/fish_spawner.gd" id="2_oohfr"]
@@ -261,10 +261,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -478.0
-offset_top = -256.0
-offset_right = 34.0
-offset_bottom = 256.0
+offset_left = -94.0
+offset_top = -94.5
+offset_right = 94.0
+offset_bottom = 94.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -336,4 +336,5 @@ script = ExtResource("9_lrlrb")
 
 [connection signal="timeout" from="EndStats/Timer" to="EndStats" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/WinScreen/Controls/HBoxContainer/EndlessModeButton" to="CanvasLayer/WinScreen" method="_on_endless_mode_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Controls/HBoxContainer/SubmitScoreButton" to="Player" method="_on_submit_score_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/WinScreen/Controls/HBoxContainer/ReturnToMenuButton" to="CanvasLayer/WinScreen" method="_on_return_to_menu_button_pressed"]
