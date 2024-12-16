@@ -53,6 +53,7 @@ layout_mode = 2
 text = "Dive in"
 
 [node name="EndlessModeButton" type="Button" parent="MenuOptions"]
+visible = false
 layout_mode = 2
 text = "Endless Mode"
 
