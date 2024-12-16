@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/ability_system/abilities/catch_n_release/catch_n_release.gd" id="1_r0bw8"]
 [ext_resource type="Texture2D" uid="uid://ije604mp8f46" path="res://player/ability_system/abilities/catch_n_release/catch_n_release.png" id="2_jr528"]
-[ext_resource type="Script" path="res://player/ability_system/ability_info.gd" id="3_g2nhm"]
+[ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_g2nhm"]
 [ext_resource type="Resource" uid="uid://cxf0jwyvrhjb5" path="res://player/ability_system/abilities/pickup_friendly_fish/pickup_friendly_fish.tres" id="4_5mcsi"]
 
 [resource]

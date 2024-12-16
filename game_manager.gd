@@ -59,6 +59,9 @@ func _on_new_world_level_ready():
 
 func _on_game_timer_timeout():
 	game_timer_over.emit()
+	world_level = LEVEL_COUNT + 1
+	freeze_enemies = true
+	new_world_level.emit()
 
 func add_boss(boss: Boss) -> void:
 	if active_boss != null:
@@ -98,8 +101,8 @@ func _process(_delta: float) -> void:
 	
 	#self.level_switcher_ready is a debug thing!
 	if self.endless and self.level_switcher_ready:
-		if self.world_level != 5:
-			world_level = 5
+		if self.world_level != LEVEL_COUNT + 2:
+			world_level = LEVEL_COUNT + 2
 			freeze_enemies = true
 			new_world_level.emit()
 		elif ((self._endless_time_start - self._time_played) % self.time_between_bosses_endless) == 0 and self._time_played != 0 and self.last_time_boss_spawned_endless != self._time_played:
@@ -216,7 +219,7 @@ func start_endless_mode() -> void:
 	_time_when_done = 0
 	reset_pause()
 	
-	world_level = 1
+	world_level = 5
 	freeze_enemies = false
 	endless = true
 	load_scene("res://levels/game.tscn")

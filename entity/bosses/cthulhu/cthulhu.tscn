@@ -83,8 +83,8 @@ texture = SubResource("GradientTexture2D_x7pyl")
 y_sort_enabled = true
 sprite = ExtResource("4_g8afb")
 entity_stats = NodePath("../EntityStats")
-sprite_scale = 6.0
-sprite_offset = Vector2(0, -112.765)
+sprite_scale = 8.0
+sprite_offset = Vector2(0, -166.11)
 show_health_bar = false
 show_shadow = false
 shadow_size = 1.0
@@ -198,7 +198,7 @@ stream = ExtResource("15_t6vw7")
 bus = &"Effects"
 
 [node name="CthulhuSlam" type="Area2D" parent="."]
-scale = Vector2(8, 8)
+scale = Vector2(17.2288, 17.2288)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CthulhuSlam"]
 visible = false

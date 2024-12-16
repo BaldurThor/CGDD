@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbilityInfo" load_steps=4 format=3 uid="uid://bao5vuhekc1ew"]
 
-[ext_resource type="Script" uid="uid://c84rjalfxc6g4" path="res://player/ability_system/abilities/corrupted_devastation/corrupted_devastation.gd" id="1_0165x"]
+[ext_resource type="Script" path="res://player/ability_system/abilities/corrupted_devastation/corrupted_devastation.gd" id="1_0165x"]
 [ext_resource type="Texture2D" uid="uid://b4627krlsb3md" path="res://icon.png" id="2_jgtyk"]
 [ext_resource type="Script" uid="uid://5p4mad35qdtj" path="res://player/ability_system/ability_info.gd" id="3_0mn54"]
 
