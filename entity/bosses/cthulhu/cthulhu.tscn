@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c5ou3qmgqvokk"]
+[gd_scene load_steps=24 format=3 uid="uid://c5ou3qmgqvokk"]
 
 [ext_resource type="Script" path="res://entity/bosses/cthulhu/cthulhu.gd" id="1_h33uf"]
 [ext_resource type="Script" path="res://entity/entity_stats.gd" id="2_5ie44"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ba23rxotlujhx" path="res://entity/bosses/cthulhu/cthulhu_tentacle.tscn" id="8_774hl"]
 [ext_resource type="Script" path="res://entity/enemy/enemy_actions/logic_tree.gd" id="9_mi2f6"]
 [ext_resource type="Script" uid="uid://bhpxul68uy5m" path="res://entity/bosses/cthulhu/cthulhu_slam.gd" id="10_3u1wb"]
+[ext_resource type="Script" uid="uid://c7t3wf0arj2h3" path="res://entity/enemy/enemy_actions/chase.gd" id="10_50l1q"]
 [ext_resource type="Shader" path="res://entity/enemy/enemy_types/tentacle/tentacle_slam.gdshader" id="11_d3j54"]
 [ext_resource type="AudioStream" uid="uid://coemn6qdui44s" path="res://entity/slam.wav" id="11_yiu6t"]
 [ext_resource type="Script" uid="uid://bpi6tymq85nxi" path="res://entity/bosses/attacks/projectile/bullet_hell_logic.gd" id="12_yxkob"]
@@ -65,7 +66,7 @@ unique_name_in_owner = true
 script = ExtResource("2_5ie44")
 max_health = 32000
 health = 32000
-movement_speed = 1.0
+movement_speed = 0.2
 contact_damage = 20
 self_knockback_mod = 0.0
 
@@ -128,6 +129,11 @@ screenshake_amount = 0.6
 
 [node name="LogicTree" type="Node" parent="."]
 script = ExtResource("9_mi2f6")
+
+[node name="ChaseLogic" type="Node" parent="LogicTree" node_paths=PackedStringArray("enemy")]
+script = ExtResource("10_50l1q")
+enemy = NodePath("../..")
+always_chase = true
 
 [node name="CthulhuSlam" type="Node" parent="LogicTree" node_paths=PackedStringArray("slam_area", "enemy", "entity_stats", "sprite_2d")]
 script = ExtResource("10_3u1wb")
