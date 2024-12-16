@@ -37,6 +37,7 @@ func _on_new_world_level():
 	set_level(GameManager.world_level)
 
 func set_level(level: int) -> void:
+	animation_player.stop() # pretty sure this fixes the bug where transition wasn't working sometimes
 	animation_player.play("level_transition")
 	new_level_id = level
 	

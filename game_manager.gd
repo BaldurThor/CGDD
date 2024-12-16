@@ -24,6 +24,8 @@ var level_switcher_ready: bool = false
 var last_time_boss_spawned_endless: int = 0
 var scene_to_load: String = ""
 
+const GAME_TIME: int = 720
+
 # Global game events
 signal enemy_take_damage(amount: int)
 signal enemy_died
@@ -79,7 +81,7 @@ func start_game() -> void:
 	reset_pause()
 	
 	game_timer.stop()
-	game_timer.wait_time = 720
+	game_timer.wait_time = GAME_TIME
 	game_timer.one_shot = true
 	game_timer.start()
 	
@@ -215,6 +217,7 @@ func get_time_left() -> int:
 		return self._time_played - self._endless_time_start
 
 func start_endless_mode() -> void:
+	#doesn't work anymore no idea why can't be bothered to fix right now
 	_time_played = 0
 	_time_when_done = 0
 	reset_pause()
