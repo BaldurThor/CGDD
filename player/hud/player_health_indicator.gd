@@ -16,5 +16,5 @@ func _update_health_multi() -> void:
 	health_multi_positive.visible = player_stats.max_health_mod > 1.0
 	health_multi_negative.visible = player_stats.max_health_mod < 1.0
 	
-	health_multi_positive.text = "(+%d%%)" % int(player_stats.max_health_mod * 100)
+	health_multi_positive.text = "(%d%%)" % int(player_stats.max_health_mod * 100)
 	health_multi_negative.text = "(%d%%)" % int(player_stats.max_health_mod * 100)

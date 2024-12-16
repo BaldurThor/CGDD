@@ -203,16 +203,16 @@ func get_real_max_health() -> int:
 
 ## Handles regeneration for the player
 func _on_regen_timer_timeout() -> void:
-	heal_player.emit(_get_regen_amount(), true)
+	heal_player.emit(get_regen_amount(), true)
 
-func _get_regen_amount() -> int:
+func get_regen_amount() -> int:
 	var real_max_health = get_real_max_health()
 	var regen_amount = min(regen_amount_flat + (regen_amount_percentile * real_max_health), absolute_max_health_regen)
 	return regen_amount
 
 ## Figures out whether the player should regenerate health or not
 func _on_regen_changed() -> void:
-	var regen_amount = _get_regen_amount()
+	var regen_amount = get_regen_amount()
 	# If the player can regen and has some regen amount, the timer should tick.
 	if regen_amount > 0.0:
 		regen_timer.wait_time = 1 / regen_speed_mod
@@ -221,3 +221,9 @@ func _on_regen_changed() -> void:
 	else:
 		# If the player has no regen or cannot regen at all, the timer should not tick.
 		regen_timer.stop()
+
+func get_dodge_chance() -> float:
+	return clamp(dodge_chance, 0.0, absolute_max_dodge)
+
+func get_armor() -> int:
+	return clamp(armor, 1, absolute_max_armor)
