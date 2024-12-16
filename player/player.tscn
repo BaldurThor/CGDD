@@ -1454,4 +1454,5 @@ stream = ExtResource("61_nktpl")
 [connection signal="level_up" from="Experience" to="HUD/AbilitySelector" method="_on_experience_level_up"]
 [connection signal="body_entered" from="Experience/AbsorbRadius" to="Experience/AbsorbRadius" method="_on_body_entered"]
 [connection signal="body_entered" from="Experience/PickupRadius" to="Experience/PickupRadius" method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="LevelSwitcher" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="WeaponGroupManager/RodSwivel/Hook" to="WeaponGroupManager/RodSwivel/Hook" method="_on_body_entered"]
