@@ -1,4 +1,4 @@
-# CGDD
+# The Shotgun over Fishmouth
 
 ## How to play
 
